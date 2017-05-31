@@ -13,6 +13,17 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
+	<style>
+		#element {
+			display: inline-block;
+			margin: 0px 10px 30px 10px;
+		}
+
+		#image {
+			width: 100px;
+			height: 130px;
+		}
+	</style>
 	<body class="right-sidebar">
 		<div id="page-wrapper">
 
@@ -50,7 +61,7 @@
 												<li><a href="third-security.html">정보보안과</a></li>
 										  </ul>
 									  </li>
-										
+
 								  </ul>
 								</li>
 								<li><a href="no-sidebar.html">Resume Write</a></li>
@@ -60,17 +71,43 @@
 				</div>
 
 			<!-- Main -->
-		
+		  <div class="wrapper style1">
 
-					<div style="text-align: center">
-						<img  src="학생 목록(이름).PNG" width="1606" height="673">
-					</div>
-			
+				<div id="container" class="container" style="text-align:center">
 
-		
+				</div>
+			</div>
 
+			<script>
+
+				for(var i=0;i<20;i++){
+
+					var div=document.createElement("div");
+
+					div.id = "element";
+
+					var image=new Image();
+					image.src="학생"+(i%3+1)+".jpg";
+					image.id="image";
+
+					var text=document.createElement("input");
+					text.value="이름";
+					text.id="name";
+
+					div.appendChild(image);
+					div.innerHTML += "<br>";
+					div.appendChild(text);
+
+					document.getElementById("container").appendChild(div);
+				}
+
+			</script>
+
+		</div>
+
+		<div>
 			<!-- Footer -->
-				
+
 		</div>
 
 		<!-- Scripts -->
