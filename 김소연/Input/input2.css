@@ -27,7 +27,7 @@ html, body, div, span, applet, object, iframe, h1, h3, h4, h5, h6, p, blockquote
 	}
 #header {
 		position: relative;
-		background-image: url("../../images/header.jpg");
+		background-image: url("header.jpg");
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
