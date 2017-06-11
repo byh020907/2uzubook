@@ -1,0 +1,11 @@
+2017-06-12 01:28:00,002 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.dsm:zuzu:1.0.0-BUILD-SNAPSHOT @ C:\Users\À±Á¤Çö\Documents\GitHub\2uzubook\src\Server\2uzubook\pom.xml.
+2017-06-12 01:28:00,004 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.dsm:zuzu:1.0.0-BUILD-SNAPSHOT @ C:\Users\À±Á¤Çö\Documents\GitHub\2uzubook\src\Server\2uzubook\pom.xml.
+2017-06-12 01:28:02,305 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-06-12 01:28:02,350 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-06-12 01:28:02,538 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-06-12 01:28:02,560 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-06-12 01:28:02,831 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.dsm:zuzu:1.0.0-BUILD-SNAPSHOT @ C:\Users\À±Á¤Çö\Documents\GitHub\2uzubook\src\Server\2uzubook\pom.xml.
+2017-06-12 01:28:17,173 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-06-12 01:28:17,188 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-06-12 01:28:17,193 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-06-12 01:28:17,195 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
