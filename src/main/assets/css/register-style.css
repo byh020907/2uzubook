@@ -1,0 +1,76 @@
+<style>
+.mm{
+    background-color: azure;
+}
+.register-wrap{
+    background: #ecf0f1;
+    margin: 0 auto;
+    width: 700px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #333;
+    padding: 15px;
+   
+
+}
+body{
+    background-image: url(../../images/header.jpg)
+}
+.register-wrap h1{
+    text-align: center;
+    font-weight: 600;
+    font-size: 3em;
+    margin-top: 10px;
+    color: #34495e;
+}
+.register-wrap .box1 input[name="name"],
+.register-wrap .box1 input[name="cp"]
+{
+    margin-top:3%;
+}
+.register-wrap .box1{
+    margin-left:22%;
+    margin-right:13%;
+}
+.register-wrap .box1 input[type="text"],
+.register-wrap .box1 button{
+    border-radius: 5px;
+    outline: 0;
+    -moz-outline-style: none; 
+    border: 1px solid #bbb;
+    padding: 0 0 0 10px;
+    font-size: 14px;
+    height:40px;
+    width:80%;
+    
+}
+.register-wrap .box1 input[name="serial"],
+.register-wrap .box1 input[name="id"],
+.register-wrap .box1 input[name="np"],
+.register-wrap .box1 input[name="email"]
+{
+    margin-top:10%;
+}
+.register-wrap .box1 p{
+    font-size:11px;
+    margin-left:2%;
+    color:darkcyan;
+}
+.register-wrap .box1 .first
+{
+    margin-top:5%;
+}
+.register-wrap .box1 button{
+    margin-left:1%;
+    background-color:darkcyan;
+    color:white;
+    margin-top: 10%;
+}
+.register-wrap .box1 input[type="text"]:focus,
+.register-wrap .box1 button:focus{
+     border: 1px solid #3498db;
+}
+
+
+
+
+</style>
