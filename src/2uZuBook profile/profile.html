@@ -28,7 +28,26 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+	<style>
+		#ClickButton{
+			width:175px;
+			height:50px;
+			background-color:#38B885;
+			position:absolute;
+			right:30px;
+			top:30px;
+			border-radius:7.5px;
+			//border:1px solid red;
+			cursor:pointer;
+			display:table;
+		}
+		#ClickHere{
+			color:floralwhite;
+			font-size:2.5rem;
+			display:table-cell;
+			vertical-align:middle;
+		}
+	</style>
 </head>
 
 <body id="page-top" class="index">
@@ -88,7 +107,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Portfolio</h2>
+                    <h2>
+                    Portfolio
+                    	<div id="ClickButton">
+                    		<span id="ClickHere">한눈에 보기</span>
+                    	</div>
+                    </h2>
+                    <div>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -97,17 +122,17 @@
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x">관심분야</i>
                             </div>
                         </div>
-                        <img src="img/portfolio/관심분야.png" class="img-responsive" alt="Interest">
+                        <img src="img/portfolio/관심분야.png" class="img-responsive" alt="Interest"> 
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x">자격증</i>
                             </div>
                         </div>
                         <img src="img/portfolio/자격증.png" class="img-responsive" alt="License">
@@ -117,7 +142,7 @@
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x">대외참여</i>
                             </div>
                         </div>
                         <img src="img/portfolio/대회참여.png" class="img-responsive" alt="Circus tent">
@@ -127,7 +152,7 @@
                     <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x">수상경력</i>
                             </div>
                         </div>
                         <img src="img/portfolio/수상경력.png" class="img-responsive" alt="Game controller">
@@ -137,7 +162,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x">프로젝트</i>
                             </div>
                         </div>
                         <img src="img/portfolio/프로젝트.png" class="img-responsive" alt="Safe">
@@ -147,7 +172,7 @@
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <i class="fa fa-search-plus fa-3x">어학 인증</i>
                             </div>
                         </div>
                         <img src="img/portfolio/대외활동.png" class="img-responsive" alt="Submarine">
