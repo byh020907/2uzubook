@@ -1,0 +1,1 @@
+INDEX VERSION 1.130+C:\Users\dsm2016\Documents\GitHub\2uzubook\src\.metadata\.plugins\org.eclipse.jdt.core
