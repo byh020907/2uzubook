@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-     <link rel="stylesheet" type="text/css" href="assets/css/search.css">   
+     <link rel="stylesheet" type="text/css" href="assets/css/search.css">
  <link rel="stylesheet" type="text/css" href="assets/css/input2.css">
- 
+
 </head>
 <body>
-        
+
 <!-- Nav -->
 <nav id="nav">
     <ul>
@@ -30,59 +30,71 @@
         <li><a href="third-embeded.html">임베디드 개발과</a></li>
         <li><a href="third-security.html">정보보안과</a></li>
     </ul></li>
-										
+
     </ul>
     </li>
-								
+
         <li class="one"><a href="no-sidebar.html">Login</a></li>
     </ul>
 </nav>
 
 
-<center>
-    <p class="p1 one">2uzuBook</p>
-    <ul class="ul1">
-    <li class="li1" ><input type=text class="searchbox" size="50"></li>
-    <li class="li1"><button class="box"><img src="D:\개인 공부\웹\search\temp.png" class="img1"></button></li>
-    </ul>
-    <div class="rul">
-    <br>
-    <br>
-    <br>
-    <a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">
-    <button type="button" class="box2">고급 검색</button>
-    </a><div style="DISPLAY: none">
-    학년
-    <label><input type="radio" name='grade1' value='grade'>1학년</label>
-    <label><input type="radio" name='grade2' value='grade'>2학년</label>
-    <label><input type="radio" name='grade3' value='grade'>3학년</label>
-    <br>
-    성별
-    <label><input type="radio" value='sex1'>여자</label>
-    <label><input type="radio" value='sex2'>남자</label>
-    <br>
-    지역
-    <select name="dd">
-        <option value="em">없음</option>
-        <option value="Daejeon">대전</option>
-        <option value="Seoul">서울</option>
-        <option value="b">부산</option>
-        <option value="en">인천</option>
-    </select>
-    <br>
-    언어
-    <select name="ss">
-        <option value="java">java</option>
-        <option value="c">c</option>
-        <option value="ru">ruby</option>
-        <option value="python">python</option>
-    
-    </select>
-    <br>
-    <a onclick="this.parentNode.style.display='none';" href="javascript:void(0)">
-        <button type="button">접기</button>
-    </a></div>  
+
+    <center class="p1 one">원하는 인재를 찾고 싶은가요?</center>
+    <center>
+      <div class="searchdiv">
+      <input type="text" class="searchbox"  placeholder="  ex) 3학년, 남자, 보안, java" >
+      <button type='submit' class="searchicon"><img src="searchicon.png" class="img1"></button>
     </div>
+
+    <div class="checks">
+      <input type="checkbox" id="ex_chk1">
+      <label for="ex_chk1">1학년</label>
+      <input type="checkbox" id="ex_chk2">
+      <label for="ex_chk2">2학년</label>
+      <input type="checkbox" id="ex_chk3">
+      <label for="ex_chk3">3학년</label>
+
+      <select>
+      <option value="서버로 넘길 값"> 남자 </option>
+      <option value="서버로 넘길 값"> 여자 </option>
+      </select>
+
+      <select>
+      <option value="서버로 넘길 값"> 서울 </option>
+      <option value="서버로 넘길 값"> 경기도 </option>
+      <option value="서버로 넘길 값"> 인천 </option>
+      <option value="서버로 넘길 값"> 강원도 </option>
+      <option value="서버로 넘길 값"> 충청남도 </option>
+      <option value="서버로 넘길 값"> 부산 </option>
+      <option value="서버로 넘길 값"> 울산 </option>
+      <option value="서버로 넘길 값"> 대구 </option>
+      <option value="서버로 넘길 값"> 경상북도 </option>
+      <option value="서버로 넘길 값"> 경상남도 </option>
+      <option value="서버로 넘길 값"> 광주 </option>
+      <option value="서버로 넘길 값"> 전라북도 </option>
+      <option value="서버로 넘길 값"> 제주도 </option>
+    </select>
+    <select>
+
+    <option value="서버로 넘길 값"> JAVA </option>
+    <option value="서버로 넘길 값"> PYTHON </option>
+    <option value="서버로 넘길 값"> C </option>
+    <option value="서버로 넘길 값"> C++ </option>
+    <option value="서버로 넘길 값"> C# </option>
+    <option value="서버로 넘길 값"> HTML </option>
+    <option value="서버로 넘길 값"> SPRING </option>
+  </select>
+
+  </div>
+
+
 </center>
-    
+
+</div>
+
+
+
+</div>
+
 </body>
