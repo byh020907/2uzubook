@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 <style>
 .mm{
     background-color: aliceblue;
@@ -36,20 +37,18 @@
     text-align: left;
 }
 .img1{
-    margin-top:2%;
+    margin-top:8%;
     margin-left:-2%;
     width:30px;
     height: 27px;
     border-radius: 10px;
 
 }
-h1{
-
-}
 .p1{
     margin-top:10%;
     margin-bottom: 2%;
-    font-size: 23px;
+    font-size: 25px;
+    font-family: 'Hanna', serif;
 }
 body{
     background-image: url('../../images/header.jpg');
@@ -64,6 +63,7 @@ body{
   margin-left: 4px;
   font-weight: bold;
   height: 48px;
+  font-family: 'Hanna', serif;
 }
 .searchdiv{
   height: 50px;
@@ -71,7 +71,7 @@ body{
   border: 1px solid #793e7d;
   background: #ffffff;
   border-radius: 5px;
-
+  font-family: 'Hanna', serif;
 }
 .searchicon{
   width: 50px;
@@ -84,9 +84,11 @@ body{
 }
 .checks{
   margin-top: 20px;
+   font-family: 'Hanna', serif;
 }
 label{
    color:rgba(255, 255, 255, 0.975);
+    font-family: 'Hanna', serif;
 }
 select{
   width: auto;
@@ -99,9 +101,12 @@ select{
    appearance: none;
    font-family:  bold;
    margin: 2.8px;
+   font-family: 'Hanna', serif;
+
 }
 
 select::-ms-expand {
    display: none;
 }
+
 </style>
