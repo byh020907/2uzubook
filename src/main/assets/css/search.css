@@ -89,9 +89,8 @@ label{
    color:rgba(255, 255, 255, 0.975);
 }
 select{
-  width: 50px;
-    height: 20px;
-    padding-left: 10px;
+  width: auto;
+    padding: 2.5px;
     font-size: 15px;
     color: #1c0920;
     border-radius: 3px;
@@ -99,8 +98,9 @@ select{
    -moz-appearance: none;
    appearance: none;
    font-family:  bold;
-   margin: 3px;
+   margin: 2.8px;
 }
+
 select::-ms-expand {
    display: none;
 }
