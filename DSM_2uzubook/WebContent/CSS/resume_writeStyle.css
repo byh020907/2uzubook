@@ -1,0 +1,61 @@
+<Style>
+.mm{
+	background-color: antiquewhite;
+}
+.col-lg-12 .btn{
+	border:0;
+	background-color:#18BC9C; 
+} 
+.intro-text
+{
+	position:relative;	
+	left:5px;
+}
+.modal-body input[name="one"]
+{
+	border: 1px solid #bbb;
+    padding: 0 0 0 10px;
+    font-size: 16px;
+    left:20%;
+    width: 25%;
+    height: 43px;
+    border-radius: 5px;
+    outline: 0;
+    -moz-outline-style: none;
+}
+.intro-text .btn2
+{
+	border-radius: 5px;
+    outline: 0;
+    -moz-outline-style: none; 
+    border: 1px solid #bbb;
+    font-size:23px;
+    height:40px;
+    width:20%;
+    background-color:darkcyan;
+    color:white;
+}
+
+
+.intro-text input[name="name"]
+{
+	border: 1px solid #bbb;
+    padding: 0 0 0 10px;
+    font-size: 16px;
+    left:20%;
+    width: 25%;
+    height: 43px;
+    border-radius: 5px;
+    outline: 0;
+    -moz-outline-style: none;
+}
+.modal-body input[name="one"]:focus,
+.intro-text .btn2:focus,
+.intro-text input[name="name"]:focus
+{
+ 	border: 1px solid #3498db;
+}
+
+
+
+</style>
