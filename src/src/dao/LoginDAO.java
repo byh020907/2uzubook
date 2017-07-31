@@ -13,7 +13,7 @@ public class LoginDAO {
 	public static final String JDBC_DRIVER="com.mysql.jdbc.Driver";
 	public static final String url="jdbc:mysql://localhost:3306/2uzubook";
 	public static final String id="root";
-	public static final String password="root0209";
+	public static final String password="root0209";//1022//root0209
 	
 	private static Connection conn;
 	private PreparedStatement pstmt;
@@ -24,12 +24,13 @@ public class LoginDAO {
 			Class.forName(JDBC_DRIVER);
 			conn = DriverManager.getConnection(url, id, password);
 		} catch (Exception e) {
-			System.out.println("로그인실패");
 			e.printStackTrace();
 		}
 	}
 	
 	public static LoginDAO getInstance(){
+		if(loginDAO==null)
+			loginDAO=new LoginDAO();
 		return loginDAO;
 	}
 	
@@ -50,7 +51,7 @@ public class LoginDAO {
 			return -1; //데이터 베이스 오류
 			
 		}catch (Exception e) {
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 		return 0;
 	}

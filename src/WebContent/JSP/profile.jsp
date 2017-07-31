@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
 <!DOCTYPE html>
 <html lang="en">
 <%request.setCharacterEncoding("UTF-8");%>
@@ -358,7 +358,7 @@
                             <h2>관심 분야</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/Security" class="img-responsive img-centered" alt="">
-                            ${param.interest1}<br>${param.interest2} <br> ${param.interest3} <br>
+                            <p> 웹해킹 & 시스템 해킹 <br> 웹 프론트 개발</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -395,10 +395,23 @@
                             <h2>자격증</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/Certificate.png" class="img-responsive img-centered" alt="">
-                  				<c:forEach var="i" begin="1" end="${param.licenceNum}" step="1">
-                    			
-                    			
-                    			</c:forEach>
+                            <ol class="rounded-list">
+          <li><a href="">List item</a></li>
+          <li><a href="">List item</a></li>
+          <li><a href="">List item</a>
+          <li><a href="">List item</a></li>
+          <li><a href="">List item</a></li>
+      </ol>
+                            <!-- <ol>
+                              <li>컴퓨터 활용 능력 2급 (2016.3.25.)</li>
+                              <li>정보처리기능사 (2016.8.24.)</li>
+                              <li>워드프로세서 1급 (2016.12.03.)</li>
+                              <li>리눅스 마스터 2급(2017.03.24.)</li>
+                            </ol>
+
+<br><h4>어학 인증</h4>
+⦁토익 - 570점
+<br>⦁영어타자 - 400타</p> -->
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>

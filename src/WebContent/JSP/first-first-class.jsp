@@ -79,27 +79,29 @@
 
 				</div>
 			</div>
+
 			<script>
-			for(var i=0;i<20;i++){
 
-				var div=document.createElement("div");
+				for(var i=0;i<20;i++){
 
-				div.id = "element";
+					var div=document.createElement("div");
 
-				var image=new Image();
-				image.src="../Image/student/"+"stu"+(i%7+1)+".jpg";
-				image.id="image";
+					div.id = "element";
 
-				var text=document.createElement("input");
-				text.value="이름";
-				text.id="name";
+					var image=new Image();
+					image.src="../Image/student/"+"stu"+(i%7+1)+".jpg";
+					image.id="image";
 
-				div.appendChild(image);
-				div.innerHTML += "<br>";
-				div.appendChild(text);
+					var text=document.createElement("input");
+					text.value="이름";
+					text.id="name";
 
-				document.getElementById("container").appendChild(div);
-			}
+					div.appendChild(image);
+					div.innerHTML += "<br>";
+					div.appendChild(text);
+
+					document.getElementById("container").appendChild(div);
+				}
 
 			</script>
 

@@ -12,19 +12,13 @@ public class JoinDAO {
 	private static Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
-	public static final String JDBC_DRIVER="com.mysql.jdbc.Driver";
-	public static final String url="jdbc:mysql://localhost:3306/2uzubook";
-	public static final String id="root";
-	public static final String password="root0209";
 
 	private JoinDAO() {
 		try {
-			Class.forName(JDBC_DRIVER);
-			conn = DriverManager.getConnection(url, id, password);
+			Class.forName(LoginDAO.JDBC_DRIVER);
+			conn = DriverManager.getConnection(LoginDAO.url, LoginDAO.id, LoginDAO.password);
 		} catch (Exception e) {
-			System.out.println("로그인실패");
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 	}
 	
@@ -34,11 +28,11 @@ public class JoinDAO {
 		return joinDAO;
 	}
 	
-	public int Join(Account account){
-		
+	public int join(Account account){
 		String sql="insert into account values(?,?,?,?,?,?,?)";
+		
 		try {
-			pstmt=conn.prepareStatement(sql);
+			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, account.getStudent_id());
 			pstmt.setString(2, account.getId());
 			pstmt.setString(3, account.getPassword());

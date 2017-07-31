@@ -12,7 +12,7 @@ import dao.LoginDAO;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/loginAction")//페이지에서 액션을 보낼 url 주소
+@WebServlet("http://localhost:9080/DSM_2uzubook/JSP/loginAction")//페이지에서 액션을 보낼 url 주소
 public class LoginServlet extends HttpServlet {
 	
 	private LoginDAO loginDAO;

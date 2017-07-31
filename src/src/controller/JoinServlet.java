@@ -34,7 +34,7 @@ public class JoinServlet extends HttpServlet {
 		String major = request.getParameter("major");
 		String email = request.getParameter("email");
 		
-		int result=joinDAO.Join(new Account(student_id,id,password,name,gender,major,email));
+		int result=joinDAO.join(new Account(student_id,id,password,name,gender,major,email));
 		
 		if(result==0){
 			response.sendRedirect("/main.jsp");
