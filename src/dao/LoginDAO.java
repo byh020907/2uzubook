@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import sun.security.jca.GetInstance;
-
 public class LoginDAO {
 	private static LoginDAO loginDAO=new LoginDAO();
 	
