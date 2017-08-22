@@ -20,7 +20,7 @@
 					type="password" placeholder="Password" name="password" />
 				<button type="submit">Sign in</button>
 			</form>
-			<a href="#">
+			<a href="registerpage.jsp">
 				<p>Don't have an account? Register</p>
 			</a>
 		</div>
