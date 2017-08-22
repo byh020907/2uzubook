@@ -18,7 +18,7 @@ public class JoinDAO {
 			Class.forName(LoginDAO.JDBC_DRIVER);
 			conn = DriverManager.getConnection(LoginDAO.url, LoginDAO.id, LoginDAO.password);
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 	

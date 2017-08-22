@@ -116,7 +116,7 @@
 								  </p>
 									<div class="row 50%">
 										<div class="4u">
-											<a href="first-first-class.html" class="image fit"><img src="../Image/student/student.png" alt="" /></a>
+											<a href="first-first-class.jsp" class="image fit"><img src="../Image/student/student.png" alt="" /></a>
 										</div>
 										<div class="8u">
 										  <blockquote>
@@ -126,7 +126,7 @@
 									</div>
 									<div class="row 50%">
 										<div class="4u">
-											<a href="first-second-class.html" class="image fit"><img src="../Image/student/student2.png" alt="" /></a>
+											<a href="first-second-class.jsp" class="image fit"><img src="../Image/student/student2.png" alt="" /></a>
 										</div>
 										<div class="8u">
 											 <blockquote>
@@ -136,7 +136,7 @@
 									</div>
 									<div class="row 50%">
 										<div class="4u">
-											<a href="first-third-class.html" class="image fit"><img src="../Image/student/student.png" alt="" /></a>
+											<a href="first-third-class.jsp" class="image fit"><img src="../Image/student/student.png" alt="" /></a>
 										</div>
 										<div class="8u">
 											 <blockquote>

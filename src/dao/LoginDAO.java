@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class LoginDAO {
-	private static LoginDAO loginDAO=new LoginDAO();
+	private static LoginDAO loginDAO;
 	
 	public static final String JDBC_DRIVER="com.mysql.jdbc.Driver";
 	public static final String url="jdbc:mysql://localhost:3306/2uzubook";
