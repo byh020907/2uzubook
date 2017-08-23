@@ -15,7 +15,7 @@
 
 		</ul>
 		<div class="form" style="float: left;">
-			<form action=loginAction method="post">
+			<form action="loginAction.jsp" method="post">
 				<input type="text" placeholder="userName" name="id" /> <input
 					type="password" placeholder="Password" name="password" />
 				<button type="submit">Sign in</button>
