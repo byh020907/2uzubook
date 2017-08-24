@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
+<%
+	int login_status=(int)request.getAttribute("login_result");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +18,7 @@
 
 		</ul>
 		<div class="form" style="float: left;">
-			<form action="loginAction.jsp" method="post">
+			<form action="/2uzubook/loginAction" method="post">
 				<input type="text" placeholder="userName" name="id" /> <input
 					type="password" placeholder="Password" name="password" />
 				<button type="submit">Sign in</button>

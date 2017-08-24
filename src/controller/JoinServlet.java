@@ -31,16 +31,16 @@ public class JoinServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		String gender = "남자";
-		String major = "소프트웨어 개발과";
+		String gender = "�궓�옄";
+		String major = "�냼�봽�듃�썾�뼱 媛쒕컻怨�";
 		String email = request.getParameter("email");
 		
 		int result=joinDAO.join(new Account(student_id,id,password,name,gender,major,email));
 		
 		if(result==0){
-			response.sendRedirect("/JSP/index.jsp");
+			response.sendRedirect("/index.jsp");
 		}else{
-			response.sendRedirect("/back.jsp");
+			response.sendRedirect("/2uzubook/JSP/index.jsp");
 		}
 	}
 

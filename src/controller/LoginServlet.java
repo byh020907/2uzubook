@@ -12,7 +12,7 @@ import dao.LoginDAO;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/loginAction")//페이지에서 액션을 보낼 url 주소
+@WebServlet(urlPatterns="/loginAction")//�럹�씠吏��뿉�꽌 �븸�뀡�쓣 蹂대궪 url 二쇱냼
 public class LoginServlet extends HttpServlet {
 	
 	private LoginDAO loginDAO;
@@ -30,7 +30,8 @@ public class LoginServlet extends HttpServlet {
 		if(result==1){
 			response.sendRedirect("/main.jsp");
 		}else{
-			response.sendRedirect("/back.jsp");
+			request.setAttribute("login_result", result);
+			response.sendRedirect("/2uzubook/JSP/index.jsp");
 		}
 	}
 
