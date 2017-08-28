@@ -17,8 +17,8 @@
 		</ul>
 		<div class="form" style="float: left;">
 			<form action="/2uzubook/loginAction" method="post">
-				<input type="text" placeholder="userName" name="id" /> <input
-					type="password" placeholder="Password" name="password" />
+				<input type="text" placeholder="userName" name="id" /> 
+				<input type="password" placeholder="Password" name="password" />
 				<button type="submit">Sign in</button>
 			</form>
 			<a href="registerpage.jsp">

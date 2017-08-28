@@ -15,31 +15,38 @@ import dao.LoginDAO;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet(urlPatterns="/loginAction")//�럹�씠吏��뿉�꽌 �븸�뀡�쓣 蹂대궪 url 二쇱냼
+@WebServlet("/loginAction")//�럹�씠吏��뿉�꽌 �븸�뀡�쓣 蹂대궪 url 二쇱냼
 public class LoginServlet extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private LoginDAO loginDAO;
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		loginDAO=LoginDAO.getInstance();
-		request.setCharacterEncoding("utf-8");
+		
+		Util.setCharset(request, response, "utf-8");
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
-		response.setContentType("text/html;charset=utf-8");
 		int result=loginDAO.login(id, password);
+		
+		System.out.println("안녕");
 		
 		if(result==1){
 			HttpSession session = request.getSession(false);
 			session.setAttribute("id","kim");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
 			dispatcher.forward(request, response);
+			System.out.println(session.getAttribute("id"));
 		}else{
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id","kim2");
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
-			//dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
+			dispatcher.forward(request, response);
 			response.sendRedirect("/2uzubook/JSP/index.jsp");
+			
+			System.out.println(session.getAttribute("id"));
 		}
 	}
 
