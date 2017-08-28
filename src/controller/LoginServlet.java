@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		response.setContentType("text/html;charset=utf-8");
 		int result=loginDAO.login(id, password);
-		
+		System.out.println("hello");
 		if(result==1){
 			HttpSession session = request.getSession(false);
 			session.setAttribute("id","kim");
@@ -37,8 +37,8 @@ public class LoginServlet extends HttpServlet {
 		}else{
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id","kim2");
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
-			//dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
+			dispatcher.forward(request, response);
 			response.sendRedirect("/2uzubook/JSP/index.jsp");
 		}
 	}
