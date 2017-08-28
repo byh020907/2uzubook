@@ -1,10 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c-rt" %>
 <!DOCTYPE html>
 <html lang="en">
 <%request.setCharacterEncoding("UTF-8");%>
-<!--<c:set var="name" value="${param.name}"/>-->
+
+
+<%
+	String licences[]= request.getParameterValues("licenceName");
+%>
 
 
 
@@ -169,7 +174,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x">프로젝트</i>
+                                <i class="fa fa-search-plus fa-3x">프로젝트, 동아리</i>
                             </div>
                         </div>
                         <img src="../Image/portfolio/Project.png" class="img-responsive" alt="Safe">
@@ -179,7 +184,7 @@
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x">어학 인증</i>
+                                <i class="fa fa-search-plus fa-3x">기타</i>
                             </div>
                         </div>
                         <img src="../Image/portfolio/Activity_out.png" class="img-responsive" alt="Submarine">
@@ -358,7 +363,7 @@
                             <h2>관심 분야</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/Security" class="img-responsive img-centered" alt="">
-                            <p> 웹해킹 & 시스템 해킹 <br> 웹 프론트 개발</p>
+                            ${param.interest1}<br>${param.interest2} <br> ${param.interest3} <br>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -395,23 +400,10 @@
                             <h2>자격증</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/Certificate.png" class="img-responsive img-centered" alt="">
-                            <ol class="rounded-list">
-          <li><a href="">List item</a></li>
-          <li><a href="">List item</a></li>
-          <li><a href="">List item</a>
-          <li><a href="">List item</a></li>
-          <li><a href="">List item</a></li>
-      </ol>
-                            <!-- <ol>
-                              <li>컴퓨터 활용 능력 2급 (2016.3.25.)</li>
-                              <li>정보처리기능사 (2016.8.24.)</li>
-                              <li>워드프로세서 1급 (2016.12.03.)</li>
-                              <li>리눅스 마스터 2급(2017.03.24.)</li>
-                            </ol>
-
-<br><h4>어학 인증</h4>
-⦁토익 - 570점
-<br>⦁영어타자 - 400타</p> -->
+                  				<c:forEach items= "<%=licences%>" var="lic">
+                  					<c:out value="${lic}"/>
+                  					<br>
+                  				</c:forEach>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -445,10 +437,11 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>대외 참여</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            
+                            
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -482,10 +475,12 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>수상경력</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/game.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            
+                            
+                            
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -519,10 +514,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Project,동아리</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/safe.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -556,10 +550,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>기타</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -601,3 +594,4 @@
 </body>
 
 </html>
+

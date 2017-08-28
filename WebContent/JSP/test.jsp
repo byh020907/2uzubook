@@ -8,15 +8,20 @@
 </head>
 <body>
 <form action="profile.jsp" method="post">
-	<input type="text" name="name">
+	<input value="김소연" name="name">
 	<br>
-	<input type="text" name="grade"><br>
-	<input type="text" name="classroom"><br>
-	<input type="text" name="number"><br>
+	<input value="1" name="grade"><br>
+	<input value="1" name="classroom"><br>
+	<input value="1" name="number"><br>
+	<input value="해킹" name="interest1"><br>
+	<input value="플밍" name="interest2"><br>
+	<input value="java" name="interest3"><br>
+	<input value="전기" name="licenceName"><br>
+	<input value="운용" name="licenceName"><br>
+	<input value="기능사" name="licenceName"><br>
 	
 	<input type="submit" value="dd">
 </form>
-
 
 </body>
 

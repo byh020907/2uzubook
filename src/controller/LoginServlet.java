@@ -1,11 +1,14 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.LoginDAO;
 
@@ -20,17 +23,22 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		loginDAO=LoginDAO.getInstance();
-
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
-
+		response.setContentType("text/html;charset=utf-8");
 		int result=loginDAO.login(id, password);
 		
 		if(result==1){
-			response.sendRedirect("/main.jsp");
+			HttpSession session = request.getSession(false);
+			session.setAttribute("id","kim");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
+			dispatcher.forward(request, response);
 		}else{
-			request.setAttribute("login_result", result);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("id","kim2");
+			//RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
+			//dispatcher.forward(request, response);
 			response.sendRedirect("/2uzubook/JSP/index.jsp");
 		}
 	}
