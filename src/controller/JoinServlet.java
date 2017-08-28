@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,7 @@ public class JoinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		joinDAO=JoinDAO.getInstance();
 
-		request.setCharacterEncoding("euc-kr");
+		Util.setCharset(request,response,"UTF-8");
 		
 //		int student_id = Integer.parseInt(request.getParameter("student_id"));
 		int student_id=20110;
