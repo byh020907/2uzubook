@@ -27,25 +27,23 @@ public class LoginServlet extends HttpServlet {
 		loginDAO=LoginDAO.getInstance();
 		
 		Util.setCharset(request, response, "utf-8");
-		String id=request.getParameter("id");
-		String password=request.getParameter("password");
-		int result=loginDAO.login(id, password);
+//		String id=request.getParameter("id");
+//		String password=request.getParameter("password");
+//		int result=loginDAO.login(id, password);
 		
 		
 //		if(result==1){
-//			HttpSession session = request.getSession(false);
-//			session.setAttribute("id","kim");
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
-//			dispatcher.forward(request, response);
-//			System.out.println(session.getAttribute("id"));
-//		}else{
-			HttpSession session = request.getSession(true);
-			session.setAttribute("id","kim2");
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
-//			dispatcher.forward(request, response);
+			HttpSession session = request.getSession(false);
+			session.setAttribute("id","kim");
 			response.sendRedirect("/2uzubook/JSP/index.jsp");
-			
 			System.out.println(session.getAttribute("id"));
+//		}else{
+//			HttpSession session = request.getSession(true);
+//			session.setAttribute("id","kim2");
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
+//			dispatcher.forward(request, response);
+//			response.sendRedirect("/2uzubook/JSP/index.jsp");
+//			System.out.println(session.getAttribute("id"));
 //		}
 	}
 
