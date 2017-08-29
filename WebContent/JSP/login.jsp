@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +16,9 @@
 
 		</ul>
 		<div class="form" style="float: left;">
-			<form action=loginAction method="post">
-				<input type="text" placeholder="userName" name="id" /> <input
-					type="password" placeholder="Password" name="password" />
+			<form action="/2uzubook/loginAction" method="post">
+				<input type="text" placeholder="userName" name="id" /> 
+				<input type="password" placeholder="Password" name="password" />
 				<button type="submit">Sign in</button>
 			</form>
 			<a href="registerpage.jsp">

@@ -1,5 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+/*
+	int a=0;
+	String login1=(String)request.getAttribute("loginstatus");
+	int login2=Integer.parseInt(login1);
+	if(login2==0)
+	{
+		a=1;
+	}
+	session.setAttribute("login_set",login2);
+	String login3=(String)session.getAttribute("login_set");
+	int login4=Integer.parseInt(login3);
+	*/
+	
+	String id1=(String)session.getAttribute("id");
+	
+%>
 <!DOCTYPE HTML>
 <!--
 	Helios by HTML5 UP
@@ -8,7 +25,7 @@
 -->
 <html>
 	<head>
-		<title>2UZUBOOK DSM</title>
+		<title>2UZUBOOK DSM<%=id1 %></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="../JS/js/ie/html5shiv.js"></script><![endif]-->
@@ -172,6 +189,7 @@
 						<header>
 							<h2>우리 학생들의 레주메를 언제 어디서나 보세요</h2>
 							<p>종이로 된 레주메보다 훨 편리해진 2UZUBOOK!</p>
+							
 						</header>
 						<div class="row">
 							<article class="4u 12u(mobile) special">
