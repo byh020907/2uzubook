@@ -55,7 +55,7 @@
 										
 								  </ul>
 								</li>
-								<li><a href="resume_input.jsp">Resume Write</a></li>
+								<li><a href="resume_write.jsp">Resume Write</a></li>
 							</ul>
 						</nav>
 

@@ -216,7 +216,7 @@
                     <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x">프로젝트</i>
+                                <i class="fa fa-search-plus fa-3x">프로젝트, 동아리</i>
                             </div>
                         </div>
                         <img src="../Image/portfolio/Project.png" class="img-responsive" alt="Safe">
@@ -226,7 +226,7 @@
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x">어학 인증</i>
+                                <i class="fa fa-search-plus fa-3x">기타</i>
                             </div>
                         </div>
                         <img src="../Image/portfolio/Activity_out.png" class="img-responsive" alt="Submarine">
@@ -349,10 +349,14 @@
                         <div class="modal-body">
                             <h2>관심 분야</h2>
                             <hr class="star-primary">
+                            <form action="resume_writeAction.jsp" method="post">
                             <img src="../Image/portfolio/Security" class="img-responsive img-centered" alt="">
                             <input type="text" placeholder="관심분야 1" name="one"/>
                             <input type="text" placeholder="관심분야 2" name="one"/>
                             <input type="text" placeholder="관심분야 3" name="one"/>
+                            <br>
+                            <input type="submit" value="Submit"/>
+                            </form>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -389,23 +393,19 @@
                             <h2>자격증</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/Certificate.png" class="img-responsive img-centered" alt="">
-                            <ol class="rounded-list">
-          <li><a href="">List item</a></li>
-          <li><a href="">List item</a></li>
-          <li><a href="">List item</a>
-          <li><a href="">List item</a></li>
-          <li><a href="">List item</a></li>
-      </ol>
-                            <!-- <ol>
-                              <li>컴퓨터 활용 능력 2급 (2016.3.25.)</li>
-                              <li>정보처리기능사 (2016.8.24.)</li>
-                              <li>워드프로세서 1급 (2016.12.03.)</li>
-                              <li>리눅스 마스터 2급(2017.03.24.)</li>
-                            </ol>
-
-<br><h4>어학 인증</h4>
-⦁토익 - 570점
-<br>⦁영어타자 - 400타</p> -->
+                           <form action="resume_writeAction.jsp" method="post">
+                           <div id="licence_div">
+                            	<ul id="ul_licence">
+                            		<li>
+		                            	<input type="text" placeholder="자격증 명" name="licenceName"/>
+		                            	<input type="text" placeholder="취득 날짜" name="licenseDate"/>
+		                            	<input type="text" placeholder="점수 (어학 관련만)" name="two"/>
+                            		</li>
+                            	</ul>
+                            	<input type="button" value="추가" name="licence" id="licence"/>
+                            	<input type="submit" value="Submit"/>
+                            </div>
+                            </form>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -439,10 +439,21 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>대외 참여</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/circus.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                           <form action="resume_writeAction.jsp" method="post">
+                           <div id="attend_div">
+                            	<ul id="ul_attend">
+                            		<li>
+		                            	<input type="text" placeholder="컨퍼런스 명" name="conference"/>
+		                            	<input type="text" placeholder="참여 날짜" name="conferenceDate"/>
+                            		</li>
+                            	</ul>
+                            	<input type="button" value="추가" name="attend" id="attend"/>
+                            	<input type="submit" value="Submit"/>
+                            </div>
+                            </form>
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -476,10 +487,24 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>수상경력</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/game.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                           <form action="resume_writeAction.jsp" method="post">
+	                           <div id="award_div">
+	                            	<ul id="ul_award">
+	                            		<li>
+			                            	<input type="text" placeholder="대회명" name="awardName"/>
+			                            	<input type="text" placeholder="수상 등급(ex.대상, 금상...)" name="award"/>
+			                            	<input type="text" placeholder="대회 참여 날짜" name="awardDate"/>
+	                            		</li>
+	                            	</ul>
+	                            	<input type="button" value="추가" name="award" id="award"/>
+	                            	<input type="submit" value="Submit"/>
+	                            </div>
+                            </form>
+                            
+                            
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -513,10 +538,32 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Project, 동아리</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/safe.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <form action="resume_writeAction.jsp" method="post">
+	                           <div id="project_div">
+	                            	<ul id="ul_project">
+	                            		<li>
+			                            	<input type="text" placeholder="프로젝트 명" name="projectName"/>
+			                            	<input type="text" placeholder="프로젝트 시작 날짜(ex.1930/03/02)" name="projectStartDate"/>
+			                            	<input type="text" placeholder="프로젝트 끝난 날짜(ex.1930/03/02)" name="projectFinishDate"/>
+			                            	<input type="text" placeholder="프로젝트 간단 설명" name="projectContent"/>
+			                 			</li>
+			                 			<li>
+			                            	<input type="text" placeholder="동아리명" name="circleName"/>
+			                            	<input type="text" placeholder="프로젝트 시작 날짜(ex.1930/03/02)" name="circleStartDate"/>
+			                            	<input type="text" placeholder="프로젝트 끝난 날짜(ex.1930/03/02)" name="circleFinishDate"/>
+			                            	<input type="text" placeholder="동아리 간단 설명" name="circleContent"/>
+			                            	
+	                            		</li>
+	                            	</ul>
+	                            	<input type="button" value="프로젝트 추가" name="project" id="project"/>
+	                            	<input type="button" value="동아리 추가" name="project" id="club"/>
+	                            	<input type="submit" value="Submit"/>
+	                            </div>
+                            </form>
+                            
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -550,10 +597,32 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>기타</h2>
                             <hr class="star-primary">
                             <img src="../Image/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <form action="resume_writeAction.jsp" method="post">
+	                           <div id="etc_div">
+	                            	<ul id="ul_etc">
+	                            		<li>
+			                            	<input type="text" placeholder="봉사활동명" name="volunteerName"/>
+			                            	<input type="text" placeholder="봉사 활동 날짜" name="volunteerDate"/>
+			                            </li>
+			                            <li>
+			                            	<input type="text" placeholder="책 명" name="readingName"/>
+			                            	<input type="text" placeholder="독서 날짜" name="readingDate"/>
+			                            </li>
+			                            <li>
+			                            	<input type="text" placeholder="취미 1" name="hobbyName"/>
+			                            	<input type="text" placeholder="취미 2" name="hobbyName"/>
+			                            </li>
+	                            	</ul>
+	                            	<input type="button" value="봉사 활동 추가" name="Volunteer" id="Volunteer"/>
+	                            	<input type="button" value="독서 활동 추가" name="Book" id="Book"/>
+	                            	<input type="button" value="취미 활동 추가" name="Hobby" id="Hobby"/>
+	                            	<input type="submit" value="Submit"/>
+	                            </div>
+                            </form>
+                            
                             <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -591,6 +660,7 @@
 
     <!-- Theme JavaScript -->
     <script src="../JS/js/freelancer.min.js"></script>
+    <script src="../JS/js/resume_write.js"></script>
 
 </body>
 
