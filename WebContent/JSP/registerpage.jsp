@@ -9,7 +9,7 @@
     <div class="register-wrap">
         <h1> Register</h1>
         <div class="box1">
-        	<form action="../JoinAction" method="post">
+        	<form action="2uzubook/JoinAction" method="post">
             <input type="text" placeholder="Name" name="name" />
             <input type="text" placeholder="Serial" name="serial"/>
             <input type="text" placeholder="New Id" name="id"/>
