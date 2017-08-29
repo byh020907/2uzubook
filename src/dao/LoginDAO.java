@@ -9,9 +9,9 @@ public class LoginDAO {
 	private static LoginDAO loginDAO;
 	
 	public static final String JDBC_DRIVER="com.mysql.jdbc.Driver";
-	public static final String url="jdbc:mysql://10.156.145.112:3306/2uzubook";
+	public static final String url="jdbc:mysql://10.156.145.110:3306/2uzubook";
 	public static final String id="root";
-	public static final String password="1022";//1022//root0209
+	public static final String password="root0209";//1022//root0209
 	
 	private static Connection conn;
 	private PreparedStatement pstmt;
