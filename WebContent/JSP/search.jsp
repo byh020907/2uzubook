@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUCKR"
-    pageEncoding="UTF8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
  <!DOCTYPE html>
+ 
  <head>
      <meta charset="utf8">
       <link rel="stylesheet" type="text/css" href="../CSS/search.css">
@@ -12,31 +13,31 @@
  <! Nav >
  <nav id="nav">
      <ul>
-         <li class="one"><a href="index.html">Home</a></li>
-         <li class="one"><a href="index.html">Resume</a>
+         <li class="one"><a href="index.jsp">Home</a></li>
+         <li class="one"><a href="index.jsp">Resume</a>
      <ul>
          <li><a href="#">1학년 resume &hellip;</a>
      <ul>
-         <li><a href="firstcommon.html">공통과</a></li>
+         <li><a href="firstcommon.jsp">공통과</a></li>
      </ul></li>
          <li><a href="#">2학년 resume &hellip;</a>
      <ul>
-         <li><a href="secondsoftware.html">소프트웨어 개발과</a></li>
-         <li><a href="secondembeded.html">임베디드 개발과</a></li>
-         <li><a href="secondsecurity.html">정보보안과</a></li>
+         <li><a href="secondsoftware.jsp">소프트웨어 개발과</a></li>
+         <li><a href="secondembeded.jsp">임베디드 개발과</a></li>
+         <li><a href="secondsecurity.jsp">정보보안과</a></li>
      </ul>
      </li>
          <li><a href="#">3학년 resume &hellip;</a>
      <ul>
-         <li><a href="thirdsoftware.html">소프트웨어 개발과</a></li>
-         <li><a href="thirdembeded.html">임베디드 개발과</a></li>
-         <li><a href="thirdsecurity.html">정보보안과</a></li>
+         <li><a href="thirdsoftware.jsp">소프트웨어 개발과</a></li>
+         <li><a href="thirdembeded.jsp">임베디드 개발과</a></li>
+         <li><a href="thirdsecurity.jsp">정보보안과</a></li>
      </ul></li>
  
      </ul>
      </li>
  
-         <li class="one"><a href="nosidebar.html">Login</a></li>
+         <li class="one"><a href="login.jsp">Login</a></li>
      </ul>
  </nav>
  
