@@ -41,12 +41,12 @@ public class LoginDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				if(rs.getString(1).equals(password)){
-					return 1; //�븘�씠�뵒 , �뙣�뒪�썙�뱶 �씪移� 
+					return 1; //성공
 				}else{
-					return 0; //鍮꾨�踰덊샇 遺덉씪移�
+					return 0; //로그인 실패(비밀 번호가 다름)
 				}
 			}
-			return -1; //�뜲�씠�꽣 踰좎씠�뒪 �삤瑜�
+			return -1; //로그인 실패(해당 id 가없음)
 			
 		}catch (Exception e) {
 			// TODO: handle exception
