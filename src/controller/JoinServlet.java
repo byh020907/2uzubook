@@ -15,7 +15,7 @@ import user.Account;
 /**
  * Servlet implementation class JoinServlet
  */
-@WebServlet("/JoinAction")
+@WebServlet("/joinAction")
 public class JoinServlet extends HttpServlet {
 	
 	private Database database;
@@ -38,8 +38,8 @@ public class JoinServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		int result=database.join(new Account(student_id,id,password,name,gender,major,email));
-		
-		if(result==0){
+
+		if(result>=0){
 			response.sendRedirect("/2uzubook/JSP/login.jsp");
 			return;
 		}else{

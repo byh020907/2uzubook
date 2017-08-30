@@ -9,7 +9,7 @@
     <div class="register-wrap">
         <h1> Register</h1>
         <div class="box1">
-        	<form action="2uzubook/JoinAction" method="post">
+        	<form action="/2uzubook/joinAction" method="post">
             <input type="text" placeholder="Name" name="name" />
             <input type="text" placeholder="학번 (ex.10101)" name="student_id"/>
             <br>
