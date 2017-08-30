@@ -25,15 +25,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		database=Database.getInstance();
 		
-		Util.setCharset(request, response, "utf-8");
+//		Util.setCharset(request, response, "utf-8");
 //		String id=request.getParameter("id");
 //		String password=request.getParameter("password");
 //		int result=loginDAO.login(id, password);
-		
-		
+//		
+//		
 //		if(result==1){
 			HttpSession session = request.getSession(false);
-			session.setAttribute("id","kim");
+			session.setAttribute("id","kim123");
 			response.sendRedirect("/2uzubook/JSP/index.jsp");
 			System.out.println(session.getAttribute("id"));
 //		}else{

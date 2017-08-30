@@ -1,21 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-/*
-	int a=0;
-	String login1=(String)request.getAttribute("loginstatus");
-	int login2=Integer.parseInt(login1);
-	if(login2==0)
-	{
-		a=1;
-	}
-	session.setAttribute("login_set",login2);
-	String login3=(String)session.getAttribute("login_set");
-	int login4=Integer.parseInt(login3);
-	*/
-	
-	String id1=(String)session.getAttribute("id");
-	
+	String id=(String)session.getAttribute("id");	
+
 %>
 <!DOCTYPE HTML>
 <!--
@@ -25,7 +12,7 @@
 -->
 <html>
 	<head>
-		<title>2UZUBOOK DSM<%=id1 %></title>
+		<title>2UZUBOOK DSM<%=id %></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="../JS/js/ie/html5shiv.js"></script><![endif]-->
@@ -78,7 +65,7 @@
 									</ul>
 								</li>
 								
-								<li><a href="login.jsp">Login</a></li>
+								<li id="login_after"></li>
 							</ul>
 						</nav>
 
@@ -236,6 +223,22 @@
 			<script src="../JS/js/util.js"></script>
 			<!--[if lte IE 8]><script src="../JS/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../JS/js/main.js"></script>
-
+			<script>
+			$(function(){
+				var tag1  = "<a href="login.jsp">Login</a>";
+				var tag2 = "<a href="profile.jsp">MY PAGE</a>";
+				var val="<%=id%>";
+				if(val==null)
+					{
+						$("#login_after").html(tag1);
+					}
+				else
+					{
+						$("#login_after").html(tag2);
+					}
+					
+			})
+			
+			</script>
 	</body>
 </html>
