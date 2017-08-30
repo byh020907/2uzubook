@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,16 +31,17 @@ public class LoginServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		int result=database.login(id, password);
 		
+		PrintWriter out=response.getWriter();
 		
 		if(result==1){
-			HttpSession session = request.getSession(false);
+			HttpSession session = request.getSession();
 			session.setAttribute("id",id);
 			response.sendRedirect("/2uzubook/JSP/index.jsp");
 			System.out.println(session.getAttribute("id"));
+			return;
 		}else{
-			HttpSession session = request.getSession(true);
-			response.sendRedirect("/2uzubook/JSP/login.jsp");
-			System.out.println(session.getAttribute("id"));
+			out.print("<script> history.back() </script>");
+			return;
 		}
 	}
 

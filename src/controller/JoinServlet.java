@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,12 +35,16 @@ public class JoinServlet extends HttpServlet {
 		String major = request.getParameter("major");
 		String email = request.getParameter("email");
 		
+		PrintWriter out=response.getWriter();
+		
 		int result=database.join(new Account(student_id,id,password,name,gender,major,email));
 		
 		if(result==0){
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("/2uzubook/JSP/login.jsp");
+			return;
 		}else{
-			response.sendRedirect("/2uzubook/JSP/index.jsp");
+			out.print("<script> history.back() </script>");
+			return;
 		}
 	}
 
