@@ -11,7 +11,7 @@
         <div class="box1">
         	<form action="2uzubook/JoinAction" method="post">
             <input type="text" placeholder="Name" name="name" />
-            <input type="text" placeholder="학번(ex.10101)" name="student_id"/>
+            <input type="text" placeholder="학번 (ex.10101)" name="student_id"/>
             <br>
              <select name="gender">
             	<option selected="selected">성별</option>
@@ -25,7 +25,6 @@
             	<option value="임베디드 개발과">임베디드 개발과</option>
             	<option value="정보보안과">정보보안과</option>
             </select>
-            <input type="text" placeholder="학과" name="major"/>
             <input type="text" placeholder="New Id" name="id"/>
             <input type="text" placeholder="New Password" name="password"/>
             <p font-size="5px">4~12자의 영문 소문자, 숫자와 특수기호(_)만 사용할 수 있습니다.</p>

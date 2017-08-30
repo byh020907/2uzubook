@@ -25,25 +25,22 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		database=Database.getInstance();
 		
-//		Util.setCharset(request, response, "utf-8");
-//		String id=request.getParameter("id");
-//		String password=request.getParameter("password");
-//		int result=loginDAO.login(id, password);
-//		
-//		
-//		if(result==1){
+		Util.setCharset(request, response, "utf-8");
+		String id=request.getParameter("id");
+		String password=request.getParameter("password");
+		int result=database.login(id, password);
+		
+		
+		if(result==1){
 			HttpSession session = request.getSession(false);
-			session.setAttribute("id","kim123");
+			session.setAttribute("id",id);
 			response.sendRedirect("/2uzubook/JSP/index.jsp");
 			System.out.println(session.getAttribute("id"));
-//		}else{
-//			HttpSession session = request.getSession(true);
-//			session.setAttribute("id","kim2");
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("2uzubook/JSP/index.jsp");
-//			dispatcher.forward(request, response);
-//			response.sendRedirect("/2uzubook/JSP/index.jsp");
-//			System.out.println(session.getAttribute("id"));
-//		}
+		}else{
+			HttpSession session = request.getSession(true);
+			response.sendRedirect("/2uzubook/JSP/login.jsp");
+			System.out.println(session.getAttribute("id"));
+		}
 	}
 
 }
