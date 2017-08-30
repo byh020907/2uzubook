@@ -26,13 +26,12 @@ public class JoinServlet extends HttpServlet {
 
 		Util.setCharset(request,response,"UTF-8");
 		
-//		int student_id = Integer.parseInt(request.getParameter("student_id"));
-		int student_id=20110;
+		int student_id = Integer.parseInt(request.getParameter("student_id"));
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		String gender = "�궓�옄";
-		String major = "�냼�봽�듃�썾�뼱 媛쒕컻怨�";
+		String gender = request.getParameter("gender");
+		String major = request.getParameter("major");
 		String email = request.getParameter("email");
 		
 		int result=database.join(new Account(student_id,id,password,name,gender,major,email));
