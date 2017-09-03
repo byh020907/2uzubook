@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="org.json.simple.*"%>  
+	pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-
-	String json = request.getParameter("json");
+	JSONArray jsonArray = (JSONArray)request.getAttribute("JSONArray");
+	System.out.println(jsonArray);
 	int[] index=new int[20];
 	String[] name=new String[20];
 	String[] major=new String[20];
-	JSONArray jarray=(JSONArray)JSONValue.parse(json);
 	
-	for(int i=0;i<jarray.size();i++){
-		JSONObject jobj=(JSONObject) jarray.get(i);
+	for(int i=0;i<jsonArray.size();i++){
+		JSONObject jobj=(JSONObject) jsonArray.get(i);
 		index[i]=i;
 		name[i]=(String)jobj.get("name");
 		major[i]=(String)jobj.get("major");
-		
 	}
 %>
 <!DOCTYPE html>
@@ -25,29 +24,14 @@
 <link rel="stylesheet" href="../CSS/search2.css" />
 </head>
 <body>
-<div>
-<form>
-<input type="text" placeholder="search!!" name="2"/>
-<input type="submit" value="검색" />
-</form>
-<br>
+	<div>
+		<form>
+			<input type="text" placeholder="search!!" name="2" /> <input
+				type="submit" value="검색" />
+		</form>
+		<br>
 
-</div>
-<div class="list1">
-
-<%
-	if(json!=null)
-	{
-		for(int j=0;j<jarray.size();j++)
-		{
-			System.out.print(name[j]);
-			System.out.print(major[j]);
-%>
-			<hr color="#ffcccc">
-<%
-		}
-	}
-%>
-</div>
+	</div>
+	<div class="list1"></div>
 </body>
 </html>
