@@ -12,7 +12,7 @@
 -->
 <html>
 	<head>
-		<title>2UZUBOOK DSM<%=id %></title>
+		<title>2UZUBOOK DSM</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="../JS/js/ie/html5shiv.js"></script><![endif]-->
@@ -224,7 +224,7 @@
 			<!--[if lte IE 8]><script src="../JS/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../JS/js/main.js"></script>
 			<script>
-			$(function(){
+			window.onload=$(function(){
 				var tag1  = "<a href="login.jsp">Login</a>";
 				var tag2 = "<a href="profile.jsp">MY PAGE</a>";
 				var val="<%=id%>";

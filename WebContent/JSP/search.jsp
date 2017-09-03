@@ -46,8 +46,10 @@
      <center class="p1 one">원하는 인재를 찾고 싶은가요?</center>
      <center>
        <div class="searchdiv">
+       <form action="search2.jsp" method="post">
        <input type="text" class="searchbox"  placeholder="  ex) 3학년, 남자, 보안, java" >
        <button type='submit' class="searchicon"><img src="../Image/Search/searchicon.png" class="img1"></button>
+     </form>
      </div>
  
      <div class="checks">
