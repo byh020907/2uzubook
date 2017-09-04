@@ -1,0 +1,35 @@
+<style>
+.mm{
+	background-color: pink;
+}
+body{
+	background-image: url('../Image/images/header.jpg');
+}
+input[name="2"]{
+   font-size: 15px;
+   width: 500px;
+   padding: 8px;
+   border: 0px;
+   outline: none;
+   float: left;
+    margin-left: 4px;
+    font-weight: bold;
+    height: 25px;
+   font-family: 'Hanna', serif;
+}
+input[type="submit"]
+{
+    border-radius: 5px;
+    outline: 0;
+    -moz-outline-style: none; 
+    border: 1px solid #bbb;
+    font-size: 14px;
+    height:40px;
+    width:50px;
+}
+
+
+
+
+
+</style>
