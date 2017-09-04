@@ -21,28 +21,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>search</title>
-<link rel="stylesheet" href="../CSS/search2.css" />
+<link rel="stylesheet" type="text/css" href="/2uzubook/CSS/search2.css" />
 </head>
 <body>
-	<div>
+
+	<div class="searchPart">
 		<form>
-			<input type="text" placeholder="search!!" name="2" /> <input
-				type="submit" value="검색" />
+			<input type="text" placeholder="search!!" name="2" /> 
+			<input type="submit" value="검색" />
 		</form>
 		<br>
-
 	</div>
-	<div class="list1">
+	<div class="list0">
 <%
 	if(jsonArray!=null)
 	{
 		for(int j=0;j<jsonArray.size();j++)
 		{
-			System.out.print(name[j]+" ");
-			System.out.println(major[j]);
-%>
+			if(j%2==0)
+			{
+			%>
+			<div class="list1" style="float:left">
+			<%=name[j]%>
+			<br>
+			<%=major[j] %>
 			<hr color="#ffcccc">
+			</div>
 <%
+			}
+			else{
+				%>
+				<div class="list2" style="float:right">
+					<%=name[j] %>
+					<br>
+					<%=major[j] %>
+					<hr color="#ffcccc">
+				</div>
+				
+<% 
+			}
 		}
 	}
 %>

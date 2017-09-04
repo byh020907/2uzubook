@@ -50,7 +50,7 @@
 				<button type='submit' class="searchicon">
 					<img src="../Image/Search/searchicon.png" class="img1">
 				</button>
-			</form>
+			
 		</div>
 
 		<div class="checks">
@@ -85,6 +85,7 @@
 				<option value="서버로 넘길 값">HTML</option>
 				<option value="서버로 넘길 값">기타</option>
 			</select>
+			</form>
 
 		</div>
 

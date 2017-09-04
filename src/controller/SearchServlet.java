@@ -24,20 +24,20 @@ public class SearchServlet extends HttpServlet {
 		Util.setCharset(request, response, "utf-8");
 
 		JSONObject data1 = new JSONObject();
-		data1.put("name", "kimsoyeon");
-		data1.put("major", "sw");
+		data1.put("name", "김소연");
+		data1.put("major", "sw개발과");
 
 		JSONObject data2 = new JSONObject();
-		data2.put("name", "bae");
-		data2.put("major", "dkdk");
+		data2.put("name", "배용호");
+		data2.put("major", "sw개발과");
 
 		JSONObject data3 = new JSONObject();
-		data3.put("name", "prk");
-		data3.put("major", "ssss");
+		data3.put("name", "박규리");
+		data3.put("major", "sw개발과");
 
 		JSONObject data4 = new JSONObject();
-		data4.put("name", "dddd");
-		data4.put("major", "be");
+		data4.put("name", "윤정현");
+		data4.put("major", "sw개발과");
 
 		JSONArray arr = new JSONArray();
 		arr.add(data1);
