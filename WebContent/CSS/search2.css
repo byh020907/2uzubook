@@ -4,6 +4,12 @@
 }
 body{
 	background-image: url('../Image/images/header.jpg');
+	margin:0;
+	width:100%;
+}
+.searchPart{
+	margin-top:10%;
+	margin-left:30%;
 }
 input[name="2"]{
    font-size: 15px;
@@ -11,7 +17,6 @@ input[name="2"]{
    padding: 8px;
    border: 0px;
    outline: none;
-   float: left;
     margin-left: 4px;
     font-weight: bold;
     height: 25px;
@@ -28,7 +33,24 @@ input[type="submit"]
     width:50px;
 }
 
-
+.list0
+{
+	margin-top :10px;
+	margin-left:20px;
+}
+.list0 .list1
+{
+	margin-left:20%;
+	font-size:30px;
+	color:white;
+}
+.list0 .list2
+{
+	margin-left:30%;
+	font-size:30px;
+	color:white;
+	margin-right:30%;
+}
 
 
 
