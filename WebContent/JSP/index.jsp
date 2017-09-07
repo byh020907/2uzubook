@@ -231,15 +231,11 @@
 				if(val=="null")
 					{
 						$("#login_after").html(tag1);
-						<%System.out.printf("dddd");%>
-						console.log("ddd1");
 						
 					}
 				else
 				{
 					$("#login_after").html(tag2);
-					<%System.out.printf("dddd1");%>
-					console.log("asd");
 					
 				}
 				
