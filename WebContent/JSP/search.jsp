@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String id=(String)session.getAttribute("id");	
+	System.out.println(id);
+%>
 <!DOCTYPE html>
 
 <head>
@@ -35,7 +39,7 @@
 
 				</ul></li>
 
-			<li class="one"><a href="login.jsp">Login</a></li>
+			<li id="login_after"></li>
 		</ul>
 	</nav>
 
@@ -97,5 +101,26 @@
 
 
 	</div>
-
+	<script src="../JS/js/jquery.min.js"></script>
+		<script>
+			window.onload=function(){
+				var tag1  = "<a href=login.jsp>Login</a>";
+				var tag2 = "<a href=profile.jsp>MY PAGE</a>";
+				var val="<%=id%>";
+				if(val=="null")
+					{
+						$("#login_after").html(tag1);
+						
+					}
+				else
+				{
+					$("#login_after").html(tag2);
+					
+				}
+				
+					
+			};
+			
+			
+			</script>
 </body>
