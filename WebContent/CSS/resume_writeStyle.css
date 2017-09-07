@@ -11,7 +11,7 @@
 	position:relative;	
 	left:5px;
 }
-.modal-body input[name="one"]
+.modal-body input[type="text"]
 {
 	border: 1px solid #bbb;
     padding: 0 0 0 10px;
@@ -49,7 +49,7 @@
     outline: 0;
     -moz-outline-style: none;
 }
-.modal-body input[name="one"]:focus,
+.modal-body input[name="text"]:focus,
 .intro-text .btn2:focus,
 .intro-text input[name="name"]:focus
 {

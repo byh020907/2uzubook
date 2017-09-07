@@ -19,7 +19,7 @@ input[name="2"]{
    outline: none;
     margin-left: 4px;
     font-weight: bold;
-    height: 25px;
+    height:40px;
    font-family: 'Hanna', serif;
 }
 input[type="submit"]

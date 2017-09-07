@@ -141,6 +141,7 @@ html, body, div, span, applet, object, iframe, h1, h3, h4, h5, h6, p, blockquote
 		padding: 1.5em 0 1.5em 0;
 		z-index: 1;
 		overflow: hidden;
+		color:white;
 	}
 
 		#nav > ul {
@@ -173,6 +174,10 @@ html, body, div, span, applet, object, iframe, h1, h3, h4, h5, h6, p, blockquote
 			#nav > ul:after {
 				right: 100%;
 				margin-right: 1px;
+			}
+			.one
+			{
+				color:azure;
 			}
 
 			#nav > ul > li {
