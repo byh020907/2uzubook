@@ -3,7 +3,7 @@
 <%@ page import="org.json.simple.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%!
-	static class Student {
+	class Student {
 		String name;
 		String major;
 	
@@ -15,16 +15,17 @@
 %>
 
 <%
-	request.setCharacterEncoding("UTF-8");
-	JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
-	System.out.println(jsonArray);
-	
-	ArrayList<Student> students = new ArrayList<>();
+	try{
+		request.setCharacterEncoding("UTF-8");
+		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
+		System.out.println(jsonArray);
+		
+		ArrayList<Student> students = new ArrayList<Student>();
 
-	for (int i = 0; i < jsonArray.size(); i++) {
-		JSONObject jobj = (JSONObject) jsonArray.get(i);
-		students.add(new Student((String) jobj.get("name"), (String) jobj.get("major")));
-	}
+		for (int i = 0; i < jsonArray.size(); i++) {
+			JSONObject jobj = (JSONObject) jsonArray.get(i);
+			students.add(new Student((String) jobj.get("name"), (String) jobj.get("major")));
+		}	
 %>
 <!DOCTYPE html>
 <html>
@@ -96,6 +97,9 @@
 					}
 				}
 			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		%>
 
 	</div>
