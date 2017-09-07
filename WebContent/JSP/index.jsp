@@ -238,6 +238,7 @@
 					$("#login_after").html(tag2);
 					return;
 				}
+				console.log(val)
 					
 			});
 			
