@@ -22,11 +22,15 @@ public class LoginServlet extends HttpServlet {
 	
 	private Database database;
 	
+	public LoginServlet(){
+		database=Database.getInstance();
+	}
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		database=Database.getInstance();
 		
 		Util.setCharset(request, response, "utf-8");
+		
 		String id=request.getParameter("id");
 		String password=request.getParameter("password");
 		int result=database.login(id, password);

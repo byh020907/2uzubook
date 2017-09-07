@@ -13,10 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import dao.Database;
+
 @WebServlet("/searchAction")
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static String json;
+	
+	private Database database;
+	
+	public SearchServlet(){
+		database=Database.getInstance();
+	}
 
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -21,9 +21,12 @@ public class JoinServlet extends HttpServlet {
 	private Database database;
 	
 	private static final long serialVersionUID = 1L;
+	
+	public JoinServlet(){
+		database=Database.getInstance();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		database=Database.getInstance();
 
 		Util.setCharset(request,response,"UTF-8");
 		
