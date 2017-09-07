@@ -143,5 +143,42 @@ public class Database {
     public JSONArray getSearchData(Object ...objs){
     	return null;
     }
+    
+    public int getNextNum(){
+		String SQL="SELECT USERNO FROM serial ORDER BY USERNO DESC limit 1";
+		try{
+			PreparedStatement pstmt=connection.prepareStatement(SQL);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()){
+				return rs.getInt(1)+1;
+			}
+			return 1;//첫 번째 게시물인 경우
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return -1;//데이터베이스 오류
+		
+	}
+    
+    public int createSerialKey(){
+    	String sql="INSULT INTO serial VALUES(?,?,?)";
+		
+    	int num=0;
+    	String serialKey="";
+    	String content="";
+		try{
+			PreparedStatement pstmt=connection.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, serialKey);
+			pstmt.setString(3, content);
+			
+			return pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+    	return -1;//데이터베이스 오류
+    }
 }
 
