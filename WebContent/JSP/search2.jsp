@@ -2,19 +2,23 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
 <%@ page import="java.util.ArrayList"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-	JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
-	System.out.println(jsonArray);
-	class Student {
+<%!
+	static class Student {
 		String name;
 		String major;
-
+	
 		Student(String name, String major) {
 			this.name = name;
 			this.major = major;
 		}
 	}
+%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
+	System.out.println(jsonArray);
+	
 	ArrayList<Student> students = new ArrayList<>();
 
 	for (int i = 0; i < jsonArray.size(); i++) {
