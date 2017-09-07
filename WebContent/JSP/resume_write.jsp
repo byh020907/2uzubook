@@ -3,8 +3,6 @@
 <%@ page import="dao.Database"%>
 <%
 	Database database=Database.getInstance();
-	
-	database.executeAndGet("SELECT ", objects)
 %>
 <!DOCTYPE html>
 
