@@ -227,18 +227,22 @@
 			window.onload=function(){
 				var tag1  = "<a href=login.jsp>Login</a>";
 				var tag2 = "<a href=profile.jsp>MY PAGE</a>";
-				var val=<%=id%>;
-				if(val==null)
+				var val="<%=id%>";
+				if(val=="null")
 					{
 						$("#login_after").html(tag1);
-						return;
+						<%System.out.printf("dddd");%>
+						console.log("ddd1");
+						
 					}
 				else
 				{
 					$("#login_after").html(tag2);
-					return;
+					<%System.out.printf("dddd1");%>
+					console.log("asd");
+					
 				}
-				console.log(val)
+				
 					
 			};
 			
