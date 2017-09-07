@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%
 	String id=(String)session.getAttribute("id");	
-
+	System.out.println(id);
 %>
 <!DOCTYPE HTML>
 <!--
@@ -225,19 +225,21 @@
 			<script src="../JS/js/main.js"></script>
 			<script>
 			window.onload=$(function(){
-				var tag1  = "<a href="login.jsp">Login</a>";
-				var tag2 = "<a href="profile.jsp">MY PAGE</a>";
+				var tag1  = "<a href=login.jsp>Login</a>";
+				var tag2 = "<a href=profile.jsp>MY PAGE</a>";
 				var val="<%=id%>";
 				if(val==null)
 					{
 						$("#login_after").html(tag1);
+						return;
 					}
 				else
 					{
 						$("#login_after").html(tag2);
+						return;
 					}
 					
-			})
+			});
 			
 			</script>
 	</body>
