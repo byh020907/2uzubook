@@ -234,10 +234,10 @@
 						return;
 					}
 				else
-					{
-						$("#login_after").html(tag2);
-						return;
-					}
+				{
+					$("#login_after").html(tag2);
+					return;
+				}
 					
 			};
 			
