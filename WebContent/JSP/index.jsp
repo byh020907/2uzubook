@@ -223,7 +223,7 @@
 			<script src="../JS/js/util.js"></script>
 			<!--[if lte IE 8]><script src="../JS/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../JS/js/main.js"></script>
-			<script>
+			<script type="text/javascript">
 			window.onload=$(function(){
 				var tag1  = "<a href=login.jsp>Login</a>";
 				var tag2 = "<a href=profile.jsp>MY PAGE</a>";
@@ -234,10 +234,10 @@
 						return;
 					}
 				else
-					{
-						$("#login_after").html(tag2);
-						return;
-					}
+				{
+					$("#login_after").html(tag2);
+					return;
+				}
 					
 			});
 			
