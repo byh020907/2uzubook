@@ -224,10 +224,10 @@
 			<!--[if lte IE 8]><script src="../JS/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../JS/js/main.js"></script>
 			<script>
-			window.onload=$(function(){
+			window.onload=function(){
 				var tag1  = "<a href=login.jsp>Login</a>";
 				var tag2 = "<a href=profile.jsp>MY PAGE</a>";
-				var val="<%=id%>";
+				var val=<%=id%>;
 				if(val==null)
 					{
 						$("#login_after").html(tag1);
@@ -239,7 +239,8 @@
 						return;
 					}
 					
-			});
+			};
+			
 			
 			</script>
 	</body>
