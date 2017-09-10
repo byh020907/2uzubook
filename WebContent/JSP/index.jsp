@@ -231,15 +231,11 @@
 				if(val=="null")
 					{
 						$("#login_after").html(tag1);
-						
 					}
 				else
 				{
 					$("#login_after").html(tag2);
-					
 				}
-				
-					
 			};
 			
 			
