@@ -11,21 +11,24 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import user.Account;
+import user.Award;
+import user.Circle;
+import user.Contest;
 
 public class Database {
 	/*
-	 * 서버 내의 데이터베이스를 다루는 싱글톤 객체 
+	 * �꽌踰� �궡�쓽 �뜲�씠�꽣踰좎씠�뒪瑜� �떎猷⑤뒗 �떛湲��넠 媛앹껜 
 	 */
 	
 	private Connection connection;
 	private static Database instance;
 	
     private Database() {
-    	// Driver 객체 동적 로딩 및 connection 인스턴스 초기화
+    	// Driver 媛앹껜 �룞�쟻 濡쒕뵫 諛� connection �씤�뒪�꽩�뒪 珥덇린�솕
     	try {
-    		// 객체 생성 시 서버의 데이터베이스와 연결 
-    		Class.forName("com.mysql.jdbc.Driver");    // Driver 클래스를 동적 로딩 및 생성
-    		connection = DriverManager.getConnection("jdbc:mysql://10.156.145.110/2uzubook", "root", "root0209");    // 서버 내의 데이터베이스와의 커넥션 생성
+    		// 媛앹껜 �깮�꽦 �떆 �꽌踰꾩쓽 �뜲�씠�꽣踰좎씠�뒪�� �뿰寃� 
+    		Class.forName("com.mysql.jdbc.Driver");    // Driver �겢�옒�뒪瑜� �룞�쟻 濡쒕뵫 諛� �깮�꽦
+    		connection = DriverManager.getConnection("jdbc:mysql://10.156.145.110/2uzubook", "root", "root0209");    // �꽌踰� �궡�쓽 �뜲�씠�꽣踰좎씠�뒪���쓽 而ㅻ꽖�뀡 �깮�꽦
     	} catch (ClassNotFoundException | SQLException e) {
     		e.printStackTrace();
     	} 
@@ -38,19 +41,19 @@ public class Database {
     }
     
     public JSONArray executeAndGet(String sql, Object ... objects) {
-    	// SELECT와 같이 테이블의 값을 조회하는 쿼리 실행
+    	// SELECT�� 媛숈씠 �뀒�씠釉붿쓽 媛믪쓣 議고쉶�븯�뒗 荑쇰━ �떎�뻾
     	try {
-    		// connection PreparedStatement 실행
+    		// connection PreparedStatement �떎�뻾
     		PreparedStatement statement = connection.prepareStatement(sql);
         	if (objects.length > 0) {
-        		// 플레이스 홀더 (물음표 : ?) 가 담긴 SQL 문을 실행 시 파라미터 조회
+        		// �뵆�젅�씠�뒪 ���뜑 (臾쇱쓬�몴 : ?) 媛� �떞湲� SQL 臾몄쓣 �떎�뻾 �떆 �뙆�씪誘명꽣 議고쉶
     			int index = 1;
     			for (Object object : objects) {
         			statement.setObject(index++, object);
         		}
         		return filterData(statement.executeQuery());
         	} else {
-        		// 플레이스 홀더가 없을 경우 바로 SQL 실행
+        		// �뵆�젅�씠�뒪 ���뜑媛� �뾾�쓣 寃쎌슦 諛붾줈 SQL �떎�뻾
         		return filterData(statement.executeQuery());
         	} 
     	} catch (SQLException sqlE) {
@@ -60,7 +63,7 @@ public class Database {
     }
     
     public int executeAndUpdate(String sql, Object ... objects) {
-    	// DELETE, INSERT, UPDATE와 같이 테이블의 값을 변경하는 쿼리 실행
+    	// DELETE, INSERT, UPDATE�� 媛숈씠 �뀒�씠釉붿쓽 媛믪쓣 蹂�寃쏀븯�뒗 荑쇰━ �떎�뻾
     	try {
     		PreparedStatement statement = connection.prepareStatement(sql);
         	if (objects.length > 0) {
@@ -79,23 +82,23 @@ public class Database {
     }
     
     private static JSONArray filterData(ResultSet resultSet) throws SQLException {
-    	// 튜플들의 데이터가 담긴 ResultSet 객체를 ArrayList 형태로 가공 및 반환
+    	// �뒠�뵆�뱾�쓽 �뜲�씠�꽣媛� �떞湲� ResultSet 媛앹껜瑜� ArrayList �삎�깭濡� 媛�怨� 諛� 諛섑솚
     	JSONArray results = new JSONArray();
 
     	while (resultSet.next()) {
-    		// 튜플들의 목록을 조회한다
+    		// �뒠�뵆�뱾�쓽 紐⑸줉�쓣 議고쉶�븳�떎
     		JSONObject result = new JSONObject();
 			ResultSetMetaData metaData = resultSet.getMetaData(); 
 			for (int i = 1; i <= metaData.getColumnCount(); i++) {
-				// 해당 튜플 내 메타데이터를 조회한다
+				// �빐�떦 �뒠�뵆 �궡 硫뷀��뜲�씠�꽣瑜� 議고쉶�븳�떎
     		    String label = metaData.getColumnLabel(i);
     		    Object value = resultSet.getObject(i);
     		    result.put(label, value);
 			}
-			results.add(result);    // results JSONArray에 튜플의 데이터를 추가한다 
+			results.add(result);    // results JSONArray�뿉 �뒠�뵆�쓽 �뜲�씠�꽣瑜� 異붽��븳�떎 
 		}
     	
-    	return results;    // 비정상적인 종료인지, 결과 값이 없는 것인지 확인하기 위해 그대로 results 반환
+    	return results;    // 鍮꾩젙�긽�쟻�씤 醫낅즺�씤吏�, 寃곌낵 媛믪씠 �뾾�뒗 寃껋씤吏� �솗�씤�븯湲� �쐞�빐 洹몃�濡� results 諛섑솚
     }
     
     public int login(String id,String password){
@@ -107,12 +110,12 @@ public class Database {
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()){
 				if(rs.getString(1).equals(password)){
-					return 1; //성공
+					return 1; //�꽦怨�
 				}else{
-					return 0; //로그인 실패(비밀 번호가 다름)
+					return 0; //濡쒓렇�씤 �떎�뙣(鍮꾨� 踰덊샇媛� �떎由�)
 				}
 			}
-			return -1; //로그인 실패(해당 id 가없음)
+			return -1; //濡쒓렇�씤 �떎�뙣(�빐�떦 id 媛��뾾�쓬)
 			
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -137,9 +140,54 @@ public class Database {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1;//데이터베이스 오류
+		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
 	}
     
+    public int inputCareer_award(Award award) {
+    	String sql="insert into career_award values(?,?,?,?)";
+    	try {
+			PreparedStatement pstmt=connection.prepareStatement(sql);
+			pstmt.setInt(1, award.getStudent_id());
+			pstmt.setString(2, award.getAward());
+			pstmt.setString(3, award.getAwardName());
+			pstmt.setString(4, award.getAwardDate());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+    }
+    
+    public int inputCareer_circle(Circle circle) {
+    	String sql="insert into career_circle values(?,?,?)";
+    	try {
+			PreparedStatement pstmt=connection.prepareStatement(sql);
+			pstmt.setInt(1, circle.getStudent_id());
+			pstmt.setString(2, circle.getCircleName());
+			pstmt.setString(3, circle.getCircleContent());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+    }
+    
+    public int inputCareer_contest(Contest contest) {
+    	String sql="insert into career_contest values(?,?,?)";
+    	try {
+			PreparedStatement pstmt=connection.prepareStatement(sql);
+			pstmt.setInt(1, contest.getStudent_id());
+			pstmt.setString(2, contest.getContestName());
+			pstmt.setString(3, contest.getContestDate());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+    }
+    
+  
+   
     public JSONArray getSearchData(Object ...objs){
     	return null;
     }
@@ -152,11 +200,11 @@ public class Database {
 			if(rs.next()){
 				return rs.getInt(1)+1;
 			}
-			return 1;//첫 번째 게시물인 경우
+			return 1;//泥� 踰덉㎏ 寃뚯떆臾쇱씤 寃쎌슦
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return -1;//데이터베이스 오류
+		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
 		
 	}
     
@@ -178,7 +226,7 @@ public class Database {
 			e.printStackTrace();
 		}
 		
-    	return -1;//데이터베이스 오류
+    	return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
     }
 }
 
