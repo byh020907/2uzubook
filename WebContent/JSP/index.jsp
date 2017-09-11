@@ -223,23 +223,21 @@
 			<script src="../JS/js/util.js"></script>
 			<!--[if lte IE 8]><script src="../JS/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../JS/js/main.js"></script>
-			<script type="text/javascript">
-			window.onload=$(function(){
+			<script>
+			window.onload=function(){
 				var tag1  = "<a href=login.jsp>Login</a>";
 				var tag2 = "<a href=profile.jsp>MY PAGE</a>";
 				var val="<%=id%>";
-				if(val==null)
+				if(val=="null")
 					{
 						$("#login_after").html(tag1);
-						return;
 					}
 				else
 				{
 					$("#login_after").html(tag2);
-					return;
 				}
-					
-			});
+			};
+			
 			
 			</script>
 	</body>
