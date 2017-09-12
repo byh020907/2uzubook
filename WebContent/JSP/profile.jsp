@@ -122,7 +122,7 @@
                     <h2>
                     Portfolio
                     	<div id="ClickButton">
-                    		<span id="ClickHere">한눈에 보기</span>
+                    		<span id="ClickHere"> <a href="OneSee.jsp"> 한눈에 보기</a></span>
                     	</div>
                     </h2>
                     <div>
