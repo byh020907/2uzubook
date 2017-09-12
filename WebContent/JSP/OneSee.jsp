@@ -1,6 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%!
+	class Student {
+		String name;
+		String major;
+		String licences[];
+		String str;
+		Student(String name, String major , JSONObject licences) {
+			this.name = name;
+			this.major = major;
+			this.licences=new String[licences.size()];
+			for(int i=0;i<licences.size();i++)
+			{
+				str = String.valueOf(i);
+				System.out.println(str);
+				this.licences[i]=(String)licences.get("licence"+str);	
+			}
+		}
+	}
+%>
 
+<%
+		request.setCharacterEncoding("UTF-8");
+		JSONObject JsonObj = (JSONObject) request.getAttribute("JSONObject");
+		System.out.println(JsonObj);
+		
+		Student student=new Student((String) JsonObj.get("name"), (String) JsonObj.get("major"),(JSONObject)JsonObj.get("licences"));
+		
+%>
 <html>
 <html lang="en">
 <head>
@@ -35,7 +64,7 @@
                 <tr>
                     <th scope="row">자격증</th>
                     <td>정보처리 기능사
-                        <br> 컴퓨터 활용 능력</td>
+                        <br> <%= student.licences[1] %></td>
                 </tr>
                 <tr>
                     <th scope="row">수상</th>
