@@ -68,23 +68,26 @@ public class ResumeInputServlet extends HttpServlet {
 				String[] licenseName=request.getParameterValues("licenseName");
 				String[] licenseDate=request.getParameterValues("licenseDate");
 				String[] jumsu=request.getParameterValues("jumsu");
-				
-				System.out.println(licenseName+","+licenseDate+","+jumsu);
-				ArrayList<Award> awards=new ArrayList<>();
-				for(int i=0;i<licenseName.length;i++){
-					Award award=new Award(student_id,licenseName[i],jumsu[i],licenseDate[i]);
-					awards.add(award);
-				}
-				
-				result=database.inputCareer_award(awards, student_id);
 			}break;
 					
 			case 3:{
-				
+				String[] conference=request.getParameterValues("conference");
+				String[] conferenceDate=request.getParameterValues("conferenceDate");
 			}break;
 			
 			case 4:{
+				String[] awardName=request.getParameterValues("awardName");
+				String[] award=request.getParameterValues("award");
+				String[] awardDate=request.getParameterValues("awardDate");
 				
+				System.out.println(awardName+","+award+","+awardDate);
+				ArrayList<Award> awards=new ArrayList<>();
+				for(int i=0;i<awardName.length;i++){
+					Award Award=new Award(student_id,awardName[i],award[i],awardDate[i]);
+					awards.add(Award);
+				}
+				
+				result=database.inputCareer_award(awards, student_id);
 			}break;
 			
 			case 5:{
