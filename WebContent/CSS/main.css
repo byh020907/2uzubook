@@ -2100,7 +2100,7 @@
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
-		color: #fff;
+		color: ##df7366;
 		text-align: center;
 		padding: 7.5em 0 2em 0;
 		cursor: default;
@@ -2169,8 +2169,8 @@
 		}
 
 	body.homepage #header {
-		height: 100vh;
-		min-height: 40em;
+		height: 10vh;
+		min-height: 32em;
 	}
 
 		body.homepage #header h1 {
