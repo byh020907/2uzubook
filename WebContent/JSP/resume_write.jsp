@@ -390,9 +390,9 @@
 								<input type="hidden" name="type" value="2"/> 
 									<ul id="ul_licence">
 										<li><input type="text" placeholder="자격증 명"
-											name="licenceName" /> <input type="text" placeholder="취득 날짜"
+											name="licenseName" /> <input type="text" placeholder="취득 날짜"
 											name="licenseDate" /> <input type="text"
-											placeholder="점수 (어학 관련만)" name="two" /></li>
+											placeholder="점수 (어학 관련만)" name="jumsu" /></li>
 									</ul>
 									<input type="button" value="추가" name="licence" id="licence" />
 									<input type="submit" value="Submit" />

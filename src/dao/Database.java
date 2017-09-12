@@ -151,7 +151,7 @@ public class Database {
 		try {
 			PreparedStatement remove_pstmt=connection.prepareStatement(sql);
 			remove_pstmt.setInt(1, student_id);
-			remove_pstmt.executeQuery(remove_sql);
+			remove_pstmt.executeUpdate(remove_sql);
 			
 			System.out.println(String.valueOf(remove_pstmt.executeQuery(remove_sql)));
 			//오류체크
