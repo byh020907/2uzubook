@@ -41,6 +41,8 @@ public class ResumeInputServlet extends HttpServlet {
 				String own=request.getParameter("one");
 				String two=request.getParameter("two");
 				String three=request.getParameter("three");
+				
+				
 				System.out.println(own+two+three);
 			}break;
 			

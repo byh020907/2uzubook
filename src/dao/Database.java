@@ -189,6 +189,8 @@ public class Database {
   
    
     public JSONArray getSearchData(Object ...objs){
+    	//내용삽입
+    	
     	return null;
     }
     
