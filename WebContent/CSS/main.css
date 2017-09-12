@@ -2096,7 +2096,7 @@
 
 	#header {
 		position: relative;
-		background-image: url("../Image/images/header.jpg");
+		background-image: url("../Image/images/header5.jpg");
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
@@ -2128,6 +2128,7 @@
 			#header header > p {
 				font-size: 1.25em;
 				margin: 0;
+				text-shadow: 0.1em 0.1em 0.15em #131212;
 			}
 
 		#header h1 {
@@ -2138,6 +2139,7 @@
 
 			#header h1 a {
 				color: inherit;
+				text-shadow: 0.1em 0.1em 0.15em #333; 
 			}
 
 		#header .button {
