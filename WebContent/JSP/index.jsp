@@ -32,9 +32,7 @@
 							  <hr />
 								<p>대덕 소프트웨어 마이스터고 학생들의 레주메 사이트</p>
 							</header>
-							<footer>
-								<a href="#banner" class="button circled scrolly">Start</a>
-							</footer>
+							
 						</div>
 
 					<!-- Nav -->

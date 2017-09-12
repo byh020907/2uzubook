@@ -34,7 +34,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../CSS/table.css"> </head>
+    <link rel="stylesheet" type="text/css" href="/2uzubook/CSS/table.css"> </head>
 
 <body>
     <div id="leftside">
@@ -63,8 +63,19 @@
             <tbody>
                 <tr>
                     <th scope="row">자격증</th>
-                    <td>정보처리 기능사
-                        <br> <%= student.licences[1] %></td>
+                    <td>
+		                   <%
+							for(int i=0;i<student.licences.length;i++)
+							{
+								System.out.println(i);
+							%>
+								<%=student.licences[i]%>
+								<br>
+						
+							<% 
+							}
+		                   %>
+                   </td>
                 </tr>
                 <tr>
                     <th scope="row">수상</th>

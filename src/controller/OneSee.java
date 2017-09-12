@@ -26,10 +26,10 @@ public class OneSee extends HttpServlet {
 		Util.setCharset(request, response, "utf-8");
 		
 		JSONObject licen=new JSONObject();
+		licen.put("licence0","li0");
 		licen.put("licence1","li1");
 		licen.put("licence2","li2");
 		licen.put("licence3","li3");
-		licen.put("licence4","li4");
 		
 		JSONObject data1 = new JSONObject();
 		data1.put("name", "±è¼Ò¿¬");
