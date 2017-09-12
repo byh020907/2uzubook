@@ -228,5 +228,17 @@ public class Database {
 		
     	return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
     }
+    
+    public JSONArray search(String name, int student_id, String major){
+    	String SQL="select a.student_id, a.name, a.gender, a.major from account as a "
+    			+ "where a.name like ?% or a.student_id like ?% or a.major like ?%";
+    	try{
+			JSONArray arr=executeAndGet(SQL,name,student_id,major);
+			return arr;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;//데이터베이스 오류
+    }
 }
 

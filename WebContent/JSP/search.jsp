@@ -58,36 +58,42 @@
 		</div>
 
 		<div class="checks">
-			<input type="checkbox" id="ex_chk1"> <label for="ex_chk1">1학년</label>
-			<input type="checkbox" id="ex_chk2"> <label for="ex_chk2">2학년</label>
-			<input type="checkbox" id="ex_chk3"> <label for="ex_chk3">3학년</label>
+			<input type="checkbox" id="ex_chk1" onclick="input_box_value()"> <label for="ex_chk1">1학년</label>
+			<input type="checkbox" id="ex_chk2" onclick="input_box_value()"> <label for="ex_chk2">2학년</label>
+			<input type="checkbox" id="ex_chk3" onclick="input_box_value()"> <label for="ex_chk3">3학년</label>
 
-			<select>
-				<option value="서버로 넘길 값">남자</option>
-				<option value="서버로 넘길 값">여자</option>
-			</select> <select name>
-				<option value="서버로 넘길 값">서울</option>
-				<option value="서버로 넘길 값">경기</option>
-				<option value="서버로 넘길 값">인천</option>
-				<option value="서버로 넘길 값">강원</option>
-				<option value="서버로 넘길 값">충남</option>
-				<option value="서버로 넘길 값">부산</option>
-				<option value="서버로 넘길 값">울산</option>
-				<option value="서버로 넘길 값">대구</option>
-				<option value="서버로 넘길 값">경북</option>
-				<option value="서버로 넘길 값">경남</option>
-				<option value="서버로 넘길 값">광주</option>
-				<option value="서버로 넘길 값">전북</option>
-				<option value="서버로 넘길 값">제주</option>
-			</select> <select class="language">
-
-				<option value="서버로 넘길 값">PYTHON</option>
-				<option value="서버로 넘길 값">JAVA</option>
-				<option value="서버로 넘길 값">C</option>
-				<option value="서버로 넘길 값">C++</option>
-				<option value="서버로 넘길 값">C#</option>
-				<option value="서버로 넘길 값">HTML</option>
-				<option value="서버로 넘길 값">기타</option>
+			<select id="gender">
+				<option>성별</option>
+				<option value="남">남자</option>
+				<option value="여">여자</option>
+			</select> 
+			
+			<select id="area">
+				<option>지역</option>
+				<option value="서울">서울</option>
+				<option value="경기">경기</option>
+				<option value="인천">인천</option>
+				<option value="강원">강원</option>
+				<option value="충남">충남</option>
+				<option value="부산">부산</option>
+				<option value="울산">울산</option>
+				<option value="대구">대구</option>
+				<option value="경북">경북</option>
+				<option value="경남">경남</option>
+				<option value="광주">광주</option>
+				<option value="전북">전북</option>
+				<option value="제주">제주</option>
+			</select> 
+			
+			<select class="language" id="language">
+				<option>Language</option>
+				<option value="python">PYTHON</option>
+				<option value="java">JAVA</option>
+				<option value="c">C</option>
+				<option value="c++">C++</option>
+				<option value="c#">C#</option>
+				<option value="html">HTML</option>
+				<option value="etc">기타</option>
 			</select>
 			</form>
 
@@ -110,16 +116,39 @@
 				if(val=="null")
 					{
 						$("#login_after").html(tag1);
-						
 					}
 				else
 				{
 					$("#login_after").html(tag2);
-					
 				}
 				
 					
 			};
+			</script>
+			<script>
+			function input_box_value()
+			{
+			//check box	
+			}
+		
+			</script>
+			<script>
+			$(function(){
+				$('#area').change(function(){
+					var text = $("#area option:selected").text();
+					$(document).ready(function(){
+						$('.searchbox').val(text);
+					});		
+				});
+			});
+			$(function(){
+				$('#language').change(function(){
+					var text = $("#language option:selected").text();
+					$(document).ready(function(){
+						$('.searchbox').val(text);
+					});		
+				});
+			});
 			
 			
 			</script>
