@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,6 +15,7 @@ import user.Account;
 import user.Award;
 import user.Circle;
 import user.Contest;
+import user.Intern;
 
 public class Database {
 	/*
@@ -142,16 +144,27 @@ public class Database {
 		}
 		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
 	}
-    
-    public int inputCareer_award(Award award) {
-    	String sql="insert into career_award values(?,?,?,?)";
-    	try {
-			PreparedStatement pstmt=connection.prepareStatement(sql);
-			pstmt.setInt(1, award.getStudent_id());
-			pstmt.setString(2, award.getAward());
-			pstmt.setString(3, award.getAwardName());
-			pstmt.setString(4, award.getAwardDate());
-			return pstmt.executeUpdate();
+
+	public int inputCareer_award(ArrayList<Award> arrayList,int student_id) {
+		String remove_sql="delete from award where id=?";
+		String sql = "insert into career_award values(?,?,?,?)";
+		try {
+			PreparedStatement remove_pstmt=connection.prepareStatement(sql);
+			remove_pstmt.setInt(1, student_id);
+			remove_pstmt.executeQuery(remove_sql);
+			
+			System.out.println(String.valueOf(remove_pstmt.executeQuery(remove_sql)));
+			//오류체크
+			
+			for (int i = 0; i < arrayList.size(); i++) {
+				
+				PreparedStatement pstmt = connection.prepareStatement(sql);
+				pstmt.setInt(1, arrayList.get(i).getStudent_id());
+				pstmt.setString(2, arrayList.get(i).getAward());
+				pstmt.setString(3, arrayList.get(i).getAwardName());
+				pstmt.setString(4, arrayList.get(i).getAwardDate());
+				return pstmt.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -186,9 +199,26 @@ public class Database {
 		return -1;
     }
     
+    public int inputCareer_intern(Intern intern) {
+    	String sql="insert into career_intern values(?,?,?,?)";
+    	try {
+			PreparedStatement pstmt=connection.prepareStatement(sql);
+			pstmt.setInt(1, intern.getStudent_id());
+			pstmt.setString(2, intern.getCompanyName());
+			pstmt.setString(3, intern.getCompanyWorkContent());
+			pstmt.setString(4, intern.getCompanyDate());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+    }
+    
   
    
     public JSONArray getSearchData(Object ...objs){
+    	//내용삽입
+    	
     	return null;
     }
     
