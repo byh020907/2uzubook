@@ -144,7 +144,7 @@ public class Database {
 		}
 		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
 	}
-
+    
 	public void inputCareer_award(ArrayList<Award> arrayList, int student_id) {
 		String sql = "insert into career_award values(?,?,?,?)";
 
@@ -167,15 +167,7 @@ public class Database {
 		}
     }
     
-    
-    
-  
-   
-    public JSONArray getSearchData(Object ...objs){
-    	//내용삽입
-    	
-    	return null;
-    }
+ 
     
     public int getNextNum(){
 		String SQL="SELECT USERNO FROM serial ORDER BY USERNO DESC limit 1";
@@ -225,5 +217,7 @@ public class Database {
 		}
 		return null;//데이터베이스 오류
     }
+    
+ 
 }
 
