@@ -44,7 +44,7 @@ public class ResumeInputServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		PrintWriter out=response.getWriter();
 
-		if(session.getAttribute("id")==null){
+		if(session.getAttribute("id")==null){			
 			response.sendRedirect("/2uzubook/JSP/login.jsp");
 			return;
 		}

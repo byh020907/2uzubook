@@ -44,7 +44,7 @@
 		#ClickButton{
 			width:175px;
 			height:50px;
-			background-color:#2c3e50;
+			background-color:#38B885;
 			position:absolute;
 			right:30px;
 			top:30px;
@@ -73,7 +73,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.jsp">2uzuBook &lt;DSM&gt;</a>
+                <a class="navbar-brand" href="#page-top">2uzuBook &lt;DSM&gt;</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
