@@ -726,7 +726,7 @@ hr.star-primary:after {
 
 header {
 	text-align: center;
-	background: #18BC9C;
+	background-image: url("../Image/images/profile.jpg");
 }
 
 header .container {
@@ -913,7 +913,7 @@ section h2 {
 }
 
 section.success {
-	background: #18BC9C;
+	background: #2c3e50;
 	color: #fff
 }
 
