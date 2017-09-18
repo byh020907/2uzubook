@@ -7,6 +7,7 @@
 대덕소프트웨어마이스터고등학교 재학생들의 취업을 돕기 위해서 학생들의 레주메를 보다 접근성 있게 기업에 공개할 수 있는 소통의 창구를 마련하고자 기획하였다.
 
 [프로젝트 기획서](https://github.com/byh020907/2uzubook/blob/master/Documents/Project_Plan.md)
+
 [클라이언트 요구사항 명세서](https://github.com/byh020907/2uzubook/blob/master/Documents/Client_Requirements.md)
 
 ## 프로젝트 팀원  
