@@ -46,7 +46,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row"><img src="../Image/student/stu2.jpg" class="studentimg"> </th>
+                    <th scope="row"><img src="/2uzubook/Image/student/stu2.jpg" class="studentimg"> </th>
                     <td>
                         <h2>2학년 1반 소프트웨어개발과 <br> 윤정현</h2> 웹해킹
                         <br> 컴퓨터 보안
