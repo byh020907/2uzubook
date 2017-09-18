@@ -30,7 +30,7 @@ public class Database {
     	try {
     		// 媛앹껜 �깮�꽦 �떆 �꽌踰꾩쓽 �뜲�씠�꽣踰좎씠�뒪�� �뿰寃� 
     		Class.forName("com.mysql.jdbc.Driver");    // Driver �겢�옒�뒪瑜� �룞�쟻 濡쒕뵫 諛� �깮�꽦
-    		connection = DriverManager.getConnection("jdbc:mysql://10.156.145.110/2uzubook", "root", "root0209");    // �꽌踰� �궡�쓽 �뜲�씠�꽣踰좎씠�뒪���쓽 而ㅻ꽖�뀡 �깮�꽦
+    		connection = DriverManager.getConnection("jdbc:mysql://10.156.145.112/", "root", "1022");    // �꽌踰� �궡�쓽 �뜲�씠�꽣踰좎씠�뒪���쓽 而ㅻ꽖�뀡 �깮�꽦
     	} catch (ClassNotFoundException | SQLException e) {
     		e.printStackTrace();
     	} 
@@ -145,74 +145,29 @@ public class Database {
 		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
 	}
 
-	public int inputCareer_award(ArrayList<Award> arrayList,int student_id) {
-		String remove_sql="delete from award where id=?";
+	public void inputCareer_award(ArrayList<Award> arrayList, int student_id) {
 		String sql = "insert into career_award values(?,?,?,?)";
+
+		
 		try {
-			PreparedStatement remove_pstmt=connection.prepareStatement(sql);
-			remove_pstmt.setInt(1, student_id);
-			remove_pstmt.executeUpdate(remove_sql);
-			
-			System.out.println(String.valueOf(remove_pstmt.executeQuery(remove_sql)));
-			//오류체크
-			
+			PreparedStatement pstmt = connection.prepareStatement(sql);
+
 			for (int i = 0; i < arrayList.size(); i++) {
 				
-				PreparedStatement pstmt = connection.prepareStatement(sql);
 				pstmt.setInt(1, arrayList.get(i).getStudent_id());
 				pstmt.setString(2, arrayList.get(i).getAward());
 				pstmt.setString(3, arrayList.get(i).getAwardName());
 				pstmt.setString(4, arrayList.get(i).getAwardDate());
-				return pstmt.executeUpdate();
-			}
+				pstmt.addBatch();
+				System.out.println("성공");
+			}	
+			 pstmt.executeBatch();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -1;
     }
     
-    public int inputCareer_circle(Circle circle) {
-    	String sql="insert into career_circle values(?,?,?)";
-    	try {
-			PreparedStatement pstmt=connection.prepareStatement(sql);
-			pstmt.setInt(1, circle.getStudent_id());
-			pstmt.setString(2, circle.getCircleName());
-			pstmt.setString(3, circle.getCircleContent());
-			return pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
-    }
     
-    public int inputCareer_contest(Contest contest) {
-    	String sql="insert into career_contest values(?,?,?)";
-    	try {
-			PreparedStatement pstmt=connection.prepareStatement(sql);
-			pstmt.setInt(1, contest.getStudent_id());
-			pstmt.setString(2, contest.getContestName());
-			pstmt.setString(3, contest.getContestDate());
-			return pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
-    }
-    
-    public int inputCareer_intern(Intern intern) {
-    	String sql="insert into career_intern values(?,?,?,?)";
-    	try {
-			PreparedStatement pstmt=connection.prepareStatement(sql);
-			pstmt.setInt(1, intern.getStudent_id());
-			pstmt.setString(2, intern.getCompanyName());
-			pstmt.setString(3, intern.getCompanyWorkContent());
-			pstmt.setString(4, intern.getCompanyDate());
-			return pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;
-    }
     
   
    
