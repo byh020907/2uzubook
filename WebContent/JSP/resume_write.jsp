@@ -343,6 +343,7 @@
 								<img src="../Image/portfolio/Security"
 									class="img-responsive img-centered" alt="">
 									<input type="hidden" name="type" value="1"/> 
+									<div></div>
 									<input type="text" placeholder="관심분야 1" name="one" /> 
 									<input type="text" placeholder="관심분야 2" name="two" /> 
 									<input type="text" placeholder="관심분야 3" name="three" /> <br> 
@@ -395,6 +396,7 @@
 											placeholder="점수 (어학 관련만)" name="jumsu" /></li>
 									</ul>
 									<input type="button" value="추가" name="licence" id="licence" />
+									<input type="button" value="삭제" name="licence_rm" id="licence_rm"/>
 									<input type="submit" value="Submit" />
 								</div>
 							</form>
@@ -555,10 +557,9 @@
 											name="circleFinishDate" /> <input type="text"
 											placeholder="동아리 간단 설명" name="circleContent" /></li>
 									</ul>
-									<input type="button" value="프로젝트 추가" name="project"
-										id="project" /> <input type="button" value="동아리 추가"
-										name="project" id="club" /> <input type="submit"
-										value="Submit" />
+										<input type="button" value="프로젝트 추가" name="project" id="project" /> 
+										<input type="button" value="동아리 추가" name="project" id="club" /> 
+										<input type="submit" value="Submit" />
 								</div>
 							</form>
 
@@ -603,21 +604,23 @@
 								<div id="etc_div">
 								<input type="hidden" name="type" value="6"/> 
 									<ul id="ul_etc">
-										<li><input type="text" placeholder="봉사활동명"
-											name="volunteerName" /> <input type="text"
-											placeholder="봉사 활동 날짜" name="volunteerDate" /></li>
-										<li><input type="text" placeholder="책 명"
-											name="readingName" /> <input type="text" placeholder="독서 날짜"
-											name="readingDate" /></li>
-										<li><input type="text" placeholder="취미 1"
-											name="hobbyName" /> <input type="text" placeholder="취미 2"
-											name="hobbyName" /></li>
+										<li>
+											<input type="text" placeholder="봉사활동명"name="volunteerName" /> 
+											<input type="text" placeholder="봉사 활동 날짜" name="volunteerDate" />
+										</li>
+										<li>
+											<input type="text" placeholder="책 명" name="readingName" /> 
+											<input type="text" placeholder="독서 날짜" name="readingDate" />
+										</li>
+										<li>
+											<input type="text" placeholder="취미 1" name="hobbyName" /> 
+											<input type="text" placeholder="취미 2" name="hobbyName" />
+										</li>
 									</ul>
-									<input type="button" value="봉사 활동 추가" name="Volunteer"
-										id="Volunteer" /> <input type="button" value="독서 활동 추가"
-										name="Book" id="Book" /> <input type="button"
-										value="취미 활동 추가" name="Hobby" id="Hobby" /> <input
-										type="submit" value="Submit" />
+									<input type="button" value="봉사 활동 추가" name="Volunteer" id="Volunteer" /> 
+									<input type="button" value="독서 활동 추가" name="Book" id="Book" /> 
+									<input type="button" value="취미 활동 추가" name="Hobby" id="Hobby" /> 
+									<input type="submit" value="Submit" />
 								</div>
 							</form>
 
@@ -660,6 +663,12 @@
 	<!-- Theme JavaScript -->
 	<script src="../JS/js/freelancer.min.js"></script>
 	<script src="../JS/js/resume_write.js"></script>
+	<script>
+	function remove_item(obj)
+	{
+		document.getElementByld('field').removeChild(obj.parentNode);
+	}
+	</script>
 
 </body>
 

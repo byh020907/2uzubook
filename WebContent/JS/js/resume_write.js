@@ -4,6 +4,9 @@ $(function(){
 	    $e.find("input").val("");
 	    $("#licence_div ul").append($e);
 	})
+	$("#licence_rm").click(function(){
+		$("#licence_div ul li:last").remove();
+	})
 	$("#attend").click(function(){
 		var $e = $("#attend_div ul li:last").clone();
 	    $e.find("input").val("");

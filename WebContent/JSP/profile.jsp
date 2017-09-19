@@ -122,8 +122,13 @@
                     <h2>
                     Portfolio
                     	<div id="ClickButton">
-                    		<span id="ClickHere"> <a href="OneSee.jsp"> 한눈에 보기</a></span>
+                    	<span id="ClickHere">
+                    	<form action="/2uzubook/OneSeeAction" method="post">
+                    		 <a href="javascript:;" onclick="parentNode.submit();"> 한눈에 보기</a>
+                    	</form>
+                    	</span>
                     	</div>
+         
                     </h2>
                     <div>
                     <hr class="star-primary">
@@ -590,7 +595,6 @@
 
     <!-- Theme JavaScript -->
     <script src="../JS/js/freelancer.min.js"></script>
-
 </body>
 
 </html>

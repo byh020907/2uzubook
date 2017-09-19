@@ -71,7 +71,6 @@
 							%>
 								<%=student.licences[i]%>
 								<br>
-						
 							<% 
 							}
 		                   %>
