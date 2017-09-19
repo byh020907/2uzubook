@@ -2,7 +2,7 @@ CREATE TABLE `account` (
   `student_id` int(11) NOT NULL,
   `id` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  'intro' varchar(200) NULL,
+  intro varchar(200) NULL,
   `name` varchar(100) NOT NULL,
   `gender` varchar(7) NOT NULL,
   `major` varchar(20) NOT NULL,
@@ -18,19 +18,25 @@ CREATE TABLE `resume` (
   resumeContent text not null,
   resumeDate Date null,
   resume_category int not null,
-  keyword_category int nuo null,
+  keyword_category int not null,
   PRIMARY KEY (`student_id`),
   CONSTRAINT `fk_resume_account` FOREIGN KEY (`student_id`) REFERENCES `account` (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `keyword_category` (
   keyword_num INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  keyword_name varchar(100) not null,
-  CONSTRAINT `fk_keyword_category` FOREIGN KEY (`keyword_num`) REFERENCES `resume` (`resume_category`)
+  keyword_name varchar(100) not null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `resume_category` (
   resume_num INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  keyword_name varchar(100) not null,
-  CONSTRAINT `fk_resume_category_num` FOREIGN KEY (`resume_num`) REFERENCES `resume` (`keyword_category`)
+  resume_name varchar(100) not null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `serialkey` (
+  serialkey_num INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  serialKey varchar(500) not null,
+  keyword_category int null,
+  UNIQUE KEY `serialkey` (`serialkey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
