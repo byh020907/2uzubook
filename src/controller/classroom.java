@@ -16,7 +16,7 @@ public class classroom extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-Util.setCharset(request, response, "utf-8");
+		Util.setCharset(request, response, "utf-8");
 		
 		String str;
 		
@@ -26,7 +26,7 @@ Util.setCharset(request, response, "utf-8");
 		{
 			JSONObject data1 = new JSONObject();
 			str = Integer.toString(i);
-			data1.put("name", "±è¼Ò¿¬");
+			data1.put("name", "ï¿½ï¿½Ò¿ï¿½");
 			data1.put("oneline", "hello world!");
 			data1.put("StuImg", "/2uzubook/CSS/Image/student/stu"+str+".jpg");
 			arr.add(data1);
