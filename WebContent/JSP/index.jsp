@@ -267,6 +267,7 @@
 
 		</div>
 
+<<<<<<< HEAD
 		<!-- Footer -->
 	</div>
 
@@ -293,4 +294,34 @@
 		};
 	</script>
 </body>
+=======
+		<!-- Scripts -->
+			<script src="../JS/jquery.min.js"></script>
+			<script src="../JS/jquery.dropotron.min.js"></script>
+			<script src="../JS/jquery.scrolly.min.js"></script>
+			<script src="../JS/jquery.onvisible.min.js"></script>
+			<script src="../JS/skel.min.js"></script>
+			<script src="../JS/util.js"></script>
+			<!--[if lte IE 8]><script src="../JS/ie/respond.min.js"></script><![endif]-->
+			<script src="../JS/main.js"></script>
+			<script>
+			window.onload=function(){
+				var tag1  = '<a href="login.jsp">Login</a>';
+				var tag2 = '<a href="profile.jsp">MY PAGE</a>';
+				var val="<%=id%>";
+				if(val=="null")
+					{
+						$("#login_after").html(tag1);
+						console.log("ht");
+					}
+				else
+				{
+					$("#login_after").html(tag2);
+				}
+			};
+			
+			
+			</script>
+	</body>
+>>>>>>> 3e7aec8679299470dcbed861c45463fe370a37d6
 </html>

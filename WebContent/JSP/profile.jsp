@@ -585,11 +585,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="../JS/js/jqBootstrapValidation.js"></script>
-    <script src="../JS/js/contact_me.js"></script>
+    <script src="../JS/jqBootstrapValidation.js"></script>
+    <script src="../JS/contact_me.js"></script>
 
     <!-- Theme JavaScript -->
-    <script src="../JS/js/freelancer.min.js"></script>
+    <script src="../JS/freelancer.min.js"></script>
 
 </body>
 

@@ -2060,7 +2060,7 @@ header .icon.circled {
 
 #header {
 	position: relative;
-	background-image: url("../Images/images/header5.jpg");
+	background-image: url("../Image/images/header5.jpg");
 	background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
