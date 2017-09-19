@@ -32,5 +32,5 @@ CREATE TABLE `keyword_category` (
 CREATE TABLE `resume_category` (
   resume_num INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   keyword_name varchar(100) not null,
-  CONSTRAINT `fk_resume_category_num` FOREIGN KEY (`resume_num`) REFERENCES `resume` (`keyword`)
+  CONSTRAINT `fk_resume_category_num` FOREIGN KEY (`resume_num`) REFERENCES `resume` (`keyword_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
