@@ -25,16 +25,12 @@ CREATE TABLE `resume` (
 
 CREATE TABLE `keyword_category` (
   keyword_num INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  keyword_name varchar(100) not null,
-  PRIMARY KEY (`keyword_num`),
-  CONSTRAINT `fk_keyword_category` FOREIGN KEY (`keyword_num`) REFERENCES `resume` (`keyword_category`)
+  keyword_name varchar(100) not null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `resume_category` (
   resume_num INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   resume_name varchar(100) not null
-  PRIMARY KEY (`resume_num`),
-  CONSTRAINT `fk_resume_category` FOREIGN KEY (`resume_num`) REFERENCES `resume` (`resume_category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `serialkey` (
