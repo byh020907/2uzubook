@@ -107,7 +107,7 @@
 
 
 	</div>
-	<script src="../JS/js/jquery.min.js"></script>
+	<script src="../JS/jquery.min.js"></script>
 		<script>
 			window.onload=function(){
 				var tag1  = "<a href=login.jsp>Login</a>";

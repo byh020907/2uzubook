@@ -213,22 +213,23 @@
 		</div>
 
 		<!-- Scripts -->
-			<script src="../JS/js/jquery.min.js"></script>
-			<script src="../JS/js/jquery.dropotron.min.js"></script>
-			<script src="../JS/js/jquery.scrolly.min.js"></script>
-			<script src="../JS/js/jquery.onvisible.min.js"></script>
-			<script src="../JS/js/skel.min.js"></script>
-			<script src="../JS/js/util.js"></script>
-			<!--[if lte IE 8]><script src="../JS/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../JS/js/main.js"></script>
+			<script src="../JS/jquery.min.js"></script>
+			<script src="../JS/jquery.dropotron.min.js"></script>
+			<script src="../JS/jquery.scrolly.min.js"></script>
+			<script src="../JS/jquery.onvisible.min.js"></script>
+			<script src="../JS/skel.min.js"></script>
+			<script src="../JS/util.js"></script>
+			<!--[if lte IE 8]><script src="../JS/ie/respond.min.js"></script><![endif]-->
+			<script src="../JS/main.js"></script>
 			<script>
 			window.onload=function(){
-				var tag1  = "<a href=login.jsp>Login</a>";
-				var tag2 = "<a href=profile.jsp>MY PAGE</a>";
+				var tag1  = '<a href="login.jsp">Login</a>';
+				var tag2 = '<a href="profile.jsp">MY PAGE</a>';
 				var val="<%=id%>";
 				if(val=="null")
 					{
 						$("#login_after").html(tag1);
+						console.log("ht");
 					}
 				else
 				{
