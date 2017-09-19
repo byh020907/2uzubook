@@ -106,7 +106,7 @@
 			for(int i=1;i<21;i++)
 			{
 				%>
-				<img src="<%=students.get(i-1).StuImg.replaceAll(" ", "\") %>" id="image" border="1"/>
+				<img src="<%=students.get(i-1).StuImg.replaceAll("\\\\", "/") %>" id="image" border="1"/>
 					<a><%=students.get(i-1).name%></a>
 					<%=students.get(i-1).oneline%> 
 				
