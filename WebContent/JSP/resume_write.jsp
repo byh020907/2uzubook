@@ -338,19 +338,15 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="modal-body">
 							<h2>관심 분야</h2>
-							<div id="pre_set_attention" style="display:none">
-								<input type="text" placeholder="관심분야 1" name="one" /> 
-								<input type="text" placeholder="관심분야 2" name="two" /> 
-								<input type="text" placeholder="관심분야 3" name="three" /> 
-								<input type="button" value="삭제" onclick="remove_item(this)" /><br>
-							</div>
 							<hr class="star-primary">
+							
 							<form action="/2uzubook/resumeInputAction" method="post">
 								<img src="../Image/portfolio/Security"
 									class="img-responsive img-centered" alt="">
 									<input type="hidden" name="type" value="1"/> 
-									<div id="attention_field">
-									</div>
+									<input type="text" placeholder="관심분야 1" name="one" /> 
+									<input type="text" placeholder="관심분야 2" name="two" /> 
+									<input type="text" placeholder="관심분야 3" name="three" /> 
 									<input type="submit" value="Submit" />
 							</form>
 							<ul class="list-inline item-details">
@@ -387,6 +383,12 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="modal-body">
 							<h2>자격증</h2>
+							<div id="pre_set_license" style="display:none">
+								<input type="text" placeholder="자격증 명"mname="licenseName" /> 
+								<input type="text" placeholder="취득 날짜" name="licenseDate" /> 
+								<input type="text" placeholder="점수 (어학 관련만)" name="jumsu" />
+								<input type="button" value="삭제" onclick="remove_item('license_field',this)" /><br>
+							</div>
 							<hr class="star-primary">
 							<img src="../Image/portfolio/Certificate.png"
 								class="img-responsive img-centered" alt="">
@@ -394,12 +396,13 @@
 								<div id="licence_div">
 								<input type="hidden" name="type" value="2"/> 
 									<ul id="ul_licence">
-										<li><input type="text" placeholder="자격증 명"
-											name="licenseName" /> <input type="text" placeholder="취득 날짜"
-											name="licenseDate" /> <input type="text"
-											placeholder="점수 (어학 관련만)" name="jumsu" /></li>
+										<li>
+										<div id="license_field">
+										</div>
+										
+										</li>
 									</ul>
-									<input type="button" value="추가" name="licence" id="licence" />
+									<input type="button" value="추가" onclick="add_item('pre_set_license','license_field')" />
 									<input type="submit" value="Submit" />
 								</div>
 							</form>
@@ -437,19 +440,24 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="modal-body">
 							<h2>대외 참여</h2>
+							<div id="pre_set_conference" style="display:none">
+								<input type="text" placeholder="컨퍼런스 명" name="conference" /> 
+											<input type="text" placeholder="참여 날짜" name="conferenceDate" />
+								<input type="button" value="삭제" onclick="remove_item('conference_field',this)" /><br>
+							</div>
 							<hr class="star-primary">
-							<img src="../Image/portfolio/circus.png"
-								class="img-responsive img-centered" alt="">
+							<img src="../Image/portfolio/circus.png" class="img-responsive img-centered" alt="">
 							<form action="/2uzubook/resumeInputAction" method="post">
 								<div id="attend_div">
 								<input type="hidden" name="type" value="3"/> 
 									<ul id="ul_attend">
-										<li><input type="text" placeholder="컨퍼런스 명"
-											name="conference" /> <input type="text" placeholder="참여 날짜"
-											name="conferenceDate" /></li>
+										<li>
+											<div id="conference_field">
+											</div>
+										</li>
 									</ul>
-									<input type="button" value="추가" name="attend" id="attend" /> <input
-										type="submit" value="Submit" />
+									<input type="button" value="추가" onclick="add_item('pre_set_conference','conference_field')"/> 
+									<input type="submit" value="Submit" />
 								</div>
 							</form>
 							<ul class="list-inline item-details">
@@ -486,6 +494,12 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="modal-body">
 							<h2>수상경력</h2>
+							<div id="pre_set_award" style="display:none">
+								<input type="text" placeholder="대회명" name="awardName" />
+								<input type="text" placeholder="수상 등급(ex.대상, 금상...)" name="award" /> 
+								<input type="text" placeholder="대회 참여 날짜" name="awardDate" />
+								<input type="button" value="삭제" onclick="remove_item('award_field',this)" /><br>
+							</div>
 							<hr class="star-primary">
 							<img src="../Image/portfolio/game.png"
 								class="img-responsive img-centered" alt="">
@@ -493,12 +507,11 @@
 								<div id="award_div">
 								<input type="hidden" name="type" value="4"/> 
 									<ul id="ul_award">
-										<li><input type="text" placeholder="대회명" name="awardName" />
-											<input type="text" placeholder="수상 등급(ex.대상, 금상...)"
-											name="award" /> <input type="text" placeholder="대회 참여 날짜"
-											name="awardDate" /></li>
+										<li>
+											<div id="award_field"></div>
+										</li>
 									</ul>
-									<input type="button" value="추가" name="award" id="award" /> <input
+									<input type="button" value="추가" onclick="add_item('pre_set_award','award_field')" /> <input
 										type="submit" value="Submit" />
 								</div>
 							</form>
@@ -538,6 +551,20 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="modal-body">
 							<h2>Project, 동아리</h2>
+							<div id="pre_set_project" style="display:none">
+								<input type="text" placeholder="프로젝트 명" name="projectName" /> 
+								<input type="text" placeholder="프로젝트 시작 날짜(ex.1930/03/02)" name="projectStartDate" /> 
+								<input type="text" placeholder="프로젝트 끝난 날짜(ex.1930/03/02)" name="projectFinishDate" /> 
+								<input type="text" placeholder="프로젝트 간단 설명" name="projectContent" />
+								<input type="button" value="삭제" onclick="remove_item('project_field',this)" /><br>
+							</div>
+							<div id="pre_set_circle" style="display:none">
+								<input type="text" placeholder="동아리명" name="circleName" /> 
+								<input type="text" placeholder="프로젝트 시작 날짜(ex.1930/03/02)" name="circleStartDate" /> 
+								<input type="text" placeholder="프로젝트 끝난 날짜(ex.1930/03/02)" name="circleFinishDate" /> 
+								<input type="text" placeholder="동아리 간단 설명" name="circleContent" />
+								<input type="button" value="삭제" onclick="remove_item('circle_field',this)" /><br>
+							</div>
 							<hr class="star-primary">
 							<img src="../Image/portfolio/safe.png"
 								class="img-responsive img-centered" alt="">
@@ -545,25 +572,16 @@
 								<div id="project_div">
 								<input type="hidden" name="type" value="5"/> 
 									<ul id="ul_project">
-										<li><input type="text" placeholder="프로젝트 명"
-											name="projectName" /> <input type="text"
-											placeholder="프로젝트 시작 날짜(ex.1930/03/02)"
-											name="projectStartDate" /> <input type="text"
-											placeholder="프로젝트 끝난 날짜(ex.1930/03/02)"
-											name="projectFinishDate" /> <input type="text"
-											placeholder="프로젝트 간단 설명" name="projectContent" /></li>
-										<li><input type="text" placeholder="동아리명"
-											name="circleName" /> <input type="text"
-											placeholder="프로젝트 시작 날짜(ex.1930/03/02)"
-											name="circleStartDate" /> <input type="text"
-											placeholder="프로젝트 끝난 날짜(ex.1930/03/02)"
-											name="circleFinishDate" /> <input type="text"
-											placeholder="동아리 간단 설명" name="circleContent" /></li>
+										<li>
+											<div id="project_field"></div>
+										</li>
+										<li>
+											<div id="circle_field"></div>
+										</li>
 									</ul>
-									<input type="button" value="프로젝트 추가" name="project"
-										id="project" /> <input type="button" value="동아리 추가"
-										name="project" id="club" /> <input type="submit"
-										value="Submit" />
+									<input type="button" value="프로젝트 추가" onclick="add_item('pre_set_project','project_field')" /> 
+									<input type="button" value="동아리 추가" onclick="add_item('pre_set_circle','circle_field')" /> 
+									<input type="submit" value="Submit" />
 								</div>
 							</form>
 
@@ -601,6 +619,21 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="modal-body">
 							<h2>기타</h2>
+							<div id="pre_set_volunteer" style="display:none">
+								<input type="text" placeholder="봉사활동명" name="volunteerName" /> 
+								<input type="text" placeholder="봉사 활동 날짜" name="volunteerDate" />
+								<input type="button" value="삭제" onclick="remove_item('volunteer_field',this)" /><br>
+							</div>
+							<div id="pre_set_hobby" style="display:none">
+								<input type="text" placeholder="취미 1" name="hobbyName" /> 
+								<input type="text" placeholder="취미 2" name="hobbyName" />
+								<input type="button" value="삭제" onclick="remove_item('hobby_field',this)" /><br>
+							</div>
+							<div id="pre_set_read" style="display:none">
+								<input type="text" placeholder="책 명" name="readingName" /> 
+								<input type="text" placeholder="독서 날짜" name="readingDate" />
+								<input type="button" value="삭제" onclick="remove_item('read_field',this)" /><br>
+							</div>
 							<hr class="star-primary">
 							<img src="../Image/portfolio/submarine.png"
 								class="img-responsive img-centered" alt="">
@@ -608,21 +641,20 @@
 								<div id="etc_div">
 								<input type="hidden" name="type" value="6"/> 
 									<ul id="ul_etc">
-										<li><input type="text" placeholder="봉사활동명"
-											name="volunteerName" /> <input type="text"
-											placeholder="봉사 활동 날짜" name="volunteerDate" /></li>
-										<li><input type="text" placeholder="책 명"
-											name="readingName" /> <input type="text" placeholder="독서 날짜"
-											name="readingDate" /></li>
-										<li><input type="text" placeholder="취미 1"
-											name="hobbyName" /> <input type="text" placeholder="취미 2"
-											name="hobbyName" /></li>
+										<li>
+											<div id="volunteer_field"></div>
+										</li>
+										<li>
+											<div id="read_field"></div>
+										</li>
+										<li>
+											<div id="hobby_field"></div>
+										</li>
 									</ul>
-									<input type="button" value="봉사 활동 추가" name="Volunteer"
-										id="Volunteer" /> <input type="button" value="독서 활동 추가"
-										name="Book" id="Book" /> <input type="button"
-										value="취미 활동 추가" name="Hobby" id="Hobby" /> <input
-										type="submit" value="Submit" />
+										<input type="button" value="봉사 활동 추가" onclick="add_item('pre_set_volunteer','volunteer_field')" /> 
+										<input type="button" value="독서 활동 추가" onclick="add_item('pre_set_read','read_field')" /> 
+										<input type="button" value="취미 활동 추가" onclick="add_item('pre_set_hobby','hobby_field')" /> 
+										<input type="submit" value="Submit" />
 								</div>
 							</form>
 
@@ -664,15 +696,15 @@
 
 	<!-- Theme JavaScript -->
 	<script src="../JS/js/freelancer.min.js"></script>
-	<script src="../JS/js/resume_write.js"></script>
 	<script>
-		function add_item(){
+		function add_item(str,str2){
 			var div=document.createElement('div');
-			div.innerHTML=document.getElementByld('pre_set_attention').innerHTML;
-			document.getElementByld('attention_field').appendChild(div);
+			div.innerHTML=document.getElementById(str).innerHTML;
+			document.getElementById(str2).appendChild(div);
+			console.log("hll");
 		}
-		function remove_item(obj){
-			document.getElementByld('attention_field').removeChild(obj.parentNode);
+		function remove_item(str,obj){
+			document.getElementById(str).removeChild(obj.parentNode);
 		}
 	</script>
 </body>
