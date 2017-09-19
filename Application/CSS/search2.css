@@ -1,0 +1,57 @@
+<style>
+.mm{
+	background-color: pink;
+}
+body{
+	background-image: url('../Image/images/header.jpg');
+	margin:0;
+	width:100%;
+}
+.searchPart{
+	margin-top:10%;
+	margin-left:30%;
+}
+input[name="2"]{
+   font-size: 15px;
+   width: 500px;
+   padding: 8px;
+   border: 0px;
+   outline: none;
+    margin-left: 4px;
+    font-weight: bold;
+    height:40px;
+   font-family: 'Hanna', serif;
+}
+input[type="submit"]
+{
+    border-radius: 5px;
+    outline: 0;
+    -moz-outline-style: none; 
+    border: 1px solid #bbb;
+    font-size: 14px;
+    height:40px;
+    width:50px;
+}
+
+.list0
+{
+	margin-top :10px;
+	margin-left:20px;
+}
+.list0 .list1
+{
+	margin-left:20%;
+	font-size:30px;
+	color:white;
+}
+.list0 .list2
+{
+	margin-left:30%;
+	font-size:30px;
+	color:white;
+	margin-right:30%;
+}
+
+
+
+</style>
