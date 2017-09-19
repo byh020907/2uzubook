@@ -134,14 +134,14 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="/2uzubook/JS/js/jquery.min.js"></script>
-	<script src="/2uzubook/JS/js/jquery.dropotron.min.js"></script>
-	<script src="/2uzubook/JS/js/jquery.scrolly.min.js"></script>
-	<script src="/2uzubook/JS/js/jquery.onvisible.min.js"></script>
-	<script src="/2uzubook/JS/js/skel.min.js"></script>
-	<script src="/2uzubook/JS/js/util.js"></script>
-	<!--[if lte IE 8]><script src="/2uzubook/JS/js/ie/respond.min.js"></script><![endif]-->
-	<script src="/2uzubook/JS/js/main.js"></script>
+	<script src="/2uzubook/JS/jquery.min.js"></script>
+	<script src="/2uzubook/JS/jquery.dropotron.min.js"></script>
+	<script src="/2uzubook/JS/jquery.scrolly.min.js"></script>
+	<script src="/2uzubook/JS/jquery.onvisible.min.js"></script>
+	<script src="/2uzubook/JS/skel.min.js"></script>
+	<script src="/2uzubook/JS/util.js"></script>
+	<!--[if lte IE 8]><script src="/2uzubook/JS/ie/respond.min.js"></script><![endif]-->
+	<script src="/2uzubook/JS/main.js"></script>
 
 </body>
 </html>
