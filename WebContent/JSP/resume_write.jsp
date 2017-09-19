@@ -338,14 +338,19 @@
 					<div class="col-lg-8 col-lg-offset-2">
 						<div class="modal-body">
 							<h2>관심 분야</h2>
+							<div id="pre_set_attention" style="display:none">
+								<input type="text" placeholder="관심분야 1" name="one" /> 
+								<input type="text" placeholder="관심분야 2" name="two" /> 
+								<input type="text" placeholder="관심분야 3" name="three" /> 
+								<input type="button" value="삭제" onclick="remove_item(this)" /><br>
+							</div>
 							<hr class="star-primary">
 							<form action="/2uzubook/resumeInputAction" method="post">
 								<img src="../Image/portfolio/Security"
 									class="img-responsive img-centered" alt="">
 									<input type="hidden" name="type" value="1"/> 
-									<input type="text" placeholder="관심분야 1" name="one" /> 
-									<input type="text" placeholder="관심분야 2" name="two" /> 
-									<input type="text" placeholder="관심분야 3" name="three" /> <br> 
+									<div id="attention_field">
+									</div>
 									<input type="submit" value="Submit" />
 							</form>
 							<ul class="list-inline item-details">
@@ -660,7 +665,16 @@
 	<!-- Theme JavaScript -->
 	<script src="../JS/js/freelancer.min.js"></script>
 	<script src="../JS/js/resume_write.js"></script>
-
+	<script>
+		function add_item(){
+			var div=document.createElement('div');
+			div.innerHTML=document.getElementByld('pre_set_attention').innerHTML;
+			document.getElementByld('attention_field').appendChild(div);
+		}
+		function remove_item(obj){
+			document.getElementByld('attention_field').removeChild(obj.parentNode);
+		}
+	</script>
 </body>
 
 </html>
