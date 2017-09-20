@@ -30,7 +30,7 @@ public class Database {
     	try {
     		// 媛앹껜 �깮�꽦 �떆 �꽌踰꾩쓽 �뜲�씠�꽣踰좎씠�뒪�� �뿰寃� 
     		Class.forName("com.mysql.jdbc.Driver");    // Driver �겢�옒�뒪瑜� �룞�쟻 濡쒕뵫 諛� �깮�꽦
-    		connection = DriverManager.getConnection("jdbc:mysql://10.156.145.112/", "root", "1022");    // �꽌踰� �궡�쓽 �뜲�씠�꽣踰좎씠�뒪���쓽 而ㅻ꽖�뀡 �깮�꽦
+    		connection = DriverManager.getConnection("jdbc:mysql://10.156.145.110:3306/2uzubook", "root", "root0209");    // �꽌踰� �궡�쓽 �뜲�씠�꽣踰좎씠�뒪���쓽 而ㅻ꽖�뀡 �깮�꽦
     	} catch (ClassNotFoundException | SQLException e) {
     		e.printStackTrace();
     	} 
