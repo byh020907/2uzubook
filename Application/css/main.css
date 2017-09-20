@@ -1833,7 +1833,7 @@ form label {
 	display: block;
 	font-weight: 400;
 	color: #483949;
-	margin: 0 0 1em 0;
+	margin: 1em 0 1em 0;
 }
 
 form input[type="text"],
@@ -1869,6 +1869,7 @@ form input[type="email"],
 form input[type="password"],
 form select {
 	line-height: 1em;
+    margin-top: 10px;
 }
 
 form textarea {
