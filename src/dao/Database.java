@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import resume.Resume;
 import user.Account;
 
 
@@ -84,6 +85,38 @@ public class Database {
 		return 0;
 	}
 	
+	public int insert_resume(Resume resume, int check) {
+		String SQL = "insert into resume values(?,?,?,?,?,?,?)";
+		String NULL_FINISHDATE_SQL = "insert into resume"
+				+ "(student_id,name,content,startDate,resume_category,keyword_category) " + "values(?,?,?,?,?,?)";
+
+		try {
+			if (check == 0) {
+				PreparedStatement pstmt = connection.prepareStatement(SQL);
+				pstmt.setInt(1, resume.getStudent_id());
+				pstmt.setString(2, resume.getResumeName());
+				pstmt.setString(3, resume.getResumeContent());
+				pstmt.setString(4, resume.getResumeStartDate());
+				pstmt.setString(5, resume.getResumeFinishDate());
+				pstmt.setInt(6, resume.getResume_category());
+				pstmt.setInt(7, resume.getKeyword_category());
+				return pstmt.executeUpdate();
+			} else if (check == 1) {
+				PreparedStatement pstmt = connection.prepareStatement(NULL_FINISHDATE_SQL);
+				pstmt.setInt(1, resume.getStudent_id());
+				pstmt.setString(2, resume.getResumeName());
+				pstmt.setString(3, resume.getResumeContent());
+				pstmt.setString(4, resume.getResumeStartDate());
+				pstmt.setInt(5, resume.getResume_category());
+				pstmt.setInt(6, resume.getKeyword_category());
+				return pstmt.executeUpdate();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+    }
 	
     
   
