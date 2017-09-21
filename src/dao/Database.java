@@ -1,21 +1,12 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import user.Account;
-import user.Award;
-import user.Circle;
-import user.Contest;
-import user.Intern;
 
 public class Database {
 	/*
