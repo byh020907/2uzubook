@@ -47,36 +47,25 @@
                         <hr class="first" />
                         <section>
                             <header>
-                                <h3>레주메 작성하기</h3> </header>
+                                <h3>검색해주세요</h3> </header>
                         </section>
-                        <hr /> </div>
+                        <hr />흥미분야, 사용언어, 대회 참여 혹은 수상경력등을 입력해 보세요! </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
-                                <h2><a href="#">Resume</a></h2>
-                                <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
+                                <h2><a href="#">Search</a></h2>
+                                <p> 검색을 통해 원하는 인재를 정확하고 빠르게 찾아낼 수 있습니다. </p>
                             </header>
                             <div class="row">
-                                <div class="10u 12u(mobile)">
-                                    <h3 class="text-center mb-3">자격증 & 어학 인증</h3>
+                                <div class="12u 12u(mobile)">
                                     <div class="row">
-                                        <div class="5u form1" style="width:60%">
-                                            <form action="/2uzubook/RegisterAction" method="post" style="margin-top: 20px;">
-                                                <div>
-                                                <label class="col-md-4 control-label" for="license" style="float:left; margin-right:40%;">자격증</label>
-                                                <label class="col-md-4 control-label" for="license">자격증 취득 날짜</label>    </div>
-                                                <div class="license" id="pre_set_licen" style="display:none;">
-                                                    <div class="col-md-4">
-                                                        <input id="startdate" name="startdate" type="text" placeholder="자격증 명을 적어주세요" class="form-control input-md" required="" style="float:left; width:200px; margin:0;"> </div>
-                                                    <div class="col-md-4">
-                                                        <input id="license" name="license " type="text" placeholder="ex)2017.05.06" class="form-control input-md" required="" style="width:200px;"> </div>
-                                                </div>
-                                                <div id="licen_field">
-                                                </div>
-                                            </form>
+                                        <div class="8u form1">
+                                            <form action="/2uzubook/searchAction" method="post" style="margin-top: 20px;">
+                                                <input class="form-control mb-2" type="text" placeholder="ex) 남자, 게임, c++" name="search" /> </form>
                                         </div>
-                                        <div class="2u form1">
-                                            <button onclick="add_item('pre_set_licen','licen_field')">추가</button>
+                                        <div class="4u">
+                                            <button class="btn btn-outline-success mb-2" type="submit" style="height:59px; margin-top: 23px;">search</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -120,17 +109,6 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
-    <script>
-		function add_item(str,str2){
-			var div=document.createElement('div');
-			div.innerHTML=document.getElementById(str).innerHTML;
-			document.getElementById(str2).appendChild(div);
-			console.log("hll");
-		}
-		function remove_item(str,obj){
-			document.getElementById(str).removeChild(obj.parentNode);
-		}
-	</script>
 </body>
 
 </html>
