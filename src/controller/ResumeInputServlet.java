@@ -15,7 +15,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import dao.Database;
-import user.Award;
 
 /**
  * Servlet implementation class ResumeInputServlet
