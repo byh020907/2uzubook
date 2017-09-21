@@ -61,7 +61,7 @@
 
 				</ul></li>
 
-			<li class="one"><a href="login.jsp">Login</a></li>
+			<li><a href="login.jsp">Login</a></li>
 		</ul>
 	</nav>
 
