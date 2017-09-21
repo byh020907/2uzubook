@@ -53,30 +53,77 @@
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
-                                <h2><a href="#">Resume</a></h2>
+                                <h2>Resume</h2>
                                 <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                             </header>
                             <div class="row">
-                                <div class="10u 12u(mobile)">
-                                    <h3 class="text-center mb-3">자격증 & 어학 인증</h3>
-                                    <div class="row">
-                                        <div class="5u form1" style="width:60%">
-                                            <form action="/2uzubook/RegisterAction" method="post" style="margin-top: 20px;">
-                                                <div>
-                                                <label class="col-md-4 control-label" for="license" style="float:left; margin-right:40%;">자격증</label>
-                                                <label class="col-md-4 control-label" for="license">자격증 취득 날짜</label>    </div>
-                                                <div class="license" id="pre_set_licen" style="display:none;">
-                                                    <div class="col-md-4">
-                                                        <input id="startdate" name="startdate" type="text" placeholder="자격증 명을 적어주세요" class="form-control input-md" required="" style="float:left; width:200px; margin:0;"> </div>
-                                                    <div class="col-md-4">
-                                                        <input id="license" name="license " type="text" placeholder="ex)2017.05.06" class="form-control input-md" required="" style="width:200px;"> </div>
-                                                </div>
-                                                <div id="licen_field">
-                                                </div>
-                                            </form>
+                                <div class="6u 12u(mobile)">
+                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                        <div class="4u">
+                                            <a class="image fit"><img src="images/student/license2.png" alt="" /></a>
                                         </div>
-                                        <div class="2u form1">
-                                            <button onclick="add_item('pre_set_licen','licen_field')">추가</button>
+                                        <div class="8u">
+                                            <h3 class="text-center">자격증 및 어학인증 </h3> IT 관련 분야의 자격증, TOPCIT, TOEIC </div>
+                                    </div>
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                        <div class="4u">
+                                            <a class="image fit"><img src="images/student/trophy2.png" alt="" /></a>
+                                        </div>
+                                        <div class="8u">
+                                            <h3 class="text-center">수상경력</h3> 대회나 공모전, 학교에서 수상한 상 </div>
+                                    </div>
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                        <div class="4u">
+                                            <a class="image fit"><img src="images/student/lecture.png" alt="" /></a>
+                                        </div>
+                                        <div class="8u">
+                                            <h3 class="text-center">대외참여 </h3> IT관련 대외참여 경험, 컨퍼런스 같은 활동 </div>
+                                    </div>
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                        <div class="4u">
+                                            <a class="image fit"><img src="images/student/document.png" alt="" /></a>
+                                        </div>
+                                        <div class="8u">
+                                            <h3 class="text-center">대회 공모전</h3>
+                                            대회나 공모전에 참여한 경험
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                        <div class="4u">
+                                            <a class="image fit"><img src="images/student/bulb.png" alt="" /></a>
+                                        </div>
+                                        <div class="8u">
+                                            <h3 class="text-center">프로젝트</h3>
+                                            자신이 진행하거나 참여한 프로젝트
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                        <div class="4u">
+                                            <a class="image fit"><img src="images/student/circle.png" alt="" /></a>
+                                        </div>
+                                        <div class="8u">
+                                            <h3 class="text-center">동아리</h3>
+                                            학교나 외부 동아리, 단체 커뮤니티 활동 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="6u 12u(mobile)">
+                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                        <div class="4u">
+                                            <a class="image fit"><img src="images/student/etc.png" alt="" /></a>
+                                        </div>
+                                        <div class="8u">
+                                            <h3 class="text-center">기타</h3> 취미, 봉사, 관심분야 </div>
                                     </div>
                                 </div>
                             </div>
@@ -121,16 +168,17 @@
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-		function add_item(str,str2){
-			var div=document.createElement('div');
-			div.innerHTML=document.getElementById(str).innerHTML;
-			document.getElementById(str2).appendChild(div);
-			console.log("hll");
-		}
-		function remove_item(str,obj){
-			document.getElementById(str).removeChild(obj.parentNode);
-		}
-	</script>
+        function add_item(str, str2) {
+            var div = document.createElement('div');
+            div.innerHTML = document.getElementById(str).innerHTML;
+            document.getElementById(str2).appendChild(div);
+            console.log("hll");
+        }
+
+        function remove_item(str, obj) {
+            document.getElementById(str).removeChild(obj.parentNode);
+        }
+    </script>
 </body>
 
 </html>
