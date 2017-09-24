@@ -4,20 +4,45 @@ public class Resume {
 	int student_id;
 	String resumeName;
 	String resumeContent;
-	String resumeDate;
+	String resumeStartDate;
+	String resumeFinishDate;
 	int resume_category;
 	int keyword_category;
-
 	
-	public Resume(int student_id, String resumeName, String resumeContent, 
-			String resumeDate, int resume_category,
+	public Resume(int student_id, String resumeName, String resumeContent, String resumeStartDate, int resume_category,
 			int keyword_category) {
 		this.student_id = student_id;
 		this.resumeName = resumeName;
 		this.resumeContent = resumeContent;
-		this.resumeDate = resumeDate;
+		this.resumeStartDate = resumeStartDate;
 		this.resume_category = resume_category;
 		this.keyword_category = keyword_category;
+	}
+
+	
+	public Resume(int student_id, String resumeName, String resumeContent, 
+			String resumeStartDate,String resumeFinishDate, int resume_category,
+			int keyword_category) {
+		this.student_id = student_id;
+		this.resumeName = resumeName;
+		this.resumeContent = resumeContent;
+		this.resumeStartDate=resumeStartDate;
+		this.resumeFinishDate=resumeFinishDate;
+		this.resume_category = resume_category;
+		this.keyword_category = keyword_category;
+	}
+	
+	public String getResumeStartDate() {
+		return resumeStartDate;
+	}
+	public void setResumeStartDate(String resumeStartDate) {
+		this.resumeStartDate = resumeStartDate;
+	}
+	public String getResumeFinishDate() {
+		return resumeFinishDate;
+	}
+	public void setResumeFinishDate(String resumeFinishDate) {
+		this.resumeFinishDate = resumeFinishDate;
 	}
 	public int getStudent_id() {
 		return student_id;
@@ -37,12 +62,7 @@ public class Resume {
 	public void setResumeContent(String resumeContent) {
 		this.resumeContent = resumeContent;
 	}
-	public String getResumeDate() {
-		return resumeDate;
-	}
-	public void setResumeDate(String resumeDate) {
-		this.resumeDate = resumeDate;
-	}
+
 	public int getResume_category() {
 		return resume_category;
 	}
@@ -55,6 +75,6 @@ public class Resume {
 	public void setKeyword_category(int keyword_category) {
 		this.keyword_category = keyword_category;
 	}
-	
+
 	
 }
