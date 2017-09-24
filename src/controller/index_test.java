@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,15 +31,17 @@ public class index_test extends HttpServlet {
 			JSONObject data1 = new JSONObject();
 			str = Integer.toString(i);
 			data1.put("name", "kimsoyeon"+str);
-			data1.put("major", "¼ÒÇÁÆ®¿þ¾î °³¹ß°ú"+str);
+			data1.put("major", "ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß°ï¿½"+str);
 			data1.put("student_img", "/2uzubook/images/student/stu"+str+".jpg");
 			data1.put("student_id", (Integer)20106);
 			arr.add(data1);
 		}
 		System.out.println("hello");
 		
-		request.setAttribute("JSONArray", arr);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		PrintWriter out=response.getWriter();
+		
+		out.write(arr.toString());
+		out.flush();
 	}
 
 }
