@@ -1,3 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	JSONObject jsonObject= (JSONObject) request.getAttribute("JSONObject");
+	JSONArray licenses=(jSONArray)jsonObject.get("licenses");
+	JSONArray awards=(jSONArray)jsonObject.get("awards");
+	JSONArray contests=(jSONArray)jsonObject.get("contests");
+	JSONArray projects=(jSONArray)jsonObject.get("projects");
+	System.out.println(jsonObject);//log
+	String name=(String)jsonObject.get("name");
+	String major=(String)jsonObject.get("major");
+	int student_id=(Integer)jsonObject.get("student_id");
+	String gender=(String)jsonObject.get("gender");
+	String email=(String)jsonObject.get("email");
+	
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -49,103 +66,61 @@
                                 <h3><a href="#">"세상과 소통하는 게임 개발자"</a></h3> </header>
                             <p> <strong>관심 분야</strong>
                                 <br> 게임 개발, C++, 언리얼엔진 </p>
+                               <%for(int i=0;i<licenses.size();i++)
+                                {
+                            	   JSONObject licen=(JSONObject)licenses.get(i);
+                                %>
                             <div class="row 50%">
                                 <div class="4u">
                                     <a class="image fit"><img src="images/student/license.png" alt="" /></a>
                                 </div>
                                 <div class="8u">
-                                    <h4>정보처리기능사</h4>
-                                    <p> 2016.01.05 </p>
+                                    <h4><%=(String)licen.get("licencseName") %></h4>
+                                    <p><%=(String)licen.get("licenseDate") %> </p>
                                 </div>
                             </div>
-                            <div class="row 50%">
-                                <div class="4u">
-                                    <a class="image fit"><img src="images/student/license.png" alt="" /></a>
-                                </div>
-                                <div class="8u">
-                                    <h4>컴퓨터활용능력 1급</h4>
-                                    <p> 2016.03.05 </p>
-                                </div>
-                            </div>
-                            <div class="row 50%">
-                                <div class="4u">
-                                    <a class="image fit"><img src="images/student/license.png" alt="" /></a>
-                                </div>
-                                <div class="8u">
-                                    <h4>워드프로세서 1급</h4>
-                                    <p> 2017.05.06 </p>
-                                </div>
-                            </div>
-                            <div class="row 50%">
-                                <div class="4u">
-                                    <a class="image fit"><img src="images/student/license.png" alt="" /></a>
-                                </div>
-                                <div class="8u">
-                                    <h4>토익 880점</h4>
-                                    <p> 2017.08.09 </p>
-                                </div>
-                            </div>
+                            <%} %>
                             <br>
                             <p> <strong><h3>Awards</h3></strong></p>
+                            <%for(int i=0;i<awards.size();i++){
+                            	JSONObject awd=(JSONObject)awards.get(i);
+                            	%>
+                            
                             <div class="row 50%">
                                 <div class="4u">
                                     <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
                                 </div>
                                 <div class="8u">
-                                    <h4>2016 스마트 앱 첼린지 STAC <br><strong>금상</strong></h4>
-                                    <p> 2016.08.09 </p>
+                                    <h4><%=awd.get("awardName") %> <br><strong><%=awd.get("award") %></strong></h4>
+                                    <p> <%=awd.get("awardDate") %> </p>
                                 </div>
                             </div>
-                            <div class="row 50%">
-                                <div class="4u">
-                                    <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
-                                </div>
-                                <div class="8u">
-                                    <h4>제 1회 충남대학교 동아리 소프트웨어 경진 대회<br><strong>은상</strong></h4>
-                                    <p>2016.11.07</p>
-                                </div>
-                            </div>
-                            <div class="row 50%">
-                                <div class="4u">
-                                    <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
-                                </div>
-                                <div class="8u">
-                                    <h4>제 2회 국제 수리 과학 창의대회<br><strong>장려상</strong></h4>
-                                    <p>2016.10.08 </p>
-                                </div>
-                            </div>
-                            <footer> <a href="onesee.html                                " class="button">한눈에 보기</a> </footer>
+                            <%} %>
+                 
+                            <footer> <a href="onesee.html" class="button">한눈에 보기</a> </footer>
                         </section>
                     </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
-                                <h2><strong>나호겸</strong></h2>
-                                <h3>소프트웨어 개발과 - 2학년 1반 6번</h3>
+                                <h2><strong><%=name %></strong></h2>
+                                <h3><%=major %>- <%=student_id%></h3>
                                 <p> </p>
                             </header>
                             <a href="#" class="image featured"><img src="images/debate3.jpg" alt="" /></a>
                             <header>
                                 <h3>대회 공모전 참여 경력</h3> </header>
-                            <p> <strong>⦁2016 스마트 앱 첼린지STAC (2016. 5. 21.)</strong>
-                                <br> - 의견충돌을 줄이기 위한 토론앱 개발
+                            <p> 
+                            <%for(int i=0;i<contests.size();i++)
+                            {
+                            	JSONObject contest=(JSONObject)contests.get(i);
+                            
+                            	%>
+                            <strong>⦁<%=contest.get("contestName") %> (<%=contest.get("contestDate") %>)</strong>
+                                <br> - 의견충돌을 줄이기 위한 토론앱 개발 
                                 <br>
-                                <br> <strong>⦁제 2회 국제 수리 과학 창의대회 (2016. 10. 08.)</strong>
-                                <br> - 아치형 구조물을 이용하여 다리 만들기
-                                <br>
-                                <br> <strong>⦁제 1회  NYPC 넥슨 청소년 프로그래밍 대회 (2016. 8. 31.)</strong>
-                                <br> - 알고리즘 프로그래밍
-                                <br>
-                                <br> <strong>⦁대한민국 소프트웨어 융합 해카톤 (2016. 9. 1. ~ 2016. 9. 4.)</strong>
-                                <br> - 땅콩 “소아환자를 위한 실시간 가상 동물원 체험”
-                                <br>
-                                <br> <strong>⦁제 1회 충남대학교 동아리 소프트웨어 경진 대회 (2016. 11. 7.)</strong>
-                                <br> - “휴식” 어플을 통한 사용자의 시력 보호 (본선 진출 부스 진행)
-                                <br>
-                                <br> <strong>⦁엘지 사이언스 과학 UCC (2016. 11. 30.) </strong>
-                                <br> - 물의 순환을 UCC로 제작하기
-                                <br>
-                                <br> </article>
+                                <%} %>
+                              </article>
                     </div>
                 </div>
                 <hr />
