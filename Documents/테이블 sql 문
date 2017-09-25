@@ -1,3 +1,4 @@
+
 CREATE TABLE `account` (
   `student_id` int(11) NOT NULL,
   `id` varchar(100) NOT NULL,
@@ -47,13 +48,13 @@ CREATE TABLE `resume_category` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `keyword_category` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `serialkey` (
   `serialkey_num` int(11) NOT NULL AUTO_INCREMENT,
