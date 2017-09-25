@@ -123,6 +123,7 @@ public class Database {
 				+ "(student_id,name,content,startDate,resume_num,keyword_num) " + "values(?,?,?,?,?,?)";
 		try {
 			if (check == 0) {
+				//프로젝트 같은경우는 시작점과 끝나는 시점을 넣어야하기때매 flag 값 0 을 전달해줘야됌 
 				PreparedStatement pstmt = connection.prepareStatement(SQL);
 				pstmt.setInt(1, resume.getStudent_id());
 				pstmt.setString(2, resume.getResumeName());
@@ -133,6 +134,7 @@ public class Database {
 				pstmt.setInt(7, resume.getKeyword_category());
 				return pstmt.executeUpdate();
 			} else if (check == 1) {
+				//자격증 같은거는 취득한날만 있어도 되기 떄매 startDate 넣어줌 flag 값은 1
 				PreparedStatement pstmt = connection.prepareStatement(NULL_FINISHDATE_SQL);
 				pstmt.setInt(1, resume.getStudent_id());
 				pstmt.setString(2, resume.getResumeName());
@@ -167,6 +169,8 @@ public class Database {
 		}
 		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
 	}
+    
+    
     
  
     
