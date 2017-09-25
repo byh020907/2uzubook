@@ -1,4 +1,4 @@
--#leftside{
+#leftside{
     display:inline-block;
     vertical-align: top;
     margin-right: 200px;
@@ -87,3 +87,4 @@ width: 150;
 body{
     margin: 30px;
 }
+
