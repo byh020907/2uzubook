@@ -2,11 +2,14 @@
 <%@ page import="org.json.simple.*"%>
 <%
 	request.setCharacterEncoding("UTF-8");
+	
 	JSONObject jsonObject= (JSONObject) request.getAttribute("JSONObject");
-	JSONArray licenses=(jSONArray)jsonObject.get("licenses");
-	JSONArray awards=(jSONArray)jsonObject.get("awards");
-	JSONArray contests=(jSONArray)jsonObject.get("contests");
-	JSONArray projects=(jSONArray)jsonObject.get("projects");
+	
+	JSONArray licenses=(JSONArray)jsonObject.get("licenses");
+	JSONArray awards=(JSONArray)jsonObject.get("awards");
+	JSONArray contests=(JSONArray)jsonObject.get("contests");
+	JSONArray projects=(JSONArray)jsonObject.get("projects");
+	
 	System.out.println(jsonObject);//log
 	String name=(String)jsonObject.get("name");
 	String major=(String)jsonObject.get("major");
@@ -39,7 +42,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li><a href="login.html">로그인 / 회원가입</a></li>
                     <li> <a href="#">For Student</a>
                         <ul>
@@ -75,7 +78,7 @@
                                     <a class="image fit"><img src="images/student/license.png" alt="" /></a>
                                 </div>
                                 <div class="8u">
-                                    <h4><%=(String)licen.get("licencseName") %></h4>
+                                    <h4><%=(String)licen.get("licenseName") %></h4>
                                     <p><%=(String)licen.get("licenseDate") %> </p>
                                 </div>
                             </div>
@@ -157,7 +160,7 @@
                     <section class="contact">
                         <header>
                             <h3>저와 함께 개발을 하고 싶거나 궁금한 사항이 있으면 연락주세요</h3> </header>
-                        <p>pkrjd926@gmail.com</p>
+                        <p><%=email %></p>
                         <ul class="icons">
                             <li><a href="https://www.facebook.com" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
                             <li><a href="https://github.com/yjh5424" class="icon fa-github"><span class="label">Github</span></a></li>
@@ -172,7 +175,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script>

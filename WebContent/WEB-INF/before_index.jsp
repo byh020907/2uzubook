@@ -17,6 +17,17 @@
 		}
 	}
 %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
+	System.out.println(jsonArray);//log
+	ArrayList<Student> students = new ArrayList<Student>();
+	
+	for (int i = 0; i < jsonArray.size(); i++) {
+		JSONObject jobj = (JSONObject) jsonArray.get(i);
+		students.add(new Student((String) jobj.get("name"),(String)jobj.get("major"),(Integer)jobj.get("student_id"),(String)jobj.get("student_img")));//name, major,stdudent_id
+	}	
+%>
 
 <!DOCTYPE HTML>
 <html>
@@ -71,7 +82,22 @@
         <!-- Carousel -->
         <section class="carousel">
             <div class="reel">
-            
+            <%
+				for(int i=0;i<students.size();i++)
+				{
+%>
+                <article>
+                    <a href="#" class="image featured"><img src="<%=students.get(i).student_img.replaceAll("\\\\", "/")%>" alt="" height="235" /></a>
+                    <header>
+                        <h3>
+									<a href="#"><%=students.get(i).name %></a>
+								</h3> </header>
+                    <p> <%=students.get(i).major %>
+                        <br /> <%=students.get(i).student_id %></p>
+                </article>
+                <%
+				}
+                %>
             </div>
         </section>
         <!-- Features -->
@@ -212,21 +238,6 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
-    
-    <script>
-		$( "document" ).ready(function(){
-	        $.ajax({
-	            url:'/2uzubook/indexAction',
-	            type:'post',
-	            success:function(data){
-	                for(var i=0;i<data.length;i++){
-	                	console.log(data[i].name);
-	                }
-	            },
-	        	dataType:'json'
-	        })
-	    });
-	</script>
 </body>
 
 </html>
