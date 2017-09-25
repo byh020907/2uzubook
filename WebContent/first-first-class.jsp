@@ -103,12 +103,12 @@
 			
 			<div id="con1">
 			<%
-			for(int i=1;i<21;i++)
+			for(int i=0;i<20;i++)
 			{
 				%>
-				<img src="<%=students.get(i-1).StuImg.replaceAll("\\\\", "/") %>" id="image" border="1"/>
-					<a><%=students.get(i-1).name%></a>
-					<%=students.get(i-1).oneline%> 
+				<img src="<%=students.get(i).StuImg.replaceAll("\\\\", "/") %>" id="image" border="1"/>
+					<a><%=students.get(i).name%></a>
+					<%=students.get(i).oneline%> 
 				
 			<% 
 				if(i%3==0)
