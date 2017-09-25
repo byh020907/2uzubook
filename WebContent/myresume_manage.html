@@ -58,7 +58,7 @@
                             </header>
                             <div class="row">
                                 <div class="6u 12u(mobile)">
-                                    <div class="row" OnClick="location.href='index.html'" style="cursor:pointer;">
+                                    <div class="row" id="modal_pop" OnClick="location.href='#modal_form'" style="cursor:pointer;">
                                         <div class="4u">
                                             <a class="image fit"><img src="images/student/license2.png" alt="" /></a>
                                         </div>
@@ -90,9 +90,7 @@
                                             <a class="image fit"><img src="images/student/document.png" alt="" /></a>
                                         </div>
                                         <div class="8u">
-                                            <h3 class="text-center">대회 공모전</h3>
-                                            대회나 공모전에 참여한 경험
-                                        </div>
+                                            <h3 class="text-center">대회 공모전</h3> 대회나 공모전에 참여한 경험 </div>
                                     </div>
                                 </div>
                                 <div class="6u 12u(mobile)">
@@ -101,9 +99,7 @@
                                             <a class="image fit"><img src="images/student/bulb.png" alt="" /></a>
                                         </div>
                                         <div class="8u">
-                                            <h3 class="text-center">프로젝트</h3>
-                                            자신이 진행하거나 참여한 프로젝트
-                                        </div>
+                                            <h3 class="text-center">프로젝트</h3> 자신이 진행하거나 참여한 프로젝트 </div>
                                     </div>
                                 </div>
                                 <div class="6u 12u(mobile)">
@@ -112,9 +108,7 @@
                                             <a class="image fit"><img src="images/student/circle.png" alt="" /></a>
                                         </div>
                                         <div class="8u">
-                                            <h3 class="text-center">동아리</h3>
-                                            학교나 외부 동아리, 단체 커뮤니티 활동 
-                                        </div>
+                                            <h3 class="text-center">동아리</h3> 학교나 외부 동아리, 단체 커뮤니티 활동 </div>
                                     </div>
                                 </div>
                                 <div class="6u 12u(mobile)">
@@ -131,6 +125,34 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- popup form #1 -->
+        <a href="#x" class="overlay" id="modal_form"></a>
+        <div class="popup" id="content">
+            <h2>자격증 입력</h2>
+            <p>취득한 자격증의 이름, 취득 날짜를 적어주세요. </p>
+            <div class="12u 12u(mobile)">
+                <div class="row">
+                    <div class="6u">
+                        <label class="col-md-4 control-label" for="license">자격증 이름</label> 컴퓨터활용력 </div>
+                    <div class="6u">
+                        <label class="col-md-4 control-label" for="startdate">취득날짜</label> 2017.06.03 </div>
+                </div>
+            </div>
+            <div class="12u 12u(mobile)">
+                <div class="row">
+                    <div class="5u">
+                        <label class="col-md-4 control-label" for="license">자격증 이름</label>
+                        <input class="form-control mb-2" type="text" id="license" value="" placeholder="정보처리 기능사" /> </div>
+                    <div class="5u">
+                        <label class="col-md-4 control-label" for="startdate">취득날짜</label>
+                        <input class="form-control mb-2" type="text" id="startdate" value="" placeholder="ex) 2017.09.02" /> </div>
+                    <div class="2u">
+                        <button class="btn btn-outline-success mb-2" type="submit">추가</button>
+                    </div>
+                </div>
+            </div>
+            <a class="close" href="#close"></a>
         </div>
         <!-- Footer -->
         <div id="footer">
@@ -167,18 +189,6 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
-    <script>
-        function add_item(str, str2) {
-            var div = document.createElement('div');
-            div.innerHTML = document.getElementById(str).innerHTML;
-            document.getElementById(str2).appendChild(div);
-            console.log("hll");
-        }
-
-        function remove_item(str, obj) {
-            document.getElementById(str).removeChild(obj.parentNode);
-        }
-    </script>
 </body>
 
 </html>
