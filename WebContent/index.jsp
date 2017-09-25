@@ -1,22 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
 <%@ page import="java.util.ArrayList"%>
-<%!
-	class Student
-	{
-		String name;
-		String major;
-		int student_id;
-		String student_img;
-		Student(String name,String major,int student_id,String student_img)
-		{
-			this.name =name;
-			this.major=major;
-			this.student_id=student_id;//ex).20106
-			this.student_img=student_img;
-		}
-	}
-%>
 
 <!DOCTYPE HTML>
 <html>
@@ -69,9 +53,25 @@
             </header>
         </section>
         <!-- Carousel -->
+        <script src="js/jquery.min.js"></script>
         <section class="carousel">
-            <div class="reel">
-            
+            <div class="reel" id="part1">
+            <script>
+            function a(data)
+            {
+            	for(var i=0;i<10;i++)
+            	{
+	            	var $article = $('<article id="art'+i+'"></article>');
+	                var $a=$('<a href="#" class="image featured"><img src="/2uzubook/images/student/stu'+(i+1)+'.jpg" alt="" height="235" /></a>');
+	                var $h=$('<header><h3><a href="#">'+data[i].name+'</a></h3></header>');
+	                var $p=$('<p>'+data[i].major+'<br/>'+data[i].student_id+'</p>');
+	            	$('#part1').append($article);
+	            	$('#art'+i).append($a);
+	            	$('#art'+i).append($h);
+	            	$('#art'+i).append($p);
+            	}
+            }
+			</script>
             </div>
         </section>
         <!-- Features -->
@@ -221,6 +221,7 @@
 	            success:function(data){
 	                for(var i=0;i<data.length;i++){
 	                	console.log(data[i].name);
+	                	a(data);
 	                }
 	            },
 	        	dataType:'json'
