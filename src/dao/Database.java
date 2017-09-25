@@ -97,7 +97,6 @@ public class Database {
     
     public int login(String id,String password){
 		String sql="select password from account where id= ?";
-		
 		try{
 			PreparedStatement pstmt=connection.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -117,12 +116,11 @@ public class Database {
 		}
 		return 0;
 	}
-<<<<<<< HEAD
 	
 	public int insert_resume(Resume resume, int check) {
 		String SQL = "insert into resume values(?,?,?,?,?,?,?)";
 		String NULL_FINISHDATE_SQL = "insert into resume"
-				+ "(student_id,name,content,startDate,resume_category,keyword_category) " + "values(?,?,?,?,?,?)";
+				+ "(student_id,name,content,startDate,resume_num,keyword_num) " + "values(?,?,?,?,?,?)";
 		try {
 			if (check == 0) {
 				PreparedStatement pstmt = connection.prepareStatement(SQL);
@@ -150,16 +148,13 @@ public class Database {
 		return 0;
     }
 	
-	
-=======
->>>>>>> 3c47d95728038a74bd2a111c09b1909ca8aed7e1
-    
+
     public int join(Account account){
 		String sql="insert into account values(?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement pstmt=connection.prepareStatement(sql);
-			pstmt.setInt(1, account.getStudent_id());
+			pstmt.setInt(1, account.getStudnet_id());
 			pstmt.setString(2, account.getId());
 			pstmt.setString(3, account.getPassword());
 			pstmt.setString(4, account.getName());
@@ -172,28 +167,6 @@ public class Database {
 		}
 		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
 	}
-    
-	public void inputCareer_award(ArrayList<Award> arrayList, int student_id) {
-		String sql = "insert into career_award values(?,?,?,?)";
-
-		
-		try {
-			PreparedStatement pstmt = connection.prepareStatement(sql);
-
-			for (int i = 0; i < arrayList.size(); i++) {
-				
-				pstmt.setInt(1, arrayList.get(i).getStudent_id());
-				pstmt.setString(2, arrayList.get(i).getAward());
-				pstmt.setString(3, arrayList.get(i).getAwardName());
-				pstmt.setString(4, arrayList.get(i).getAwardDate());
-				pstmt.addBatch();
-				System.out.println("성공");
-			}	
-			 pstmt.executeBatch();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
     
  
     
