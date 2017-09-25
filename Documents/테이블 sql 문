@@ -29,21 +29,6 @@ CREATE TABLE `resume` (
   CONSTRAINT fk_keyword_category FOREIGN KEY (keyword_num) REFERENCES keyword_category (num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-  'number' int nit
-  `student_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `content` text NOT NULL,
-  `startDate` date DEFAULT NULL,
-  `finishDate` date DEFAULT NULL,
-  `resume_category` int(11) NOT NULL,
-  `keyword_category` int(11) NOT NULL,
-  PRIMARY KEY (`number`),
-  CONSTRAINT `fk_resume_account` FOREIGN KEY (`student_id`) REFERENCES `account` (`student_id`),
-  CONSTRAINT 'fk_resume_category' FOREIGN KEY ('resume_category') REFERENCES 'resume_category' ('num'),
-  CONSTRAINT 'fk_keyword_category' FOREIGN KEY ('keyword_category') REFERENCES 'keyword_category' ('num')
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE `resume_category` (
   `num` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
