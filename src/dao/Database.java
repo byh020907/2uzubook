@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import TEST.J;
 import resume.Resume;
 import user.Account;
 
@@ -127,7 +126,7 @@ public class Database {
     				,account.getIntro(),account.getName(),account.getGender(),account.getMajor(),account.getEmail());
     		return num;
     	}catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
     	
     	return -1;
