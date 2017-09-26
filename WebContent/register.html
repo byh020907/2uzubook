@@ -17,7 +17,7 @@
             <!-- Inner -->
             <div class="inner">
                 <header>
-                    <h1><a href="index.html" id="logo">DSM 2UZUBOOK</a></h1> </header>
+                    <h1><a href="index.jsp" id="logo">DSM 2UZUBOOK</a></h1> </header>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -26,7 +26,7 @@
                     <li><a href="login.html">로그인 / 회원가입</a></li>
                     <li> <a href="#">For Student</a>
                         <ul>
-                            <li><a href="myresume.html">내 레주메 보기</a></li>
+                            <li><a href="myresume.jspl">내 레주메 보기</a></li>
                             <li><a href="#">레주메 내용 관리</a></li>
                         </ul>
                     </li>
@@ -61,49 +61,67 @@
                                     <h3 class="text-center mb-3">학생 정보 입력</h3>
                                     <div class="row">
                                         <div class="10u form1">
-                                            <form action="/2uzubook/RegisterAction" method="post" style="margin-top: 20px;">
+                                            <form action="/2uzubook/joinAction" method="post" style="margin-top: 20px;">
+                                            <input name="mode" type="hidden" value="1">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="Name">이름</label>
                                                     <div class="col-md-4">
-                                                        <input id="Name" name="Name" type="text" placeholder="" class="form-control input-md" required=""> </div>
+                                                        <input name="Name" type="text" placeholder="" class="form-control input-md" required=""> </div>
+                                                </div>
+                                         		<div class="form-group">
+                                                    <label class="col-md-4 control-label" for="gender">성별 선택</label>
+                                                    <div class="col-md-4">
+                                                        <select name="Gender" class="form-control">
+                                                            <option value="0">남자</option>
+                                                            <option value="1">여자</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="Email ">E-Mail Address</label>
                                                     <div class="col-md-4">
-                                                        <input id="Email " name="Email " type="text" placeholder="" class="form-control input-md" required=""> </div>
+                                                        <input name="Email" type="text" placeholder="" class="form-control input-md" required=""> </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="ID">ID</label>
                                                     <div class="col-md-4">
+<<<<<<< HEAD
                                                         <input id="ID" name="ID" type="text" placeholder="" class="form-control input-md" required=""> 
                                                         <input type="button" value="중복확인" id="id_confirm"/>
                                                         </div>
+=======
+                                                        <input name="ID" type="text" placeholder="" class="form-control input-md" required=""> </div>
+>>>>>>> 40e3e00aac9923da8a3b65d5f41a317bc29e071b
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="password">비밀번호</label>
                                                     <div class="col-md-4">
-                                                        <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required=""> </div>
+                                                        <input name="Password" type="password" placeholder="" class="form-control input-md" required=""> </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="Password2">비밀번호 확인</label>
                                                     <div class="col-md-4">
+<<<<<<< HEAD
                                                         <input id="password2" name="Password2" type="password" placeholder="" class="form-control input-md" required="" onkeyup="password_check();"> </div>
                                                		<div id="result"></div>	
+=======
+                                                        <input name="Password2" type="password" placeholder="" class="form-control input-md" required=""> </div>
+>>>>>>> 40e3e00aac9923da8a3b65d5f41a317bc29e071b
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="student_id">학번</label>
                                                     <div class="col-md-4">
-                                                        <input id="student_id" name="student_id" type="text" placeholder="ex) 20101" class="form-control input-md" required=""> </div>
+                                                        <input name="student_id" type="text" placeholder="ex) 20101" class="form-control input-md" required=""> </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="introducce">자기소개 한줄</label>
+                                                    <label class="col-md-4 control-label" for="introduce">자기소개 한줄</label>
                                                     <div class="col-md-4">
-                                                        <input id="introduce" name="introduce" type="text" placeholder="20자 이내" class="form-control input-md" required=""> </div>
+                                                        <input name="Introduce" type="text" placeholder="20자 이내" class="form-control input-md" required=""> </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="major">학과 선택</label>
                                                     <div class="col-md-4">
-                                                        <select id="major" name="major" class="form-control">
+                                                        <select name="Major" class="form-control">
                                                             <option value="0">공통과정</option>
                                                             <option value="1">sw개발과 </option>
                                                             <option value="2">임베디드개발과</option>

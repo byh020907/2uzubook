@@ -2,18 +2,18 @@ package user;
 
 public class Account {
 
-	int studnet_id;
-	String id;
-	String password;
-	String intro;
-	String name;
-	String gender;
-	String major;
-	String email;
+	private int student_id;
+	private String id;
+	private String password;
+	private String intro;
+	private String name;
+	private String gender;
+	private String major;
+	private String email;
 	
-	public Account(int studnet_id, String id, String password, String intro, String name, String gender, String major,
+	public Account(int student_id, String id, String password, String intro, String name, String gender, String major,
 			String email) {
-		this.studnet_id = studnet_id;
+		this.student_id = student_id;
 		this.id = id;
 		this.password = password;
 		this.intro = intro;
@@ -23,11 +23,11 @@ public class Account {
 		this.email = email;
 	}
 	
-	public int getStudnet_id() {
-		return studnet_id;
+	public int getStudent_id() {
+		return student_id;
 	}
-	public void setStudnet_id(int studnet_id) {
-		this.studnet_id = studnet_id;
+	public void setStudent_id(int student_id) {
+		this.student_id = student_id;
 	}
 	public String getId() {
 		return id;

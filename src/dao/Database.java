@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import TEST.J;
 import resume.Resume;
 import user.Account;
 
@@ -118,23 +117,36 @@ public class Database {
 		return 0;
 	}
     
-    public int register(Account account) {
+    public int registerStudent(Account account) {
     	String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
     	
-    	try {
-    		
-    		int num = executeAndUpdate(SQL, account.getStudnet_id(),account.getId(),account.getPassword()
+    	try {		
+    		int num = executeAndUpdate(SQL, account.getStudent_id(),account.getId(),account.getPassword()
     				,account.getIntro(),account.getName(),account.getGender(),account.getMajor(),account.getEmail());
     		return num;
     	}catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+		}
+    	
+    	return -1;
+    }
+    
+    public int registerCompany() {
+    	String SQL = "insert into serial values(?,?,?,?,?,?,?,?)";
+    	
+    	try {		
+    		int num = executeAndUpdate(SQL, );
+    		return num;
+    	}catch (Exception e) {
+			e.printStackTrace();
 		}
     	
     	return -1;
     }
     
 	public int insert_resume(Resume resume, int check) {
-		String SQL = "insert into resume values(?,?,?,?,?,?,?)";
+		String SQL = "insert into resume (student_id,name,content,startDate,finishDate,resume_num,keyword_num)"
+				+ "values(?,?,?,?,?,?,?)";
 		String NULL_FINISHDATE_SQL = "insert into resume"
 				+ "(student_id,name,content,startDate,resume_num,keyword_num) " + "values(?,?,?,?,?,?)";
 		try {
@@ -166,27 +178,6 @@ public class Database {
 		return 0;
     }
 	
-
-    public int join(Account account){
-		String sql="insert into account values(?,?,?,?,?,?,?)";
-		
-		try {
-			PreparedStatement pstmt=connection.prepareStatement(sql);
-			pstmt.setInt(1, account.getStudnet_id());
-			pstmt.setString(2, account.getId());
-			pstmt.setString(3, account.getPassword());
-			pstmt.setString(4, account.getName());
-			pstmt.setString(5, account.getGender());
-			pstmt.setString(6, account.getMajor());
-			pstmt.setString(7, account.getEmail());
-			return pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
-	}
-    
-
 	public JSONArray select_intro_resume(Resume resume) {
 		String INTRO_SQL="select intro from account where student_id=?";
 		
@@ -260,7 +251,7 @@ public class Database {
 		/*	PreparedStatement pstmt = connection.prepareStatement(CONTEST_SQL);
 			pstmt.setInt(1, resume.getStudent_id());
 			ResultSet rs=pstmt.executeQuery();*/
-			jsonArray=executeAndGet(INTERN_SQL, resume.getStudent_id());
+			jsonArray=executeAndGet(INTERN_SQL, resume.getStudent_id());	
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -326,17 +317,20 @@ public class Database {
     	return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
     }
     
-    public JSONArray search(String name, int student_id, String major){
-    	String SQL="select a.student_id, a.name, a.gender, a.major from account as a "
-    			+ "where a.name like ?% or a.student_id like ?% or a.major like ?%";
+    public JSONArray keyword_search(String keyword){
+    	String SQL="select * from resume where keyword_num = (select num from keyword_category where name like %?%)";
+    	
+    	JSONArray jsonArray=new JSONArray();
     	try{
-			JSONArray arr=executeAndGet(SQL,name,student_id,major);
-			return arr;
+			jsonArray=executeAndGet(SQL, keyword);
+			return jsonArray;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return null;//데이터베이스 오류
     }
+    
+   
     
  
 }

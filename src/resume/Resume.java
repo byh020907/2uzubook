@@ -1,13 +1,13 @@
 package resume;
 
 public class Resume {
-	int student_id;
-	String resumeName;
-	String resumeContent;
-	String resumeStartDate;
-	String resumeFinishDate;
-	int resume_category;
-	int keyword_category;
+	private int student_id;
+	private String resumeName;
+	private String resumeContent;
+	private String resumeStartDate;
+	private String resumeFinishDate;
+	private int resume_category;
+	private int keyword_category;
 	
 	public Resume(int student_id, String resumeName, String resumeContent, String resumeStartDate, int resume_category,
 			int keyword_category) {

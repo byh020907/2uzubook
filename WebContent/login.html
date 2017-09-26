@@ -21,13 +21,13 @@
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="index.jsp">Home</a></li>
 						<li><a href="login.html">로그인 / 회원가입</a></li>
 						<li>
 							<a href="#">For Student</a>
 							<ul>
-								<li><a href="myresume.html">내 레주메 보기</a></li>
-								<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+								<li><a href="myresume.jsp">내 레주메 보기</a></li>
+								<li><a href="#">레주메 내용 관리</a></li>
 							</ul>
 						</li>
 						<li>
@@ -68,18 +68,17 @@
 										<h3 class="text-center mb-3">Student</h3>
 										<div class="row">
 											<form action="/2uzubook/loginAction" method="post" style="margin-top: 20px;">
-											<div class="8u form1">
-												
-													<input class="form-control mb-2" type="text" placeholder="userName" name="id" /> 
-													<input class="form-control mb-2" type="password" placeholder="Password" name="password" />
-												<a href="register.html" style="margin-top: 10px;">
-													<p style="margin-top: 10px;">Don't have an account?</p>
-												</a>
-											</div>
-											
-											<div class="4u">
-												<input class="btn btn-outline-primary mb-2" type="submit" value="Sign in" style="height:141px; margin-top: 20px;"/>
-											</div>
+												<div class="8u form1">
+														<input class="form-control mb-2" type="text" placeholder="userName" name="id" /> 
+														<input class="form-control mb-2" type="password" placeholder="Password" name="password" />
+													
+													<a href="register.html" style="margin-top: 10px;">
+														<p style="margin-top: 10px;">Don't have an account?</p>
+													</a>
+												</div>
+												<div class="4u">
+													<button class="btn btn-outline-primary mb-2" type="submit" style="height:141px; margin-top: 20px;">Sign in</button>
+												</div>
 											</form>
 										</div>
 									</div>

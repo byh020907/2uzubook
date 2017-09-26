@@ -18,7 +18,7 @@ CREATE TABLE `resume` (
   number int not null auto_increment,
   student_id int not null,
   name varchar(100) not null,
-  content text not null,
+  content text,
   startDate Date null,
   finishDate Date null,
   resume_num int not null,
