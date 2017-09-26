@@ -132,7 +132,8 @@ public class Database {
     }
     
 	public int insert_resume(Resume resume, int check) {
-		String SQL = "insert into resume values(?,?,?,?,?,?,?)";
+		String SQL = "insert into resume (student_id,name,content,startDate,finishDate,resume_num,keyword_num)"
+				+ "values(?,?,?,?,?,?,?)";
 		String NULL_FINISHDATE_SQL = "insert into resume"
 				+ "(student_id,name,content,startDate,resume_num,keyword_num) " + "values(?,?,?,?,?,?)";
 		try {
