@@ -31,20 +31,20 @@ public class SearchServlet extends HttpServlet {
 		Util.setCharset(request, response, "utf-8");
 
 		JSONObject data1 = new JSONObject();
-		data1.put("name", "±è¼Ò¿¬");
-		data1.put("major", "sw°³¹ß°ú");
+		data1.put("name", "ê¹€ì†Œì—°");
+		data1.put("major", "swê°œë°œê³¼");
 
 		JSONObject data2 = new JSONObject();
-		data2.put("name", "¹è¿ëÈ£");
-		data2.put("major", "sw°³¹ß°ú");
+		data2.put("name", "ë°°ìš©í˜¸");
+		data2.put("major", "swê°œë°œê³¼");
 
 		JSONObject data3 = new JSONObject();
-		data3.put("name", "¹Ú±Ô¸®");
-		data3.put("major", "sw°³¹ß°ú");
+		data3.put("name", "ë°•ê·œë¦¬");
+		data3.put("major", "swê°œë°œê³¼");
 
 		JSONObject data4 = new JSONObject();
-		data4.put("name", "À±Á¤Çö");
-		data4.put("major", "sw°³¹ß°ú");
+		data4.put("name", "ìœ¤ì •í˜„");
+		data4.put("major", "swê°œë°œê³¼");
 
 		JSONArray arr = new JSONArray();
 		arr.add(data1);

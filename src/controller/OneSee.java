@@ -32,8 +32,8 @@ public class OneSee extends HttpServlet {
 		licen.put("licence3","li3");
 		
 		JSONObject data1 = new JSONObject();
-		data1.put("name", "±è¼Ò¿¬");
-		data1.put("major", "sw°³¹ß°ú");
+		data1.put("name", "ê¹€ì†Œì—°");
+		data1.put("major", "swê°œë°œê³¼");
 		data1.put("licences", licen);
 		request.setAttribute("JSONObject", data1);
 		request.getRequestDispatcher("/JSP/OneSee.jsp").forward(request, response);
