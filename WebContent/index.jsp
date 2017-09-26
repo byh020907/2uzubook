@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String id = (String) session.getAttribute("id");
+	System.out.println(id);
+%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -26,7 +30,7 @@
             <nav id="nav">
                 <ul>
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login.html">로그인 / 회원가입</a></li>
+                    <li id="login_status"><a href="login.html">로그인 / 회원가입</a></li>
                     <li> <a href="#">For Student</a>
                         <ul>
                             <li><a href="myresume.jsp">내 레주메 보기</a></li>
@@ -225,6 +229,24 @@
 	        })
 	    });
 	</script>
+			<script>
+			window.onload=function(){
+				var tag1  = '<a>Logout</a>';
+				var tag2 = '<a href="login.html">로그인 / 회원가입</a>';
+				var val="<%=id%>";
+				if(val=="null")
+				{
+						$("login_status").html(tag2);
+						console.log("ht");
+				}
+				else
+				{
+					$("login_status").html(tag1);
+				}
+			};
+			
+			
+			</script>
 </body>
 
 </html>
