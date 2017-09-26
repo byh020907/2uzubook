@@ -31,9 +31,9 @@ public class index_test extends HttpServlet {
 			JSONObject data1 = new JSONObject();
 			str = Integer.toString(i);
 			data1.put("name", "kimsoyeon"+str);
-			data1.put("major", "����Ʈ���� ���߰�"+str);
+			data1.put("major", "소프트웨어 개발과"+str);
 			data1.put("student_img", "/2uzubook/images/student/stu"+str+".jpg");
-			data1.put("student_id", (Integer)20106);
+			data1.put("student_id",20106);
 			arr.add(data1);
 		}
 		System.out.println("hello");

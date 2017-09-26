@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 		if(result==1){
 			HttpSession session = request.getSession();
 			session.setAttribute("id",id);
-			response.sendRedirect("/2uzubook/JSP/index.jsp");
+			response.sendRedirect("/2uzubook/index.jsp");
 			System.out.println(session.getAttribute("id"));
 			return;
 		}else{
