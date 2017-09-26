@@ -13,11 +13,15 @@
 
 ## 기획
 
-[프로젝트 제안서 최종본]()
-[다이어그램]()
-[클라이언트 요구사항]()
-[프로젝트 계획서]()
+[프로젝트 제안서 최종본](https://github.com/byh020907/2uzubook/blob/master/Document/HWP/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A0%9C%EC%95%88%EC%84%9C%20%EC%B5%9C%EC%A2%85%EB%B3%B8.hwp)
+
+[다이어그램](https://github.com/byh020907/2uzubook/blob/master/Document/HWP/%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8.hwp)
+
+[클라이언트 요구사항](https://github.com/byh020907/2uzubook/blob/master/Document/Client_Requirements.md)
+
+[프로젝트 계획서](https://github.com/byh020907/2uzubook/blob/master/Document/Project_Plan.md)
+
 
 ## 개발
 
-[이클립스 2uzubook 프로젝트] ()
+[이클립스 2uzubook 프로젝트](https://github.com/byh020907/2uzubook/tree/master/Eclipse)
