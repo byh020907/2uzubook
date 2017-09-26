@@ -318,7 +318,7 @@ public class Database {
     }
     
     public JSONArray keyword_search(String keyword){
-    	String SQL="select * from keyword_category where name like %?%";
+    	String SQL="select * from resume where keyword_num = (select num from keyword_category where name like %?%)";
     	
     	JSONArray jsonArray=new JSONArray();
     	try{
