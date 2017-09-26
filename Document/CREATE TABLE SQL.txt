@@ -1,4 +1,3 @@
-
 CREATE TABLE `account` (
   `student_id` int(11) NOT NULL,
   `id` varchar(100) NOT NULL,
