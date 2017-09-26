@@ -39,9 +39,21 @@ public class JoinServlet extends HttpServlet {
 		String major = request.getParameter("Major");
 		String email = request.getParameter("Email");
 		
+		int mode = Integer.parseInt(request.getParameter("mode"));
+		int result=-312;
+		switch(mode){
+			//학생 사용자
+			case 1:{
+				result=database.register(new Account(student_id,id,password,intro,name,gender,major,email));
+			}break;
+			
+			//회사 사용자
+			case 2:{
+				
+			}break;
+		}
 		PrintWriter out=response.getWriter();
 		
-		int result=database.register(new Account(student_id,id,password,intro,name,gender,major,email));
 
 		if(result>=0){
 			response.sendRedirect("/2uzubook/login.html");
