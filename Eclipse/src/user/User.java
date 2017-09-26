@@ -1,76 +1,86 @@
 package user;
 
-public class Account {
+public class User {
 
-	private int student_id;
+	private int adm_year;
+	private int stu_id;
 	private String id;
 	private String password;
 	private String intro;
 	private String name;
-	private String gender;
+	private char gender;
 	private String major;
 	private String email;
-	
-	public Account(int student_id, String id, String password, String intro, String name, String gender, String major,
-			String email) {
-		this.student_id = student_id;
-		this.id = id;
-		this.password = password;
-		this.intro = intro;
-		this.name = name;
-		this.gender = gender;
-		this.major = major;
-		this.email = email;
+
+	public int getAdm_year() {
+		return adm_year;
 	}
-	
-	public int getStudent_id() {
-		return student_id;
+
+	public void setAdm_year(int adm_year) {
+		this.adm_year = adm_year;
 	}
-	public void setStudent_id(int student_id) {
-		this.student_id = student_id;
+
+	public int getStu_id() {
+		return stu_id;
 	}
+
+	public void setStu_id(int stu_id) {
+		this.stu_id = stu_id;
+	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getIntro() {
 		return intro;
 	}
+
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getGender() {
+
+	public char getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+
+	public void setGender(char gender) {
 		this.gender = gender;
 	}
+
 	public String getMajor() {
 		return major;
 	}
+
 	public void setMajor(String major) {
 		this.major = major;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 }

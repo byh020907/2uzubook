@@ -67,19 +67,18 @@
 									<div class="6u 12u(mobile)">
 										<h3 class="text-center mb-3">Student</h3>
 										<div class="row">
-											<form action="/2uzubook/loginAction" method="post" style="margin-top: 20px;">
-												<div class="8u form1">
-														<input class="form-control mb-2" type="text" placeholder="userName" name="id" /> 
-														<input class="form-control mb-2" type="password" placeholder="Password" name="password" />
-													
-													<a href="register.html" style="margin-top: 10px;">
-														<p style="margin-top: 10px;">Don't have an account?</p>
-													</a>
-												</div>
-												<div class="4u">
-													<button class="btn btn-outline-primary mb-2" type="submit" style="height:141px; margin-top: 20px;">Sign in</button>
-												</div>
-											</form>
+											<div class="8u form1">
+												<form id="login_form" action="/2uzubook/loginAction" method="post" style="margin-top: 20px;">
+													<input class="form-control mb-2" type="text" placeholder="userName" name="id" style="height: 52px;"> 
+													<input class="form-control mb-2" type="password" placeholder="Password" name="password" style="height: 52px;">
+												</form>
+												<a href="register.html" style="margin-top: 10px;">
+													<p style="margin-top: 10px;">Don't have an account?</p>
+												</a>
+											</div>
+											<div class="4u">
+												<button class="btn btn-outline-primary mb-2" onclick="$('#login_form').submit();" style="height:118px; margin-top: 20px;">Sign in</button>
+											</div>
 										</div>
 									</div>
 									<div class="6u 12u(mobile)">
@@ -87,14 +86,14 @@
 										<div class="row">
 											<div class="8u form2">
 												<form action="loginAction.jsp" method="post" style="margin-top: 20px;">
-													<input class="form-control" style="margin-bottom: 63px;" type="text" placeholder="Serial" name="sn" />
+													<input class="form-control" style="margin-bottom: 63px; height: 52px;" type="text" placeholder="Serial" name="sn">
 												</form>
 												<a href="register_serial.html">
 													<p style="margin-top: 10px;">Don't have a Serial?</p>
 												</a>
 											</div>
 											<div class="4u">
-												<button class="btn btn-outline-success mb-2" type="submit" style="height:65px; margin-top: 20px;">Sign in</button>
+												<button class="btn btn-outline-success mb-2" type="submit" style="height:54px; margin-top: 20px;">Sign in</button>
 											</div>
 										</div>
 									</div>

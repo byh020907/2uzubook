@@ -62,62 +62,66 @@
                                     <div class="row">
                                         <div class="10u form1">
                                             <form action="/2uzubook/joinAction" method="post" style="margin-top: 20px;">
-                                            <input name="mode" type="hidden" value="1">
+                                                <input name="mode" type="hidden" value="1">
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="Name">이름</label>
-                                                    <div class="col-md-4">
-                                                        <input name="Name" type="text" placeholder="" class="form-control input-md" required=""> </div>
+                                                    <label class="control-label" for="name">이름</label>
+                                                    <input name="name" type="text" class="form-control" required>
                                                 </div>
                                          		<div class="form-group">
-                                                    <label class="col-md-4 control-label" for="gender">성별 선택</label>
-                                                    <div class="col-md-4">
-                                                        <select name="Gender" class="form-control">
-                                                            <option value="0">남자</option>
-                                                            <option value="1">여자</option>
-                                                        </select>
-                                                    </div>
+                                                    <label class="control-label" for="gender">성별 선택</label>
+                                                    <select name="gender" class="form-control">
+                                                        <option value="M">남자</option>
+                                                        <option value="F">여자</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="Email ">E-Mail Address</label>
-                                                    <div class="col-md-4">
-                                                        <input name="Email" type="text" placeholder="" class="form-control input-md" required=""> </div>
+                                                    <label class="control-label" for="email">E-Mail Address</label>
+                                                    <input name="email" type="text" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="ID">ID</label>
-                                                    <div class="col-md-4">
-                                                        <input name="ID" type="text" placeholder="" class="form-control input-md" required="">
-                                                        <input type="button" value="중복확인" id="id_confirm"/>
+                                                    <label class="control-label" for="id">ID</label>
+                                                    <div>
+                                                        <input name="id" class="form-control" type="text" required>
+                                                        <input id="id_confirm" type="button" value="중복확인">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="password">비밀번호</label>
                                                     <div class="col-md-4">
-                                                        <input id="Password" name="Password" type="password" placeholder="" class="form-control input-md" required=""> </div>
+                                                        <input id="password" name="password" type="password" class="form-control" required> </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="Password2">비밀번호 확인</label>
+                                                    <label class="col-md-4 control-label" for="password2">비밀번호 확인</label>
                                                     <div class="col-md-4">
-                                                        <input id="Password2" name="Password2" type="password" placeholder="" class="form-control input-md" required="" onkeyup="password_check();"> </div>
-                                                	</div>
-                                                	<div id="result"></div>
+                                                        <input id="password2" name="password2" type="password" class="form-control" required onkeyup="password_check();">
+                                                    </div>
+                                                </div>
+                                                <div id="result"></div>
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="student_id">학번</label>
+                                                    <label class="col-md-4 control-label" for="a">입학년도</label>
                                                     <div class="col-md-4">
-                                                        <input name="student_id" type="text" placeholder="ex) 20101" class="form-control input-md" required=""> </div>
-                                                	</div>
+                                                        <input name="stu_id" type="text" placeholder="ex) 20101" class="form-control" required>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="introduce">자기소개 한줄</label>
+                                                    <label class="col-md-4 control-label" for="stu_id">학번</label>
                                                     <div class="col-md-4">
-                                                        <input name="Introduce" type="text" placeholder="20자 이내" class="form-control input-md" required=""> </div>
+                                                        <input name="stu_id" type="text" placeholder="ex) 20101" class="form-control" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="intro">자기소개 한줄</label>
+                                                    <div class="col-md-4">
+                                                        <input name="intro" type="text" placeholder="20자 이내" class="form-control" required> </div>
                                                 	</div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="major">학과 선택</label>
                                                     <div class="col-md-4">
                                                         <select name="Major" class="form-control">
-                                                            <option value="0">공통과정</option>
-                                                            <option value="1">sw개발과 </option>
-                                                            <option value="2">임베디드개발과</option>
-                                                            <option value="3">정보보안과</option>
+                                                            <option value="1">공통과정</option>
+                                                            <option value="2">sw개발과 </option>
+                                                            <option value="3">임베디드개발과</option>
+                                                            <option value="4">정보보안과</option>
                                                         </select>
                                                     </div>
                                                 </div>
