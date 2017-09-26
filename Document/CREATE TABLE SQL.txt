@@ -1,49 +1,77 @@
-CREATE TABLE `account` (
-  `student_id` int(11) NOT NULL,
-  `id` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `intro` varchar(200) DEFAULT NULL,
-  `name` varchar(100) NOT NULL,
-  `gender` varchar(7) NOT NULL,
-  `major` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  PRIMARY KEY (`student_id`),
-  UNIQUE KEY `id` (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `major` (
+    `id` INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(10) NOT NULL UNIQUE
+);
 
+CREATE TABLE `keyword` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(64) NOT NULL UNIQUE
+);
 
-CREATE TABLE `resume` (
-  number int not null auto_increment,
-  student_id int not null,
-  name varchar(100) not null,
-  content text,
-  startDate Date null,
-  finishDate Date null,
-  resume_num int not null,
-  keyword_num int not null,
-  PRIMARY KEY (`number`),
-  CONSTRAINT `fk_resume_account` FOREIGN KEY (`student_id`) REFERENCES `account` (`student_id`),
-  CONSTRAINT fk_resume_category FOREIGN KEY (resume_num) REFERENCES resume_category (num),
-  CONSTRAINT fk_keyword_category FOREIGN KEY (keyword_num) REFERENCES keyword_category (num)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `user` (
+    `adm_year` INT(4) NOT NULL,
+    `stu_id` INT(5) NOT NULL,
+    `id` VARCHAR(32) NOT NULL PRIMARY KEY,
+    `password` CHAR(64) NOT NULL,
+    `intro` TEXT DEFAULT NULL,
+    `name` VARCHAR(32) NOT NULL,
+    `gender` CHAR(1) NOT NULL,
+    `major` INT(1) NOT NULL,
+    `email` VARCHAR(64) NOT NULL UNIQUE,
+    FOREIGN KEY (`major`) REFERENCES `major`(`id`)
+);
 
-CREATE TABLE `resume_category` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `award` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `ins` VARCHAR(32) NOT NULL,
+    `date` DATE NOT NULL,
+    `keyword` INT(8) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
+    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+);
 
-CREATE TABLE `keyword_category` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `cert` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `ins` VARCHAR(32) NOT NULL,
+    `date` DATE NOT NULL,
+    `keyword` INT(8) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
+    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+);
 
-CREATE TABLE `serialkey` (
-  `serialkey_num` int(11) NOT NULL AUTO_INCREMENT,
-  `serialKey` varchar(500) NOT NULL,
-  `keyword_category` int(11) DEFAULT NULL,
-  PRIMARY KEY (`serialkey_num`),
-  UNIQUE KEY `serialkey` (`serialKey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `project` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `desc` TEXT NOT NULL,
+    `startdate` DATE NOT NULL,
+    `enddate` DATE,
+    `keyword` INT(8) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
+    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+);
+
+CREATE TABLE `club` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `desc` TEXT NOT NULL,
+    `startdate` DATE NOT NULL,
+    `enddate` DATE,
+    `keyword` INT(8) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
+    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+);
+
+CREATE TABLE `company` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(64) NOT NULL,
+    `desc` TEXT NOT NULL,
+    `key` CHAR(5),
+    `keyword` INT(8) NOT NULL,
+    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+);
