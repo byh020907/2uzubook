@@ -14,7 +14,7 @@ import user.User;
 import user.UserDAO;
 
 /**
- * Servlet implementation class JoinServlet
+ * Servlet implementation class JoinAction
  */
 
 @WebServlet("/joinAction")
@@ -26,7 +26,6 @@ public class JoinAction extends HttpServlet {
 			throws ServletException, IOException {
 
 		UserDAO userDAO = new UserDAO();
-		System.out.println(userDAO);
 		Util.setCharset(request, response, "UTF-8");
 
 		String name = request.getParameter("name");
@@ -50,7 +49,7 @@ public class JoinAction extends HttpServlet {
 				Integer.parseInt(stu_id), intro, Integer.parseInt(major));
 
 		if (result >= 0) {
-			out.print("<script>alert('회원가입을 성공했습니다.');location.href='index.html';</script>");
+			out.print("<script>alert('회원가입을 성공했습니다.');location.href='index.jsp';</script>");
 			return;
 		} else {
 			out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");

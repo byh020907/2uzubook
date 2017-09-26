@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import user.UserDAO;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class LoginAction
  */
 
 @WebServlet("/loginAction")
@@ -25,7 +25,6 @@ public class LoginAction extends HttpServlet {
 			throws ServletException, IOException {
 
 		UserDAO userDAO = new UserDAO();
-		System.out.println(userDAO);
 		Util.setCharset(request, response, "utf-8");
 
 		String id = request.getParameter("id");

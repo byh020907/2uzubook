@@ -100,7 +100,7 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="a">입학년도</label>
                                                     <div class="col-md-4">
-                                                        <input name="stu_id" type="text" placeholder="ex) 20101" class="form-control" required>
+                                                        <input name="adm_year" type="text" placeholder="ex) 2016" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -117,7 +117,7 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="major">학과 선택</label>
                                                     <div class="col-md-4">
-                                                        <select name="Major" class="form-control">
+                                                        <select name="major" class="form-control">
                                                             <option value="1">공통과정</option>
                                                             <option value="2">sw개발과 </option>
                                                             <option value="3">임베디드개발과</option>
@@ -179,8 +179,8 @@
     <script>
     function password_check()
     {
-    	var password=$('#Password').val();
-    	var passwordCheck=$('#Password2').val();
+    	var password=$('#password').val();
+    	var passwordCheck=$('#password2').val();
     	console.log(password);
     	console.log(passwordCheck);
     	if(password==passwordCheck)
