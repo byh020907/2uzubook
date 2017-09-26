@@ -134,24 +134,28 @@
             <div class="12u 12u(mobile)">
                 <div class="row">
                     <div class="6u">
-                        <label class="col-md-4 control-label" for="license">자격증 이름</label> 컴퓨터활용력 </div>
+                        <label class="col-md-4 control-label" for="license">자격증 이름</label> 
+                        <div id="licen_name"></div>
+                        </div>
+                        
                     <div class="6u">
-                        <label class="col-md-4 control-label" for="startdate">취득날짜</label> 2017.06.03 </div>
+                        <label class="col-md-4 control-label" for="startdate">취득날짜</label> 
+                        <div id="licen_date"></div>
+                        </div>
+                		
                 </div>
-                <div class="row" id="licen">
                 	
                 </div>
-            </div>
             <div class="12u 12u(mobile)">
                 <div class="row">
                     <div class="5u">
-                        <label class="col-md-4 control-label" for="license">자격증 이름</label>
-                        <input class="form-control mb-2" type="text" id="license" value="" placeholder="정보처리 기능사" /> </div>
+                        <input class="form-control mb-2" type="text" id="license" placeholder="자격증 명(ex.정보처리 기능사)" /> 
+                    </div>
                     <div class="5u">
-                        <label class="col-md-4 control-label" for="startdate">취득날짜</label>
-                        <input class="form-control mb-2" type="text" id="startdate" value="" placeholder="ex) 2017.09.02" /> </div>
+                        <input class="form-control mb-2" type="text" id="startdate" placeholder="취득 날짜(ex.2017.09.02)" /> 
+                       </div>
                     <div class="2u">
-                        <button class="btn btn-outline-success mb-2" type="submit">추가</button>
+                        <button class="btn btn-outline-success mb-2" onclick="button1_click();" type="submit">추가</button>
                     </div>
                 </div>
             </div>
@@ -192,6 +196,17 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
+    <script>
+	function button1_click() 
+	{
+		var str=$("#license").val();
+		var str2=$("#startdate").val();
+		var tag='<lable>'+str+'</lable>';
+		var tag2='<lable>'+str2+'</lable>';
+		$("#licen_name").append(tag);
+		$("#licen_date").append(tag);
+}
+</script>
 </body>
 
 </html>

@@ -85,7 +85,13 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="ID">ID</label>
                                                     <div class="col-md-4">
+<<<<<<< HEAD
+                                                        <input id="ID" name="ID" type="text" placeholder="" class="form-control input-md" required=""> 
+                                                        <input type="button" value="중복확인" id="id_confirm"/>
+                                                        </div>
+=======
                                                         <input name="ID" type="text" placeholder="" class="form-control input-md" required=""> </div>
+>>>>>>> 40e3e00aac9923da8a3b65d5f41a317bc29e071b
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="password">비밀번호</label>
@@ -95,7 +101,12 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="Password2">비밀번호 확인</label>
                                                     <div class="col-md-4">
+<<<<<<< HEAD
+                                                        <input id="password2" name="Password2" type="password" placeholder="" class="form-control input-md" required="" onkeyup="password_check();"> </div>
+                                               		<div id="result"></div>	
+=======
                                                         <input name="Password2" type="password" placeholder="" class="form-control input-md" required=""> </div>
+>>>>>>> 40e3e00aac9923da8a3b65d5f41a317bc29e071b
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="student_id">학번</label>
@@ -169,6 +180,53 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
+    <script>
+    function password_check()
+    {
+    	var password=$('#password').val();
+    	var passwordCheck=$('#password2').val();
+    	console.log(password);
+    	console.log(passwordCheck);
+    	if(password==passwordCheck)
+    	{
+    		document.getElementById("result").innerHTML = "Okey";
+    	}
+    	else
+    	{
+    		document.getElementById("result").innerHTML = "No";
+    	}
+    	
+    }
+    </script>
+    <script>
+	$("#id_confirm").click(function(){  
+	      
+	    var url="/2uzubook/ID_Confirm";  
+	    var param1=$('#ID').val();
+	    var param="param="+param1;  
+	  
+	    $.ajax({      
+	        type:"POST",  
+	        url:url,      
+	        data:param,
+	        dataType:'json',
+	        success:function(data){   
+	        	console.log(data.flag)
+	            if(data.flag==1)
+	            {
+	            	alert('success!');	
+	            }
+	            else
+	            {
+	            	$('#ID').val('');
+	            	alert('wrong!');
+	            }
+	            
+	        },   
+	    });  
+	      
+	});  
+	</script>
 </body>
 
 </html>

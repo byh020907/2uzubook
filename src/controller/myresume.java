@@ -37,7 +37,7 @@ public class myresume extends HttpServlet {
 		{
 			JSONObject licen=new JSONObject();
 			str = Integer.toString(i);
-			licen.put("licenseName", "Àü±â±â´É»ç"+str);
+			licen.put("licenseName", "ì „ê¸°ê¸°ëŠ¥ì‚¬"+str);
 			licen.put("licenseDate", "2017.5.1");
 			licenses.add(licen);
 		}
@@ -46,7 +46,7 @@ public class myresume extends HttpServlet {
 			JSONObject awd=new JSONObject();
 			str = Integer.toString(i);
 			awd.put("awardName", "stack"+str);
-			awd.put("award", "´ë»ó");
+			awd.put("award", "ëŒ€ìƒ");
 			awd.put("awardDate", "2017.5.1");
 			awds.add(awd);
 		}
@@ -54,7 +54,7 @@ public class myresume extends HttpServlet {
 		{
 			JSONObject contest=new JSONObject();
 			str = Integer.toString(i);
-			contest.put("contestName", "ÇÏ´Ã³ª¶ó"+str);
+			contest.put("contestName", "í•˜ëŠ˜ë‚˜ë¼"+str);
 			contest.put("contestDate", "2017.5.22");
 			contests.add(contest);
 		}
@@ -71,10 +71,10 @@ public class myresume extends HttpServlet {
 		
 		
 		
-		basic_obj.put("name", "±è¼Ò¿¬");
-		basic_obj.put("major", "¼ÒÇÁÆ®¿ş¾î °³¹ß°ú");
+		basic_obj.put("name", "ê¹€ì†Œì—°");
+		basic_obj.put("major", "ì†Œí”„íŠ¸ì›¨ì–´ ê°œë°œê³¼");
 		basic_obj.put("student_id", 20106);
-		basic_obj.put("gender", "¿©ÀÚ");
+		basic_obj.put("gender", "ì—¬ì");
 		basic_obj.put("email", "qazxc5735@gmail.com");
 		basic_obj.put("licenses", licenses);
 		basic_obj.put("awards",awds);
