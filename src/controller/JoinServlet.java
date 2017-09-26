@@ -31,19 +31,20 @@ public class JoinServlet extends HttpServlet {
 		Util.setCharset(request,response,"UTF-8");
 		
 		int student_id = Integer.parseInt(request.getParameter("student_id"));
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		String gender = request.getParameter("gender");
-		String major = request.getParameter("major");
-		String email = request.getParameter("email");
+		String id = request.getParameter("ID");
+		String password = request.getParameter("Password");
+		String name = request.getParameter("Name");
+		String gender = request.getParameter("Gender");
+		String intro = request.getParameter("Introduce");
+		String major = request.getParameter("Major");
+		String email = request.getParameter("Email");
 		
 		PrintWriter out=response.getWriter();
 		
-		int result=database.join(new Account(student_id,id,password,name,gender,major,email));
+		int result=database.register(new Account(student_id,id,password,intro,name,gender,major,email));
 
 		if(result>=0){
-			response.sendRedirect("/2uzubook/JSP/login.jsp");
+			response.sendRedirect("/2uzubook/login.html");
 			return;
 		}else{
 			out.print("<script> history.back() </script>");
