@@ -330,6 +330,28 @@ public class Database {
 		return null;//데이터베이스 오류
     }
     
+    public int check_id(String id) {
+    	String sql="select id from account where id= ?";
+		try{
+			PreparedStatement pstmt=connection.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()){
+				if(rs.getString(1).equals(id)){
+					return 1; //�꽦怨�
+				}else{
+					return 0; //濡쒓렇�씤 �떎�뙣(鍮꾨� 踰덊샇媛� �떎由�)
+				}
+			}
+			return -1; //濡쒓렇�씤 �떎�뙣(�빐�떦 id 媛��뾾�쓬)
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return 0;
+    	
+    }
    
     
  

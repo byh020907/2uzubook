@@ -85,39 +85,31 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="ID">ID</label>
                                                     <div class="col-md-4">
-<<<<<<< HEAD
-                                                        <input id="ID" name="ID" type="text" placeholder="" class="form-control input-md" required=""> 
+                                                        <input name="ID" type="text" placeholder="" class="form-control input-md" required="">
                                                         <input type="button" value="중복확인" id="id_confirm"/>
-                                                        </div>
-=======
-                                                        <input name="ID" type="text" placeholder="" class="form-control input-md" required=""> </div>
->>>>>>> 40e3e00aac9923da8a3b65d5f41a317bc29e071b
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="password">비밀번호</label>
                                                     <div class="col-md-4">
-                                                        <input name="Password" type="password" placeholder="" class="form-control input-md" required=""> </div>
+                                                        <input id="Password" name="Password" type="password" placeholder="" class="form-control input-md" required=""> </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="Password2">비밀번호 확인</label>
                                                     <div class="col-md-4">
-<<<<<<< HEAD
-                                                        <input id="password2" name="Password2" type="password" placeholder="" class="form-control input-md" required="" onkeyup="password_check();"> </div>
-                                               		<div id="result"></div>	
-=======
-                                                        <input name="Password2" type="password" placeholder="" class="form-control input-md" required=""> </div>
->>>>>>> 40e3e00aac9923da8a3b65d5f41a317bc29e071b
-                                                </div>
+                                                        <input id="Password2" name="Password2" type="password" placeholder="" class="form-control input-md" required="" onkeyup="password_check();"> </div>
+                                                	</div>
+                                                	<div id="result"></div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="student_id">학번</label>
                                                     <div class="col-md-4">
                                                         <input name="student_id" type="text" placeholder="ex) 20101" class="form-control input-md" required=""> </div>
-                                                </div>
+                                                	</div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="introduce">자기소개 한줄</label>
                                                     <div class="col-md-4">
                                                         <input name="Introduce" type="text" placeholder="20자 이내" class="form-control input-md" required=""> </div>
-                                                </div>
+                                                	</div>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="major">학과 선택</label>
                                                     <div class="col-md-4">
@@ -183,8 +175,8 @@
     <script>
     function password_check()
     {
-    	var password=$('#password').val();
-    	var passwordCheck=$('#password2').val();
+    	var password=$('#Password').val();
+    	var passwordCheck=$('#Password2').val();
     	console.log(password);
     	console.log(passwordCheck);
     	if(password==passwordCheck)
