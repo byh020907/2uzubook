@@ -117,12 +117,25 @@ public class Database {
 		return 0;
 	}
     
-    public int register(Account account) {
+    public int registerStudent(Account account) {
     	String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
     	
     	try {		
     		int num = executeAndUpdate(SQL, account.getStudent_id(),account.getId(),account.getPassword()
     				,account.getIntro(),account.getName(),account.getGender(),account.getMajor(),account.getEmail());
+    		return num;
+    	}catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return -1;
+    }
+    
+    public int registerCompany() {
+    	String SQL = "insert into serial values(?,?,?,?,?,?,?,?)";
+    	
+    	try {		
+    		int num = executeAndUpdate(SQL, );
     		return num;
     	}catch (Exception e) {
 			e.printStackTrace();
@@ -305,7 +318,7 @@ public class Database {
     }
     
     public JSONArray keyword_search(String keyword){
-    	String SQL="select * from keyword_category where name like %?%";
+    	String SQL="select * from resume where keyword_num = (select num from keyword_category where name like %?%)";
     	
     	JSONArray jsonArray=new JSONArray();
     	try{
