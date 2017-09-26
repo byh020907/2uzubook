@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import TEST.J;
 import resume.Resume;
 import user.Account;
 
@@ -116,7 +117,22 @@ public class Database {
 		}
 		return 0;
 	}
-	
+    
+    public int register(Account account) {
+    	String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
+    	
+    	try {
+    		
+    		int num = executeAndUpdate(SQL, account.getStudnet_id(),account.getId(),account.getPassword()
+    				,account.getIntro(),account.getName(),account.getGender(),account.getMajor(),account.getEmail());
+    		return num;
+    	}catch (Exception e) {
+			// TODO: handle exception
+		}
+    	
+    	return -1;
+    }
+    
 	public int insert_resume(Resume resume, int check) {
 		String SQL = "insert into resume values(?,?,?,?,?,?,?)";
 		String NULL_FINISHDATE_SQL = "insert into resume"
@@ -168,6 +184,105 @@ public class Database {
 			e.printStackTrace();
 		}
 		return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
+	}
+    
+
+	public JSONArray select_intro_resume(Resume resume) {
+		String INTRO_SQL="select intro from account where student_id=?";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+			jsonArray=executeAndGet(INTRO_SQL, resume.getStudent_id());
+
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return jsonArray;
+	}
+	
+	
+	public JSONArray select_license_resume(Resume resume) {
+		String LICENSE_SQL="select name,title from resume where student_id=? and resume_num=1";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+/*			PreparedStatement pstmt = connection.prepareStatement(AWARD_SQL);
+			ResultSet rs=pstmt.executeQuery();*/
+			jsonArray=executeAndGet(LICENSE_SQL, resume.getStudent_id());
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
+	}
+	
+	public JSONArray select_award_resume(Resume resume) {
+		String AWARD_SQL="select name,title from resume where student_id=? and resume_num=2";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+/*			PreparedStatement pstmt = connection.prepareStatement(AWARD_SQL);
+			ResultSet rs=pstmt.executeQuery();*/
+			jsonArray=executeAndGet(AWARD_SQL, resume.getStudent_id());
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
+	}
+	
+	public JSONArray select_contest_resume(Resume resume) {
+		String CONTEST_SQL="select name,title from resume where student_id=? and resume_num=3";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+		/*	PreparedStatement pstmt = connection.prepareStatement(CONTEST_SQL);
+			pstmt.setInt(1, resume.getStudent_id());
+			ResultSet rs=pstmt.executeQuery();*/
+			jsonArray=executeAndGet(CONTEST_SQL, resume.getStudent_id());
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
+	}
+	
+	public JSONArray select_intern_resume(Resume resume) {
+		String INTERN_SQL="select name,title from resume where student_id=? and resume_num=4";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+		/*	PreparedStatement pstmt = connection.prepareStatement(CONTEST_SQL);
+			pstmt.setInt(1, resume.getStudent_id());
+			ResultSet rs=pstmt.executeQuery();*/
+			jsonArray=executeAndGet(INTERN_SQL, resume.getStudent_id());
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
+	}
+	
+	public JSONArray select_project_resume(Resume resume) {
+		String PROJECT_SQL="select name,title from resume where student_id=? and resume_num=5";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+		/*	PreparedStatement pstmt = connection.prepareStatement(CONTEST_SQL);
+			pstmt.setInt(1, resume.getStudent_id());
+			ResultSet rs=pstmt.executeQuery();*/
+			jsonArray=executeAndGet(PROJECT_SQL, resume.getStudent_id());
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
 	}
     
     
