@@ -31,25 +31,28 @@ public class JoinServlet extends HttpServlet {
 		Util.setCharset(request,response,"UTF-8");
 		
 		int student_id = Integer.parseInt(request.getParameter("student_id"));
-		String id = request.getParameter("ID");
-		String password = request.getParameter("Password");
-		String name = request.getParameter("Name");
-		String gender = request.getParameter("Gender");
-		String intro = request.getParameter("Introduce");
-		String major = request.getParameter("Major");
-		String email = request.getParameter("Email");
+		
 		
 		int mode = Integer.parseInt(request.getParameter("mode"));
 		int result=-312;
 		switch(mode){
 			//학생 사용자
 			case 1:{
-				result=database.register(new Account(student_id,id,password,intro,name,gender,major,email));
+				String id = request.getParameter("ID");
+				String password = request.getParameter("Password");
+				String name = request.getParameter("Name");
+				String gender = request.getParameter("Gender");
+				String intro = request.getParameter("Introduce");
+				String major = request.getParameter("Major");
+				String email = request.getParameter("Email");
+				result=database.registerStudent(new Account(student_id,id,password,intro,name,gender,major,email));
 			}break;
 			
 			//회사 사용자
 			case 2:{
-				
+				String name = request.getParameter("CompanyName");
+				String email = request.getParameter("CompanyEmail");
+				result=database.registerStudent(new Account(student_id,id,password,intro,name,gender,major,email));
 			}break;
 		}
 		PrintWriter out=response.getWriter();

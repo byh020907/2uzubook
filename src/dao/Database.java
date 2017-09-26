@@ -131,8 +131,8 @@ public class Database {
     	return -1;
     }
     
-    public int registerCompany() {
-    	String SQL = "insert into serial values(?,?,?,?,?,?,?,?)";
+    public int registerCompany(String companyName,String companyEmail,int keyword_category) {
+    	String SQL = "insert into serial values(?,?,?)";
     	
     	try {		
     		int num = executeAndUpdate(SQL, );
