@@ -117,7 +117,22 @@ public class Database {
 		}
 		return 0;
 	}
-	
+    
+    public int register(Account account) {
+    	String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
+    	
+    	try {
+    		
+    		int num = executeAndUpdate(SQL, account.getStudnet_id(),account.getId(),account.getPassword()
+    				,account.getIntro(),account.getName(),account.getGender(),account.getMajor(),account.getEmail());
+    		return num;
+    	}catch (Exception e) {
+			// TODO: handle exception
+		}
+    	
+    	return -1;
+    }
+    
 	public int insert_resume(Resume resume, int check) {
 		String SQL = "insert into resume values(?,?,?,?,?,?,?)";
 		String NULL_FINISHDATE_SQL = "insert into resume"
