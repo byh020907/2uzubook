@@ -25,11 +25,11 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li><a href="login.html">로그인 / 회원가입</a></li>
                     <li> <a href="#">For Student</a>
                         <ul>
-                            <li><a href="myresume.html">내 레주메 보기</a></li>
+                            <li><a href="myresume.jsp">내 레주메 보기</a></li>
                             <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
                         </ul>
                     </li>
