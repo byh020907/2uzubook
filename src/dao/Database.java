@@ -121,7 +121,7 @@ public class Database {
     	String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
     	
     	try {		
-    		int num = executeAndUpdate(SQL, account.getStudnet_id(),account.getId(),account.getPassword()
+    		int num = executeAndUpdate(SQL, account.getStudent_id(),account.getId(),account.getPassword()
     				,account.getIntro(),account.getName(),account.getGender(),account.getMajor(),account.getEmail());
     		return num;
     	}catch (Exception e) {

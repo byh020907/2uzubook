@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}else{
 			out.print("<script> history.back() </script>");
+			System.out.println("로그인 실패");
 			return;
 		}
 	}
