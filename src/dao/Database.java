@@ -303,7 +303,7 @@ public class Database {
     	return -1;//�뜲�씠�꽣踰좎씠�뒪 �삤瑜�
     }
     
-    public JSONArray search(String keyword){
+    public JSONArray keyword_search(String keyword){
     	String SQL="select * from keyword_category where name like %?%";
     	
     	JSONArray jsonArray=new JSONArray();
