@@ -31,12 +31,12 @@ public class JoinServlet extends HttpServlet {
 		Util.setCharset(request,response,"UTF-8");
 		
 		int student_id = Integer.parseInt(request.getParameter("student_id"));
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
+		String id = request.getParameter("ID");
+		String password = request.getParameter("Password");
+		String name = request.getParameter("Name");
 		String gender = request.getParameter("gender");
 		String major = request.getParameter("major");
-		String email = request.getParameter("email");
+		String email = request.getParameter("Email");
 		
 		PrintWriter out=response.getWriter();
 		
