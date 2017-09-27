@@ -25,7 +25,7 @@ public class ResumeDAO {
 	}
 
 	public int search(String query) {
-		String sql = "SELECT password FROM user WHERE id=?";
+		String sql = "SELECT DISTINCT user FROM  WHERE id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);

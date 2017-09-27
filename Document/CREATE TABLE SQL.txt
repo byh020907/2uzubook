@@ -27,9 +27,8 @@ CREATE TABLE `award` (
     `name` VARCHAR(64) NOT NULL,
     `ins` VARCHAR(32) NOT NULL,
     `date` DATE NOT NULL,
-    `keyword` INT(8) NOT NULL,
-    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
-    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+    `keyword` VARCHAR(32) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
 
 CREATE TABLE `cert` (
@@ -38,9 +37,8 @@ CREATE TABLE `cert` (
     `name` VARCHAR(64) NOT NULL,
     `ins` VARCHAR(32) NOT NULL,
     `date` DATE NOT NULL,
-    `keyword` INT(8) NOT NULL,
-    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
-    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+    `keyword` VARCHAR(32) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
 
 CREATE TABLE `project` (
@@ -50,9 +48,8 @@ CREATE TABLE `project` (
     `desc` TEXT NOT NULL,
     `startdate` DATE NOT NULL,
     `enddate` DATE,
-    `keyword` INT(8) NOT NULL,
-    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
-    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+    `keyword` VARCHAR(32) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
 
 CREATE TABLE `club` (
@@ -62,9 +59,8 @@ CREATE TABLE `club` (
     `desc` TEXT NOT NULL,
     `startdate` DATE NOT NULL,
     `enddate` DATE,
-    `keyword` INT(8) NOT NULL,
-    FOREIGN KEY (`user`) REFERENCES `user`(`id`),
-    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+    `keyword` VARCHAR(32) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
 
 CREATE TABLE `company` (
@@ -72,6 +68,5 @@ CREATE TABLE `company` (
     `name` VARCHAR(64) NOT NULL,
     `desc` TEXT NOT NULL,
     `key` CHAR(5),
-    `keyword` INT(8) NOT NULL,
-    FOREIGN KEY (`keyword`) REFERENCES `keyword`(`id`)
+    `keyword` VARCHAR(32) NOT NULL
 );
