@@ -7,8 +7,6 @@ public class Company {
 	private String key;
 	private int keyword;
 
-	
-	
 	public Company(String name, String desc, String key, int keyword) {
 		super();
 		this.name = name;
