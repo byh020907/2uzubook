@@ -22,7 +22,7 @@ public class Database {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/2uzubook";
 			String dbID = "root";
-			String dbPW = "12341234";
+			String dbPW = "root0209";
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPW);
 		} catch (ClassNotFoundException | SQLException e) {

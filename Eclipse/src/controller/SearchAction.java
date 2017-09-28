@@ -19,7 +19,7 @@ import resume.ResumeDAO;
  * Servlet implementation class SearchAction
  */
 
-@WebServlet("/loginAction")
+@WebServlet("/searchAction")
 public class SearchAction extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
