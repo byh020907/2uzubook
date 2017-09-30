@@ -214,7 +214,7 @@ public class ResumeDAO extends Database{
 		String SQL="update cert set name=?,ins=?,date=?,keyword=?";
 
 		try {
-			return executeAndUpdate(name,ins,date,keyword);
+			return executeAndUpdate(SQL,name,ins,date,keyword);
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -227,7 +227,30 @@ public class ResumeDAO extends Database{
 		String SQL="update awawrd set name=?,ins=?,date=?,keyword=?";
 
 		try {
-			return executeAndUpdate(name,ins,date,keyword);
+			return executeAndUpdate(SQL,name,ins,date,keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+	
+	public int update_club(String name,String desc,String startDate,String endDate,int keyword) {
+		String SQL="update club set name=?,`desc`=?,startdate=?,endDate=?, keyword=?";
+		try {
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+	
+
+	public int update_project(String name,String desc,String startDate,String endDate,int keyword) {
+		String SQL="update project set name=?,`desc`=?,startdate=?,endDate=?, keyword=?";
+		try {
+			return executeAndUpdate(SQL,name,desc,startDate,endDate,keyword);
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
