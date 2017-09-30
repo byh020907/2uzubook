@@ -209,6 +209,32 @@ public class ResumeDAO extends Database{
 
 		return -1;
 	}
+	
+	public int update_cert(String name,String ins,String date,int keyword) {
+		String SQL="update cert set name=?,ins=?,date=?,keyword=?";
+
+		try {
+			return executeAndUpdate(name,ins,date,keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+	
+	public int update_awawrd(String name,String ins,String date,int keyword) {
+		String SQL="update awawrd set name=?,ins=?,date=?,keyword=?";
+
+		try {
+			return executeAndUpdate(name,ins,date,keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
 			
 	
 }
