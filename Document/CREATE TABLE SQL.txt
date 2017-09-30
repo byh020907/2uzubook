@@ -3,11 +3,6 @@ CREATE TABLE `major` (
     `name` VARCHAR(10) NOT NULL UNIQUE
 );
 
-CREATE TABLE `keyword` (
-    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(64) NOT NULL UNIQUE
-);
-
 CREATE TABLE `user` (
     `adm_year` INT(4) NOT NULL,
     `stu_id` INT(5) NOT NULL,
@@ -63,11 +58,39 @@ CREATE TABLE `club` (
     FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
 
+CREATE TABLE `volunteer` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `ins` VARCHAR(32) NOT NULL,
+    `starttime` DATETIME NOT NULL,
+    `endtime` DATETIME NOT NULL,
+    `keyword` VARCHAR(32) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
+);
+
+CREATE TABLE `reading` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `date` DATE NOT NULL,
+    `keyword` VARCHAR(32) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
+);
+
+CREATE TABLE `test` (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `score` int(4) NOT NULL,
+    `keyword` VARCHAR(32) NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
+);
+
 CREATE TABLE `company` (
     `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(64) NOT NULL,
-    `email` varchar(64)NOT NULL,
+    `name` VARCHAR(64) NOT NULL UNIQUE,
+    `email` varchar(64) NOT NULL UNIQUE,
     `key` CHAR(5),
     `keyword` VARCHAR(32) NOT NULL,
-     unique key email (email)
 );
