@@ -150,7 +150,7 @@ public class ResumeDAO extends Database{
 	
 	
 	//모든 컬럼을 다입력하는 클럽
-	public int inert_club(Club club) {
+	public int insert_club(Club club) {
 		String SQL="insert into club (user,name,`desc`,startdate,enddate,keyword) values (?,?,?,?,?,?)";
 		
 		
@@ -166,7 +166,7 @@ public class ResumeDAO extends Database{
 	}
 
 	// 끝나는 시간 입력안하는 함수
-	public int inert_club_remove_enddate(Club club) {
+	public int insert_club_remove_enddate(Club club) {
 		String SQL = "insert into club (user,name,`desc`,startdate,keyword) values (?,?,?,?,?)";
 
 		try {
@@ -181,7 +181,7 @@ public class ResumeDAO extends Database{
 	}
 
 	// 모든 컬럼을 다입력하는 클럽
-	public int inert_project(Project project) {
+	public int insert_project(Project project) {
 		String SQL = "insert into project (user,name,`desc`,startdate,enddate,keyword) values (?,?,?,?,?,?)";
 
 		try {
@@ -196,7 +196,7 @@ public class ResumeDAO extends Database{
 	}
 
 	// 끝나는 시간 입력안하는 함수
-	public int inert_project_remove_enddate(Project project) {
+	public int insert_project_remove_enddate(Project project) {
 		String SQL = "insert into project (user,name,`desc`,startdate,keyword) values (?,?,?,?,?)";
 
 		try {

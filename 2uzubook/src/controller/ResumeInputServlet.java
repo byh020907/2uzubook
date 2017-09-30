@@ -14,7 +14,8 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import dao.Database;
+import resume.Award;
+import resume.ResumeDAO;
 
 /**
  * Servlet implementation class ResumeInputServlet
@@ -23,13 +24,13 @@ import dao.Database;
 public class ResumeInputServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private Database database;
+	private ResumeDAO database;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ResumeInputServlet() {
-    	database=Database.getInstance();
+    	database=ResumeDAO.getInstance();
     }
 
 	/**
@@ -43,13 +44,15 @@ public class ResumeInputServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		PrintWriter out=response.getWriter();
 
-		if(session.getAttribute("id")==null){			
+		if(session.getAttribute("id")==null){
 			response.sendRedirect("/2uzubook/JSP/login.jsp");
 			return;
 		}
 		
+		//세션 아이디를 통해 학번을 얻는 과정
 		JSONArray ja=database.executeAndGet("SELECT student_id from account where id=?", session.getAttribute("id"));
 		int student_id=(int) ((JSONObject)ja.get(0)).get("student_id");
+		//
 		
 		int result=-100;
 		
@@ -59,6 +62,7 @@ public class ResumeInputServlet extends HttpServlet {
 				String two=request.getParameter("two");
 				String three=request.getParameter("three");
 				
+				database.i
 				
 				System.out.println(own+two+three);
 			}break;

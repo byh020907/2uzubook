@@ -84,32 +84,32 @@ public class Database {
 		return results;
 	}
 
-	public int registerStudent(Account account) {
-		String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
-
-		try {
-			int num = executeAndUpdate(SQL, account.getStudent_id(), account.getId(), account.getPassword(),
-					account.getIntro(), account.getName(), account.getGender(), account.getMajor(), account.getEmail());
-			return num;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return -1;
-	}
-
-	public int registerCompany(String companyName,String companyEmail,int keyword_category) {
-    	String SQL = "insert into serial values(?,?,?)";
-    	
-    	try {		
-    		int num = executeAndUpdate(SQL, );
-    		return num;
-    	}catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
-    	return -1;
-    }
+//	public int registerStudent(Account account) {
+//		String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
+//
+//		try {
+//			int num = executeAndUpdate(SQL, account.getStudent_id(), account.getId(), account.getPassword(),
+//					account.getIntro(), account.getName(), account.getGender(), account.getMajor(), account.getEmail());
+//			return num;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return -1;
+//	}
+//
+//	public int registerCompany(String companyName,String companyEmail,int keyword_category) {
+//    	String SQL = "insert into serial values(?,?,?)";
+//    	
+//    	try {		
+//    		int num = executeAndUpdate(SQL, );
+//    		return num;
+//    	}catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//    	
+//    	return -1;
+//    }
 
 
 	
@@ -164,10 +164,9 @@ public class Database {
 			return -1;
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return 0;
+		return -2;
 
 	}
 
