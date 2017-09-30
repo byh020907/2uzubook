@@ -68,7 +68,7 @@
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
 												method="post" style="margin-top: 20px;">
-												<input class="form-control mb-2" type="text"
+												<input id="search_box" class="form-control mb-2" type="text"
 													placeholder="ex) 남자, 게임, c++" name="q">
 											</form>
 										</div>
@@ -124,6 +124,24 @@
 	<script src="js/util.js"></script>
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
+	<script>
+	var str;
+	$(.target).change(function(){
+		str=document.getElementById('search_box').val().toLowerCase();
+		$ajax({
+			url : '/2uzubook/SearchAction',
+				type : 'post',
+				data: str,
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						console.log(data[i].name);
+						a(data);
+					}
+				},
+				dataType : 'json'
+		})
+	})
+	</script>
 </body>
 
 </html>

@@ -30,26 +30,9 @@ public class SearchAction extends HttpServlet {
 		ResumeDAO resumeDAO = new ResumeDAO();
 		Util.setCharset(request, response, "utf-8");
 
-		String query = request.getParameter("q");
-		int result = resumeDAO.search(query);
-
-		PrintWriter out = response.getWriter();
-
-		if (result == 1) {
-			HttpSession session = request.getSession();
-			session.setAttribute("id", id);
-			response.sendRedirect("index.jsp");
-			System.out.println(session.getAttribute("id"));
-			return;
-		} else if (result == 0) {
-			out.println("<script>alert('비밀번호가 틀렸습니다.'); history.back();</script>");
-			System.out.println("로그인 실패");
-			return;
-		} else if (result == -1) {
-			out.println("<script>alert('존재하지 않는 아이디입니다.'); history.back();</script>");
-			System.out.println("로그인 실패");
-			return;
-		}
+		//String query = request.getParameter("q");
+		//int result = resumeDAO.search(query);
+		
 		JSONObject data1 = new JSONObject();
 		data1.put("name", "김소연");
 		data1.put("major", "sw개발과");
@@ -73,7 +56,7 @@ public class SearchAction extends HttpServlet {
 		arr.add(data4);
 
 		request.setAttribute("JSONArray", arr);
-		request.getRequestDispatcher("/JSP/search2.jsp").forward(request, response);
+		request.getRequestDispatcher("/JSP/search_result.jsp").forward(request, response);
 	}
 
 }
