@@ -49,7 +49,7 @@ public class ResumeDAO {
 	}
 	
 	
-	//select 且锭
+	//select 頃犽晫
 	public JSONArray executeAndGet(String sql, Object... objects) {
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -123,7 +123,7 @@ public class ResumeDAO {
 		String SQL="insert into cert (user,name,ins,date,keyword) values (?,?,?,?,?)";
 		
 		try {
-			return executeAndUpdate(SQL, cert.getId(),cert.getName(),cert.getIns(),cert.getDate()
+			return executeAndUpdate(SQL, cert.getUser(),cert.getName(),cert.getIns(),cert.getDate()
 					,cert.getKeyword());
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -136,13 +136,29 @@ public class ResumeDAO {
 		String SQL="insert into award (user,name,ins,date,keyword) values (?,?,?,?,?)";
 				
 		try {
-			return executeAndUpdate(SQL, award.getId(),award.getName(),award.getIns(),award.getDate()
+			return executeAndUpdate(SQL, award.getUser(),award.getName(),award.getIns(),award.getDate()
 					,award.getKeyword());
+			// 靹标车鞚措┐ 0 鞚挫儊
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
 		
 		return -1;
+	}
+	
+	public int inert_club(Club club) {
+		String SQL="insert into club (user,name,`desc`,startdate,enddate,keyword) values (?,?,?,?,?,?)";
+		
+		
+	try {
+		return executeAndUpdate(SQL, award.getId(),award.getName(),award.getIns(),award.getDate()
+				,award.getKeyword());
+		// 靹标车鞚措┐ 0 鞚挫儊
+	}catch (Exception e) {
+		// TODO: handle exception
+	}
+	
+	return -1;
 	}
 	
 }
