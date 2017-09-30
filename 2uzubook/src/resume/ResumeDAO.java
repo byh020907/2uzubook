@@ -10,22 +10,16 @@ import java.sql.SQLException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class ResumeDAO {
+import dao.Database;
 
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
-
-	public ResumeDAO() {
-		try {
-			String dbURL = "jdbc:mysql://localhost:3306/2uzubook";
-			String dbID = "root";
-			String dbPW = "12341234";
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL, dbID, dbPW);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+public class ResumeDAO extends Database{
+	
+	private static ResumeDAO instance;
+	
+	public static ResumeDAO getInstance(){
+		if(instance==null)
+			instance=new ResumeDAO();
+		return instance;
 	}
 	
 	//select 할때
