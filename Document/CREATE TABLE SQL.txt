@@ -71,3 +71,19 @@ CREATE TABLE `company` (
     `keyword` VARCHAR(32) NOT NULL,
      unique key email (email)
 );
+
+CREATE TABLE `etc_category` (
+    `id` INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(10) NOT NULL UNIQUE
+);
+
+CREATE TABLE etc(
+	id int(1) NOT NULL PRIMARY KEY KEY AUTO_INCREMENT,
+    user varchar(32) not null,
+	title varchar(64) not null,
+    content text not null,
+    date DATE not null,
+    category_num int(1) not null,
+    FOREIGN KEY (`category_num`) REFERENCES `etc_category`(`id`),
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
+);
