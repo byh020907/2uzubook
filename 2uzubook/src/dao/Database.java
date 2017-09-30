@@ -15,10 +15,11 @@ import user.Account;
 
 public class Database {
 
-	private Connection conn;
-	private static Database instance;
+	protected Connection conn;
+	protected PreparedStatement pstmt;
+	protected ResultSet rs;
 
-	private Database() {
+	protected Database() {
 		try {
 			String dbURL = "jdbc:mysql://localhost:3306/2uzubook";
 			String dbID = "root";
@@ -28,12 +29,6 @@ public class Database {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static Database getInstance() {
-		if (instance == null)
-			instance = new Database();
-		return instance;
 	}
 
 	public JSONArray executeAndGet(String sql, Object... objects) {
@@ -72,7 +67,7 @@ public class Database {
 		}
 	}
 
-	private static JSONArray filterData(ResultSet resultSet) throws SQLException {
+	private JSONArray filterData(ResultSet resultSet) throws SQLException {
 		JSONArray results = new JSONArray();
 
 		while (resultSet.next()) {
@@ -89,32 +84,32 @@ public class Database {
 		return results;
 	}
 
-	public int registerStudent(Account account) {
-		String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
-
-		try {
-			int num = executeAndUpdate(SQL, account.getStudent_id(), account.getId(), account.getPassword(),
-					account.getIntro(), account.getName(), account.getGender(), account.getMajor(), account.getEmail());
-			return num;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return -1;
-	}
-
-	public int registerCompany(String companyName,String companyEmail,int keyword_category) {
-    	String SQL = "insert into serial values(?,?,?)";
-    	
-    	try {		
-    		int num = executeAndUpdate(SQL, );
-    		return num;
-    	}catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
-    	return -1;
-    }
+//	public int registerStudent(Account account) {
+//		String SQL = "insert into account values(?,?,?,?,?,?,?,?)";
+//
+//		try {
+//			int num = executeAndUpdate(SQL, account.getStudent_id(), account.getId(), account.getPassword(),
+//					account.getIntro(), account.getName(), account.getGender(), account.getMajor(), account.getEmail());
+//			return num;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return -1;
+//	}
+//
+//	public int registerCompany(String companyName,String companyEmail,int keyword_category) {
+//    	String SQL = "insert into serial values(?,?,?)";
+//    	
+//    	try {		
+//    		int num = executeAndUpdate(SQL, );
+//    		return num;
+//    	}catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//    	
+//    	return -1;
+//    }
 
 
 	
@@ -169,10 +164,9 @@ public class Database {
 			return -1;
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return 0;
+		return -2;
 
 	}
 

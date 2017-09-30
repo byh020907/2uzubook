@@ -1,27 +1,19 @@
 package user;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAO {
+import dao.Database;
+import resume.ResumeDAO;
 
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
+public class UserDAO extends Database{
 
-	public UserDAO() {
-		try {
-			String dbURL = "jdbc:mysql://localhost:3306/2uzubook";
-			String dbID = "root";
-			String dbPW = "12341234";
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL, dbID, dbPW);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+	private static UserDAO instance;
+	
+	public static UserDAO getInstance(){
+		if(instance==null)
+			instance=new UserDAO();
+		return instance;
 	}
 
 	public int login(String id, String pw) {

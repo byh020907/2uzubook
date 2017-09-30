@@ -17,8 +17,8 @@ import user.UserDAO;
  * Servlet implementation class JoinAction
  */
 
-@WebServlet("/joinAction")
-public class JoinAction extends HttpServlet {
+@WebServlet("/joinAction/student")
+public class JoinAction_Student extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 

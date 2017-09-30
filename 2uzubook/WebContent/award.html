@@ -47,38 +47,60 @@
                         <hr class="first" />
                         <section>
                             <header>
-                                <h3>자격증 추가</h3> </header>
+                                <h3>수상 경력 추가</h3> </header>
                         </section>
                         <hr /> </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
-                                <h2>자격증을 추가해주세요 </h2>
+                                <h2>수상경력을 추가해주세요 </h2>
                                 <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                             </header>
-                            <h3 class="text-center mb-3">추가된 자격증</h3>
+                            <h3 class="text-center mb-3">추가된 수상경력</h3>
                             <br>
-                            <script></script>
-                            <div class="row" id="license_loc">
+                            <div class="row">
+                                <div class="4u 12u(mobile)">
+                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
+                                        <div class="5u">
+                                            <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
+                                        </div>
+                                        <div class="7u">
+                                            <h3 class="text-center">제 1회 동아리 sw 경진대회 </h3> 2017.03.06 </div>
+                                    </div>
+                                </div>
+                                <div class="4u 12u(mobile)">
+                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
+                                        <div class="5u">
+                                            <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
+                                        </div>
+                                        <div class="7u">
+                                            <h3 class="text-center">제 1회 동아리 sw 경진대회 </h3> 2017.03.06 </div>
+                                    </div>
+                                </div>
+                                <div class="4u 12u(mobile)">
+                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
+                                        <div class="5u">
+                                            <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
+                                        </div>
+                                        <div class="7u">
+                                            <h3 class="text-center">제 1회 동아리 sw 경진대회 </h3> 2017.03.06 </div>
+                                    </div>
+                                </div>
+                               
                                 <div class="10u form1">
-                                     <h3 class="text-center mb-3">자격증 추가</h3>
+                                     <h3 class="text-center mb-3">수상경력 추가</h3>
                                     <form action="" method="post">
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
-                                            <label class="control-label" for="License_name">자격증 이름</label>
-                                            <input id="License_name" name="License_name" placeholder="ex) 정보처리기능사" type="text" class="form-control" required> </div>
+                                            <label class="control-label" for="award_name">수상한 상</label>
+                                            <input name="award_name" placeholder="ex) 제1회 넥슨 코딩 대회 " type="text" class="form-control" required> </div>
                                          <div class="form-group">
-<<<<<<< HEAD
-                                            <label class="control-label" for="Startdate">자격증 취득 날짜</label>
-                                            <input id="Startdate" name="Startdate" placeholder="ex) 2017.05.06" type="text" class="form-control" required> </div>
-=======
-                                            <label class="control-label" for="startdate">자격증 취득 날짜</label>
-                                            <input name="license_startdate" placeholder="ex) 2017.05.06" type="text" class="form-control" required> </div>
->>>>>>> 36217aff7aaeb08cadea52ee60775961eb127a64
+                                            <label class="control-label" for="award_startdate">수상 날짜</label>
+                                            <input name="award_startdate" placeholder="ex) 2017.05.06" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button id="Submit" onclick="licen_add()" name="Submit" class="btn btn-primary">저장하기</button>
+                                                <button id="Submit" name="Submit" class="btn btn-primary">저장하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -124,46 +146,7 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
-	<script>
-	function licen_add()
-	{
-			var str=$("#License_name").val();
-			var str2=$("#Startdate").val();
-			var tag_div='<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">'
-			+'<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">'+
-			'<h3 class="text-center">'+str+ '</h3>'+ str2+'</div></div></div>';
-			$("#license_loc").prepend(tag_div);
-			$("#License_name").val('');
-			$("#Startdate").val('');
-	}
-	function licen_delete(obj)
-	{
-		$(obj).parent().parent().css('background-color','red');
-		var flag=0;
-		if(confirm('삭제 하시겠습니까?')){
-			flag=1;
-			li_del(obj,flag);
-			return;
-		}
-		else
-		{
-			li_del(obj,flag);
-			return;
-		}
-	}
-	function li_del(obj,flag)
-	{
-		if(flag==1)
-		{
-			$(obj).parent().parent().parent().remove();
-		}
-		else
-		{
-			$(obj).parent().parent().css('background-color', '');
-		}
-	}
-	
-	</script>
+
 </body>
 
 </html>

@@ -10,46 +10,19 @@ import java.sql.SQLException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class ResumeDAO {
+import dao.Database;
 
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
-
-	public ResumeDAO() {
-		try {
-			String dbURL = "jdbc:mysql://localhost:3306/2uzubook";
-			String dbID = "root";
-			String dbPW = "12341234";
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(dbURL, dbID, dbPW);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public int search(String query) {
-		String sql = "SELECT DISTINCT user FROM  WHERE id=?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				if (rs.getString(1).equals(pw)) {
-					return 1;
-				} else {
-					return 0;
-				}
-			}
-			return -1;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -2;
+public class ResumeDAO extends Database{
+	
+	private static ResumeDAO instance;
+	
+	public static ResumeDAO getInstance(){
+		if(instance==null)
+			instance=new ResumeDAO();
+		return instance;
 	}
 	
-	
-	//select �Ҷ�
+	//select 할때
 	public JSONArray executeAndGet(String sql, Object... objects) {
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -112,18 +85,47 @@ public class ResumeDAO {
 		
 		try {
 			results=executeAndGet(SQL);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return results;
 	}
-	
-	
+
+	public JSONArray select_resume(String id, int position) {
+
+		JSONArray jsonArray = new JSONArray();
+
+		switch (position) {
+		case 1:
+			// 자격증
+			String SQL_CERT = "select * from cert where user=?";
+			jsonArray = executeAndGet(SQL_CERT, id);
+			return jsonArray;
+		case 2:
+			// 수상경력
+			String SQL_AWARD = "select * from award where user=?";
+			jsonArray = executeAndGet(SQL_AWARD, id);
+			return jsonArray;
+		case 3:
+			// 동아리
+			String SQL_CLUB = "select * from club where user=?";
+			jsonArray = executeAndGet(SQL_CLUB, id);
+			return jsonArray;
+		case 4:
+			// 프로젝트
+			String SQL_PROJECT = "select * from project where user=?";
+			jsonArray = executeAndGet(SQL_PROJECT, id);
+			return jsonArray;
+		default:
+			return jsonArray;
+		}
+	}
+
 	public int insert_cert(Cert cert) {
 		String SQL="insert into cert (user,name,ins,date,keyword) values (?,?,?,?,?)";
 		
 		try {
-			return executeAndUpdate(SQL, cert.getId(),cert.getName(),cert.getIns(),cert.getDate()
+			return executeAndUpdate(SQL, cert.getUser(),cert.getName(),cert.getIns(),cert.getDate()
 					,cert.getKeyword());
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -136,13 +138,77 @@ public class ResumeDAO {
 		String SQL="insert into award (user,name,ins,date,keyword) values (?,?,?,?,?)";
 				
 		try {
-			return executeAndUpdate(SQL, award.getId(),award.getName(),award.getIns(),award.getDate()
+			return executeAndUpdate(SQL, award.getUser(),award.getName(),award.getIns(),award.getDate()
 					,award.getKeyword());
+			// 성공이면 0 이상
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
 		
 		return -1;
 	}
+	
+	
+	//모든 컬럼을 다입력하는 클럽
+	public int insert_club(Club club) {
+		String SQL="insert into club (user,name,`desc`,startdate,enddate,keyword) values (?,?,?,?,?,?)";
+		
+		
+	try {
+		return executeAndUpdate(SQL, club.getUser(),club.getName(),club.getDesc(),club.getStartDate()
+				,club.getEndDate(),club.getKeyword());
+		// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+
+	// 끝나는 시간 입력안하는 함수
+	public int insert_club_remove_enddate(Club club) {
+		String SQL = "insert into club (user,name,`desc`,startdate,keyword) values (?,?,?,?,?)";
+
+		try {
+			return executeAndUpdate(SQL, club.getUser(), club.getName(), club.getDesc(), club.getStartDate(),
+					club.getKeyword());
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+
+	// 모든 컬럼을 다입력하는 클럽
+	public int insert_project(Project project) {
+		String SQL = "insert into project (user,name,`desc`,startdate,enddate,keyword) values (?,?,?,?,?,?)";
+
+		try {
+			return executeAndUpdate(SQL, project.getUser(), project.getName(), project.getDesc(),
+					project.getStartDate(), project.getEndDate(), project.getKeyword());
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+
+	// 끝나는 시간 입력안하는 함수
+	public int insert_project_remove_enddate(Project project) {
+		String SQL = "insert into project (user,name,`desc`,startdate,keyword) values (?,?,?,?,?)";
+
+		try {
+			return executeAndUpdate(SQL, project.getUser(), project.getName(), project.getDesc(), project.getStartDate(),
+					project.getKeyword());
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+			
 	
 }
