@@ -151,8 +151,8 @@ public class ResumeDAO {
 		
 		
 	try {
-		return executeAndUpdate(SQL, award.getId(),award.getName(),award.getIns(),award.getDate()
-				,award.getKeyword());
+		return executeAndUpdate(SQL, club.getUser(),club.getName(),club.getDesc(),club.getStartDate()
+				,club.getEndDate(),club.getKeyword());
 		// 성공이면 0 이상
 	}catch (Exception e) {
 		// TODO: handle exception
