@@ -1,10 +1,10 @@
 package resume;
 
 public class Award {
-	private int id; // µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ ÀÚµ¿À¸·Î Áõ°¡ÇÏ´Â ¼ıÀÚ 
-	private String user; // »ç¿ëÀÚ ¾ÆÀÌµğ
-	private String name; // »ó ÀÌ¸§
-	private String ins; //ÁÖÃÖÃø Á¤º¸
+	private int id; // db ì—ì„œ êµ¬ë³„í•˜ëŠ” ë²ˆí˜¸ì„
+	private String user; // user id 
+	private String name; // title
+	private String ins; // ì£¼ìµœì¸¡ ì •ë³´
 	private String date;
 	private int keyword;
 	
