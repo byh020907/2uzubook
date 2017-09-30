@@ -27,27 +27,6 @@ public class ResumeDAO {
 			e.printStackTrace();
 		}
 	}
-
-	public int search(String query) {
-		String sql = "SELECT DISTINCT user FROM  WHERE id=?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				if (rs.getString(1).equals(pw)) {
-					return 1;
-				} else {
-					return 0;
-				}
-			}
-			return -1;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return -2;
-	}
-	
 	
 	//select 할때
 	public JSONArray executeAndGet(String sql, Object... objects) {
@@ -112,13 +91,42 @@ public class ResumeDAO {
 		
 		try {
 			results=executeAndGet(SQL);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return results;
 	}
-	
-	
+
+	public JSONArray select_resume(String id, int position) {
+
+		JSONArray jsonArray = new JSONArray();
+
+		switch (position) {
+		case 1:
+			// 자격증
+			String SQL_CERT = "select * from cert where user=?";
+			jsonArray = executeAndGet(SQL_CERT, id);
+			return jsonArray;
+		case 2:
+			// 수상경력
+			String SQL_AWARD = "select * from award where user=?";
+			jsonArray = executeAndGet(SQL_AWARD, id);
+			return jsonArray;
+		case 3:
+			// 동아리
+			String SQL_CLUB = "select * from club where user=?";
+			jsonArray = executeAndGet(SQL_CLUB, id);
+			return jsonArray;
+		case 4:
+			// 프로젝트
+			String SQL_PROJECT = "select * from project where user=?";
+			jsonArray = executeAndGet(SQL_PROJECT, id);
+			return jsonArray;
+		default:
+			return jsonArray;
+		}
+	}
+
 	public int insert_cert(Cert cert) {
 		String SQL="insert into cert (user,name,ins,date,keyword) values (?,?,?,?,?)";
 		
