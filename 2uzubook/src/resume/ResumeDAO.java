@@ -139,25 +139,23 @@ public class ResumeDAO extends Database{
 				
 		try {
 			return executeAndUpdate(SQL, award.getUser(),award.getName(),award.getIns(),award.getDate()
-					,award.getKeyword());
+					, award.getKeyword());
 			// 성공이면 0 이상
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return -1;
 	}
-	
-	
-	//모든 컬럼을 다입력하는 클럽
+
+	// 모든 컬럼을 다입력하는 클럽
 	public int insert_club(Club club) {
-		String SQL="insert into club (user,name,`desc`,startdate,enddate,keyword) values (?,?,?,?,?,?)";
-		
-		
-	try {
-		return executeAndUpdate(SQL, club.getUser(),club.getName(),club.getDesc(),club.getStartDate()
-				,club.getEndDate(),club.getKeyword());
-		// 성공이면 0 이상
+		String SQL = "insert into club (user,name,`desc`,startdate,enddate,keyword) values (?,?,?,?,?,?)";
+
+		try {
+			return executeAndUpdate(SQL, club.getUser(), club.getName(), club.getDesc(), club.getStartDate(),
+					club.getEndDate(), club.getKeyword());
+			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -200,8 +198,8 @@ public class ResumeDAO extends Database{
 		String SQL = "insert into project (user,name,`desc`,startdate,keyword) values (?,?,?,?,?)";
 
 		try {
-			return executeAndUpdate(SQL, project.getUser(), project.getName(), project.getDesc(), project.getStartDate(),
-					project.getKeyword());
+			return executeAndUpdate(SQL, project.getUser(), project.getName(), project.getDesc(),
+					project.getStartDate(), project.getKeyword());
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -209,6 +207,54 @@ public class ResumeDAO extends Database{
 
 		return -1;
 	}
-			
+
+	public int update_cert(String name, String ins, String date, int keyword) {
+		String SQL = "update cert set name=?,ins=?,date=?,keyword=?";
+
+		try {
+			return executeAndUpdate(SQL, name, ins, date, keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+
+	public int update_awawrd(String name, String ins, String date, int keyword) {
+		String SQL = "update awawrd set name=?,ins=?,date=?,keyword=?";
+
+		try {
+			return executeAndUpdate(SQL, name, ins, date, keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+
+	public int update_club(String name, String desc, String startDate, String endDate, int keyword) {
+		String SQL = "update club set name=?,`desc`=?,startdate=?,endDate=?, keyword=?";
+		try {
+			return executeAndUpdate(SQL, name, desc, startDate, endDate, keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+
+	public int update_project(String name, String desc, String startDate, String endDate, int keyword) {
+		String SQL = "update project set name=?,`desc`=?,startdate=?,endDate=?, keyword=?";
+		try {
+			return executeAndUpdate(SQL, name, desc, startDate, endDate, keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
 	
 }

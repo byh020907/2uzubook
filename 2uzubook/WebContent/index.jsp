@@ -44,7 +44,7 @@
 					</li>
 					<li><a href="#">For Student</a>
 						<ul>
-							<li><a href="myresume.jsp">내 레주메 보기</a></li>
+							<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>
 							<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
 						</ul></li>
 					<li><a href="#">For Company</a>
@@ -303,6 +303,11 @@
 				dataType : 'json'
 			})
 		});
+		function go(){
+			var frm=document.getElementById('frm1');
+			console.log('hel');
+			frm.submit();
+		}
 	</script>
 </body>
 
