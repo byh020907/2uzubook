@@ -56,7 +56,7 @@ public class SearchAction extends HttpServlet {
 		arr.add(data4);
 
 		request.setAttribute("JSONArray", arr);
-		request.getRequestDispatcher("/JSP/search_result.jsp").forward(request, response);
+		request.getRequestDispatcher("/search_result.jsp").forward(request, response);
 	}
 
 }

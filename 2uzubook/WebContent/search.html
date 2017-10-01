@@ -126,21 +126,20 @@
 	<script src="js/main.js"></script>
 	<script>
 	var str;
-	$(.target).change(function(){
-		str=document.getElementById('search_box').val().toLowerCase();
-		$ajax({
-			url : '/2uzubook/SearchAction',
+	$("#search_box").change(function(){
+		str=$('#search_box').val().toLowerCase();
+		$.ajax({
+			url : '/2uzubook/search_test',
 				type : 'post',
 				data: str,
 				success : function(data) {
-					for (var i = 0; i < data.length; i++) {
-						console.log(data[i].name);
-						a(data);
+					for (var i = 0; i < data.length(); i++) {
+						console.log(data[i].text);
 					}
 				},
 				dataType : 'json'
-		})
-	})
+		});
+	});
 	</script>
 </body>
 
