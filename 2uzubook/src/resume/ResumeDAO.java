@@ -208,6 +208,21 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 
+	//토익같은 시험 
+	public int insert_test(Test test) {
+		String SQL = "insert into test (user,name,score,keyword) values (?,?,?,?)";
+
+		try {
+			return executeAndUpdate(SQL,test.getUser(),test.getName(),test.getScore(),test.getKeyword());
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return -1;
+	}
+	
+	
 	public int update_cert(String name, String ins, String date, int keyword) {
 		String SQL = "update cert set name=?,ins=?,date=?,keyword=?";
 
@@ -257,4 +272,35 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 	
+	public int update_test(String name,int score,int keyword) {
+		String SQL = "update test set name=?, score=? , keyword=?";
+		try {
+			return executeAndUpdate(SQL, name, score, keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
+	public JSONArray search(int keyword) {
+		String SQL="SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"+
+				"LEFT JOIN award ON user.id=award.user"+
+				"LEFT JOIN cert ON user.id=cert.user"+
+				"LEFT JOIN project ON user.id=project.user"+
+				"LEFT JOIN club ON user.id=club.user"+
+				"LEFT JOIN major ON user.major=major.id"+
+				"WHERE (award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
+		JSONArray jsonArray=new JSONArray();
+		try {
+			jsonArray=executeAndGet(SQL,keyword,keyword,keyword,keyword);
+			return jsonArray;
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
+		
+	}
 }

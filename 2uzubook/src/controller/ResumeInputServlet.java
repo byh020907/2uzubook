@@ -45,7 +45,7 @@ public class ResumeInputServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 
 		if(session.getAttribute("id")==null){
-			response.sendRedirect("/2uzubook/JSP/login.jsp");
+			response.sendRedirect("/2uzubook/login.html");
 			return;
 		}
 		
@@ -62,7 +62,7 @@ public class ResumeInputServlet extends HttpServlet {
 				String two=request.getParameter("two");
 				String three=request.getParameter("three");
 				
-				database.i
+				database.in
 				
 				System.out.println(own+two+three);
 			}break;
