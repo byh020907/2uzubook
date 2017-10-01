@@ -16,8 +16,8 @@ import user.UserDAO;
  * Servlet implementation class LoginAction
  */
 
-@WebServlet("/loginAction")
-public class LoginAction extends HttpServlet {
+@WebServlet("/loginAction/student")
+public class LoginAction_Student extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class LoginAction extends HttpServlet {
 		if (result == 1) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("../index.jsp");
 			System.out.println(session.getAttribute("id"));
 			return;
 		} else if (result == 0) {

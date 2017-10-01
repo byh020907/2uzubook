@@ -1,15 +1,19 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import resume.ResumeDAO;
 
 /**
  * Servlet implementation class myresume
@@ -17,59 +21,27 @@ import org.json.simple.JSONObject;
 @WebServlet("/myresume")
 public class myresume extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	ResumeDAO database;
     public myresume() {
-        super();
-        // TODO Auto-generated constructor stub
+    	database=ResumeDAO.getInstance();
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Util.setCharset(request, response, "utf-8");
-		String str;
 		
-		JSONArray licenses=new JSONArray();
-		JSONArray awds=new JSONArray();
-		JSONArray contests=new JSONArray();
-		JSONArray projects=new JSONArray();
+		HttpSession session=request.getSession();
+		
+		String userID=(String) session.getAttribute("id");
+		if(session.getAttribute("id")==null){
+			response.sendRedirect("/2uzubook/login.html");
+			return;
+		}
+		
+		JSONArray licenses=database.select_resume(userID, 1);
+		JSONArray awds=database.select_resume(userID, 2);
+		JSONArray contests=database.select_resume(userID, 3);
+		JSONArray projects=database.select_resume(userID, 4);
 
 		JSONObject basic_obj=new JSONObject();
-		
-		for(int i=0;i<5;i++)
-		{
-			JSONObject licen=new JSONObject();
-			str = Integer.toString(i);
-			licen.put("licenseName", "전기기능사"+str);
-			licen.put("licenseDate", "2017.5.1");
-			licenses.add(licen);
-		}
-		for(int i=0;i<3;i++)
-		{
-			JSONObject awd=new JSONObject();
-			str = Integer.toString(i);
-			awd.put("awardName", "stack"+str);
-			awd.put("award", "대상");
-			awd.put("awardDate", "2017.5.1");
-			awds.add(awd);
-		}
-		for(int i=0;i<4;i++)
-		{
-			JSONObject contest=new JSONObject();
-			str = Integer.toString(i);
-			contest.put("contestName", "하늘나라"+str);
-			contest.put("contestDate", "2017.5.22");
-			contests.add(contest);
-		}
-		for(int i=0;i<3;i++)
-		{
-			JSONObject project=new JSONObject();
-			str = Integer.toString(i);
-			project.put("projectName", "stack"+str);
-			project.put("projectStartDate", "2017.1.1");
-			project.put("projectfinishDate", "2017.5.1");
-			projects.add(project);
-		}
-		
-		
-		
 		
 		basic_obj.put("name", "김소연");
 		basic_obj.put("major", "소프트웨어 개발과");
