@@ -70,6 +70,9 @@
 												method="post" style="margin-top: 20px;">
 												<input id="search_box" class="form-control mb-2" type="text"
 													placeholder="ex) 남자, 게임, c++" name="q">
+												<datalist id="data_list">
+													
+												</datalist>
 											</form>
 										</div>
 										<div class="4u">
@@ -126,6 +129,7 @@
 	<script src="js/main.js"></script>
 	<script>
 	var str;
+	var tag;
 	$("#search_box").change(function(){
 		str=$('#search_box').val().toLowerCase();
 		$.ajax({
@@ -135,6 +139,8 @@
 				success : function(data) {
 					for (var i = 0; i < data.length(); i++) {
 						console.log(data[i].text);
+						tag='<option>'+data[i].text+'</option>';
+						$('#data_list').append(tag);
 					}
 				},
 				dataType : 'json'

@@ -28,7 +28,7 @@ public class search_test extends HttpServlet {
 		JSONParser parser =new JSONParser();
 		Object obj = null;
 		try {
-			obj = parser.parse(new FileReader("/2uzubook/search.json"));
+			obj = parser.parse(new FileReader("\\2uzubook\\WebContent\\search.json"));
 		} catch (ParseException e) {
 			System.out.println("errorsss\n");
 			e.printStackTrace();
