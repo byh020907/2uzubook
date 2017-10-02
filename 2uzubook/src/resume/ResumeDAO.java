@@ -315,14 +315,13 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					if (rs.getString(1).equals(name)) {
-						return 1; // 1이면 중복
-					} else {
-						return 0; // 0이면 다름
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return 0; // 0이면 중복
 					}
 				}
-				return -1; // 조회할 컬렴이 없음
+				return 1; // 1이면 중복아님
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -333,72 +332,64 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_CERT);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					if (rs.getString(1).equals(name)) {
-						return 1; // 1이면 중복
-					} else {
-						return 0; // 0이면 다름
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return 0; // 0이면 중복
 					}
 				}
-				return -1; // 조회할 컬렴이 없음
+				return 1; // 1이면 중복아님
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return -2; // 데이터베이스 오류
 		case 3:
 			String SQL_CLUB = "select name from award where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_CLUB);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					if (rs.getString(1).equals(name)) {
-						return 1; // 1이면 중복
-					} else {
-						return 0; // 0이면 다름
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return 0; // 0이면 중복
 					}
 				}
-				return -1; // 조회할 컬렴이 없음
+				return 1; // 1이면 중복아님
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return -2; // 데이터베이스 오류
 		case 4:
 			String SQL_PROJECT = "select name from award where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_PROJECT);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					if (rs.getString(1).equals(name)) {
-						return 1; // 1이면 중복
-					} else {
-						return 0; // 0이면 다름
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return 0; // 0이면 중복
 					}
 				}
-				return -1; // 조회할 컬렴이 없음
+				return 1; // 1이면 중복아님
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return -2; // 데이터베이스 오류
 		case 5:
 			String SQL_TEST = "select name from award where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_TEST);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					if (rs.getString(1).equals(name)) {
-						return 1; // 1이면 중복
-					} else {
-						return 0; // 0이면 다름
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return 0; // 0이면 중복
 					}
 				}
-				return -1; // 조회할 컬렴이 없음
+				return 1; // 1이면 중복아님
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return -2; // 데이터베이스 오류
 		default:
 			return -1; // 조회할 컬럼이 없음
 		}
