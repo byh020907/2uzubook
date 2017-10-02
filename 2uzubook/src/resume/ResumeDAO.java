@@ -303,4 +303,30 @@ public class ResumeDAO extends Database{
 		return jsonArray;
 		
 	}
+	
+	//중복체크
+	public int duplicate_check(String user, String name, int position) {
+
+		// 1.award 2.cert 3.club 4.project 5.test
+
+		switch (position) {
+		case 1:
+			String SQL_AWARD = "select name from award where user=?";
+			break;
+		case 2:
+			String SQL_CERT = "select name from award where user=?";
+			break;
+		case 3:
+			String SQL_CLUB = "select name from award where user=?";
+
+		case 4:
+			String SQL_PROJECT = "select name from award where user=?";
+
+		case 5:
+			String SQL_TEST = "select name from award where user=?";
+
+		default:
+			break;
+		}
+	}
 }

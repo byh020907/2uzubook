@@ -15,6 +15,7 @@ public class UserDAO extends Database{
 			instance=new UserDAO();
 		return instance;
 	}
+	
 
 	public int login(String id, String pw) {
 		String sql = "SELECT password FROM user WHERE id=?";
