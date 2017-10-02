@@ -78,6 +78,17 @@ public class ResumeDAO extends Database{
 		return results;
 	}
 	
+	public JSONArray select_keyword() {
+		String SQL="select * from keyword"; 
+		JSONArray results=new JSONArray();
+		try {
+			results=executeAndGet(SQL);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return results;
+	}
+	
 	public JSONArray select_major() {
 		
 		String SQL="select * from major";
