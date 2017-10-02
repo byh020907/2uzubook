@@ -46,7 +46,7 @@ public class EtcDAO extends Database {
 	}
 	
 	public int update_volunteer(String name,String ins,String startTime,String endTime,int keyword) {
-	String SQL="update volunteer set name=?,ins=?,startTime=?,endTime=?,keyword=?";
+	String SQL="update volunteer set name=?,ins=?,starttime=?,endTime=?,keyword=?";
 		
 		try {
 			return executeAndUpdate(SQL,name,ins,startTime,endTime,keyword);
