@@ -271,8 +271,8 @@ public class ResumeDAO extends Database{
 		}
 		return -1;
 	}
-	
-	public int update_test(String name,int score,int keyword) {
+
+	public int update_test(String name, int score, int keyword) {
 		String SQL = "update test set name=?, score=? , keyword=?";
 		try {
 			return executeAndUpdate(SQL, name, score, keyword);
@@ -282,29 +282,27 @@ public class ResumeDAO extends Database{
 		}
 		return -1;
 	}
-	
+
 	public JSONArray search(int keyword) {
-		String SQL="SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"+
-				"LEFT JOIN award ON user.id=award.user"+
-				"LEFT JOIN cert ON user.id=cert.user"+
-				"LEFT JOIN project ON user.id=project.user"+
-				"LEFT JOIN club ON user.id=club.user"+
-				"LEFT JOIN major ON user.major=major.id"+
-				"WHERE (award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
-		JSONArray jsonArray=new JSONArray();
+		String SQL = "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
+				+ "LEFT JOIN award ON user.id=award.user" + "LEFT JOIN cert ON user.id=cert.user"
+				+ "LEFT JOIN project ON user.id=project.user" + "LEFT JOIN club ON user.id=club.user"
+				+ "LEFT JOIN major ON user.major=major.id"
+				+ "WHERE (award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
+		JSONArray jsonArray = new JSONArray();
 		try {
-			jsonArray=executeAndGet(SQL,keyword,keyword,keyword,keyword);
+			jsonArray = executeAndGet(SQL, keyword, keyword, keyword, keyword);
 			return jsonArray;
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return jsonArray;
-		
+
 	}
-	
-	//중복체크
+
+	// 중복체크
 	public int duplicate_check(String user, String name, int position) {
 
 		// 1.award 2.cert 3.club 4.project 5.test
@@ -312,21 +310,97 @@ public class ResumeDAO extends Database{
 		switch (position) {
 		case 1:
 			String SQL_AWARD = "select name from award where user=?";
-			break;
+
+			try {
+				pstmt = conn.prepareStatement(SQL_AWARD);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					if (rs.getString(1).equals(name)) {
+						return 1; // 1이면 중복
+					} else {
+						return 0; // 0이면 다름
+					}
+				}
+				return -1; // 조회할 컬렴이 없음
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return -2; // 데이터베이스 오류
 		case 2:
 			String SQL_CERT = "select name from award where user=?";
-			break;
+			try {
+				pstmt = conn.prepareStatement(SQL_CERT);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					if (rs.getString(1).equals(name)) {
+						return 1; // 1이면 중복
+					} else {
+						return 0; // 0이면 다름
+					}
+				}
+				return -1; // 조회할 컬렴이 없음
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return -2; // 데이터베이스 오류
 		case 3:
 			String SQL_CLUB = "select name from award where user=?";
-
+			try {
+				pstmt = conn.prepareStatement(SQL_CLUB);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					if (rs.getString(1).equals(name)) {
+						return 1; // 1이면 중복
+					} else {
+						return 0; // 0이면 다름
+					}
+				}
+				return -1; // 조회할 컬렴이 없음
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return -2; // 데이터베이스 오류
 		case 4:
 			String SQL_PROJECT = "select name from award where user=?";
-
+			try {
+				pstmt = conn.prepareStatement(SQL_PROJECT);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					if (rs.getString(1).equals(name)) {
+						return 1; // 1이면 중복
+					} else {
+						return 0; // 0이면 다름
+					}
+				}
+				return -1; // 조회할 컬렴이 없음
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return -2; // 데이터베이스 오류
 		case 5:
 			String SQL_TEST = "select name from award where user=?";
-
+			try {
+				pstmt = conn.prepareStatement(SQL_TEST);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					if (rs.getString(1).equals(name)) {
+						return 1; // 1이면 중복
+					} else {
+						return 0; // 0이면 다름
+					}
+				}
+				return -1; // 조회할 컬렴이 없음
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return -2; // 데이터베이스 오류
 		default:
-			break;
+			return -1; // 조회할 컬럼이 없음
 		}
 	}
 }
