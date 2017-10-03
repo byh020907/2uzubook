@@ -68,7 +68,7 @@
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
 												method="post" style="margin-top: 20px;">
-												<input id="search_box" class="form-control mb-2" type="text"
+												<input id="search_box" list="data_list" class="form-control mb-2" type="text"
 													placeholder="ex) 남자, 게임, c++" name="q">
 												<datalist id="data_list">
 													
@@ -131,15 +131,16 @@
 	var str;
 	var tag;
 	$("#search_box").change(function(){
+		$('#data_list').empty();
 		str=$('#search_box').val().toLowerCase();
 		$.ajax({
 			url : '/2uzubook/search_test',
 				type : 'post',
 				data: str,
 				success : function(data) {
-					for (var i = 0; i < data.length(); i++) {
+					for (var i = 0; i < data.length; i++) {
 						console.log(data[i].text);
-						tag='<option>'+data[i].text+'</option>';
+						tag='<option value="'+data[i].text+'"></option>';
 						$('#data_list').append(tag);
 					}
 				},

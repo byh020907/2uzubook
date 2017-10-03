@@ -61,21 +61,26 @@
                             <script></script>
                             <div class="row" id="license_loc">
                                 <div class="10u form1">
-                                     <h3 class="text-center mb-3">자격증 추가</h3>
+                                    <h3 class="text-center mb-3">자격증 추가</h3>
                                     <form action="" method="post">
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
                                             <label class="control-label" for="License_name">자격증 이름</label>
                                             <input id="License_name" name="License_name" placeholder="ex) 정보처리기능사" type="text" class="form-control" required> </div>
-                                         <div class="form-group">
-                                            <label class="control-label" for="Startdate">자격증 취득 날짜</label>
-                                            <input id="Startdate" name="Startdate" placeholder="ex) 2017.05.06" type="text" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="License_cert">인증 기관</label>
+                                            <input id="License_cert" name="License_cert" placeholder="ex) 한국산업인력공단" type="text" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="date">자격증 취득 날짜</label>
+                                            <input id="date" name="license_date" type="date" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="License_keyword">키워드</label>
+                                            <input name="License_keyword" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
                                                 <button onclick="licen_add();" class="btn btn-primary">추가하기</button>
                                                 <button id="Submit" onclick="licen_save();" name="Submit" class="btn btn-primary">저장하기</button>
-                                                
                                             </div>
                                         </div>
                                     </form>
@@ -121,58 +126,49 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
-	<script>
-	var form_array;
-	function licen_add()
-	{
-			var str=$("#License_name").val();
-			var str2=$("#Startdate").val();
-			form_array=form_array+ "\'"+ str+"\'"+" \: "+str2+"\,";
-			var tag_div='<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">'
-			+'<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">'+
-			'<h3 class="text-center" id="">'+str+'</h3>'+str2+'</div></div></div>';
-			$("#license_loc").prepend(tag_div);
-			$("#License_name").val('');
-			$("#Startdate").val('');
-	}
-	function licen_delete(obj)
-	{
-		$(obj).parent().parent().parent().css('background-color','red');
-		var flag=0;
-		if(confirm('삭제 하시겠습니까?')){
-			flag=1;
-			li_del(obj,flag);
-			return;
-		}
-		else
-		{
-			li_del(obj,flag);
-			return;
-		}
-	}
-	function li_del(obj,flag)
-	{
-		if(flag==1)
-		{
-			$(obj).parent().parent().parent().remove();
-		}
-		else
-		{
-			$(obj).parent().parent().parent().css('background-color', '');
-		}
-	}
-	function licen_save()
-	{
-		
-		
-	}
-	function licen_edit(obj)
-	{
-		var Str=$(obj).parent().parent().text();
-		console.log(Str);
-	}
+    <script>
+        var form_array;
 
-	</script>
+        function licen_add() {
+            var str = $("#License_name").val();
+            var str2 = $("#Startdate").val();
+            form_array = form_array + "\'" + str + "\'" + " \: " + str2 + "\,";
+            var tag_div = '<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="">' + str + '</h3>' + str2 + '</div></div></div>';
+            $("#license_loc").prepend(tag_div);
+            $("#License_name").val('');
+            $("#Startdate").val('');
+        }
+
+        function licen_delete(obj) {
+            $(obj).parent().parent().parent().css('background-color', 'red');
+            var flag = 0;
+            if (confirm('삭제 하시겠습니까?')) {
+                flag = 1;
+                li_del(obj, flag);
+                return;
+            }
+            else {
+                li_del(obj, flag);
+                return;
+            }
+        }
+
+        function li_del(obj, flag) {
+            if (flag == 1) {
+                $(obj).parent().parent().parent().remove();
+            }
+            else {
+                $(obj).parent().parent().parent().css('background-color', '');
+            }
+        }
+
+        function licen_save() {}
+
+        function licen_edit(obj) {
+            var Str = $(obj).parent().parent().text();
+            console.log(Str);
+        }
+    </script>
 </body>
 
 </html>
