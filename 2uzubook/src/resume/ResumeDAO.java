@@ -78,6 +78,17 @@ public class ResumeDAO extends Database{
 		return results;
 	}
 	
+	public JSONArray select_keyword() {
+		String SQL="select * from keyword"; 
+		JSONArray results=new JSONArray();
+		try {
+			results=executeAndGet(SQL);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return results;
+	}
+	
 	public JSONArray select_major() {
 		
 		String SQL="select * from major";
@@ -282,7 +293,24 @@ public class ResumeDAO extends Database{
 		}
 		return -1;
 	}
+	
+	public JSONArray search_keyword(String name) {
+		String SQL="select * from keyword where name like %?%";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+			
+			jsonArray=executeAndGet(SQL, name);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
 
+	}
+
+	//단일 값 일때
 	public JSONArray search(int keyword) {
 		String SQL = "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
 				+ "LEFT JOIN award ON user.id=award.user" + "LEFT JOIN cert ON user.id=cert.user"
