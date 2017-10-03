@@ -2368,7 +2368,14 @@ body.homepage.is-loading #header:after {
 .carousel article p {
 	text-align: center;
 }
-
+#date{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 0.5em;
+    background: #fafafa;
+    border: solid 1px #E5E5E5;
+    padding: 0.7em;
+}
 /* Wide */
 @media screen and (max-width: 1680px) {
 	/* Basic */
