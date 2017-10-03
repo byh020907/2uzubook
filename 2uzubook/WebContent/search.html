@@ -128,19 +128,21 @@
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
 	<script>
-	var str;
+	var temp=new Object();
 	var tag;
+	var str;
 	$("#search_box").change(function(){
 		$('#data_list').empty();
-		str=$('#search_box').val().toLowerCase();
+		temp.data=$('#search_box').val().toLowerCase();
+		str=JSON.stringify(temp);
 		$.ajax({
 			url : '/2uzubook/search_test',
 				type : 'post',
 				data: str,
 				success : function(data) {
 					for (var i = 0; i < data.length; i++) {
-						console.log(data[i].text);
-						tag='<option value="'+data[i].text+'"></option>';
+						console.log(data[i].name);
+						tag='<option value="'+data[i].name+'"></option>';
 						$('#data_list').append(tag);
 					}
 				},

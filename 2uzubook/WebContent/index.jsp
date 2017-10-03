@@ -301,7 +301,7 @@
 					}
 				},
 				dataType : 'json'
-			})
+			});
 		});
 		function go(){
 			var frm=document.getElementById('frm1');

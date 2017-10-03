@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import resume.ResumeDAO;
 
@@ -23,17 +24,17 @@ public class search_test extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String str = request.getParameter("str");
-		
-		JSONArray jsonArray=database.search_keyword(str); //실제 db에서 긁어오는 것.
-//		JSONArray jsonArray=new JSONArray(); //test 용
-//		JSONObject data1=new JSONObject();
-//		for(int i=0;i<3;i++)
-//		{
-//			data1.put("id",i);
-//			data1.put("text", "hello"+i);
-//			jsonArray.add(data1);
-//		}
+		//Object obj=JSONValue.parse(request.getParameter("str"));
+		//JSONObject jobj=(JSONObject)obj;
+		//JSONArray jsonArray=database.search_keyword((String)jobj.get("data")); //실제 db에서 긁어오는 것.
+		JSONArray jsonArray=new JSONArray(); //test 용
+		for(int i=0;i<3;i++)
+		{
+			JSONObject data1=new JSONObject();
+			data1.put("id",i);
+			data1.put("name", "hello"+i);
+			jsonArray.add(data1);
+		}
 		PrintWriter out=response.getWriter();
 		out.write(jsonArray.toString());
 		out.flush();

@@ -38,9 +38,9 @@ public class myresume extends HttpServlet {
 		
 		JSONArray licenses=database.select_resume(userID, 1);
 		JSONArray awds=database.select_resume(userID, 2);
-		JSONArray contests=database.select_resume(userID, 3);
+		JSONArray clubs=database.select_resume(userID, 3);
 		JSONArray projects=database.select_resume(userID, 4);
-
+		
 		JSONObject basic_obj=new JSONObject();
 		
 		basic_obj.put("name", "김소연");
@@ -50,7 +50,7 @@ public class myresume extends HttpServlet {
 		basic_obj.put("email", "qazxc5735@gmail.com");
 		basic_obj.put("licenses", licenses);
 		basic_obj.put("awards",awds);
-		basic_obj.put("contests", contests);
+		basic_obj.put("clubs", clubs);
 		basic_obj.put("projects", projects);
 		
 		request.setAttribute("JSONObject", basic_obj);

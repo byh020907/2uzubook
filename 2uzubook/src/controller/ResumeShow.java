@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,36 +13,28 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-import resume.Cert;
 import resume.ResumeDAO;
 
-@WebServlet("/ResumeAdd")
-public class ResumeAdd extends HttpServlet {
+@WebServlet("/ResumeShow")
+public class ResumeShow extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ResumeDAO database;
-	public ResumeAdd() {
-		database=new ResumeDAO();
+   ResumeDAO database;
+    public ResumeShow() {
+    	database=new ResumeDAO();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String userID=(String) session.getAttribute("id");
-		int part=Integer.parseInt(request.getParameter("part"));
+		
 		Object obj=JSONValue.parse(request.getParameter("str"));
 		JSONObject jobj=(JSONObject)obj;
-		
-		JSONArray jsonArray = null;
-		switch(part)
+		switch((Integer)jobj.get("data"))
 		{
 		case 1:
-			Cert cert=new Cert(userID,(String)jobj.get("name"),(String)jobj.get("ins"),(String)jobj.get("date"),(Integer)jobj.get("keyword"));
-			database.insert_cert(cert);
-			jsonArray=database.select_resume(userID, part);
+			JSONArray jsonArray=database.select_resume(userID, 1);
 			break;
 		}
-		PrintWriter out=response.getWriter();
-		out.write(jsonArray.toString());
-		out.flush();
 	}
 
 }

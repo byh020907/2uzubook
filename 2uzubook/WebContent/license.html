@@ -70,7 +70,7 @@
                                         <div class="form-group">
 													<label class="control-label" for="license_ins">인증기관</label>
 													<div class="col-md-4">
-														<select name="license_ins" class="form-control">
+														<select id="ins" name="license_ins" class="form-control">
 															<option value="">대한상공회의소</option>
 															<option value="">영화진흥위원회</option>
 															<option value="">한국광해관리공단</option>
@@ -88,7 +88,7 @@
                                         <div class="form-group">
                                             <label class="control-label" for="License_keyword">키워드</label>
                                             	<div class="col-md-4">
-														<select name="license_keyword" class="form-control">
+														<select id="keyword" name="license_keyword" class="form-control">
 															<option value="">123</option>
 															<option value="">123</option>
 														</select>
@@ -144,18 +144,39 @@
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-        var form_array;
-
         function licen_add() {
-            var str = $("#License_name").val();
-            var str2 = $("#Startdate").val();
-            form_array = form_array + "\'" + str + "\'" + " \: " + str2 + "\,";
-            var tag_div = '<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="">' + str + '</h3>' + str2 + '</div></div></div>';
-            $("#license_loc").prepend(tag_div);
+        	var temp=new Object();
+        	var name = $("#License_name").val();
+            var ins = $("#ins option:selected").val();
+            var date = $("date").val();
+            var	keyword=$("keyword").val();
+        	temp.part=1;
+        	temp.name=name;
+        	temp.ins=ins;
+        	temp.date=date;
+        	temp.keyword=keyword;
+        	var str=JSON.stringify(temp);
+        	
+        	var tag_div = '<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="">' + name+ '</h3>' + date + '</div></div></div>';
+            
+        	$("#license_loc").prepend(tag_div);
             $("#License_name").val('');
             $("#Startdate").val('');
+            
+          	$.ajax({
+				url : '/2uzubook/ResumeAdd',
+				type : 'post',
+				data : str,
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						console.log(data[i].name);
+					}
+				},
+				dataType : 'json'
+			});
         }
-
+       
+		
         function licen_delete(obj) {
             $(obj).parent().parent().parent().css('background-color', 'red');
             var flag = 0;
