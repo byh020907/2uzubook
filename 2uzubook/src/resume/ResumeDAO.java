@@ -293,6 +293,22 @@ public class ResumeDAO extends Database{
 		}
 		return -1;
 	}
+	
+	public JSONArray search_keyword(String name) {
+		String SQL="select * from keyword where name like %?%";
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		try {
+			
+			jsonArray=executeAndGet(SQL, name);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
+
+	}
 
 	//단일 값 일때
 	public JSONArray search(int keyword) {
