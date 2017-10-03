@@ -58,19 +58,23 @@
                             </header>
                             <h3 class="text-center mb-3">추가된 수상경력</h3>
                             <br>
-                            <div class="row">
-                          
-                               
+                            <div class="row">                   
                                 <div class="10u form1">
                                      <h3 class="text-center mb-3">수상경력 추가</h3>
                                     <form action="" method="post">
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
                                             <label class="control-label" for="award_name">수상한 상</label>
-                                            <input name="award_name" placeholder="ex) 제1회 넥슨 코딩 대회 " type="text" class="form-control" required> </div>
-                                         <div class="form-group">
-                                            <label class="control-label" for="award_startdate">수상 날짜</label>
-                                            <input name="award_startdate" placeholder="ex) 2017.05.06" type="text" class="form-control" required> </div>
+                                            <input name="award_name" placeholder="ex) 제1회 넥슨 코딩 대회 금상" type="text" class="form-control" required> </div>
+                                          <div class="form-group">
+                                            <label class="control-label" for="award_ins">수상 기관</label>
+                                            <input name="award_ins" placeholder="ex) 미래창조과학부" type="text" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="date">수상 날짜</label>
+                                            <input id="date" name="date" type="date" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="License_keyword">키워드</label>
+                                            <input name="award_keyword" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
