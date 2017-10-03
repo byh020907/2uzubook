@@ -52,9 +52,9 @@ public class myresume extends HttpServlet {
 		basic_obj.put("awards",awds);
 		basic_obj.put("contests", contests);
 		basic_obj.put("projects", projects);
+		
 		request.setAttribute("JSONObject", basic_obj);
 		request.getRequestDispatcher("/myresume.jsp").forward(request, response);
-		
 	}
 
 }
