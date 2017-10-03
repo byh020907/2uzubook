@@ -146,10 +146,10 @@ public class ResumeDAO extends Database{
 	}
 	
 	public int insert_award(Award award) {
-		String SQL="insert into award (user,name,ins,date,keyword) values (?,?,?,?,?)";
+		String SQL="insert into award (user,name,ins,grade,date,keyword) values (?,?,?,?,?,?)";
 				
 		try {
-			return executeAndUpdate(SQL, award.getUser(),award.getName(),award.getIns(),award.getDate()
+			return executeAndUpdate(SQL, award.getUser(),award.getName(),award.getIns(),award.getGrade(),award.getDate()
 					, award.getKeyword());
 			// 성공이면 0 이상
 		} catch (Exception e) {
@@ -247,11 +247,11 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 
-	public int update_awawrd(String name, String ins, String date, int keyword) {
-		String SQL = "update awawrd set name=?,ins=?,date=?,keyword=?";
+	public int update_awawrd(String name, String ins, String grade,String date, int keyword) {
+		String SQL = "update awawrd set name=?,ins=?,grade=?,date=?,keyword=?";
 
 		try {
-			return executeAndUpdate(SQL, name, ins, date, keyword);
+			return executeAndUpdate(SQL, name, ins,grade, date, keyword);
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
