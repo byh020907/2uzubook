@@ -136,7 +136,7 @@
 			form_array=form_array+ "\'"+ str+"\'"+" \: "+str2+"\,";
 			var tag_div='<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">'
 			+'<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">'+
-			'<h3 class="text-center">'+str+ '</h3>'+ str2+'</div></div></div>';
+			'<h3 class="text-center" id="">'+str+'</h3>'+str2+'</div></div></div>';
 			$("#license_loc").prepend(tag_div);
 			$("#License_name").val('');
 			$("#Startdate").val('');
@@ -170,6 +170,12 @@
 	function licen_save()
 	{
 		
+		
+	}
+	function licen_edit(obj)
+	{
+		var Str=$(obj).parent().parent().text();
+		console.log(Str);
 	}
 
 	</script>
