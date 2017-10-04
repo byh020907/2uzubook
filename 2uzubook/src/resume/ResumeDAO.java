@@ -334,8 +334,10 @@ public class ResumeDAO extends Database{
 	//단일 값 일때
 	public JSONArray search(int keyword) {
 		String SQL = "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
-				+ "LEFT JOIN award ON user.id=award.user" + "LEFT JOIN cert ON user.id=cert.user"
-				+ "LEFT JOIN project ON user.id=project.user" + "LEFT JOIN club ON user.id=club.user"
+				+ "LEFT JOIN award ON user.id=award.user" 
+				+ "LEFT JOIN cert ON user.id=cert.user"
+				+ "LEFT JOIN project ON user.id=project.user" 
+				+ "LEFT JOIN club ON user.id=club.user"
 				+ "LEFT JOIN major ON user.major=major.id"
 				+ "WHERE (award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
 		JSONArray jsonArray = new JSONArray();
