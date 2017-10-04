@@ -233,6 +233,16 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 	
+	public int insert_conference(Conference conference) {
+		String SQL="insert into conference (user,name,date,keyword) values (?,?,?,?)";
+		try {
+			return executeAndUpdate(SQL, conference.getUser(),conference.getName(),conference.getDate(),conference.getKeyword());
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
 	
 	public int update_cert(String name, String ins, String date, int keyword) {
 		String SQL = "update cert set name=?,ins=?,date=?,keyword=?";
@@ -287,6 +297,17 @@ public class ResumeDAO extends Database{
 		String SQL = "update test set name=?, score=? , keyword=?";
 		try {
 			return executeAndUpdate(SQL, name, score, keyword);
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
+	
+	public int update_conference(String name,String date,int keyword) {
+		String SQL = "update conference set name=?, score=? , keyword=?";
+		try {
+			return executeAndUpdate(SQL, name, date, keyword);
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
