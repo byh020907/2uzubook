@@ -357,11 +357,33 @@ public class ResumeDAO extends Database{
 		return jsonArray;
 
 	}
+	
+	public int delete_award(String user,int position) {
+		switch (position) {
+		case 1:
+			String SQL_DELETE_AWARD="delete from award where user=?";
+			break;
+		case 2:
+			String SQL_DELETE_CERT="delete from cert where user=?";
+		case 3:
+			String SQL_DELETE_CLUB="delete from club where user=?";
+
+		case 4:
+			String SQL_DELETE_PROJECT="delete from project where user=?";
+
+		case 5:
+			String SQL_DELETE_TEST="delete from test where user=?";
+		case 6:
+			String SQL_DELETE_CONFERENCE="delete from conference where user=?";
+		default:
+			break;
+		}
+	}
 
 	// 중복체크
 	public int duplicate_check(String user, String name, int position) {
 
-		// 1.award 2.cert 3.club 4.project 5.test
+		// 1.award 2.cert 3.club 4.project 5.test 6. conference
 
 		switch (position) {
 		case 1:
