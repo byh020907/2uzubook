@@ -1,10 +1,32 @@
 package etc;
 
+import org.json.simple.JSONArray;
+
 import dao.Database;
 import resume.Project;
 
 public class EtcDAO extends Database {
 
+	public JSONArray select_resume(String id, int position) {
+
+		JSONArray jsonArray = new JSONArray();
+
+		switch (position) {
+		case 1:
+			// 봉사
+			String SQL_VOLUNTEER = "select * from volunteer where user=?";
+			jsonArray = executeAndGet(SQL_VOLUNTEER, id);
+			return jsonArray;
+		case 2:
+			// 독서
+			String SQL_READING = "select * from reading where user=?";
+			jsonArray = executeAndGet(SQL_READING, id);
+			return jsonArray;
+		default:
+			return jsonArray;
+		}
+	}
+	
 	public int insert_reading(Reading reading) {
 		String SQL = "insert into reading (user,name,date,keyword) values (?,?,?,?)";
 
