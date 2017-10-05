@@ -127,6 +127,11 @@ public class ResumeDAO extends Database{
 			String SQL_PROJECT = "select * from project where user=?";
 			jsonArray = executeAndGet(SQL_PROJECT, id);
 			return jsonArray;
+		case 5:
+			//대외 활동
+			String SQL_CONFERENCE="select * from conference where user=?";
+			jsonArray = executeAndGet(SQL_CONFERENCE, id);
+			return jsonArray;
 		default:
 			return jsonArray;
 		}
