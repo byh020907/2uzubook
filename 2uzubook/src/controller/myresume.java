@@ -14,6 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import resume.ResumeDAO;
+import user.UserDAO;
 
 /**
  * Servlet implementation class myresume
@@ -43,11 +44,15 @@ public class myresume extends HttpServlet {
 		
 		JSONObject basic_obj=new JSONObject();
 		
-		basic_obj.put("name", "김소연");
-		basic_obj.put("major", "소프트웨어 개발과");
-		basic_obj.put("student_id", 20106);
-		basic_obj.put("gender", "여자");
-		basic_obj.put("email", "qazxc5735@gmail.com");
+		//유저 정보 받아오기
+		JSONArray ja=UserDAO.getInstance().executeAndGet("SELECT * FROM USER WHERE id=?", userID);
+		JSONObject userData=(JSONObject) ja.get(0);
+		
+		basic_obj.put("name", userData.get("name"));
+		basic_obj.put("major", userData.get("major"));
+		basic_obj.put("student_id", userData.get("stu_id"));
+		basic_obj.put("gender", userData.get("gender"));
+		basic_obj.put("email", userData.get("email"));
 		basic_obj.put("licenses", licenses);
 		basic_obj.put("awards",awds);
 		basic_obj.put("clubs", clubs);

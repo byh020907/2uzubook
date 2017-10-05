@@ -21,7 +21,7 @@ public class ID_Confirm extends HttpServlet {
 	private ResumeDAO database;
 	
     public ID_Confirm() {
-    	database=Resume.getInstance();
+    	database=ResumeDAO.getInstance();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,11 +32,10 @@ public class ID_Confirm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Util.setCharset(request,response,"UTF-8");
 		
-		String input_id=request.getParameter("param");
-		System.out.println(input_id+"dd");
+		String input_id=request.getParameter("id");
 		
-		int checkNum=database.check_id(input_id);
-	
+		int checkNum=database.check_overlap_id(input_id);
+
 		JSONObject obj =new JSONObject();
 		
 		if(checkNum == 1) {
@@ -44,7 +43,7 @@ public class ID_Confirm extends HttpServlet {
 			obj.put("status","이미 존재하는 아이디 입니다.");
 		}else if (checkNum == 0) {
 			// 중복아님
-			obj.put("status","사용가능한 아이디 입니다.");
+			obj.put("status","사용가능한 아이디입니다.");
 		}else {
 			// db오류
 			obj.put("status","[DATABASE 에러] 값을 불러오는데 실패하였습니다.");

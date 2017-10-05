@@ -88,7 +88,7 @@
 												<div class="form-group">
 													<label class="control-label" for="id">ID</label>
 													<div>
-														<input name="id" class="form-control" type="text" required>
+														<input id="id" name="id" class="form-control" type="text" required>
 														<input id="id_confirm" type="button" value="중복확인">
 													</div>
 												</div>
@@ -219,26 +219,20 @@
 	$("#id_confirm").click(function(){  
 	      
 	    var url="/2uzubook/ID_Confirm";  
-	    var param1=$('#ID').val();
-	    var param="param="+param1;  
+	    var id=$('#id').val();
+	    var sendData={"id":id};
 	  
 	    $.ajax({      
 	        type:"POST",  
 	        url:url,      
-	        data:param,
+	        data:sendData,
 	        dataType:'json',
-	        success:function(data){   
-	        	console.log(data.flag)
-	            if(data.flag==1)
+	        success:function(data){
+	            if(data.status!="사용가능한 아이디입니다.")
 	            {
-	            	alert('success!');	
+	            	$('#id').val('');
 	            }
-	            else
-	            {
-	            	$('#ID').val('');
-	            	alert('wrong!');
-	            }
-	            
+	        	alert(data.status);
 	        },   
 	    });  
 	      
