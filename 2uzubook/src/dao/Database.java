@@ -10,9 +10,6 @@ import java.sql.SQLException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import resume.Resume;
-import user.Account;
-
 public class Database {
 
 	protected Connection conn;
@@ -148,25 +145,21 @@ public class Database {
 		return null;
 	}
 
-	public int check_id(String id) {
-		String sql = "select id from account where id= ?";
+	public int check_overlap_id(String id) {
+		String sql = "select id from user where id= ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				if (rs.getString(1).equals(id)) {
-					return 1;
-				} else {
-					return 0;
-				}
+				return 1;
 			}
-			return -1;
+			return 0;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return -2;
+		return -1;
 
 	}
 
