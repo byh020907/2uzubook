@@ -36,10 +36,13 @@ public class ResumeUpdate extends HttpServlet {
 		}
 		switch(select_func)
 		{
-		case 1:
+		case 1:{			
 			JSONArray result=database.select_resume(userID, position); //조회
-			break;
-		case 2:
+		}break;
+		
+		case 2:{
+			
+		}break;
 			
 		}
 	}
