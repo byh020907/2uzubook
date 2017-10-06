@@ -89,8 +89,8 @@
                                             <label class="control-label" for="License_keyword">키워드</label>
                                             	<div class="col-md-4">
 														<select id="keyword" name="license_keyword" class="form-control">
-															<option value="">123</option>
-															<option value="">123</option>
+															<option value="1">123</option>
+															<option value="2">123</option>
 														</select>
 													</div> </div>                    
                                         <div class="form-group">
@@ -148,14 +148,19 @@
         	var temp=new Object();
         	var name = $("#License_name").val();
             var ins = $("#ins option:selected").val();
-            var date = $("date").val();
-            var	keyword=$("keyword").val();
-        	temp.part=1;
+            var date = $("#date").val();
+            var	keyword=$("#keyword").val();
+        	temp.part="1";
         	temp.name=name;
         	temp.ins=ins;
         	temp.date=date;
         	temp.keyword=keyword;
+<<<<<<< HEAD
         	
+=======
+        	var str=JSON.stringify(temp);
+        	console.log(str);
+>>>>>>> 15333d85a715d53e48a4ae704d142ddcf0de7738
         	var tag_div = '<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="">' + name+ '</h3>' + date + '</div></div></div>';
             
         	$("#license_loc").prepend(tag_div);
@@ -164,8 +169,13 @@
             
           	$.ajax({
 				url : '/2uzubook/ResumeAdd',
+<<<<<<< HEAD
 				type : 'post',
 				data : temp,
+=======
+				type : 'POST',
+				data : str,
+>>>>>>> 15333d85a715d53e48a4ae704d142ddcf0de7738
 				success : function(data) {
 					for (var i = 0; i < data.length; i++) {
 						console.log(data[i].name);
