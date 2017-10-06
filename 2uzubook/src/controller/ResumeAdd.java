@@ -29,44 +29,23 @@ public class ResumeAdd extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String userID=(String) session.getAttribute("id");
-<<<<<<< HEAD
 		
 		int part=Integer.parseInt(request.getParameter("part"));
-		
-=======
-		BufferedReader bf = request.getReader();
-
-		Object obj=JSONValue.parse(bf);
-		JSONObject jobj=(JSONObject)obj;
-		System.out.println("hello");
-		System.out.println(jobj);
->>>>>>> 15333d85a715d53e48a4ae704d142ddcf0de7738
 		JSONArray jsonArray = null;
-		int part = Integer.parseInt((String)jobj.get("part"));
 		
 		switch(part)
 		{
-<<<<<<< HEAD
 			case 1:{
 				String name=request.getParameter("name");
 				String ins=request.getParameter("ins");
 				String date=request.getParameter("date");
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
-				
+				System.out.println(part+name+ins+date+keyword);
 				Cert cert=new Cert(userID,name,ins,date,keyword);
 				database.insert_cert(cert);
 				jsonArray=database.select_resume(userID, part);
 			}break;
 			
-=======
-		case 1:
-			Cert cert=new Cert(userID,(String)jobj.get("name"),(String)jobj.get("ins"),(String)jobj.get("date"),Integer.parseInt((String)jobj.get("keyword")));
-			database.insert_cert(cert);
-			jsonArray=database.select_resume(userID, part);
-
-			System.out.println("hello2");
-			break;
->>>>>>> 15333d85a715d53e48a4ae704d142ddcf0de7738
 		}
 		
 		PrintWriter out=response.getWriter();
