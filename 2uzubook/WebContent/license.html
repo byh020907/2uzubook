@@ -70,7 +70,7 @@
                                         <div class="form-group">
                                             <label class="control-label" for="license_ins">인증기관</label>
                                             <div class="col-md-4">
-                                                <select name="license_ins" class="form-control">
+                                                <select name="license_ins" id="ins" class="form-control">
                                                     <option value="대한상공회의소">대한상공회의소</option>
                                                     <option value="영화진흥위원회">영화진흥위원회</option>
                                                     <option value="한국광해관리공단">한국광해관리공단</option>
@@ -147,7 +147,7 @@
         function licen_add() {
         	var temp=new Object();
         	var name = $("#License_name").val();
-            var ins = $("#ins option:selected").val();
+            var ins = $("#ins").val();
             var date = $("#date").val();
             var	keyword=$("#keyword").val();
         	temp.part="1";
