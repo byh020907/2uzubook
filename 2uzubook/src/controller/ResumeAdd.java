@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -28,17 +29,23 @@ public class ResumeAdd extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String userID=(String) session.getAttribute("id");
-		int part=Integer.parseInt(request.getParameter("part"));
-		Object obj=JSONValue.parse(request.getParameter("str"));
+		BufferedReader bf = request.getReader();
+
+		Object obj=JSONValue.parse(bf);
 		JSONObject jobj=(JSONObject)obj;
-		
+		System.out.println("hello");
+		System.out.println(jobj);
 		JSONArray jsonArray = null;
+		int part = Integer.parseInt((String)jobj.get("part"));
+		
 		switch(part)
 		{
 		case 1:
-			Cert cert=new Cert(userID,(String)jobj.get("name"),(String)jobj.get("ins"),(String)jobj.get("date"),(Integer)jobj.get("keyword"));
+			Cert cert=new Cert(userID,(String)jobj.get("name"),(String)jobj.get("ins"),(String)jobj.get("date"),Integer.parseInt((String)jobj.get("keyword")));
 			database.insert_cert(cert);
 			jsonArray=database.select_resume(userID, part);
+
+			System.out.println("hello2");
 			break;
 		}
 		PrintWriter out=response.getWriter();
