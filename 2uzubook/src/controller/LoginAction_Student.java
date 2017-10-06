@@ -24,7 +24,7 @@ public class LoginAction_Student extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		UserDAO userDAO = new UserDAO();
+		UserDAO userDAO = UserDAO.getInstance();
 		Util.setCharset(request, response, "utf-8");
 
 		String id = request.getParameter("id");

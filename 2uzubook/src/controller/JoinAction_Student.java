@@ -25,7 +25,7 @@ public class JoinAction_Student extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		UserDAO userDAO = new UserDAO();
+		UserDAO userDAO = UserDAO.getInstance();
 		Util.setCharset(request, response, "UTF-8");
 
 		String name = request.getParameter("name");
@@ -49,7 +49,7 @@ public class JoinAction_Student extends HttpServlet {
 				Integer.parseInt(stu_id), intro, Integer.parseInt(major));
 
 		if (result >= 0) {
-			out.print("<script>alert('회원가입을 성공했습니다.');location.href='../index.jsp';</script>");
+			out.print("<script>alert('회원가입을 성공했습니다.');location.href='../login.html';</script>");
 			return;
 		} else {
 			out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");

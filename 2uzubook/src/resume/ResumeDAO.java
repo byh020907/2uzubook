@@ -16,6 +16,8 @@ public class ResumeDAO extends Database{
 	
 	private static ResumeDAO instance;
 	
+	private ResumeDAO(){}
+	
 	public static ResumeDAO getInstance(){
 		if(instance==null)
 			instance=new ResumeDAO();

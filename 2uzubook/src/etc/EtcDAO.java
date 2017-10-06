@@ -4,8 +4,19 @@ import org.json.simple.JSONArray;
 
 import dao.Database;
 import resume.Project;
+import resume.ResumeDAO;
 
 public class EtcDAO extends Database {
+	
+	private static EtcDAO instance;
+	
+	private EtcDAO(){}
+	
+	public static EtcDAO getInstance(){
+		if(instance==null)
+			instance=new EtcDAO();
+		return instance;
+	}
 
 	public JSONArray select_resume(String id, int position) {
 
