@@ -45,6 +45,9 @@ public class ResumeAdd extends HttpServlet {
 				database.insert_cert(cert);
 				jsonArray=database.select_resume(userID, part);
 			}break;
+			case 2:{
+				
+			}
 			
 		}
 		
