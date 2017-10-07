@@ -23,7 +23,7 @@ public class ResumeAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ResumeDAO database;
 	public ResumeAdd() {
-		database=new ResumeDAO();
+		database=ResumeDAO.getInstance();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
