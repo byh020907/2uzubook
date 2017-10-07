@@ -1,6 +1,5 @@
 package controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -12,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
 import resume.Cert;
+import resume.Club;
+import resume.Conference;
+import resume.Project;
 import resume.ResumeDAO;
 
 @WebServlet("/ResumeAdd")
@@ -46,9 +46,39 @@ public class ResumeAdd extends HttpServlet {
 				jsonArray=database.select_resume(userID, part);
 			}break;
 			case 2:{
-				
-			}
-			
+				//award
+			}break;
+			case 4:{
+				String name=request.getParameter("name");
+				String desc=request.getParameter("desc");
+				String startdate=request.getParameter("startdate");
+				String enddate=request.getParameter("enddate");
+				int keyword=Integer.parseInt(request.getParameter("keyword"));
+				System.out.println(part+name+startdate+enddate+keyword);
+				Project pro=new Project(userID,name,desc,startdate,enddate,keyword);
+				database.insert_project(pro);
+				jsonArray=database.select_resume(userID, part);
+			}break;
+			case 3:{
+				String name=request.getParameter("name");
+				String desc=request.getParameter("desc");
+				String startdate=request.getParameter("startdate");
+				String enddate=request.getParameter("enddate");
+				int keyword=Integer.parseInt(request.getParameter("keyword"));
+				System.out.println(part+name+startdate+enddate+keyword);
+				Club club=new Club(userID,name,desc,startdate,enddate,keyword);
+				database.insert_club(club);
+				jsonArray=database.select_resume(userID, part);
+			}break;
+			case 5:{
+				String name=request.getParameter("name");
+				String date=request.getParameter("date");
+				int keyword=Integer.parseInt(request.getParameter("keyword"));
+				System.out.println(part+name+date+keyword);
+				Conference con=new Conference(userID,name,date,keyword);
+				database.insert_conference(con);
+				jsonArray=database.select_resume(userID, part);
+			}break;
 		}
 		
 		PrintWriter out=response.getWriter();

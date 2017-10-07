@@ -58,6 +58,7 @@
                             </header>
                             <h3 class="text-center mb-3">추가된 수상경력</h3>
                             <br>
+                            <br>
                             <div class="row">
                                 <div class="10u form1">
                                     <h3 class="text-center mb-3">수상경력 추가</h3>
@@ -65,29 +66,29 @@
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
                                             <label class="control-label" for="award_name">수상한 대회 이름</label>
-                                            <input name="award_name" placeholder="ex) 제1회 넥슨 코딩 대회" type="text" class="form-control" required> </div>
+                                            <input id="name" name="award_name" placeholder="ex) 제1회 넥슨 코딩 대회" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="award_grade">수상한 상의 등급</label>
-                                            <input name="award_grade" placeholder="ex) 금상" type="text" class="form-control" required> </div>
+                                            <input id="grade" name="award_grade" placeholder="ex) 금상" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="award_ins">수상 기관</label>
-                                            <input name="award_ins" placeholder="ex) 미래창조과학부" type="text" class="form-control" required> </div>
+                                            <input id="ins" name="award_ins" placeholder="ex) 미래창조과학부" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="award_date">수상 날짜</label>
                                             <input id="date" name="award_date" type="date" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="award_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select name="award_keyword" class="form-control">
-                                                    <option value="">123</option>
-                                                    <option value="">123</option>
+                                                <select id="keyword" name="award_keyword" class="form-control">
+                                                    <option value="1">123</option>
+                                                    <option value="2">123</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button id="Submit" name="Submit" class="btn btn-primary">저장하기</button>
+                                                <button id="Submit" onclick="award_add();" name="Submit" class="btn btn-primary">저장하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -133,6 +134,43 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
+    <script>
+	function award_add() {
+    	var temp=new Object();
+    	var name = $("#name").val();
+        var ins = $("#ins").val();
+        var grade = $("#grade").val();
+        var date =$("#date").val();
+        var	keyword=$("#keyword").val();
+    	temp.part="4";
+    	temp.name=name;
+    	temp.ins=ins;
+    	temp.grade=grade;
+    	temp.date=date;
+    	temp.keyword=keyword;
+    	
+    	var tag_div ='<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit"><img src="images/student/bulb.png" alt="" /></a></div><div class="7u"><h3 class="text-center">'+name+'</h3>'+date+'</div></div></div>';
+    	$("#award_loc").prepend(tag_div);
+        $("#name").val('');
+        $("#date").val('');
+        $("#ins").val('');
+        $("#grade").val('');
+        $("#keyword").val('');
+        
+      	$.ajax({
+			url : '/2uzubook/ResumeAdd',
+			type : 'post',
+			data : temp,
+			success : function(data) {
+				for (var i = 0; i < data.length; i++) {
+					console.log(data[i].name);
+				}
+			},
+			dataType : 'json'
+		});
+    }
+	
+	</script>
 </body>
 
 </html>
