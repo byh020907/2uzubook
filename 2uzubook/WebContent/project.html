@@ -58,16 +58,8 @@
                             </header>
                             <h3 class="text-center mb-3">추가된 프로젝트</h3>
                             <br>
-                            <div class="row">
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/bulb.png" alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">첵첵 </h3> 2016.03.02~2016.05.03 </div>
-                                    </div>
-                                </div>
+                            <br>
+                            <div id="project_loc" class="row">
                             </div>
                             <div class="row">
                                 <div class="10u form1">
@@ -76,29 +68,29 @@
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
                                             <label class="control-label" for="project_name">프로젝트 이름</label>
-                                            <input name="project_name" placeholder="ex) 휴식 " type="text" class="form-control" required> </div>
+                                            <input name="project_name" id="name" placeholder="ex) 휴식 " type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="project_desc">프로젝트 간단 설명</label>
-                                            <input name="project_desc" placeholder="ex)  잘못된 스마트폰 사용습관을 사용자 스스로 ..." type="text" class="form-control" required> </div>
+                                            <input name="project_desc" id="desc" placeholder="ex)  잘못된 스마트폰 사용습관을 사용자 스스로 ..." type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="project_startdate">시작 날짜</label>
-                                            <input id="date" name="project_startdate" type="date" class="form-control" required> </div>
+                                            <input id="startdate" name="project_startdate" type="date" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="project_enddate">종료 날짜</label>
-                                            <input id="date" name="project_enddate" type="date" class="form-control" required> </div>
+                                            <input id="enddate" name="project_enddate" type="date" class="form-control" required> </div>
                                        <div class="form-group">
                                             <label class="control-label" for="project_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select name="project_keyword" class="form-control">
-                                                    <option value="">123</option>
-                                                    <option value="">123</option>
+                                                <select id="keyword" name="project_keyword" class="form-control">
+                                                    <option value="1">123</option>
+                                                    <option value="2">123</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button id="Submit" name="Submit" class="btn btn-primary">저장하기</button>
+                                                <button id="Submit" name="Submit" OnClick="project_add()" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -144,6 +136,43 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
+	<script>
+	function project_add() {
+    	var temp=new Object();
+    	var name = $("#name").val();
+        var desc = $("#desc").val();
+        var startdate = $("#startdate").val();
+        var enddate =$("#enddate").val();
+        var	keyword=$("#keyword").val();
+    	temp.part="4";
+    	temp.name=name;
+    	temp.desc=desc;
+    	temp.startdate=startdate;
+    	temp.enddate=enddate;
+    	temp.keyword=keyword;
+    	
+    	var tag_div ='<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit"><img src="images/student/bulb.png" alt="" /></a></div><div class="7u"><h3 class="text-center">'+name+'</h3>'+startdate+'~'+enddate+'</div></div></div>';
+    	$("#project_loc").prepend(tag_div);
+        $("#name").val('');
+        $("#startdate").val('');
+        $("#desc").val('');
+        $("#enddate").val('');
+        $("#keyword").val('');
+        
+      	$.ajax({
+			url : '/2uzubook/ResumeAdd',
+			type : 'post',
+			data : temp,
+			success : function(data) {
+				for (var i = 0; i < data.length; i++) {
+					console.log(data[i].name);
+				}
+			},
+			dataType : 'json'
+		});
+    }
+	
+	</script>
 </body>
 
 </html>
