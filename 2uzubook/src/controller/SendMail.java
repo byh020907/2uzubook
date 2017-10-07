@@ -53,12 +53,12 @@ public class SendMail extends HttpServlet {
 		System.out.println(m_name+m_email+m_title+m_text);
 
 		try {
-			String mail_from =	m_name + "<" + m_email + ">";
+			String mail_from =	"dragonlake.bae@gmail.com";//원래 보내는 사람 정할수 있는거 같은데 gmail설정으로 하니 설정한 계정 이메일 밖에 안된다.
 			String mail_to =	"byh020907@naver.com";
 			String title =		"테스트 이메일입니다. :: " + m_title;
 			String contents =	"보낸 사람 :: " + m_name + "&lt;" + m_email + "&gt;<br><br>" + m_title + "<br><br>" + m_text;
 
-			mail_from = new String(mail_from.getBytes("UTF-8"), "UTF-8");
+//			mail_from = new String(mail_from.getBytes("UTF-8"), "UTF-8");//굳이 할필요 없다 (아래에서 처리해줌)
 			mail_to = new String(mail_to.getBytes("UTF-8"), "UTF-8");
 
 			Properties props = new Properties();
@@ -77,7 +77,7 @@ public class SendMail extends HttpServlet {
 
 			MimeMessage msg = new MimeMessage(sess);
 
-			msg.setFrom(new InternetAddress(mail_from));
+			msg.setFrom(new InternetAddress(mail_from,"2uzubook관리자","UTF-8"));
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(mail_to));
 			msg.setSubject(title, "UTF-8");
 			msg.setContent(contents, "text/html; charset=UTF-8");
