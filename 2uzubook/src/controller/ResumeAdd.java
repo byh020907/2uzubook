@@ -12,6 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 
+import etc.EtcDAO;
+import etc.Reading;
+import etc.Volunteer;
 import resume.Award;
 import resume.Cert;
 import resume.Club;
@@ -23,9 +26,11 @@ import resume.ResumeDAO;
 public class ResumeAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ResumeDAO database;
+	EtcDAO database2;
 	public ResumeAdd() {
 		database=ResumeDAO.getInstance();
-    }
+		database2=EtcDAO.getInstance();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
@@ -88,6 +93,27 @@ public class ResumeAdd extends HttpServlet {
 				Conference con=new Conference(userID,name,date,keyword);
 				database.insert_conference(con);
 				jsonArray=database.select_resume(userID, part);
+			}break;
+			case 6:{
+				String name=request.getParameter("name");
+				String date=request.getParameter("date");
+				int keyword=Integer.parseInt(request.getParameter("keyword"));
+				System.out.println(part+name+date+keyword);
+				Reading reading=new Reading(userID,name,date,keyword);
+				database2.insert_reading(reading);
+				jsonArray=database2.select_resume(userID,2);
+			}break;
+			case 7:{
+				String name=request.getParameter("name");
+				String ins=request.getParameter("ins");
+				String startdate=request.getParameter("startdate");
+				String enddate=request.getParameter("enddate");
+				int keyword=Integer.parseInt(request.getParameter("keyword"));
+				
+				System.out.println(part+name+ins+startdate+enddate+keyword);
+				Volunteer volunteer=new Volunteer(userID,name,ins,startdate,enddate,keyword);
+				database2.insert_volunteer(volunteer);
+				jsonArray=database2.select_resume(userID,1);
 			}break;
 		}
 		

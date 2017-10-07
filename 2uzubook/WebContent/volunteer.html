@@ -58,16 +58,9 @@
                             </header>
                             <h3 class="text-center mb-3">추가된 봉사활동</h3>
                             <br>
-                             <div class="row">
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/etc.png"\ alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">중랑천 쓰레기 줍기 </h3> 2016.03.02~2016.05.03 </div>
-                                    </div>
-                                </div>
+                            <br>
+                             <div id="volunteer_loc" class="row">
+                                
                             </div>
                             <script></script>
                             <div class="row" id="license_loc">
@@ -77,30 +70,29 @@
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
                                             <label class="control-label" for="volunteer_name">봉사 이름</label>
-                                            <input id="volunteer_name" name="volunteer_name" placeholder="ex) 중랑천 쓰레기 줍기" type="text" class="form-control" required> </div>
+                                            <input id="name" name="volunteer_name" placeholder="ex) 중랑천 쓰레기 줍기" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="volunteer_cert">봉사 인증 기관</label>
-                                            <input name="volunteer_cert" placeholder="ex) 중랑구청" type="text" class="form-control" required> </div>
+                                            <input id="ins" name="volunteer_cert" placeholder="ex) 중랑구청" type="text" class="form-control" required> </div>
                                          <div class="form-group">
                                             <label class="control-label" for="volunteer_startdate">시작 날짜</label>
-                                            <input id="date" name="volunteer_startdate" type="date" class="form-control" required> </div>
+                                            <input id="startdate" name="volunteer_startdate" type="date" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="volunteer_enddate">종료 날짜</label>
-                                            <input id="date" name="volunteer_enddate" type="date" class="form-control" required> </div>
+                                            <input id="enddate" name="volunteer_enddate" type="date" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="License_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select name="license_keyword" class="form-control">
-                                                    <option value="">123</option>
-                                                    <option value="">123</option>
+                                                <select id="keyword" name="license_keyword" class="form-control">
+                                                    <option value="1">123</option>
+                                                    <option value="2">123</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button onclick="licen_add();" class="btn btn-primary">추가하기</button>
-                                                <button id="Submit" onclick="licen_save();" name="Submit" class="btn btn-primary">저장하기</button>
+                                                <button onclick="volunteer_add();" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -147,46 +139,40 @@
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-        var form_array;
-
-        function licen_add() {
-            var str = $("#License_name").val();
-            var str2 = $("#Startdate").val();
-            form_array = form_array + "\'" + str + "\'" + " \: " + str2 + "\,";
-            var tag_div = '<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="">' + str + '</h3>' + str2 + '</div></div></div>';
-            $("#license_loc").prepend(tag_div);
-            $("#License_name").val('');
-            $("#Startdate").val('');
-        }
-
-        function licen_delete(obj) {
-            $(obj).parent().parent().parent().css('background-color', 'red');
-            var flag = 0;
-            if (confirm('삭제 하시겠습니까?')) {
-                flag = 1;
-                li_del(obj, flag);
-                return;
-            }
-            else {
-                li_del(obj, flag);
-                return;
-            }
-        }
-
-        function li_del(obj, flag) {
-            if (flag == 1) {
-                $(obj).parent().parent().parent().remove();
-            }
-            else {
-                $(obj).parent().parent().parent().css('background-color', '');
-            }
-        }
-
-        function licen_save() {}
-
-        function licen_edit(obj) {
-            var Str = $(obj).parent().parent().text();
-            console.log(Str);
+        function volunteer_add() {
+        	var temp=new Object();
+        	var name = $("#name").val();
+        	var ins = $("#ins").val();
+        	var startdate = $("#startdate").val();
+            var enddate = $("#enddate").val();
+            var	keyword=$("#keyword").val();
+        	temp.part="7";
+        	temp.name=name;
+        	temp.ins=ins;
+        	temp.startdate=startdate;
+        	temp.enddate=enddate;
+        	temp.keyword=keyword;
+        	
+        	var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit"><img src="images/student/etc.png"\ alt="" /></a></div><div class="7u"><h3 class="text-center">'+name+ '</h3>'+ startdate+'~'+enddate+'</div></div></div>';
+      
+        	$("#volunteer_loc").prepend(tag_div);
+            $("#name").val('');
+            $("#ins").val('');
+            $("#startdate").val('');
+            $("#enddate").val('');
+            $("#keyword").val('');
+            
+          	$.ajax({
+				url : '/2uzubook/ResumeAdd',
+				type : 'post',
+				data : temp,
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						console.log(data[i].name);
+					}
+				},
+				dataType : 'json'
+			});
         }
     </script>
 </body>

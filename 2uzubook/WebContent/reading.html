@@ -58,32 +58,34 @@
                             </header>
                             <h3 class="text-center mb-3">추가된 독서활동</h3>
                             <br>
-                            <script></script>
-                            <div class="row" id="license_loc">
+                            <br>
+                            <div id="reading_loc" class="row">
+                                
+                            </div>
+                           	<div class="row">
                                 <div class="10u form1">
                                     <h3 class="text-center mb-3">독서활동 추가</h3>
                                     <form action="" method="post">
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
                                             <label class="control-label" for="reading_name">책 이름</label>
-                                            <input id="reading_name" name="reading_name" placeholder="ex) 이상한 나라의 앨리스" type="text" class="form-control" required> </div>
+                                            <input id="name" name="reading_name" placeholder="ex) 이상한 나라의 앨리스" type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="reading_startdate">완독 날짜</label>
                                             <input id="date" name="reading_startdate" type="date" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="reading_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select name="reading_keyword" class="form-control">
-                                                    <option value="">123</option>
-                                                    <option value="">123</option>
+                                                <select id="keyword" name="reading_keyword" class="form-control">
+                                                    <option value="1">123</option>
+                                                    <option value="2">123</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button onclick="licen_add();" class="btn btn-primary">추가하기</button>
-                                                <button id="Submit" onclick="licen_save();" name="Submit" class="btn btn-primary">저장하기</button>
+                                                <button onclick="reading_add();" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -130,46 +132,33 @@
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-        var form_array;
-
-        function licen_add() {
-            var str = $("#License_name").val();
-            var str2 = $("#Startdate").val();
-            form_array = form_array + "\'" + str + "\'" + " \: " + str2 + "\,";
-            var tag_div = '<div class="4u 12u(mobile)" id="License_delete"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this)"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="">' + str + '</h3>' + str2 + '</div></div></div>';
-            $("#license_loc").prepend(tag_div);
-            $("#License_name").val('');
-            $("#Startdate").val('');
-        }
-
-        function licen_delete(obj) {
-            $(obj).parent().parent().parent().css('background-color', 'red');
-            var flag = 0;
-            if (confirm('삭제 하시겠습니까?')) {
-                flag = 1;
-                li_del(obj, flag);
-                return;
-            }
-            else {
-                li_del(obj, flag);
-                return;
-            }
-        }
-
-        function li_del(obj, flag) {
-            if (flag == 1) {
-                $(obj).parent().parent().parent().remove();
-            }
-            else {
-                $(obj).parent().parent().parent().css('background-color', '');
-            }
-        }
-
-        function licen_save() {}
-
-        function licen_edit(obj) {
-            var Str = $(obj).parent().parent().text();
-            console.log(Str);
+        function reading_add() {
+        	var temp=new Object();
+        	var name = $("#name").val();
+            var date = $("#date").val();
+            var	keyword=$("#keyword").val();
+        	temp.part="6";
+        	temp.name=name;
+        	temp.date=date;
+        	temp.keyword=keyword;
+        	
+        	var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center">'+name+'</h3>'+date+'</div></div></div></div>';
+        	$("#reading_loc").prepend(tag_div);
+            $("#name").val('');
+            $("#date").val('');
+            $("#keyword").val('');
+            
+          	$.ajax({
+				url : '/2uzubook/ResumeAdd',
+				type : 'post',
+				data : temp,
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						console.log(data[i].name);
+					}
+				},
+				dataType : 'json'
+			});
         }
     </script>
 </body>
