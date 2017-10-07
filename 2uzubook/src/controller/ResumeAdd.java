@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 
+import resume.Award;
 import resume.Cert;
 import resume.Club;
 import resume.Conference;
@@ -46,7 +47,16 @@ public class ResumeAdd extends HttpServlet {
 				jsonArray=database.select_resume(userID, part);
 			}break;
 			case 2:{
-				//award
+				String name=request.getParameter("name");
+				String ins=request.getParameter("ins");
+				String date=request.getParameter("date");
+				String grade=request.getParameter("grade");
+				int keyword=Integer.parseInt(request.getParameter("keyword"));
+				
+				System.out.println(part+name+ins+date+grade+keyword);
+				Award awd=new Award(userID,name,ins,grade,date,keyword);
+				database.insert_award(awd);
+				jsonArray=database.select_resume(userID, part);
 			}break;
 			case 4:{
 				String name=request.getParameter("name");

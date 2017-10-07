@@ -49,7 +49,7 @@
                             <header>
                                 <h3>수상 경력 추가</h3> </header>
                         </section>
-                        <hr /> </div>
+                        <hr/> </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
@@ -57,22 +57,11 @@
                                 <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                             </header>
                             <h3 class="text-center mb-3">추가된 수상경력</h3>
-<<<<<<< HEAD
                             <br>
                             <br>
-=======
-                            <br> <div class="row">
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">제1회 동아리 sw공모전 </h3> 2016.03.02 </div>
-                                    </div>
-                                </div>
+                            <div id="award_loc" class="row">
+                                
                             </div>
->>>>>>> bb70c9bb9f201dcae515769f3e28ce704397c862
                             <div class="row">
                                 <div class="10u form1">
                                     <h3 class="text-center mb-3">수상경력 추가</h3>
@@ -102,7 +91,7 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button id="Submit" onclick="award_add();" name="Submit" class="btn btn-primary">저장하기</button>
+                                                <button id="Submit" onclick="award_add();" name="Submit" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -156,7 +145,7 @@
         var grade = $("#grade").val();
         var date =$("#date").val();
         var	keyword=$("#keyword").val();
-    	temp.part="4";
+    	temp.part="2";
     	temp.name=name;
     	temp.ins=ins;
     	temp.grade=grade;
