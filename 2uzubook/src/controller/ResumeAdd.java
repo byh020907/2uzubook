@@ -21,6 +21,7 @@ import resume.Club;
 import resume.Conference;
 import resume.Project;
 import resume.ResumeDAO;
+import resume.Test;
 
 @WebServlet("/ResumeAdd")
 public class ResumeAdd extends HttpServlet {
@@ -115,6 +116,16 @@ public class ResumeAdd extends HttpServlet {
 				database2.insert_volunteer(volunteer);
 				jsonArray=database2.select_resume(userID,1);
 			}break;
+			case 8:{
+				String name=request.getParameter("name");
+				int score=Integer.parseInt(request.getParameter("score"));
+				int keyword=Integer.parseInt(request.getParameter("keyword"));
+				System.out.println(part+name+score+keyword);
+				Test test=new Test(userID,name,score,keyword);
+				database.insert_test(test);
+				jsonArray=database2.select_resume(userID,2);//test select 함수 없음
+			
+			}
 		}
 		
 		PrintWriter out=response.getWriter();
