@@ -360,6 +360,17 @@ public class ResumeDAO extends Database{
 
 	}
 	
+	@SuppressWarnings("unchecked")
+	public JSONArray totalSerach(JSONArray...jsonArraysjson) {
+		JSONArray totalJsonArray = new JSONArray();
+		
+		for(JSONArray i:jsonArraysjson) {
+			totalJsonArray.addAll(i);
+		}
+		
+		return totalJsonArray;
+	}
+	
 
 	public int delete_resume(String user,String name, int position) {
 		switch (position) {
