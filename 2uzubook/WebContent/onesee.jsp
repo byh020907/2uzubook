@@ -44,7 +44,7 @@
 						class="studentimg"></th>
 					<td>
 						<h2>
-							<%=stu_id %> <%=major %> <br> <%=name %>
+							<%=student_id %> <%=major %> <br> <%=name %>
 						</h2> <strong><%=email %></strong> <br> 웹해킹 <br> 컴퓨터 보안
 						<br> sw 개발
 					</td>
@@ -76,16 +76,22 @@
                             JSONObject awd=(JSONObject)awards.get(i);
                     %>
 						<%=(String)awd.get("name")%> <%=(String)awd.get("grade")%> (<%=(String)awd.get("date") %>) <br> 
+					<%
+					}
+					%>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row">대회 공모전</th>
 					<td>
-					<%for(int i=0;i<contests.size();i++)
+					<%for(int i=0;i<conferences.size();i++)
                       {
-                           JSONObject contest=(JSONObject)contests.get(i);
+                           JSONObject contest=(JSONObject)conferences.get(i);
                     %>
                     	<%=contest.get("name") %> (<%=contest.get("date") %>) <br>
+                    	<%
+                    	}
+                    	%>
 					</td>
 				</tr>
 				<tr>
