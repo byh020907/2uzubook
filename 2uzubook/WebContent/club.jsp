@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%
+request.setCharacterEncoding("UTF-8");
+
+JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -47,36 +55,58 @@
                         <hr class="first" />
                         <section>
                             <header>
-                                <h3>독서활동 추가</h3> </header>
+                                <h3>동아리 활동 추가</h3> </header>
                         </section>
-                        <hr /> </div>
+                        <hr/> </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
-                                <h2>독서활동을 추가해주세요 </h2>
+                                <h2>동아리 활동을 추가해주세요 </h2>
                                 <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                             </header>
-                            <h3 class="text-center mb-3">추가된 독서활동</h3>
+                            <h3 class="text-center mb-3">추가된 동아리 활동</h3>
                             <br>
-                            <br>
-                            <div id="reading_loc" class="row">
-                                
+                            <div id="club_loc" class="row">
+                            	<% for(int i=0;i<jsonArray.size();i++)
+								{	
+									JSONObject award=(JSONObject)jsonArray.get(i);
+								%>
+                            		<div class="4u 12u(mobile)">
+                            			<div class="row" id="modal_pop" style="cursor:pointer;">
+                            				<div class="5u"><a class="image fit" onclick="club_delete(this);">
+                            					<img src="images/student/circle.png" alt="" /></a>
+                            				</div>
+                            				<div class="7u">
+                            					<h3 class="text-center" id="delete_name"><%=award.get("name")%></h3><%=award.get("startdate")%>~<%=award.get("enddate")%>
+                            				</div>
+                            			</div>
+                            		</div>
+    	
+								<% 
+								}
+								%>  
                             </div>
-                           	<div class="row">
+                            <div class="row">
                                 <div class="10u form1">
-                                    <h3 class="text-center mb-3">독서활동 추가</h3>
+                                    <h3 class="text-center mb-3">동아리 활동 추가</h3>
                                     <form action="" method="post">
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
-                                            <label class="control-label" for="reading_name">책 이름</label>
-                                            <input id="name" name="reading_name" placeholder="ex) 이상한 나라의 앨리스" type="text" class="form-control" required> </div>
+                                            <label class="control-label" for="club_name">동아리 명</label>
+                                            <input id="name" name="club_name" placeholder="ex) NOP " type="text" class="form-control" required> </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="reading_startdate">완독 날짜</label>
-                                            <input id="date" name="reading_startdate" type="date" class="form-control" required> </div>
+                                            <label class="control-label" for="club_desc">동아리 설명</label>
+                                            <input id="desc" name="club_desc" placeholder="대덕 sw마이스터고등학교 최고의 보안동아리... " type="text" class="form-control" required> </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="reading_keyword">키워드</label>
+                                            <label class="control-label" for="club_startdate">시작 날짜</label>
+                                            <input id="startdate" name="club_startdate" type="date" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="club_enddate">종료 날짜</label>
+                                            <input id="enddate" name="club_enddate" type="date" class="form-control" required> </div>
+                                         <div class="form-group">
+                                            <label class="control-label" for="club_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select id="keyword" name="reading_keyword" class="form-control">
+                                                <select id="keyword" name="club_keyword" class="form-control">
                                                     <option value="1">123</option>
                                                     <option value="2">123</option>
                                                 </select>
@@ -85,7 +115,7 @@
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button onclick="reading_add();" class="btn btn-primary">추가하기</button>
+                                                <button id="Submit" name="Submit" onclick="club_add();" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -132,72 +162,79 @@
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-        function reading_add() {
+	function club_add() {
+    	var temp=new Object();
+    	var name = $("#name").val();
+        var desc = $("#desc").val();
+        var startdate = $("#startdate").val();
+        var enddate =$("#enddate").val();
+        var	keyword=$("#keyword").val();
+    	temp.part="3";
+    	temp.name=name;
+    	temp.desc=desc;
+    	temp.startdate=startdate;
+    	temp.enddate=enddate;
+    	temp.keyword=keyword;
+    	
+    	var tag_div ='<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="club_delete(this);"><img src="images/student/circle.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+name+'</h3>'+startdate+'~'+enddate+'</div></div></div>';
+    	
+    	$("#club_loc").prepend(tag_div);
+        $("#name").val('');
+        $("#startdate").val('');
+        $("#desc").val('');
+        $("#enddate").val('');
+        $("#keyword").val('');
+        
+      	$.ajax({
+			url : '/2uzubook/ResumeAdd',
+			type : 'post',
+			data : temp,
+			success : function(data) {
+				for (var i = 0; i < data.length; i++) {
+					console.log(data[i].name);
+				}
+			},
+			dataType : 'json'
+		});
+    }
+	function club_delete(obj) {
+        $(obj).parent().parent().parent().css('background-color', 'red');
+        var flag = 0;
+        var delete_name=$(obj).parent().next(".7u").children("#delete_name");
+        console.log($(delete_name).text());
+        var name=$(delete_name).text();
+        if (confirm('삭제 하시겠습니까?')) {
+            flag = 1;
+            club_del(obj, flag,name);
+            return;
+        }
+        else {
+        	club_del(obj, flag,name);
+            return;
+        }
+    }
+
+    function club_del(obj, flag,name) {
+        if (flag == 1) {
+            $(obj).parent().parent().parent().remove();
         	var temp=new Object();
-        	var name = $("#name").val();
-            var date = $("#date").val();
-            var	keyword=$("#keyword").val();
-        	temp.part="6";
         	temp.name=name;
-        	temp.date=date;
-        	temp.keyword=keyword;
-        	
-        	var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="reading_delete(this);"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+name+'</h3>'+date+'</div></div></div></div>';
-        	$("#reading_loc").prepend(tag_div);
-            $("#name").val('');
-            $("#date").val('');
-            $("#keyword").val('');
-            
-          	$.ajax({
-				url : '/2uzubook/ResumeAdd',
+        	temp.part="3";
+            $.ajax({
+				url : '/2uzubook/ResumeRemove',
 				type : 'post',
 				data : temp,
 				success : function(data) {
-					for (var i = 0; i < data.length; i++) {
-						console.log(data[i].name);
-					}
+					console.log("delete_success");
 				},
 				dataType : 'json'
 			});
         }
-        function reading_delete(obj) {
-            $(obj).parent().parent().parent().css('background-color', 'red');
-            var flag = 0;
-            var delete_name=$(obj).parent().next(".7u").children("#delete_name");
-            console.log($(delete_name).text());
-            var name=$(delete_name).text();
-            if (confirm('삭제 하시겠습니까?')) {
-                flag = 1;
-                reading_del(obj, flag,name);
-                return;
-            }
-            else {
-                reading_del(obj, flag,name);
-                return;
-            }
+        else {
+            $(obj).parent().parent().parent().css('background-color', '');
         }
-
-        function reading_del(obj, flag,name) {
-            if (flag == 1) {
-                $(obj).parent().parent().parent().remove();
-            	var temp=new Object();
-            	temp.name=name;
-            	temp.part="8";
-                $.ajax({
-    				url : '/2uzubook/ResumeRemove',
-    				type : 'post',
-    				data : temp,
-    				success : function(data) {
-    					console.log("delete_success");
-    				},
-    				dataType : 'json'
-    			});
-            }
-            else {
-                $(obj).parent().parent().parent().css('background-color', '');
-            }
-        }
-    </script>
+    }
+	</script>
 </body>
 
 </html>

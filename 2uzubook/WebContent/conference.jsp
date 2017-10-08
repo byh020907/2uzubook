@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%
+request.setCharacterEncoding("UTF-8");
+
+JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -60,7 +68,24 @@
                             <br>
                             <br>
                             <div id="conference_loc" class="row">
-                                
+                                <% for(int i=0;i<jsonArray.size();i++)
+								{	
+									JSONObject award=(JSONObject)jsonArray.get(i);
+								%>
+                            		<div class="4u 12u(mobile)">
+                            			<div class="row" id="modal_pop" style="cursor:pointer;">
+                            				<div class="5u"><a class="image fit" onclick="conference_delete(this);">
+                            					<img src="images/student/etc.png" alt="" /></a>
+                            				</div>
+                            				<div class="7u">
+                            					<h3 class="text-center" id="delete_name"><%=award.get("name")%></h3><%=award.get("date")%>
+                            				</div>
+                            			</div>
+                            		</div>
+    	
+								<% 
+								}
+								%>  
                             </div>
                             <div class="row">
                                 <div class="10u form1">
