@@ -361,22 +361,78 @@ public class ResumeDAO extends Database{
 	public int delete_award(String user,int position) {
 		switch (position) {
 		case 1:
-			String SQL_DELETE_AWARD="delete from award where user=?";
-			break;
+			String SQL_DELETE_AWARD = "delete from award where user=?";
+
+			try {
+				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				return pstmt.executeUpdate(); // 0이상 
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1; //데이터 베이스 오류
 		case 2:
-			String SQL_DELETE_CERT="delete from cert where user=?";
+			String SQL_DELETE_CERT = "delete from cert where user=?";
+			
+			try {
+				pstmt = conn.prepareStatement(SQL_DELETE_CERT);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				return pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
 		case 3:
-			String SQL_DELETE_CLUB="delete from club where user=?";
+			String SQL_DELETE_CLUB = "delete from club where user=?";
 
+			try {
+				pstmt = conn.prepareStatement(SQL_DELETE_CLUB);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				return pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
 		case 4:
-			String SQL_DELETE_PROJECT="delete from project where user=?";
+			String SQL_DELETE_PROJECT = "delete from project where user=?";
 
+			try {
+				pstmt = conn.prepareStatement(SQL_DELETE_PROJECT);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				return pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
 		case 5:
-			String SQL_DELETE_TEST="delete from test where user=?";
+			String SQL_DELETE_TEST = "delete from test where user=?";
+			
+			try {
+				pstmt = conn.prepareStatement(SQL_DELETE_TEST);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				return pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
 		case 6:
 			String SQL_DELETE_CONFERENCE="delete from conference where user=?";
+			try {
+				pstmt = conn.prepareStatement(SQL_DELETE_CONFERENCE);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				return pstmt.executeUpdate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
 		default:
-			break;
+			return -1;
 		}
 	}
 
