@@ -10,6 +10,8 @@ public class UserDAO extends Database{
 
 	private static UserDAO instance;
 	
+	private UserDAO(){}
+	
 	public static UserDAO getInstance(){
 		if(instance==null)
 			instance=new UserDAO();

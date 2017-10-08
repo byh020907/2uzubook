@@ -58,6 +58,9 @@
                             </header>
                             <h3 class="text-center mb-3">추가된 시험 성적</h3>
                             <br>
+                            <br>
+                            <div id="test_loc" class="row">
+                            </div>
                             <div class="row">
                                 <div class="10u form1">
                                     <h3 class="text-center mb-3">시험 성적 추가</h3>
@@ -65,26 +68,23 @@
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
                                             <label class="control-label" for="test_name">시험 이름</label>
-                                            <input name="award_name" placeholder="ex) TOPCIT " type="text" class="form-control" required> </div>
+                                            <input id="name" name="award_name" placeholder="ex) TOPCIT " type="text" class="form-control" required> </div>
                                         <div class="form-group">
                                             <label class="control-label" for="test_score">시험 성적</label>
-                                            <input name="test_score" placeholder="ex) 450" type="text" class="form-control" required> </div>
-                                         <div class="form-group">
-                                            <label class="control-label" for="test_date">시험 날짜</label>
-                                            <input id="date" name="test_date" type="date" class="form-control" required> </div>
+                                            <input id="score" name="test_score" placeholder="ex) 450" type="text" class="form-control" required> </div>
                                       <div class="form-group">
                                             <label class="control-label" for="test_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select name="test_keyword" class="form-control">
-                                                    <option value="">123</option>
-                                                    <option value="">123</option>
+                                                <select id="keyword" name="test_keyword" class="form-control">
+                                                    <option value="1">123</option>
+                                                    <option value="2">123</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button id="Submit" name="Submit" class="btn btn-primary">저장하기</button>
+                                                <button id="Submit" name="Submit" onclick="test_add();" class="btn btn-primary">저장하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -130,6 +130,36 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
+    <script>
+        function test_add() {
+        	var temp=new Object();
+        	var name = $("#name").val();
+            var score = $("#score").val();
+            var	keyword=$("#keyword").val();
+        	temp.part="8";
+        	temp.name=name;
+        	temp.score=score;
+        	temp.keyword=keyword;
+        	
+        	var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center">'+name+'</h3>'+score+'</div></div></div></div>';
+        	$("#test_loc").prepend(tag_div);
+            $("#name").val('');
+            $("#score").val('');
+            $("#keyword").val('');
+            
+          	$.ajax({
+				url : '/2uzubook/ResumeAdd',
+				type : 'post',
+				data : temp,
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						console.log(data[i].name);
+					}
+				},
+				dataType : 'json'
+			});
+        }
+    </script>
 </body>
 
 </html>

@@ -82,8 +82,8 @@
                                     <a class="image fit"><img src="images/student/license.png" alt="" /></a>
                                 </div>
                                 <div class="8u">
-                                    <h4><%=(String)licen.get(licenseName)%></h4>
-                                    <p> <%=(String)licen.get(licenseDate)%></p>
+                                    <h4><%=(String)licen.get("licenseName")%></h4>
+                                    <p> <%=(String)licen.get("licenseDate")%></p>
                                 </div>
                             </div>
 						<% 

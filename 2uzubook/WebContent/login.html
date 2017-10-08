@@ -89,18 +89,18 @@
 									<h3 class="text-center mb-3">Company</h3>
 									<div class="row">
 										<div class="8u form2">
-											<form action="/2uzubook/loginAction/company" method="post"
+											<form id="company_login_form" action="/2uzubook/loginAction/company" method="post"
 												style="margin-top: 20px;">
 												<input class="form-control"
 													style="margin-bottom: 63px; height: 52px;" type="text"
-													placeholder="Serial" name="sn">
+													placeholder="Serial" name="serialKey">
 											</form>
 											<a href="register_serial.html">
 												<p style="margin-top: 10px;">Don't have a Serial?</p>
 											</a>
 										</div>
 										<div class="4u">
-											<button class="btn btn-outline-success mb-2" type="submit"
+											<button class="btn btn-outline-success mb-2" onclick="$('#company_login_form').submit();"
 												style="height: 54px; margin-top: 20px;">Sign in</button>
 										</div>
 									</div>

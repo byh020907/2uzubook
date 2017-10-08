@@ -16,6 +16,8 @@ public class ResumeDAO extends Database{
 	
 	private static ResumeDAO instance;
 	
+	private ResumeDAO(){}
+	
 	public static ResumeDAO getInstance(){
 		if(instance==null)
 			instance=new ResumeDAO();
@@ -262,7 +264,7 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 
-	public int update_awawrd(String name, String ins, String grade,String date, int keyword) {
+	public int update_award(String name, String ins, String grade,String date, int keyword) {
 		String SQL = "update awawrd set name=?,ins=?,grade=?,date=?,keyword=?";
 
 		try {

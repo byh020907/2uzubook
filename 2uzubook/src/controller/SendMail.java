@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -16,57 +15,48 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.Database;
-import user.User;
-import user.UserDAO;
-
 /**
- * Servlet implementation class JoinAction
+ * Servlet implementation class SendMail
  */
-
-@WebServlet("/joinAction/student")
-public class JoinAction_Student extends HttpServlet {
-
+@WebServlet("/sendMail")
+public class SendMail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SendMail() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-		UserDAO userDAO = UserDAO.getInstance();
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
 		Util.setCharset(request, response, "UTF-8");
 
-		String name = request.getParameter("name");
-		String gender = request.getParameter("gender");
-		String email = request.getParameter("email");
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		String adm_year = request.getParameter("adm_year");
-		String stu_id = request.getParameter("stu_id");
-		String intro = request.getParameter("intro");
-		String major = request.getParameter("major");
+		String m_name =		request.getParameter("name");
+		String m_email =	request.getParameter("email");
+		String m_title =	request.getParameter("title");
+		String m_text =		request.getParameter("text");
+		
+		System.out.println(m_name+m_email+m_title+m_text);
 
-		PrintWriter out = response.getWriter();
-		if (name == null || gender == null || email == null || id == null || password == null || adm_year == null
-				|| stu_id == null || intro == null || major == null) {
-			out.print("<script>alert('정보를 모두 입력하세요.');history.back();</script>");
-			return;
-		}
-
-		int result = userDAO.join(name, gender, email, id, password, Integer.parseInt(adm_year),
-				Integer.parseInt(stu_id), intro, Integer.parseInt(major));
-
-		if (result >= 0) {
-			out.print("<script>alert('회원가입을 성공했습니다.');location.href='../login.html';</script>");
-			return;
-		} else {
-			out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");
-			return;
-		}
-	}
-	
-	private static int sendMail(String mail_to,String title,String contents){
 		try {
 			String mail_from =	"dragonlake.bae@gmail.com";//원래 보내는 사람 정할수 있는거 같은데 gmail설정으로 하니 설정한 계정 이메일 밖에 안된다.
+			String mail_to =	"byh020907@naver.com";
+			String title =		"테스트 이메일입니다. :: " + m_title;
+			String contents =	"보낸 사람 :: " + m_name + "&lt;" + m_email + "&gt;<br><br>" + m_title + "<br><br>" + m_text;
 
 //			mail_from = new String(mail_from.getBytes("UTF-8"), "UTF-8");//굳이 할필요 없다 (아래에서 처리해줌)
 			mail_to = new String(mail_to.getBytes("UTF-8"), "UTF-8");
@@ -94,10 +84,11 @@ public class JoinAction_Student extends HttpServlet {
 			msg.setHeader("Content-type", "text/html; charset=UTF-8");
 
 			Transport.send(msg);
-			return 0;
-		}catch (Exception e) {
+
+			response.sendRedirect("request_complete.jsp");
+		} catch (Exception e) {
+			response.sendRedirect("request_failed.jsp");
 			e.printStackTrace();
-			return -1;
 		}
 	}
 

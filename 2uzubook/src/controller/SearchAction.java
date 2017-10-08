@@ -27,7 +27,7 @@ public class SearchAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ResumeDAO resumeDAO = new ResumeDAO();
+		ResumeDAO resumeDAO = ResumeDAO.getInstance();
 		Util.setCharset(request, response, "utf-8");
 
 		//String query = request.getParameter("q");
