@@ -32,28 +32,34 @@ public class ResumeRemove extends HttpServlet {
 		switch(part)
 		{
 		case 1:{
-			
+			database.delete_resume(userID, request.getParameter("name"), part);
 		}break;
 		case 2:{
-			int re=database.delete_resume(userID, request.getParameter("name"), part);
+			database.delete_resume(userID, request.getParameter("name"), part);
 		}break;
 		case 3:{
-					
+
+			database.delete_resume(userID, request.getParameter("name"), part);
 		}break;
 		case 4:{
-			
+
+			database.delete_resume(userID, request.getParameter("name"), part);
 		}break;
 		case 5:{
-			
+
+			database.delete_resume(userID, request.getParameter("name"), part);
 		}break;
 		case 6:{
-			
+
+			database.delete_resume(userID, request.getParameter("name"), part);
 		}break;
 		case 7:{
-			
+
+			database2.delete_etc(userID, request.getParameter("name"), part);
 		}break;
 		case 8:{
-			
+
+			database2.delete_etc(userID, request.getParameter("name"), part);
 		}break;
 		case 9:{
 			
