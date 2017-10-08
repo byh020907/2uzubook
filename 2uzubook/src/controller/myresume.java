@@ -41,6 +41,8 @@ public class myresume extends HttpServlet {
 		JSONArray awds=database.select_resume(userID, 2);
 		JSONArray clubs=database.select_resume(userID, 3);
 		JSONArray projects=database.select_resume(userID, 4);
+		JSONArray conferences=database.select_resume(userID, 6);
+		
 		
 		JSONObject basic_obj=new JSONObject();
 		
@@ -48,16 +50,15 @@ public class myresume extends HttpServlet {
 		JSONArray ja=UserDAO.getInstance().executeAndGet("SELECT * FROM USER WHERE id=?", userID);
 		JSONObject userData=(JSONObject) ja.get(0);
 		
-		basic_obj.put("name", userData.get("name"));
-		basic_obj.put("major", userData.get("major"));
-		basic_obj.put("student_id", userData.get("stu_id"));
-		basic_obj.put("gender", userData.get("gender"));
-		basic_obj.put("email", userData.get("email"));
-		basic_obj.put("licenses", licenses);
-		basic_obj.put("awards",awds);
-		basic_obj.put("clubs", clubs);
-		basic_obj.put("projects", projects);
-		
+//		basic_obj.put("name", userData.get("name"));
+//		basic_obj.put("major", userData.get("major"));
+//		basic_obj.put("student_id", userData.get("stu_id"));
+//		basic_obj.put("gender", userData.get("gender"));
+//		basic_obj.put("email", userData.get("email"));
+//		basic_obj.put("licenses", licenses);
+//		basic_obj.put("awards",awds);
+//		basic_obj.put("clubs", clubs);
+//		basic_obj.put("projects", projects);
 		request.setAttribute("JSONObject", basic_obj);
 		request.getRequestDispatcher("/myresume.jsp").forward(request, response);
 	}
