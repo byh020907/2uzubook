@@ -11,25 +11,14 @@
 	JSONArray projects=(JSONArray)jsonObject.get("projects");
 	JSONArray conferences=(JSONArray)jsonObject.get("conferences");
 	JSONArray clubs=(JSONArray)jsonObject.get("clubs");
-	JSONArray reads=(JSONArray)jsonObject.get("reads");
+	JSONArray reads=(JSONArray)jsonObject.get("readings");
 	JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
 	JSONArray tests=(JSONArray)jsonObject.get("tests");
-	if(licenses==null)
-	{
-		licenses=null;
-		awards=null;
-		projects=null;
-		conferences=null;
-		clubs=null;
-		reads=null;
-		volunteers=null;
-		tests=null;
-	}
 	
 	System.out.println(jsonObject);//log
 	String name=(String)jsonObject.get("name");
-	String major=(String)jsonObject.get("major");
-	int student_id=(Integer)jsonObject.get("student_id");
+	int major=(Integer)jsonObject.get("major");
+	int student_id=(Integer)jsonObject.get("stu_id");
 	String gender=(String)jsonObject.get("gender");
 	String email=(String)jsonObject.get("email");
 	
@@ -93,8 +82,8 @@
                                     <a class="image fit"><img src="images/student/license.png" alt="" /></a>
                                 </div>
                                 <div class="8u">
-                                    <h4><%=(String)licen.get("licenseName")%></h4>
-                                    <p> <%=(String)licen.get("licenseDate")%></p>
+                                    <h4><%=(String)licen.get("name")%></h4>
+                                    <p> <%=(String)licen.get("date")%></p>
                                 </div>
                             </div>
 						<% 
@@ -110,14 +99,14 @@
                                     <a class="image fit"><img src="images/student/trophy.png" alt="" /></a>
                                 </div>
                                 <div class="8u">
-                                    <h4><%=(String)awd.get("awardName")%><br><strong><%=(String)awd.get("award") %></strong></h4>
-                                    <p> <%=(String)awd.get("awardDate") %> </p>
+                                    <h4><%=(String)awd.get("name")%><br><strong><%=(String)awd.get("grade") %></strong></h4>
+                                    <p> <%=(String)awd.get("date") %> </p>
                                 </div>
                             </div>
 						<%
 						} 
 						%>
-                            <footer><form id="frm" action="/2uzubook/myresume" method="post"></form><a href="onesee.jsp" class="button">한눈에 보기</a> </footer>
+                            <footer><form id="frm" action="/2uzubook/OneSeeAction" method="post"></form><a onclick="go()" class="button">한눈에 보기</a> </footer>
                         </section>
                     </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
