@@ -14,6 +14,17 @@
 	JSONArray reads=(JSONArray)jsonObject.get("reads");
 	JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
 	JSONArray tests=(JSONArray)jsonObject.get("tests");
+	if(licenses==null)
+	{
+		licenses=null;
+		awards=null;
+		projects=null;
+		conferences=null;
+		clubs=null;
+		reads=null;
+		volunteers=null;
+		tests=null;
+	}
 	
 	System.out.println(jsonObject);//log
 	String name=(String)jsonObject.get("name");
