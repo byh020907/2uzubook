@@ -130,7 +130,12 @@ public class ResumeDAO extends Database{
 			jsonArray = executeAndGet(SQL_PROJECT, id);
 			return jsonArray;
 		case 5:
-			//대외 활동
+			//test
+			String SQL_TEST="select * from test where user=?";
+			jsonArray = executeAndGet(SQL_TEST, id);
+			return jsonArray;
+		case 6:
+			//컴퍼런ㅅ그
 			String SQL_CONFERENCE="select * from conference where user=?";
 			jsonArray = executeAndGet(SQL_CONFERENCE, id);
 			return jsonArray;
