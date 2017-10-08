@@ -594,4 +594,18 @@ public class ResumeDAO extends Database{
 			return -1; // 조회할 컬럼이 없음
 		}
 	}
+	
+	public JSONArray random_student() {
+		String SQL="select * from user ORDER BY RAND() limit 10";
+		
+		JSONArray jsonArray=new JSONArray();
+		try {
+			jsonArray=executeAndGet(SQL);
+			return jsonArray;
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
+	}
 }
