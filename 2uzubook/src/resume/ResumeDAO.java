@@ -360,7 +360,7 @@ public class ResumeDAO extends Database{
 
 	}
 	
-	public int delete_award(String user,int position) {
+	public int delete_resume(String user,int position) {
 		switch (position) {
 		case 1:
 			String SQL_DELETE_AWARD = "delete from award where user=?";
