@@ -130,7 +130,12 @@ public class ResumeDAO extends Database{
 			jsonArray = executeAndGet(SQL_PROJECT, id);
 			return jsonArray;
 		case 5:
-			//대외 활동
+			//test
+			String SQL_TEST="select * from test where user=?";
+			jsonArray = executeAndGet(SQL_TEST, id);
+			return jsonArray;
+		case 6:
+			//컴퍼런ㅅ그
 			String SQL_CONFERENCE="select * from conference where user=?";
 			jsonArray = executeAndGet(SQL_CONFERENCE, id);
 			return jsonArray;
@@ -360,7 +365,19 @@ public class ResumeDAO extends Database{
 
 	}
 	
-	public int delete_resume(String user,int position) {
+	@SuppressWarnings("unchecked")
+	public JSONArray totalSerach(JSONArray...jsonArraysjson) {
+		JSONArray totalJsonArray = new JSONArray();
+		
+		for(JSONArray i:jsonArraysjson) {
+			totalJsonArray.addAll(i);
+		}
+		
+		return totalJsonArray;
+	}
+	
+
+	public int delete_resume(String user,String name, int position) {
 		switch (position) {
 		case 1:
 			String SQL_DELETE_AWARD = "delete from award where user=?";
@@ -369,11 +386,17 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate(); // 0이상 
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1; //데이터 베이스 오류
+			return -2; //데이터 베이스 오류
 		case 2:
 			String SQL_DELETE_CERT = "delete from cert where user=?";
 			
@@ -381,11 +404,17 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_DELETE_CERT);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 3:
 			String SQL_DELETE_CLUB = "delete from club where user=?";
 
@@ -393,11 +422,17 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_DELETE_CLUB);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 4:
 			String SQL_DELETE_PROJECT = "delete from project where user=?";
 
@@ -405,11 +440,17 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_DELETE_PROJECT);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 5:
 			String SQL_DELETE_TEST = "delete from test where user=?";
 			
@@ -417,24 +458,36 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_DELETE_TEST);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 6:
 			String SQL_DELETE_CONFERENCE="delete from conference where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_DELETE_CONFERENCE);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		default:
-			return -1;
+			return -3; // 누구 잘못..?
 		}
 	}
 
@@ -463,7 +516,7 @@ public class ResumeDAO extends Database{
 			}
 			return -2; // 데이터베이스 오류
 		case 2:
-			String SQL_CERT = "select name from award where user=?";
+			String SQL_CERT = "select name from cert where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_CERT);
 				pstmt.setString(1, user);
@@ -479,7 +532,7 @@ public class ResumeDAO extends Database{
 				e.printStackTrace();
 			}
 		case 3:
-			String SQL_CLUB = "select name from award where user=?";
+			String SQL_CLUB = "select name from club where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_CLUB);
 				pstmt.setString(1, user);
@@ -495,7 +548,7 @@ public class ResumeDAO extends Database{
 				e.printStackTrace();
 			}
 		case 4:
-			String SQL_PROJECT = "select name from award where user=?";
+			String SQL_PROJECT = "select name from project where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_PROJECT);
 				pstmt.setString(1, user);
@@ -511,9 +564,25 @@ public class ResumeDAO extends Database{
 				e.printStackTrace();
 			}
 		case 5:
-			String SQL_TEST = "select name from award where user=?";
+			String SQL_TEST = "select name from test where user=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_TEST);
+				pstmt.setString(1, user);
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return 0; // 0이면 중복
+					}
+				}
+				return 1; // 1이면 중복아님
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		case 6:
+			String SQL_conference = "select name from conference where user=?";
+			try {
+				pstmt = conn.prepareStatement(SQL_conference);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
 				
@@ -529,5 +598,19 @@ public class ResumeDAO extends Database{
 		default:
 			return -1; // 조회할 컬럼이 없음
 		}
+	}
+	
+	public JSONArray random_student() {
+		String SQL="select * from user ORDER BY RAND() limit 10";
+		
+		JSONArray jsonArray=new JSONArray();
+		try {
+			jsonArray=executeAndGet(SQL);
+			return jsonArray;
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return jsonArray;
 	}
 }
