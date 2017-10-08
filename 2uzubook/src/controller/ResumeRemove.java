@@ -55,14 +55,11 @@ public class ResumeRemove extends HttpServlet {
 		}break;
 		case 7:{
 
-			database2.delete_etc(userID, request.getParameter("name"), part);
+			database2.delete_etc(userID, request.getParameter("name"), 1);
 		}break;
 		case 8:{
 
-			database2.delete_etc(userID, request.getParameter("name"), part);
-		}break;
-		case 9:{
-			
+			database2.delete_etc(userID, request.getParameter("name"), 2);
 		}break;
 		}
 		JSONArray jsonArray=new JSONArray();

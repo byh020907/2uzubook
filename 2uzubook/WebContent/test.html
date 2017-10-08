@@ -159,6 +159,43 @@
 				dataType : 'json'
 			});
         }
+        function test_delete(obj) {
+            $(obj).parent().parent().parent().css('background-color', 'red');
+            var flag = 0;
+            var delete_name=$(obj).parent().next(".7u").children("#delete_name");
+            console.log($(delete_name).text());
+            var name=$(delete_name).text();
+            if (confirm('삭제 하시겠습니까?')) {
+                flag = 1;
+                award_del(obj, flag,name);
+                return;
+            }
+            else {
+                award_del(obj, flag,name);
+                return;
+            }
+        }
+
+        function award_del(obj, flag,name) {
+            if (flag == 1) {
+                $(obj).parent().parent().parent().remove();
+            	var temp=new Object();
+            	temp.name=name;
+            	temp.part="1";
+                $.ajax({
+    				url : '/2uzubook/ResumeRemove',
+    				type : 'post',
+    				data : temp,
+    				success : function(data) {
+    					console.log("delete_success");
+    				},
+    				dataType : 'json'
+    			});
+            }
+            else {
+                $(obj).parent().parent().parent().css('background-color', '');
+            }
+        }
     </script>
 </body>
 
