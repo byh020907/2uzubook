@@ -360,7 +360,7 @@ public class ResumeDAO extends Database{
 
 	}
 	
-	public int delete_award(String user,int position) {
+	public int delete_award(String user,String, name ,int position) {
 		switch (position) {
 		case 1:
 			String SQL_DELETE_AWARD = "delete from award where user=?";
@@ -369,72 +369,108 @@ public class ResumeDAO extends Database{
 				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate(); // 0이상 
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1; //데이터 베이스 오류
+			return -2; //데이터 베이스 오류
 		case 2:
 			String SQL_DELETE_CERT = "delete from cert where user=?";
 			
 			try {
-				pstmt = conn.prepareStatement(SQL_DELETE_CERT);
+				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 3:
 			String SQL_DELETE_CLUB = "delete from club where user=?";
 
 			try {
-				pstmt = conn.prepareStatement(SQL_DELETE_CLUB);
+				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 4:
 			String SQL_DELETE_PROJECT = "delete from project where user=?";
 
 			try {
-				pstmt = conn.prepareStatement(SQL_DELETE_PROJECT);
+				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 5:
 			String SQL_DELETE_TEST = "delete from test where user=?";
 			
 			try {
-				pstmt = conn.prepareStatement(SQL_DELETE_TEST);
+				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		case 6:
 			String SQL_DELETE_CONFERENCE="delete from conference where user=?";
 			try {
-				pstmt = conn.prepareStatement(SQL_DELETE_CONFERENCE);
+				pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 				pstmt.setString(1, user);
 				rs = pstmt.executeQuery();
-				return pstmt.executeUpdate();
+				
+				while (rs.next()) {
+					if (rs.getString("name").equals(name)) {
+						return pstmt.executeUpdate(); // 0이상 
+					}
+				}
+				return -1;
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -1;
+			return -2; //데이터 베이스 오류
 		default:
-			return -1;
+			return -3; // 누구 잘못..?
 		}
 	}
 
