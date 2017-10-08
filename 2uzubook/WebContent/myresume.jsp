@@ -106,7 +106,7 @@
 						<%
 						} 
 						%>
-                            <footer> <a href="onesee.html" class="button">한눈에 보기</a> </footer>
+                            <footer><form id="frm" action="/2uzubook/myresume" method="post"></form><a href="onesee.jsp" class="button">한눈에 보기</a> </footer>
                         </section>
                     </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
@@ -251,6 +251,13 @@
     <script src="js/util.js"></script>
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
+    <script>
+    function go(){
+		var frm=$("#frm");
+		console.log('hel');
+		frm.submit();
+	}
+    </script>
 </body>
 
 </html>
