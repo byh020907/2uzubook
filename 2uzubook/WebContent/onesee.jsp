@@ -11,14 +11,14 @@
 	JSONArray contests=(JSONArray)jsonObject.get("contests");
 	JSONArray projects=(JSONArray)jsonObject.get("projects");
 	JSONArray clubs=(JSONArray)jsonObject.get("clubs");
-	JSONArray reads=(JSONArray)jsonObject.get("reads");
+	JSONArray reads=(JSONArray)jsonObject.get("readings");
 	JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
 	JSONArray tests=(JSONArray)jsonObject.get("tests");
 	
 	System.out.println(jsonObject);//log
 	String name=(String)jsonObject.get("name");
 	String major=(String)jsonObject.get("major");
-	int student_id=(Integer)jsonObject.get("student_id");
+	int student_id=(Integer)jsonObject.get("stu_id");
 	String gender=(String)jsonObject.get("gender");
 	String email=(String)jsonObject.get("email");
 	
@@ -64,7 +64,7 @@
 						{
 						JSONObject licen=(JSONObject)licenses.get(i);
 						%>
-							<%=(String)licen.get(licenseName)%> <br>
+							<%=(String)licen.get(name)%> <br>
 						<% 
 						} 
 						%> </td>
@@ -75,7 +75,7 @@
 					<%for(int i=0;i<awards.size();i++){
                             JSONObject awd=(JSONObject)awards.get(i);
                     %>
-						<%=(String)awd.get("awardName")%> <%=(String)awd.get("award")%> (<%=(String)awd.get("awardDate") %>) <br> 
+						<%=(String)awd.get("name")%> <%=(String)awd.get("grade")%> (<%=(String)awd.get("date") %>) <br> 
 					</td>
 				</tr>
 				<tr>
@@ -85,7 +85,7 @@
                       {
                            JSONObject contest=(JSONObject)contests.get(i);
                     %>
-                    	<%=contest.get("contestName") %> (<%=contest.get("contestDate") %>) <br>
+                    	<%=contest.get("name") %> (<%=contest.get("date") %>) <br>
 					</td>
 				</tr>
 				<tr>
