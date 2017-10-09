@@ -48,7 +48,7 @@ public class Database {
 	}
 
 	
-	//insert, update , delete
+	//insert, update
 	public int executeAndUpdate(String sql, Object... objects) {
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
