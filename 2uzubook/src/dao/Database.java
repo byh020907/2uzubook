@@ -28,6 +28,7 @@ public class Database {
 		}
 	}
 
+	//select 할때
 	public JSONArray executeAndGet(String sql, Object... objects) {
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -46,6 +47,8 @@ public class Database {
 		}
 	}
 
+	
+	//insert, update , delete
 	public int executeAndUpdate(String sql, Object... objects) {
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
@@ -64,7 +67,7 @@ public class Database {
 		}
 	}
 
-	private JSONArray filterData(ResultSet resultSet) throws SQLException {
+	private static JSONArray filterData(ResultSet resultSet) throws SQLException {
 		JSONArray results = new JSONArray();
 
 		while (resultSet.next()) {
