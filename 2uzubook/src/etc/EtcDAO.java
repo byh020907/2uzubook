@@ -100,7 +100,6 @@ public class EtcDAO extends Database {
 			try {
 				pstmt = conn.prepareStatement(SQL_DELETE_volunteer);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
 				
 				while (rs.next()) {
 					if (rs.getString("name").equals(name)) {
@@ -118,7 +117,6 @@ public class EtcDAO extends Database {
 			try {
 				pstmt = conn.prepareStatement(SQL_DELETE_reading);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
 				
 				while (rs.next()) {
 					if (rs.getString("name").equals(name)) {
