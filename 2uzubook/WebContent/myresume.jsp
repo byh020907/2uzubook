@@ -19,6 +19,20 @@
 	System.out.println(jsonObject);//log
 	String name=(String)jsonObject.get("name");
 	int major=(Integer)jsonObject.get("major");
+	
+	String majorString;
+	if(major==1){
+		majorString="공통과정";
+	}else if(major==2){
+		majorString="sw개발과";
+	}else if(major==3){
+		majorString="임베디드";
+	}else if(major==4){
+		majorString="정보보안과";
+
+	}
+	
+	
 	int student_id=(Integer)jsonObject.get("stu_id");
 	String gender=(String)jsonObject.get("gender");
 	String email=(String)jsonObject.get("email");
