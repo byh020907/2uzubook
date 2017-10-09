@@ -310,7 +310,11 @@ public class ResumeDAO extends Database{
 	}
 	
 	public JSONArray serach(int ...keyword) {
+		
+		int TURNSIZE=4;
 		JSONArray jsonArray = new JSONArray();
+		
+		int [] keywordList;
 		
 		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
 				+ "LEFT JOIN award ON user.id=award.user" 
@@ -326,11 +330,15 @@ public class ResumeDAO extends Database{
 		String and=" and ";
 		
 		for(int i:keyword) {
+			
+			keyword=new int[keyword.length*4];
+			
 			if(i==keyword.length) {
 				sb.append(sub);
 			}else {
 				sb.append(sub).append(and);
-			}
+			}			
+			
 		}
 		
 		String TotalSQL=sb.toString();
