@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	
@@ -83,7 +84,7 @@
                                 </div>
                                 <div class="8u">
                                     <h4><%=(String)licen.get("name")%></h4>
-                                    <p> <%=(String)licen.get("date")%></p>
+                                    <p> <%=(Date)licen.get("date")%></p>
                                 </div>
                             </div>
 						<% 
@@ -100,7 +101,7 @@
                                 </div>
                                 <div class="8u">
                                     <h4><%=(String)awd.get("name")%><br><strong><%=(String)awd.get("grade") %></strong></h4>
-                                    <p> <%=(String)awd.get("date") %> </p>
+                                    <p> <%=(Date)awd.get("date") %> </p>
                                 </div>
                             </div>
 						<%
@@ -123,7 +124,7 @@
                             	{
                             		JSONObject conference=(JSONObject)conferences.get(i);
                             	%>
-									<strong>⦁<%=conference.get("name") %> (<%=conference.get("date") %>)	</strong> <br>
+									<strong>⦁<%=conference.get("name") %> (<%=(Date)conference.get("date") %>)	</strong> <br>
 								<%} %> 
 								</article>
                     </div>
@@ -141,7 +142,7 @@
                             <div class="6u 12u(mobile)">
                                 <div class="row">
                                     <div class="12u">
-                                        <h3 class="text-center">"<%=(String)project.get("name")%>"</h3> <%=(String)project.get("startdate") %>~<%=(String)project.get("enddate")%>
+                                        <h3 class="text-center">"<%=(String)project.get("name")%>"</h3> <%=(Date)project.get("startdate") %>~<%=(Date)project.get("enddate")%>
                                         <br> ⦁ <%=(String)project.get("desc") %></div>
                                 </div>
                             </div>
@@ -165,7 +166,7 @@
                             <div class="6u 12u(mobile)">
                                 <div class="row">
                                     <div class="12u">
-                                        <h3 class="text-center"><%=(String)club.get("name") %></h3> <%=(String)club.get("startdate") %>~<%=(String)club.get("enddate")%>
+                                        <h3 class="text-center"><%=(String)club.get("name") %></h3> <%=(Date)club.get("startdate") %>~<%=(Date)club.get("enddate")%>
                                         <br> ⦁ <%=(String)club.get("desc") %> </div>
                                 </div>
                             </div>
@@ -190,7 +191,7 @@
                                         		JSONObject read=(JSONObject)reads.get(i);
                                         	%>
                                         			
-                                        		<%=read.get("name") %> (<%=read.get("date") %>) <br>
+                                        		<%=read.get("name") %> (<%=(Date)read.get("date") %>) <br>
                                         	<%
                                         	}
                                         	%>
@@ -205,7 +206,7 @@
                                         	{
                                         		JSONObject volunteer=(JSONObject)volunteers.get(i);
                                         	%>
-                                        	<%=volunteer.get("name") %> (<%=volunteer.get("starttime") %>~ <%=volunteer.get("endtime")%>)<br>
+                                        	<%=volunteer.get("name") %> (<%=((Date)volunteer.get("starttime")) %>~ <%=(Date)volunteer.get("endtime")%>)<br>
                                         	<%
                                         	}
                                         	%>

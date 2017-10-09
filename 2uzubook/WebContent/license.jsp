@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -79,7 +80,7 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
                             					<img src="images/student/license2.png" alt="" /></a>
                             				</div>
                             				<div class="7u">
-                            					<h3 class="text-center" id="delete_name"><%=(String)licen.get("name")%></h3><%=(String)licen.get("date")%>
+                            					<h3 class="text-center" id="delete_name"><%=(String)licen.get("name")%></h3><%=(Date)licen.get("date")%>
                             				</div>
                             			</div>
                             		</div>
@@ -232,7 +233,12 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
     				type : 'post',
     				data : temp,
     				success : function(data) {
-    					console.log("delete_success");
+    					if(data.status){
+    						alert("delete_success");
+    					}else{
+    						alert("delete_fail");
+    						//실패처리
+    					}
     				},
     				dataType : 'json'
     			});
