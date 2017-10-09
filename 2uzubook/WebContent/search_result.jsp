@@ -1,6 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
+<%!
+	class Student {
+		String name;
+		String major;
+	
+		Student(String name, String major) {
+			this.name = name;
+			this.major = major;
+		}
+	}
+%>
+
+<%
+	try{
+		request.setCharacterEncoding("UTF-8");
+		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
+		System.out.println(jsonArray);
+		
+		ArrayList<Student> students = new ArrayList<Student>();
+
+		for (int i = 0; i < jsonArray.size(); i++) {
+			JSONObject jobj = (JSONObject) jsonArray.get(i);
+			students.add(new Student((String) jobj.get("name"), (String) jobj.get("major")));
+		}	
+%>
 <!DOCTYPE HTML>
 <html>
-
 <head>
 <title>2UZUBOOK DSM</title>
 <meta charset="utf-8" />
