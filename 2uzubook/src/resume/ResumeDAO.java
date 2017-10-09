@@ -385,7 +385,6 @@ public class ResumeDAO extends Database{
 				try {
 					pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
 					pstmt.setString(1, user);
-					rs = pstmt.executeQuery();
 					
 					while (rs.next()) {
 						if (rs.getString("name").equals(name)) {
@@ -405,7 +404,6 @@ public class ResumeDAO extends Database{
 				try {
 					pstmt = conn.prepareStatement(SQL_DELETE_CERT);
 					pstmt.setString(1, user);
-					rs = pstmt.executeQuery();
 					
 					while (rs.next()) {
 						if (rs.getString("name").equals(name)) {
@@ -424,7 +422,6 @@ public class ResumeDAO extends Database{
 				try {
 					pstmt = conn.prepareStatement(SQL_DELETE_CLUB);
 					pstmt.setString(1, user);
-					rs = pstmt.executeQuery();
 					
 					while (rs.next()) {
 						if (rs.getString("name").equals(name)) {
@@ -443,7 +440,6 @@ public class ResumeDAO extends Database{
 				try {
 					pstmt = conn.prepareStatement(SQL_DELETE_PROJECT);
 					pstmt.setString(1, user);
-					rs = pstmt.executeQuery();
 					
 					while (rs.next()) {
 						if (rs.getString("name").equals(name)) {
@@ -462,7 +458,6 @@ public class ResumeDAO extends Database{
 				try {
 					pstmt = conn.prepareStatement(SQL_DELETE_TEST);
 					pstmt.setString(1, user);
-					rs = pstmt.executeQuery();
 					
 					while (rs.next()) {
 						if (rs.getString("name").equals(name)) {
@@ -480,7 +475,6 @@ public class ResumeDAO extends Database{
 				try {
 					pstmt = conn.prepareStatement(SQL_DELETE_CONFERENCE);
 					pstmt.setString(1, user);
-					rs = pstmt.executeQuery();
 					
 					while (rs.next()) {
 						if (rs.getString("name").equals(name)) {
