@@ -59,4 +59,15 @@ public class UserDAO extends Database{
 		}
 		return -1;
 	}
+	
+	public int insert_code(AuthenticationCode code) {
+		String SQL="insert into authentication_code (String user_email,int code) values (?,?)";
+		
+		try {
+			return executeAndUpdate(SQL, code.getUser_email(),code.getCode());  //0 이상 
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return-1;
+	}
 }
