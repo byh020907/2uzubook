@@ -6,6 +6,8 @@
 request.setCharacterEncoding("UTF-8");
 
 JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
+JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
+
 %>
 <!DOCTYPE HTML>
 <html>
@@ -109,9 +111,16 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
                                         <div class="form-group">
                                             <label class="control-label" for="License_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select id="keyword" name="license_keyword" class="form-control">
-                                                    <option value="1">123</option>
-                                                    <option value="2">123</option>
+                                                <select id="keyword" name="volunteer_keyword" class="form-control">
+                                                    <%
+                                                    for(int i=0;i<keywordArray.size();i++)
+                                                    {
+                    									JSONObject keyword=(JSONObject)keywordArray.get(i);
+                    								%>
+                    									<option value="<%=keyword.get("id")%>"><%=keyword.get("name")%></option>
+                    								<% 
+                                                    }
+                                                    %>
                                                 </select>
                                             </div>
                                         </div>

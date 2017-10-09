@@ -67,29 +67,33 @@ public class SelectResume extends HttpServlet {
 				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/club.jsp").forward(request, response);
 			}break;
-			case 5:{
+			case 6:{
 				jsonArray=database.select_resume(userID, part);//conference
 				request.setAttribute("JSONArray", jsonArray);
 				keywordArray=database.select_keyword();
 				request.setAttribute("KeywordArray", keywordArray);
-				request.getRequestDispatcher("/conferense.jsp").forward(request, response);
+				request.getRequestDispatcher("/conference.jsp").forward(request, response);
 			}break;
-			case 6:{
+			case 7:{
 				jsonArray=database2.select_resume(userID,2);//reading
 				request.setAttribute("JSONArray", jsonArray);
 				keywordArray=database.select_keyword();
 				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/reading.jsp").forward(request, response);
 			}break;
-			case 7:{
+			case 8:{
 				jsonArray=database2.select_resume(userID,1);//volunteer
 				request.setAttribute("JSONArray", jsonArray);
 				keywordArray=database.select_keyword();
 				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/volunteer.jsp").forward(request, response);
 			}break;
-			case 8:{
-				
+			case 5:{
+				jsonArray=database.select_resume(userID,part);//test
+				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
+				request.getRequestDispatcher("/test.jsp").forward(request, response);
 			}
 		}
 
