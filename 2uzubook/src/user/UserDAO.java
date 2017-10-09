@@ -42,7 +42,7 @@ public class UserDAO extends Database{
 		String sql = "INSERT INTO user (name, gender, email, id, password, adm_year, stu_id, intro, major) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, name);
 			pstmt.setString(2, gender);
 			pstmt.setString(3, email);
 			pstmt.setString(4, id);
