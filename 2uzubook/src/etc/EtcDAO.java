@@ -91,45 +91,35 @@ public class EtcDAO extends Database {
 		return -1;
 	}
 	
-	public int delete_etc(String user,String name,int position) {
+	public void delete_etc(String user,String name,int position) {
 		// 1. 봉사 2. 독서 
 		switch (position) {
 		case 1:
-			String SQL_DELETE_volunteer = "delete from volunteer where user=?";
+			String SQL_DELETE_volunteer = "delete from volunteer where user=? and name=?";
 
 			try {
 				pstmt = conn.prepareStatement(SQL_DELETE_volunteer);
 				pstmt.setString(1, user);
 				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return pstmt.executeUpdate(); // 0이상 
-					}
-				}
-				return -1;
+				pstmt.setString(1, user);
+				pstmt.setString(2, name);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -2; //데이터 베이스 오류
 		case 2:
-			String SQL_DELETE_reading = "delete from reading where user=?";
+			String SQL_DELETE_reading = "delete from reading where user=? and name=?";
 			
 			try {
 				pstmt = conn.prepareStatement(SQL_DELETE_reading);
 				pstmt.setString(1, user);
 				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return pstmt.executeUpdate(); // 0이상 
-					}
-				}
-				return -1;
+				pstmt.setString(1, user);
+				pstmt.setString(2, name);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			return -2; //데이터 베이스 오류
 		default:
-			return -3; // 누구 잘못..?
+			break;
 		}
 	}
 
