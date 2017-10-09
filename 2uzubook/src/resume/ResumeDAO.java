@@ -24,62 +24,6 @@ public class ResumeDAO extends Database{
 		return instance;
 	}
 	
-	//select 할때
-	public JSONArray executeAndGet(String sql, Object... objects) {
-		try {
-			PreparedStatement statement = conn.prepareStatement(sql);
-			if (objects.length > 0) {
-				int index = 1;
-				for (Object object : objects) {
-					statement.setObject(index++, object);
-				}
-				return filterData(statement.executeQuery());
-			} else {
-				return filterData(statement.executeQuery());
-			}
-		} catch (SQLException sqlE) {
-			sqlE.printStackTrace();
-			return null;
-		}
-	}
-
-	
-	//insert, update , delete
-	public int executeAndUpdate(String sql, Object... objects) {
-		try {
-			PreparedStatement statement = conn.prepareStatement(sql);
-			if (objects.length > 0) {
-				int index = 1;
-				for (Object object : objects) {
-					statement.setObject(index++, object);
-				}
-				return statement.executeUpdate();
-			} else {
-				return statement.executeUpdate();
-			}
-		} catch (SQLException sqlE) {
-			sqlE.printStackTrace();
-			return -1;
-		}
-	}
-
-	private static JSONArray filterData(ResultSet resultSet) throws SQLException {
-		JSONArray results = new JSONArray();
-
-		while (resultSet.next()) {
-			JSONObject result = new JSONObject();
-			ResultSetMetaData metaData = resultSet.getMetaData();
-			for (int i = 1; i <= metaData.getColumnCount(); i++) {
-				String label = metaData.getColumnLabel(i);
-				Object value = resultSet.getObject(i);
-				result.put(label, value);
-			}
-			results.add(result);
-		}
-
-		return results;
-	}
-	
 	public JSONArray select_keyword() {
 		String SQL="select * from keyword"; 
 		JSONArray results=new JSONArray();
@@ -377,84 +321,35 @@ public class ResumeDAO extends Database{
 	}
 	
 
-	public void delete_resume(String user,String name, int position) {
+	public int delete_resume(String user,String name, int position) {
 		switch (position) {
 			case 1:{
 				String SQL_DELETE_AWARD = "delete from award where user=? and name=?";
-	
-				try {
-					pstmt = conn.prepareStatement(SQL_DELETE_AWARD);
-					pstmt.setString(1, user);
-					pstmt.setString(2, name);
-				
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+				return executeAndUpdate(SQL_DELETE_AWARD, user,name);
 			}
 				
 			case 2:{
 				String SQL_DELETE_CERT = "delete from cert where user=? and name=?";
-				
-				try {
-					pstmt = conn.prepareStatement(SQL_DELETE_CERT);
-					pstmt.setString(1, user);
-					pstmt.setString(2, name);
-				
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+				return executeAndUpdate(SQL_DELETE_CERT, user,name);
 			}
 			case 3:{
 				String SQL_DELETE_CLUB = "delete from club where user=? and name=?";
-				
-				try {
-					pstmt = conn.prepareStatement(SQL_DELETE_CLUB);
-					pstmt.setString(1, user);
-					pstmt.setString(2, name);
-				
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+				return executeAndUpdate(SQL_DELETE_CLUB, user,name);
 			}
 			case 4:{				
 				String SQL_DELETE_PROJECT = "delete from project where user=? and name=?";
-				
-				try {
-					pstmt = conn.prepareStatement(SQL_DELETE_PROJECT);
-					
-					pstmt.setString(1, user);
-					pstmt.setString(2, name);
-				
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+				return executeAndUpdate(SQL_DELETE_PROJECT, user,name);
 			}
 			case 5:{				
 				String SQL_DELETE_TEST = "delete from test where user=? and name=?";
-				
-				try {
-					pstmt = conn.prepareStatement(SQL_DELETE_TEST);
-					
-					pstmt.setString(1, user);
-					pstmt.setString(2, name);
-				
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+				return executeAndUpdate(SQL_DELETE_TEST, user,name);
 			}
 			case 6:{				
 				String SQL_DELETE_CONFERENCE="delete from conference where user=? and name=?";
-				try {
-					pstmt = conn.prepareStatement(SQL_DELETE_CONFERENCE);
-					pstmt.setString(1, user);
-					pstmt.setString(2, name);
-				
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
+				return executeAndUpdate(SQL_DELETE_CONFERENCE, user,name);
 			}
 			default:
-				break;
+				return -1;
 		}
 	}
 
