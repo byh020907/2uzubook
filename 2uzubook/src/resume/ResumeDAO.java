@@ -309,6 +309,34 @@ public class ResumeDAO extends Database{
 
 	}
 	
+	public JSONArray serach(int ...keyword) {
+		JSONArray jsonArray = new JSONArray();
+		
+		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
+				+ "LEFT JOIN award ON user.id=award.user" 
+				+ "LEFT JOIN cert ON user.id=cert.user"
+				+ "LEFT JOIN project ON user.id=project.user" 
+				+ "LEFT JOIN club ON user.id=club.user"
+				+ "LEFT JOIN major ON user.major=major.id"
+				+ "WHERE " );
+
+
+		
+		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
+		String and=" and ";
+		
+		for(int i:keyword) {
+			if(i==keyword.length) {
+				sb.append(sub);
+			}else {
+				sb.append(sub).append(and);
+			}
+		}
+		
+		String TotalSQL=sb.toString();
+
+	}
+	
 	@SuppressWarnings("unchecked")
 	public JSONArray totalSerach(JSONArray...jsonArraysjson) {
 		JSONArray totalJsonArray = new JSONArray();
