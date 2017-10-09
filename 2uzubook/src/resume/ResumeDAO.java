@@ -462,108 +462,73 @@ public class ResumeDAO extends Database{
 	public int duplicate_check(String user, String name, int position) {
 
 		// 1.award 2.cert 3.club 4.project 5.test 6. conference
-
+		
+		
+		//리턴값이 ㅣ0이상이면 중복된거임
 		switch (position) {
 		case 1:
-			String SQL_AWARD = "select name from award where user=?";
+			String SQL_AWARD = "select name from award where user=? and name=?";
 
 			try {
 				pstmt = conn.prepareStatement(SQL_AWARD);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return 0; // 0이면 중복
-					}
-				}
-				return 1; // 1이면 중복아님
+				pstmt.setString(2, name);
+				return pstmt.executeUpdate(); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return -2; // 데이터베이스 오류
 		case 2:
-			String SQL_CERT = "select name from cert where user=?";
+			String SQL_CERT = "select name from cert where user=? and name=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_CERT);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return 0; // 0이면 중복
-					}
-				}
-				return 1; // 1이면 중복아님
+				pstmt.setString(2, name);
+				return pstmt.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		case 3:
-			String SQL_CLUB = "select name from club where user=?";
+			String SQL_CLUB = "select name from club where user=? and name=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_CLUB);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return 0; // 0이면 중복
-					}
-				}
-				return 1; // 1이면 중복아님
+				pstmt.setString(2, name);
+				return pstmt.executeUpdate(); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		case 4:
-			String SQL_PROJECT = "select name from project where user=?";
+			String SQL_PROJECT = "select name from project where user=? and name=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_PROJECT);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return 0; // 0이면 중복
-					}
-				}
-				return 1; // 1이면 중복아님
+				pstmt.setString(2, name);
+				return pstmt.executeUpdate(); 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		case 5:
-			String SQL_TEST = "select name from test where user=?";
+			String SQL_TEST = "select name from test where user=? and name=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_TEST);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return 0; // 0이면 중복
-					}
-				}
-				return 1; // 1이면 중복아님
+				pstmt.setString(2, name);
+				return pstmt.executeUpdate(); // 1이면 중복아님
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		case 6:
-			String SQL_conference = "select name from conference where user=?";
+			String SQL_conference = "select name from conference where user=? and name=?";
 			try {
 				pstmt = conn.prepareStatement(SQL_conference);
 				pstmt.setString(1, user);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					if (rs.getString("name").equals(name)) {
-						return 0; // 0이면 중복
-					}
-				}
-				return 1; // 1이면 중복아님
+				pstmt.setString(2, name);
+				return pstmt.executeUpdate(); // 0이상 이면 중복
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		default:
-			return -1; // 조회할 컬럼이 없음
+			return -2; // 조회할 컬럼이 없음
 		}
 	}
 	
