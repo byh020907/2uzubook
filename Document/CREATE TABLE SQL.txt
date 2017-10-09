@@ -115,6 +115,6 @@ CREATE TABLE `authentication_code` (
     `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `user_email` VARCHAR(64) NOT NULL UNIQUE,
     `code` int(6) NOT NULL UNIQUE,
-    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
+    FOREIGN KEY (`user_email`) REFERENCES `user`(`email`)
 );
 
