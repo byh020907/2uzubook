@@ -42,7 +42,6 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
                     <li> <a href="#">For Company</a>
                         <ul>
                             <li><a href="search.html">학생 찾기</a></li>
-                            <li><a href="right-sidebar.html">시리얼 관리</a></li>
                         </ul>
                     </li>
                 </ul>
