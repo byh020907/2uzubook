@@ -2,32 +2,32 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
 <%
-	request.setCharacterEncoding("UTF-8");
-	
-	JSONObject jsonObject= (JSONObject) request.getAttribute("JSONObject");
-	
-	JSONArray licenses=(JSONArray)jsonObject.get("licenses");
-	JSONArray awards=(JSONArray)jsonObject.get("awards");
-	JSONArray contests=(JSONArray)jsonObject.get("contests");
-	JSONArray projects=(JSONArray)jsonObject.get("projects");
-	JSONArray clubs=(JSONArray)jsonObject.get("clubs");
-	JSONArray reads=(JSONArray)jsonObject.get("reads");
-	JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
-	JSONArray tests=(JSONArray)jsonObject.get("tests");
-	
-	System.out.println(jsonObject);//log
-	String name=(String)jsonObject.get("name");
-	String major=(String)jsonObject.get("major");
-	int student_id=(Integer)jsonObject.get("student_id");
-	String gender=(String)jsonObject.get("gender");
-	String email=(String)jsonObject.get("email");
+		request.setCharacterEncoding("UTF-8");
+		
+		JSONObject jsonObject= (JSONObject) request.getAttribute("JSONObject");
+		
+		JSONArray licenses=(JSONArray)jsonObject.get("licenses");
+		JSONArray awards=(JSONArray)jsonObject.get("awards");
+		JSONArray projects=(JSONArray)jsonObject.get("projects");
+		JSONArray conferences=(JSONArray)jsonObject.get("conferences");
+		JSONArray clubs=(JSONArray)jsonObject.get("clubs");
+		JSONArray reads=(JSONArray)jsonObject.get("readings");
+		JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
+		JSONArray tests=(JSONArray)jsonObject.get("tests");
+		
+		System.out.println(jsonObject);//log
+		String name=(String)jsonObject.get("name");
+		int major=(Integer)jsonObject.get("major");
+		int student_id=(Integer)jsonObject.get("stu_id");
+		String gender=(String)jsonObject.get("gender");
+		String email=(String)jsonObject.get("email");
 	
 %>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="css/table.css/">
+<link rel="stylesheet" type="text/css" href="/2uzubook/css/table.css">
 </head>
 
 <body>
@@ -44,8 +44,8 @@
 						class="studentimg"></th>
 					<td>
 						<h2>
-							2학년 1반 소프트웨어개발과 <br> 윤정현
-						</h2> <strong>jafj4a2@naver.com</strong> <br> 웹해킹 <br> 컴퓨터 보안
+							<%=student_id %> <%=major %> <br> <%=name %>
+						</h2> <strong><%=email %></strong> <br> 웹해킹 <br> 컴퓨터 보안
 						<br> sw 개발
 					</td>
 				</tr>
@@ -64,7 +64,7 @@
 						{
 						JSONObject licen=(JSONObject)licenses.get(i);
 						%>
-							<%=(String)licen.get(licenseName)%> <br>
+							<%=(String)licen.get(name)%> <br>
 						<% 
 						} 
 						%> </td>
@@ -75,17 +75,23 @@
 					<%for(int i=0;i<awards.size();i++){
                             JSONObject awd=(JSONObject)awards.get(i);
                     %>
-						<%=(String)awd.get("awardName")%> <%=(String)awd.get("award")%> (<%=(String)awd.get("awardDate") %>) <br> 
+						<%=(String)awd.get("name")%> <%=(String)awd.get("grade")%> (<%=(String)awd.get("date") %>) <br> 
+					<%
+					}
+					%>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row">대회 공모전</th>
 					<td>
-					<%for(int i=0;i<contests.size();i++)
+					<%for(int i=0;i<conferences.size();i++)
                       {
-                           JSONObject contest=(JSONObject)contests.get(i);
+                           JSONObject contest=(JSONObject)conferences.get(i);
                     %>
-                    	<%=contest.get("contestName") %> (<%=contest.get("contestDate") %>) <br>
+                    	<%=contest.get("name") %> (<%=contest.get("date") %>) <br>
+                    	<%
+                    	}
+                    	%>
 					</td>
 				</tr>
 				<tr>

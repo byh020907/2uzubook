@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import etc.EtcDAO;
 import resume.ResumeDAO;
 import user.UserDAO;
 
@@ -23,8 +23,10 @@ import user.UserDAO;
 public class myresume extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ResumeDAO database;
+	EtcDAO database2;
     public myresume() {
     	database=ResumeDAO.getInstance();
+    	database2=EtcDAO.getInstance();
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Util.setCharset(request, response, "utf-8");
@@ -41,24 +43,25 @@ public class myresume extends HttpServlet {
 		JSONArray awds=database.select_resume(userID, 2);
 		JSONArray clubs=database.select_resume(userID, 3);
 		JSONArray projects=database.select_resume(userID, 4);
-		
-		JSONObject basic_obj=new JSONObject();
+		JSONArray tests=database.select_resume(userID, 5);
+		JSONArray conferences=database.select_resume(userID, 6);
+		JSONArray volunteers=database2.select_resume(userID, 1);
+		JSONArray readings=database2.select_resume(userID, 2);
 		
 		//유저 정보 받아오기
 		JSONArray ja=UserDAO.getInstance().executeAndGet("SELECT * FROM USER WHERE id=?", userID);
-		JSONObject userData=(JSONObject) ja.get(0);
+
+		JSONObject userData=(JSONObject)ja.get(0);
 		
-		basic_obj.put("name", userData.get("name"));
-		basic_obj.put("major", userData.get("major"));
-		basic_obj.put("student_id", userData.get("stu_id"));
-		basic_obj.put("gender", userData.get("gender"));
-		basic_obj.put("email", userData.get("email"));
-		basic_obj.put("licenses", licenses);
-		basic_obj.put("awards",awds);
-		basic_obj.put("clubs", clubs);
-		basic_obj.put("projects", projects);
-		
-		request.setAttribute("JSONObject", basic_obj);
+		userData.put("licenses", licenses);
+		userData.put("awards",awds);
+		userData.put("clubs",clubs);
+		userData.put("projects",projects);
+		userData.put("tests",tests);
+		userData.put("conferences",conferences);
+		userData.put("volunteers",volunteers);
+		userData.put("readings",readings);
+		request.setAttribute("JSONObject", userData);
 		request.getRequestDispatcher("/myresume.jsp").forward(request, response);
 	}
 
