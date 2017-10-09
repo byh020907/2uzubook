@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
 	System.out.println(id);
 %>
 <!DOCTYPE HTML>
@@ -35,7 +36,7 @@
 					<li><a href="index.jsp">Home</a></li>
 					<li id="login_status">
 						<%
-							if (id == null) {
+							if (id == null && serialKey==null) {
 						%><a href="login.html">로그인 / 회원가입</a> <%
 							} else {
 						%><a href="logoutAction">로그아웃</a> <%
