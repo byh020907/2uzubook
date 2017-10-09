@@ -349,7 +349,7 @@ public class ResumeDAO extends Database{
 				return executeAndUpdate(SQL_DELETE_CONFERENCE, user,name);
 			}
 			default:
-				return -1;
+				return -2;
 		}
 	}
 

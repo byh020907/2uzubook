@@ -91,35 +91,22 @@ public class EtcDAO extends Database {
 		return -1;
 	}
 	
-	public void delete_etc(String user,String name,int position) {
+	public int delete_etc(String user,String name,int position) {
 		// 1. 봉사 2. 독서 
 		switch (position) {
-		case 1:
-			String SQL_DELETE_volunteer = "delete from volunteer where user=? and name=?";
-
-			try {
-				pstmt = conn.prepareStatement(SQL_DELETE_volunteer);
-				pstmt.setString(1, user);
-				
-				pstmt.setString(1, user);
-				pstmt.setString(2, name);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		case 2:
-			String SQL_DELETE_reading = "delete from reading where user=? and name=?";
 			
-			try {
-				pstmt = conn.prepareStatement(SQL_DELETE_reading);
-				pstmt.setString(1, user);
-				
-				pstmt.setString(1, user);
-				pstmt.setString(2, name);
-			} catch (Exception e) {
-				// TODO: handle exception
+			case 1:{
+				String SQL_DELETE_volunteer = "delete from volunteer where user=? and name=?";
+				return executeAndUpdate(SQL_DELETE_volunteer, user,name);
 			}
-		default:
-			break;
+				
+			case 2:{
+				String SQL_DELETE_reading = "delete from reading where user=? and name=?";
+				return executeAndUpdate(SQL_DELETE_reading, user,name);
+			}
+			
+			default:
+				return -2;
 		}
 	}
 
