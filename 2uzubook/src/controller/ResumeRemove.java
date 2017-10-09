@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import etc.EtcDAO;
 import resume.ResumeDAO;
@@ -29,42 +29,28 @@ public class ResumeRemove extends HttpServlet {
 		HttpSession session=request.getSession();
 		String userID=(String) session.getAttribute("id");
 		int part=Integer.parseInt((String)request.getParameter("part"));
+		int returnValue=-100;
 		switch(part)
 		{
-		case 1:{
-			database.delete_resume(userID, request.getParameter("name"), part);
-		}break;
-		case 2:{
-			database.delete_resume(userID, request.getParameter("name"), part);
-		}break;
-		case 3:{
-
-			database.delete_resume(userID, request.getParameter("name"), part);
-		}break;
-		case 4:{
-
-			database.delete_resume(userID, request.getParameter("name"), part);
-		}break;
-		case 5:{
-
-			database.delete_resume(userID, request.getParameter("name"), part);
-		}break;
-		case 6:{
-
-			database.delete_resume(userID, request.getParameter("name"), part);
-		}break;
-		case 7:{
-
-			database2.delete_etc(userID, request.getParameter("name"), 1);
-		}break;
-		case 8:{
-
-			database2.delete_etc(userID, request.getParameter("name"), 2);
-		}break;
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:{
+				returnValue=database.delete_resume(userID, request.getParameter("name"), part);
+			}break;
+			case 7:{
+				returnValue=database2.delete_etc(userID, request.getParameter("name"), 1);
+			}break;
+			case 8:{
+				returnValue=database2.delete_etc(userID, request.getParameter("name"), 2);
+			}break;
 		}
-		JSONArray jsonArray=new JSONArray();
+		JSONObject returnJson=new JSONObject();
+		returnJson.put("status", returnValue);
 		PrintWriter out=response.getWriter();
-		out.write(jsonArray.toString());
+		out.write(returnJson.toString());
 		out.flush();
 	}
 	
