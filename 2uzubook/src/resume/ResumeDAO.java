@@ -313,8 +313,8 @@ public class ResumeDAO extends Database{
 		
 		int TURNSIZE=4;
 		JSONArray jsonArray = new JSONArray();
-		
-		int [] keywordList;
+		int[] keywordList=new int[keyword.length*4];
+
 		
 		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
 				+ "LEFT JOIN award ON user.id=award.user" 
@@ -330,19 +330,33 @@ public class ResumeDAO extends Database{
 		String and=" and ";
 		
 		for(int i:keyword) {
-			
-			keyword=new int[keyword.length*4];
-			
 			if(i==keyword.length) {
 				sb.append(sub);
 			}else {
 				sb.append(sub).append(and);
 			}			
-			
 		}
 		
-		String TotalSQL=sb.toString();
+	
+		String totalSQL=sb.toString();
 
+		if(keyword.length==1) {
+			return jsonArray=executeAndGet(totalSQL, keyword[0],keyword[0],keyword[0],keyword[0]);
+		}else if(keyword.length == 2) {
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1]);
+		}else if(keyword.length==3) {
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]);
+		}else if(keyword.length ==4 ) {
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]
+					,keyword[3],keyword[3],keyword[3],keyword[3]);
+
+		}else if(keyword.length==5) {
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]
+					,keyword[3],keyword[3],keyword[3],keyword[3],keyword[4],keyword[4],keyword[4],keyword[4]);
+		}
+		
+		return jsonArray;
+				
 	}
 	
 	@SuppressWarnings("unchecked")
