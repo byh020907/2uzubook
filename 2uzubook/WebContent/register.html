@@ -80,14 +80,14 @@
                                                     <label class="control-label" for="email">E-Mail Address</label>
                                                     <input id="email" name="email" type="text" class="form-control" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
-                                                        <button id="email_comfirm" class="btn btn-primary">이메일 인증</button>
+                                                        <input type="button" id="email_comfirm" value="이메일 인증" class="btn btn-primary">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label" for="id">ID</label>
                                                     <input id="id" name="id" class="form-control" type="text" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
-                                                        <button id="id_confirm" class="btn btn-primary">중복 확인</button>
+                                                        <input type="button" id="id_confirm" value="중복 확인" class="btn btn-primary">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -130,7 +130,7 @@
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="Submit"></label>
                                                     <div class="col-md-4">
-                                                        <button id="Submit" name="Submit" class="btn btn-primary">가입하기</button>
+                                                        <button type="submit" class="btn btn-primary">가입하기</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -216,6 +216,7 @@
         });
         
         $("#email_confirm").click(function () {
+        	console.log("이메일 컨펌 실행");
         	var temp=new Object();
         	var email=$('#email');
         	temp.email=email;
