@@ -123,8 +123,7 @@ public class ResumeAdd extends HttpServlet {
 				System.out.println(part+name+score+keyword);
 				Test test=new Test(userID,name,score,keyword);
 				database.insert_test(test);
-				jsonArray=database2.select_resume(userID,2);//test select 함수 없음
-			
+				jsonArray=database.select_resume(userID,5);
 			}
 		}
 		

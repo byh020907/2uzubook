@@ -91,5 +91,42 @@ public class SendMail extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	private static int sendMail(String mail_to,String title,String contents){
+		try {
+			String mail_from =	"dragonlake.bae@gmail.com";//원래 보내는 사람 정할수 있는거 같은데 gmail설정으로 하니 설정한 계정 이메일 밖에 안된다.
+
+//			mail_from = new String(mail_from.getBytes("UTF-8"), "UTF-8");//굳이 할필요 없다 (아래에서 처리해줌)
+			mail_to = new String(mail_to.getBytes("UTF-8"), "UTF-8");
+
+			Properties props = new Properties();
+			props.put("mail.transport.protocol", "smtp");
+			props.put("mail.smtp.host", "smtp.gmail.com");
+			props.put("mail.smtp.port", "465");
+			props.put("mail.smtp.starttls.enable", "true");
+			props.put("mail.smtp.socketFactory.port", "465");
+			props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			props.put("mail.smtp.socketFactory.fallback", "false");
+			props.put("mail.smtp.auth", "true");
+
+			Authenticator auth = new SMTPAuthenticator();
+
+			Session sess = Session.getDefaultInstance(props, auth);
+
+			MimeMessage msg = new MimeMessage(sess);
+
+			msg.setFrom(new InternetAddress(mail_from,"2uzubook관리자","UTF-8"));
+			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(mail_to));
+			msg.setSubject(title, "UTF-8");
+			msg.setContent(contents, "text/html; charset=UTF-8");
+			msg.setHeader("Content-type", "text/html; charset=UTF-8");
+
+			Transport.send(msg);
+			return 0;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 
 }

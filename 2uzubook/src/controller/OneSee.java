@@ -29,7 +29,7 @@ public class OneSee extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-Util.setCharset(request, response, "utf-8");
+		Util.setCharset(request, response, "utf-8");
 		
 		HttpSession session=request.getSession();
 		
