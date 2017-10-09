@@ -1,10 +1,8 @@
 package user;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.json.simple.JSONArray;
 
 import dao.Database;
-import resume.ResumeDAO;
 
 public class UserDAO extends Database{
 
@@ -61,13 +59,28 @@ public class UserDAO extends Database{
 	}
 	
 	public int insert_code(AuthenticationCode code) {
-		String SQL="insert into authentication_code (String user_email,int code) values (?,?)";
+		String SQL="insert into authentication_code (user_email,code) values (?,?)";
 		
 		try {
 			return executeAndUpdate(SQL, code.getUser_email(),code.getCode());  //0 이상 
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
-		return-1;
+		return -1;
+	}
+	
+	public int check_code(AuthenticationCode code) {
+		String SQL="select * from authentication_code where user_email=? and code=?";
+		
+		JSONArray ja=executeAndGet(SQL, code.getUser_email(),code.getCode());
+		//디비오류
+		if(ja==null)
+			return -1;
+		
+		//로그인
+		if(ja.size()==1)
+			return 1;//성공
+		else
+			return 0;//실패
 	}
 }

@@ -196,8 +196,13 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
 				type : 'post',
 				data : temp,
 				success : function(data) {
-					for (var i = 0; i < data.length; i++) {
-						console.log(data[i].name);
+					if(data!=null&&data.length!=0){						
+						alert("add_success");
+						//성공처리
+					}
+					else{						
+						alert("add_fail");
+						//실패처리
 					}
 				},
 				dataType : 'json'
@@ -233,8 +238,9 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
     				type : 'post',
     				data : temp,
     				success : function(data) {
-    					if(data.status){
+    					if(data.status>=0){
     						alert("delete_success");
+    						//성공처리
     					}else{
     						alert("delete_fail");
     						//실패처리
