@@ -80,7 +80,7 @@
                                                     <label class="control-label" for="email">E-Mail Address</label>
                                                     <input id="email" name="email" type="text" class="form-control" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
-                                                        <input type="button" id="email_comfirm" value="이메일 인증" class="btn btn-primary">
+                                                        <input type="button" onclick="email_confirm();" value="이메일 인증" class="btn btn-primary">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -215,11 +215,12 @@
              });
         });
         
-        $("#email_confirm").click(function () {
+        function email_confirm(){
         	console.log("이메일 컨펌 실행");
         	var temp=new Object();
-        	var email=$('#email');
+        	var email=$('#email').val();
         	temp.email=email;
+        	console.log(temp);
         	$.ajax({
 				url : '/2uzubook/CreateAuthenticationCode',
 				type : 'post',
@@ -230,18 +231,19 @@
 						//성공처리
 						code_confirm();
 					}else{
-						alert("success")
+						alert("fail")
 						//실패처리
 					}
 				},
 				dataType : 'json'
 			});
-        });
+        }
         
         function code_confirm()
         {
+        	console.log("코드 컨펌 실행");
         	var temp=new Object();
-        	var email=$('#email');
+        	var email=$('#email').val();
         	var inputString=prompt('인증 코드를 입력하세요','');
         	temp.code=inputString;
         	temp.email=email;
@@ -250,7 +252,7 @@
 				type : 'post',
 				data : temp,
 				success : function(data) {
-					if(data==1)
+					if(data.status==1)
 					{
 						alert('인증되었습니다.');
 						$("#email").attr('type','hidden');

@@ -14,7 +14,7 @@ import org.json.simple.JSONObject;
 import user.AuthenticationCode;
 import user.UserDAO;
 
-@WebServlet("/CheckAuthenticationCod")
+@WebServlet("/CheckAuthenticationCode")
 public class CheckAuthenticationCode extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
@@ -33,6 +33,7 @@ public class CheckAuthenticationCode extends HttpServlet {
 		//디비 함수로 code에 해당하는 email이 존재하는지 확인
 		int result=database.check_code(new AuthenticationCode(email,code));
 		
+		System.out.println(result);
 		//위의 값을 토대로 성공여부 보냄
 		
 		JSONObject returnValue=new JSONObject();

@@ -77,7 +77,7 @@ public class UserDAO extends Database{
 		if(ja==null)
 			return -1;
 		
-		//로그인
+		//코드확인
 		if(ja.size()==1)
 			return 1;//성공
 		else
