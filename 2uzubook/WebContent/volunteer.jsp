@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%
+request.setCharacterEncoding("UTF-8");
+
+JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -47,56 +55,69 @@
                         <hr class="first" />
                         <section>
                             <header>
-                                <h3>자격증 추가</h3> </header>
+                                <h3>봉사활동 추가</h3> </header>
                         </section>
                         <hr /> </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
-                                <h2>자격증을 추가해주세요 </h2>
+                                <h2>봉사활동을 추가해주세요 </h2>
                                 <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                             </header>
-                            <h3 class="text-center mb-3">추가된 자격증</h3>
+                            <h3 class="text-center mb-3">추가된 봉사활동</h3>
                             <br>
+                            <br>
+                             <div id="volunteer_loc" class="row">
+                                <% for(int i=0;i<jsonArray.size();i++)
+								{	
+									JSONObject award=(JSONObject)jsonArray.get(i);
+								%>
+                            		<div class="4u 12u(mobile)">
+                            			<div class="row" id="modal_pop" style="cursor:pointer;">
+                            				<div class="5u"><a class="image fit" onclick="volunteer_delete(this);">
+                            					<img src="images/student/etc.png" alt="" /></a>
+                            				</div>
+                            				<div class="7u">
+                            					<h3 class="text-center" id="delete_name"><%=award.get("name")%></h3><%=award.get("startdate")%>~<%=award.get("enddate")%>
+                            				</div>
+                            			</div>
+                            		</div>
+    	
+								<% 
+								}
+								%>  
+                            </div>
                             <script></script>
                             <div class="row" id="license_loc">
                                 <div class="10u form1">
-                                    <h3 class="text-center mb-3">자격증 추가</h3>
+                                    <h3 class="text-center mb-3">봉사활동 추가</h3>
                                     <form action="" method="post">
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
-                                            <label class="control-label" for="License_name">자격증 이름</label>
-                                            <input id="name" name="License_name" placeholder="ex) 정보처리기능사" type="text" class="form-control" required> </div>
+                                            <label class="control-label" for="volunteer_name">봉사 이름</label>
+                                            <input id="name" name="volunteer_name" placeholder="ex) 중랑천 쓰레기 줍기" type="text" class="form-control" required> </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="license_ins">인증기관</label>
+                                            <label class="control-label" for="volunteer_cert">봉사 인증 기관</label>
+                                            <input id="ins" name="volunteer_cert" placeholder="ex) 중랑구청" type="text" class="form-control" required> </div>
+                                         <div class="form-group">
+                                            <label class="control-label" for="volunteer_startdate">시작 날짜</label>
+                                            <input id="startdate" name="volunteer_startdate" type="date" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="volunteer_enddate">종료 날짜</label>
+                                            <input id="enddate" name="volunteer_enddate" type="date" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="License_keyword">키워드</label>
                                             <div class="col-md-4">
-                                                <select name="license_ins" id="ins" class="form-control">
-                                                    <option value="대한상공회의소">대한상공회의소</option>
-                                                    <option value="영화진흥위원회">영화진흥위원회</option>
-                                                    <option value="한국광해관리공단">한국광해관리공단</option>
-                                                    <option value="한국기술자격검정원">한국기술자격검정원</option>
-                                                    <option value="한국방송통신전파진흥원">한국방송통신전파진흥원</option>
-                                                    <option value="한국원자력안전기술원">한국원자력안전기술원</option>
-                                                    <option value="한국인터넷진흥원">한국인터넷진흥원</option>
-                                                    <option value="한국콘텐츠진흥원">한국콘텐츠진흥원</option>
+                                                <select id="keyword" name="license_keyword" class="form-control">
+                                                    <option value="1">123</option>
+                                                    <option value="2">123</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="date">자격증 취득 날짜</label>
-                                            <input id="date" name="license_date" type="date" class="form-control" required> </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="License_keyword">키워드</label>
-                                            	<div class="col-md-4">
-														<select id="keyword" name="license_keyword" class="form-control">
-															<option value="1">123</option>
-															<option value="2">123</option>
-														</select>
-													</div> </div>                    
-                                        <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button onclick="licen_add();" class="btn btn-primary">추가하기</button>
+                                                <button onclick="volunteer_add();" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -143,23 +164,28 @@
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-        function licen_add() {
+        function volunteer_add() {
         	var temp=new Object();
         	var name = $("#name").val();
-            var ins = $("#ins").val();
-            var date = $("#date").val();
+        	var ins = $("#ins").val();
+        	var startdate = $("#startdate").val();
+            var enddate = $("#enddate").val();
             var	keyword=$("#keyword").val();
-        	temp.part="1";
+        	temp.part="7";
         	temp.name=name;
         	temp.ins=ins;
-        	temp.date=date;
+        	temp.startdate=startdate;
+        	temp.enddate=enddate;
         	temp.keyword=keyword;
         	
-        	var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + name+ '</h3>' + date + '</div></div></div>';
-            
-        	$("#license_loc").prepend(tag_div);
+        	var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="volunteer_delete(this);"><img src="images/student/etc.png"\ alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+name+ '</h3>'+ startdate+'~'+enddate+'</div></div></div>';
+      
+        	$("#volunteer_loc").prepend(tag_div);
             $("#name").val('');
-            $("#date").val('');
+            $("#ins").val('');
+            $("#startdate").val('');
+            $("#enddate").val('');
+            $("#keyword").val('');
             
           	$.ajax({
 				url : '/2uzubook/ResumeAdd',
@@ -173,31 +199,29 @@
 				dataType : 'json'
 			});
         }
-       
-		
-        function licen_delete(obj) {
+        function volunteer_delete(obj) {
             $(obj).parent().parent().parent().css('background-color', 'red');
             var flag = 0;
             var delete_name=$(obj).parent().next(".7u").children("#delete_name");
-            console.log($(delete_name).text());
             var name=$(delete_name).text();
+            console.log(name);
             if (confirm('삭제 하시겠습니까?')) {
                 flag = 1;
-                li_del(obj, flag,name);
+                volunteer_del(obj, flag,name);
                 return;
             }
             else {
-                li_del(obj, flag,name);
+                volunteer_del(obj, flag,name);
                 return;
             }
         }
 
-        function li_del(obj, flag,name) {
+        function volunteer_del(obj, flag,name) {
             if (flag == 1) {
                 $(obj).parent().parent().parent().remove();
             	var temp=new Object();
             	temp.name=name;
-            	temp.part="2";
+            	temp.part="7";
                 $.ajax({
     				url : '/2uzubook/ResumeRemove',
     				type : 'post',

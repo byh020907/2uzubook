@@ -78,9 +78,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label" for="email">E-Mail Address</label>
-                                                    <input name="email" type="text" class="form-control" required>
+                                                    <input id="email" name="email" type="text" class="form-control" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
-                                                        <button id="Submit" name="Submit" class="btn btn-primary">이메일 인증</button>
+                                                        <button id="Submit" name="Submit" onclick="email_comfirm();" class="btn btn-primary">이메일 인증</button>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -212,9 +212,49 @@
                     }
                     alert(data.status);
                 }
-            , });
+             });
         });
+        function email_confirm()
+        {
+        	var temp=new Object();
+        	var email=$('#email');
+        	temp.email=email;
+        	$.ajax({
+				url : '/2uzubook/CreateAuthenticationCode',
+				type : 'post',
+				data : temp,
+				success : function(data) {
+					console.log('email_confirm() 함수 실행됨');
+				},
+				dataType : 'json'
+			});
+        	code_confirm();
+        }
+        function code_confirm()
+        {
+        	var temp=new Object();
+        	var inputString=prompt('인증 코드를 입력하세요','');
+        	temp.code=inputString;
+        	$.ajax({
+				url : '/2uzubook/CheckAuthenticationCode',
+				type : 'post',
+				data : temp,
+				success : function(data) {
+					if(data==1)
+					{
+						alert('인증되었습니다.');
+						$("#email").attr('type','hidden');
+					}
+					else
+					{
+						alert('인증되지 못했습니다.');
+					}
+				},
+				dataType : 'json'
+			});
+        }
     </script>
+    
 </body>
 
 </html>
