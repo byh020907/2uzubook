@@ -36,41 +36,56 @@ public class SelectResume extends HttpServlet {
 		
 		int part=Integer.parseInt(request.getParameter("part"));
 		JSONArray jsonArray = null;
+		JSONArray keywordArray = null;
 		switch(part)
 		{
 			case 1:{
 				jsonArray=database.select_resume(userID, part);//license
 				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/license.jsp").forward(request, response);
 			}break;
 			case 2:{
 				jsonArray=database.select_resume(userID, part);//award
 				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/award.jsp").forward(request, response);
 			}break;
 			case 4:{
 				jsonArray=database.select_resume(userID, part);//project
 				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/project.jsp").forward(request, response);
 			}break;
 			case 3:{
 				jsonArray=database.select_resume(userID, part); //club
 				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/club.jsp").forward(request, response);
 			}break;
 			case 5:{
 				jsonArray=database.select_resume(userID, part);//conference
 				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/conferense.jsp").forward(request, response);
 			}break;
 			case 6:{
 				jsonArray=database2.select_resume(userID,2);//reading
 				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/reading.jsp").forward(request, response);
 			}break;
 			case 7:{
 				jsonArray=database2.select_resume(userID,1);//volunteer
 				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/volunteer.jsp").forward(request, response);
 			}break;
 			case 8:{

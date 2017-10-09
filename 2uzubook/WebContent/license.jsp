@@ -6,6 +6,8 @@
 request.setCharacterEncoding("UTF-8");
 
 JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
+JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
+
 %>
 <!DOCTYPE HTML>
 <html>
@@ -200,7 +202,7 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
 						alert("add_success");
 						//성공처리
 					}
-					else{						
+					else{
 						alert("add_fail");
 						//실패처리
 					}
