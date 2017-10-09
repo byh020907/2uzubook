@@ -20,7 +20,7 @@
 	String name=(String)jsonObject.get("name");
 	int major=(Integer)jsonObject.get("major");
 	
-	String majorString;
+	String majorString=null;
 	if(major==1){
 		majorString="공통과정";
 	}else if(major==2){
@@ -29,7 +29,6 @@
 		majorString="임베디드";
 	}else if(major==4){
 		majorString="정보보안과";
-
 	}
 	
 	
@@ -128,7 +127,7 @@
                         <article id="main">
                             <header>
                                 <h2><strong><%=name %></strong></h2>
-                                <h3><%=major %> - <%=student_id %></h3>
+                                <h3><%=majorString %> - <%=student_id %></h3>
                                 <p> </p>
                             </header>
                             <a href="#" class="image featured"><img src="images/debate3.jpg" alt="" /></a>
