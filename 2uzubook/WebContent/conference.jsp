@@ -32,11 +32,11 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
             <nav id="nav">
                 <ul>
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login.html">로그인 / 회원가입</a></li>
+                    <li><a href="logoutAction">로그아웃</a></li>
                     <li> <a href="#">For Student</a>
                         <ul>
-                            <li><a href="myresume.jsp">내 레주메 보기</a></li>
-                            <li><a href="#">레주메 내용 관리</a></li>
+                            <li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>
+                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
                         </ul>
                     </li>
                     <li> <a href="#">For Company</a>
@@ -223,6 +223,11 @@ JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
                 $(obj).parent().parent().parent().css('background-color', '');
             }
         }
+        function go(){
+			var frm=document.getElementById('frm1');
+			console.log('hel');
+			frm.submit();
+		}
     </script>
 </body>
 
