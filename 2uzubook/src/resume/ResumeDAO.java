@@ -322,7 +322,7 @@ public class ResumeDAO extends Database{
 				+ "LEFT JOIN project ON user.id=project.user" 
 				+ "LEFT JOIN club ON user.id=club.user"
 				+ "LEFT JOIN major ON user.major=major.id"
-				+ "WHERE " );
+				+ "WHERE ");
 
 
 		

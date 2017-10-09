@@ -113,7 +113,7 @@ CREATE TABLE `company` (
 
 CREATE TABLE `authentication_code` (
     `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `user_email` VARCHAR(64) NOT NULL UNIQUE,
+    `user_email` VARCHAR(64) NOT NULL,
     `code` int(6) NOT NULL UNIQUE
 );
 
