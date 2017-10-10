@@ -53,6 +53,7 @@ public class myresume extends HttpServlet {
 
 		JSONObject userData=(JSONObject)ja.get(0);
 		
+		
 		userData.put("licenses", licenses);
 		userData.put("awards",awds);
 		userData.put("clubs",clubs);

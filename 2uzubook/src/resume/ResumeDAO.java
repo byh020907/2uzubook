@@ -287,14 +287,16 @@ public class ResumeDAO extends Database{
 
 	}
 
+
 	//단일 값 일때
 	public JSONArray search(int keyword) {
 		String SQL = "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
-				+ "LEFT JOIN award ON user.id=award.user" 
-				+ "LEFT JOIN cert ON user.id=cert.user"
-				+ "LEFT JOIN project ON user.id=project.user" 
-				+ "LEFT JOIN club ON user.id=club.user"
-				+ "LEFT JOIN major ON user.major=major.id"
+				+" "
+				+ "LEFT JOIN award ON user.id=award.user "
+				+ "LEFT JOIN cert ON user.id=cert.user "
+				+ "LEFT JOIN project ON user.id=project.user " 
+				+ "LEFT JOIN club ON user.id=club.user "
+				+ "LEFT JOIN major ON user.major=major.id "
 				+ "WHERE (award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
 		JSONArray jsonArray = new JSONArray();
 		try {
@@ -304,9 +306,7 @@ public class ResumeDAO extends Database{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
 		return jsonArray;
-
 	}
 	
 	public JSONArray serach(int ...keyword) {
@@ -316,12 +316,12 @@ public class ResumeDAO extends Database{
 		int[] keywordList=new int[keyword.length*4];
 
 		
-		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user"
-				+ "LEFT JOIN award ON user.id=award.user" 
-				+ "LEFT JOIN cert ON user.id=cert.user"
-				+ "LEFT JOIN project ON user.id=project.user" 
-				+ "LEFT JOIN club ON user.id=club.user"
-				+ "LEFT JOIN major ON user.major=major.id"
+		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user "
+				+ "LEFT JOIN award ON user.id=award.user " 
+				+ "LEFT JOIN cert ON user.id=cert.user "
+				+ "LEFT JOIN project ON user.id=project.user " 
+				+ "LEFT JOIN club ON user.id=club.user "
+				+ "LEFT JOIN major ON user.major=major.id "
 				+ "WHERE ");
 
 
@@ -349,7 +349,6 @@ public class ResumeDAO extends Database{
 		}else if(keyword.length ==4 ) {
 			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]
 					,keyword[3],keyword[3],keyword[3],keyword[3]);
-
 		}else if(keyword.length==5) {
 			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]
 					,keyword[3],keyword[3],keyword[3],keyword[3],keyword[4],keyword[4],keyword[4],keyword[4]);
