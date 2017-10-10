@@ -29,7 +29,6 @@ public class LoginAction_Student extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		System.out.println(id+password);
 		int result = userDAO.login(id, password);
 
 		PrintWriter out = response.getWriter();
