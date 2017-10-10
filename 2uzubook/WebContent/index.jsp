@@ -50,7 +50,7 @@
 						</ul></li>
 					<li><a href="#">For Company</a>
 						<ul>
-							<li><a href="search.html">학생 찾기</a></li>
+							<li><a href="search.jsp">학생 찾기</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -79,11 +79,11 @@
 							var $h = $('<header><h3><a href="#">'
 									+ data[i].name + '</a></h3></header>');
 							var $p = $('<p>' + data[i].major + '<br/>'
-									+ data[i].student_id + '</p>');
+									+ data[i].stu_id + '</p>');
 							$('#part1').append($article);
 							$('#art' + i).append($a);
-							$('#art' + i).append($h);
 							$('#art' + i).append($p);
+							$('#art' + i).append($h);
 						}
 					}
 				</script>

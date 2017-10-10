@@ -100,6 +100,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         <div class="form-group">
                                             <label class="control-label" for="test_score">시험 성적</label>
                                             <input id="score" name="test_score" placeholder="ex) 450" type="text" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="award_date">시험 날짜</label>
+                                            <input id="date" name="award_date" type="date" class="form-control" required> </div>
                                       <div class="form-group">
                                             <label class="control-label" for="test_keyword">키워드</label>
                                             <div class="col-md-4">
@@ -170,16 +173,19 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
         	var temp=new Object();
         	var name = $("#name").val();
             var score = $("#score").val();
+            var date=$("#date").val();
             var	keyword=$("#keyword").val();
         	temp.part="8";
         	temp.name=name;
         	temp.score=score;
+        	temp.date=date;
         	temp.keyword=keyword;
         	
         	var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="test_delete(this);"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+name+'</h3>'+score+'</div></div></div></div>';
         	$("#test_loc").prepend(tag_div);
             $("#name").val('');
             $("#score").val('');
+            $("#date").val('');
             $("#keyword").val('');
             
           	$.ajax({

@@ -46,20 +46,21 @@ public class JoinAction_Company extends HttpServlet {
 		}
 		
 		Company company=new Company(name, email, key, keyword);
-		
-		int result2=sendMail(email,"[2uzubook]시리얼키 발급 완료","앞으로는 아래 시리얼키를 이용하여 로그인 하시면 됩니다.<br><br>시리얼키번호 : "+key);
-		if(result2!=0){				
-			out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");
-			return;
-		}
 
 		int result = companyDAO.join(company);
 
 		if (result >= 0) {
-			out.print("<script>alert('회원가입을 성공했습니다.');location.href='../login.html';</script>");
-			return;
+			int result2=sendMail(email,"[2uzubook]시리얼키 발급 완료","앞으로는 아래 시리얼키를 이용하여 로그인 하시면 됩니다.<br><br>시리얼키번호 : "+key);
+			if(result2>=0){
+				out.print("<script>alert('회원가입을 성공했습니다.');location.href='../login.html';</script>");
+				return;
+			}else{
+				companyDAO.delete_company(name);
+				out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");
+				return;
+			}
 		} else {
-			out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");
+			out.print("<script>alert('회원가입을 실패했습니다.');history.back()；</script>");
 			return;
 		}
 	}
