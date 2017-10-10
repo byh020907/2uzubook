@@ -28,23 +28,22 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
             <!-- Inner -->
             <div class="inner">
                 <header>
-                    <h1><a href="index.html" id="logo">DSM 2UZUBOOK</a></h1> </header>
+                    <h1><a href="index.jsp" id="logo">DSM 2UZUBOOK</a></h1> </header>
             </div>
             <!-- Nav -->
             <nav id="nav">
                 <ul>
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login.html">로그인 / 회원가입</a></li>
+                    <li><a href="logoutAction">로그아웃</a></li>
                     <li> <a href="#">For Student</a>
                         <ul>
-                            <li><a href="myresume.jsp">내 레주메 보기</a></li>
-                            <li><a href="#">레주메 내용 관리</a></li>
+                            <li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>
+                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
                         </ul>
                     </li>
                     <li> <a href="#">For Company</a>
                         <ul>
                             <li><a href="search.html">학생 찾기</a></li>
-                            <li><a href="right-sidebar.html">시리얼 관리</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -69,7 +68,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             </header>
                             <h3 class="text-center mb-3">추가된 자격증</h3>
                             <br>
-                            <script></script>
+                            <br>
                             <div class="row" id="license_loc">
                             	<% for(int i=0;i<jsonArray.size();i++)
 								{	
@@ -120,10 +119,17 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         <div class="form-group">
                                             <label class="control-label" for="License_keyword">키워드</label>
                                             	<div class="col-md-4">
-														<select id="keyword" name="license_keyword" class="form-control">
-															<option value="1">123</option>
-															<option value="2">123</option>
-														</select>
+													<select id="keyword" name="license_keyword" class="form-control">
+                                                    <%
+                                                    for(int i=0;i<keywordArray.size();i++)
+                                                    {
+                    									JSONObject keyword=(JSONObject)keywordArray.get(i);
+                    								%>
+                    									<option value="<%=keyword.get("id")%>"><%=keyword.get("name")%></option>
+                    								<% 
+                                                    }
+                                                    %>
+                                                </select>
 													</div> </div>                    
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
@@ -255,6 +261,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                 $(obj).parent().parent().parent().css('background-color', '');
             }
         }
+        function go(){
+			var frm=document.getElementById('frm1');
+			console.log('hel');
+			frm.submit();
+		}
     </script>
 </body>
 
