@@ -66,19 +66,20 @@
 									<div class="row">
 										<div class="8u form1">
 											<form id="frm1" action="/2uzubook/loginAction/student"
-												method="post"></form>
+												method="post">
 												<input class="form-control mb-2" type="text"
 													placeholder="userName" name="id" id="id" style="height: 52px;">
 												<input class="form-control mb-2" type="password"
 													placeholder="Password" name="password" id="passwoard"
 													style="height: 52px;">
+													</form>
 											<a href="register.html" style="margin-top: 10px;">
 												<p style="margin-top: 10px;">Don't have an account?</p>
 											</a>
 										</div>
 										<div class="4u">
 											<button class="btn btn-outline-primary mb-2"
-												onclick="student_go();"
+												onclick="$('#frm1').submit;"
 												style="height: 118px; margin-top: 20px;">Sign in</button>
 										</div>
 									</div>
@@ -87,16 +88,18 @@
 									<h3 class="text-center mb-3">Company</h3>
 									<div class="row">
 										<div class="8u form2">
-											<form id="frm2" action="/2uzubook/loginAction/company" method="post"></form>
+											<form id="frm2" action="/2uzubook/loginAction/company" method="post">
 												<input class="form-control"
 													style="margin-bottom: 63px; height: 52px;" type="text"
 													placeholder="Serial" name="serialKey" id="serial">
+												
+											</form>	
 											<a href="register_serial.html">
 												<p style="margin-top: 10px;">Don't have a Serial?</p>
 											</a>
 										</div>
 										<div class="4u">
-											<button class="btn btn-outline-success mb-2" onclick="$('#company_login_form').submit();"
+											<button class="btn btn-outline-success mb-2" onclick="$('#frm2').submit();"
 												style="height: 54px; margin-top: 20px;">Sign in</button>
 										</div>
 									</div>
@@ -152,26 +155,7 @@
 	<script src="js/jquery.onvisible.min.js"></script>
 	<script src="js/skel.min.js"></script>
 	<script src="js/util.js"></script>
-	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+	<!--[if lte IE 8]><scri pt src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
-	<script>
-	function student_go()
-	{
-		var frm=$("frm1");
-		var id=$("#id").val();
-		var pw=$("#password").val();
-		frm.append('<input type="hidden" value="'+id+'" name="id"/>');
-		frm.append('<input type="hidden" value="'+pw+'" name="password"/>');
-		frm.submit();
-	}
-	function company_go()
-	{
-		var frm=$("#frm2");
-		var serial=$("#serial");
-		frm.append('<input type="hidden" value="'+serial+'" name="serial"/>');
-		frm.submit();
-	}
-	
-	</script>
 </body>
 </html>
