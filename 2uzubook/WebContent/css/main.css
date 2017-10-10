@@ -206,6 +206,7 @@ body {
     font-size: inherit;
     line-height: normal;
     vertical-align: middle;
+    margin-top: auto;
     background-color: #fdfdfd;
     cursor: pointer;
     border: 1px solid #ebebeb;
