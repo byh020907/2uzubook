@@ -187,8 +187,17 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 				type : 'post',
 				data : temp,
 				success : function(data) {
-					for (var i = 0; i < data.length; i++) {
-						console.log(data[i].name);
+					if(data>0&&data!=null&&data.length!=0){						
+						alert("add_success");
+						//성공처리
+						var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="conference_delete(this);"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+name+'</h3>'+date+'</div></div></div></div>';
+			        	$("#conference_loc").prepend(tag_div);
+			            $("#name").val('');
+			            $("#date").val('');
+			            $("#keyword").val('');
+					}
+					else{
+						alert("add_fail");
 					}
 				},
 				dataType : 'json'
