@@ -2,6 +2,8 @@ package user;
 
 import org.json.simple.JSONArray;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import dao.Database;
 
 public class UserDAO extends Database{
@@ -82,5 +84,25 @@ public class UserDAO extends Database{
 			return 1;//성공
 		else
 			return 0;//실패
+	}
+	
+	public String majorToString(int majorNum) {
+		String SQL="select name from major where id=?";
+		String major = null;
+		try {
+			
+			pstmt=conn.prepareStatement(SQL);
+			pstmt.setInt(1, majorNum);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				major=rs.getString("name");				
+			}
+			
+			return major;
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return major;
 	}
 }
