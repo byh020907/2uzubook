@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
 <%
 		request.setCharacterEncoding("UTF-8");
 		
@@ -76,9 +77,9 @@
 						{
 						JSONObject licen=(JSONObject)licenses.get(i);
 						%>
-							<%=(String)licen.get(name)%> <br>
+							<%=(String)licen.get("name")%> (<%=(Date)licen.get("date") %>)<br>
 						<% 
-						} 
+						}
 						%> </td>
 				</tr>
 				<tr>
@@ -87,7 +88,7 @@
 					<%for(int i=0;i<awards.size();i++){
                             JSONObject awd=(JSONObject)awards.get(i);
                     %>
-						<%=(String)awd.get("name")%> <%=(String)awd.get("grade")%> (<%=(String)awd.get("date") %>) <br> 
+						<%=(String)awd.get("name")%> <%=(String)awd.get("grade")%> (<%=(Date)awd.get("date") %>) <br> 
 					<%
 					}
 					%>
@@ -100,7 +101,7 @@
                       {
                            JSONObject contest=(JSONObject)conferences.get(i);
                     %>
-                    	<%=contest.get("name") %> (<%=contest.get("date") %>) <br>
+                    	<%=contest.get("name") %> (<%=(Date)contest.get("date") %>) <br>
                     	<%
                     	}
                     	%>
@@ -113,7 +114,7 @@
                       {
                            JSONObject test=(JSONObject)tests.get(i);
                     %>
-						<%=test.get("name")%> <%=test.get("testDate") %>(<%=test.get("score")%>) <br>
+						<%=test.get("name")%> <%=(Date)test.get("date") %>(<%=test.get("score")%>) <br>
 					<%
 					}
 					%>
@@ -150,7 +151,7 @@
                     {
                         JSONObject club=(JSONObject)clubs.get(i);
                 %>
-					<h4><%=(String)club.get("name") %> (<%=(String)club.get("startdate") %>~<%=(String)club.get("enddate")%>)</h4>
+					<h4><%=(String)club.get("name") %> (<%=(Date)club.get("startdate") %>~<%=(Date)club.get("enddate")%>)</h4>
 					-<%=(String)club.get("desc") %>
 					<%
                     }
@@ -164,7 +165,7 @@
                      {
                             JSONObject conference=(JSONObject)conferences.get(i);
                     %>
-						<%=conference.get("name") %> (<%=conference.get("date") %>)
+						<%=conference.get("name") %> (<%=(Date)conference.get("date") %>)
 					<%
                      }
 					%> 
