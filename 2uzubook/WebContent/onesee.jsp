@@ -20,16 +20,7 @@
 		String name=(String)jsonObject.get("name");
 		int major=(Integer)jsonObject.get("major");
 		
-		String majorString=null;
-		if(major==1){
-			majorString="공통과정";
-		}else if(major==2){
-			majorString="sw개발과";
-		}else if(major==3){
-			majorString="임베디드";
-		}else if(major==4){
-			majorString="정보보안과";
-		}
+		String majorName=(String)jsonObject.get("majorName");
 		
 		int student_id=(Integer)jsonObject.get("stu_id");
 		String gender=(String)jsonObject.get("gender");
@@ -57,7 +48,7 @@
 						class="studentimg"></th>
 					<td>
 						<h2>
-							<%=student_id %> <%=majorString %> <br> <%=name %>
+							<%=student_id %> <%=majorName %> <br> <%=name %>
 						</h2> <strong><%=email %></strong> <br> 웹해킹 <br> 컴퓨터 보안
 						<br> sw 개발
 					</td>

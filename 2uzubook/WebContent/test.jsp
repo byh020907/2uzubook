@@ -100,6 +100,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         <div class="form-group">
                                             <label class="control-label" for="test_score">시험 성적</label>
                                             <input id="score" name="test_score" placeholder="ex) 450" type="text" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="award_date">시험 날짜</label>
+                                            <input id="date" name="award_date" type="date" class="form-control" required> </div>
                                       <div class="form-group">
                                             <label class="control-label" for="test_keyword">키워드</label>
                                             <div class="col-md-4">

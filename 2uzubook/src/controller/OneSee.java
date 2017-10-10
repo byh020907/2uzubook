@@ -20,13 +20,13 @@ public class OneSee extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ResumeDAO database;
 	EtcDAO database2;
+	UserDAO database3;
 
     public OneSee() {
-
     	database=ResumeDAO.getInstance();
     	database2=EtcDAO.getInstance();
+    	database3=UserDAO.getInstance();
     }
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Util.setCharset(request, response, "utf-8");
@@ -49,9 +49,13 @@ public class OneSee extends HttpServlet {
 		JSONArray readings=database2.select_resume(userID, 2);
 		
 		//유저 정보 받아오기
-		JSONArray ja=UserDAO.getInstance().executeAndGet("SELECT * FROM USER WHERE id=?", userID);
+		JSONArray ja=database3.executeAndGet("SELECT * FROM USER WHERE id=?", userID);
 
 		JSONObject userData=(JSONObject)ja.get(0);
+		
+		int major=(Integer)userData.get("major");
+		
+		userData.put("majorName", database3.majorToString(major));
 		
 		userData.put("licenses", licenses);
 		userData.put("awards",awds);
