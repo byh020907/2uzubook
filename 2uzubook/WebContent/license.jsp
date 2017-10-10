@@ -68,7 +68,6 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             </header>
                             <h3 class="text-center mb-3">추가된 자격증</h3>
                             <br>
-                            <br>
                             <div class="row" id="license_loc">
                             	<% for(int i=0;i<jsonArray.size();i++)
 								{	
@@ -90,7 +89,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 								}
 								%>
                             </div>
-                            
+                            <br>
                                 <div class="10u form1">
                                     <h3 class="text-center mb-3">자격증 추가</h3>
                                     <form action="" method="post">
