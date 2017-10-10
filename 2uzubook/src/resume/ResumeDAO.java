@@ -177,7 +177,7 @@ public class ResumeDAO extends Database{
 
 	//토익같은 시험 
 	public int insert_test(Test test) {
-		String SQL = "insert into test (user,name,score,keyword) values (?,?,?,?)";
+		String SQL = "insert into test (user,name,score,date,keyword) values (?,?,?,?)";
 
 		try {
 			return executeAndUpdate(SQL,test.getUser(),test.getName(),test.getScore(),test.getKeyword());
@@ -249,8 +249,8 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 
-	public int update_test(String name, int score, int keyword) {
-		String SQL = "update test set name=?, score=? , keyword=?";
+	public int update_test(String name, int score, String date,int keyword) {
+		String SQL = "update test set name=?, score=? ,date=?, keyword=?";
 		try {
 			return executeAndUpdate(SQL, name, score, keyword);
 			// 성공이면 0 이상
@@ -261,7 +261,7 @@ public class ResumeDAO extends Database{
 	}
 	
 	public int update_conference(String name,String date,int keyword) {
-		String SQL = "update conference set name=?, score=? , keyword=?";
+		String SQL = "update conference set name=?, date=? , keyword=?";
 		try {
 			return executeAndUpdate(SQL, name, date, keyword);
 			// 성공이면 0 이상

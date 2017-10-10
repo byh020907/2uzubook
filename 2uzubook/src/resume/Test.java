@@ -5,13 +5,15 @@ public class Test {
 	private String user;
 	private String name;
 	private int score;
+	private String date;
 	private int keyword;
 
-	public Test(String user, String name, int score, int keyword) {
+	public Test(String user, String name, int score, String date, int keyword) {
 		super();
 		this.user = user;
 		this.name = name;
 		this.score = score;
+		this.date = date;
 		this.keyword = keyword;
 	}
 	
@@ -39,12 +41,19 @@ public class Test {
 	public void setScore(int score) {
 		this.score = score;
 	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public int getKeyword() {
 		return keyword;
 	}
 	public void setKeyword(int keyword) {
 		this.keyword = keyword;
 	}
+
 	
 	
 }
