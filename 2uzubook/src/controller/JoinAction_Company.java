@@ -55,11 +55,12 @@ public class JoinAction_Company extends HttpServlet {
 				out.print("<script>alert('회원가입을 성공했습니다.');location.href='../login.html';</script>");
 				return;
 			}else{
+				companyDAO.delete_company(name);
 				out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");
 				return;
 			}
 		} else {
-			out.print("<script>alert('회원가입을 실패했습니다.');history.back();</script>");
+			out.print("<script>alert('회원가입을 실패했습니다.');history.back()；</script>");
 			return;
 		}
 	}

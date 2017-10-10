@@ -50,7 +50,7 @@
 						</ul></li>
 					<li><a href="#">For Company</a>
 						<ul>
-							<li><a href="search.html">학생 찾기</a></li>
+							<li><a href="search.jsp">학생 찾기</a></li>
 						</ul>
 					</li>
 				</ul>
