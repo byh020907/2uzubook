@@ -18,6 +18,8 @@ CREATE TABLE `user` (
     `gender` CHAR(1) NOT NULL,
     `major` INT(1) NOT NULL,
     `email` VARCHAR(64) NOT NULL UNIQUE,
+    `profile_image_path` varchar(200) null,
+    `main_image_path` varchar(200) null,
     FOREIGN KEY (`major`) REFERENCES `major`(`id`)
 );
 
@@ -118,3 +120,10 @@ CREATE TABLE `authentication_code` (
     `code` int(6) NOT NULL UNIQUE
 );
 
+CREATE TABLE interests (
+    `id` INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `user` VARCHAR(32) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `date` DATE NOT NULL,
+    FOREIGN KEY (`user`) REFERENCES `user`(`id`)
+);

@@ -2,6 +2,8 @@ package etc;
 
 import org.json.simple.JSONArray;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import dao.Database;
 import resume.Project;
 import resume.ResumeDAO;
@@ -33,9 +35,26 @@ public class EtcDAO extends Database {
 			String SQL_READING = "select * from reading where user=?";
 			jsonArray = executeAndGet(SQL_READING, id);
 			return jsonArray;
+		case 3:
+			//관심분야
+			String SQL_INTERESTS = "select * from interests where user=?";
+			jsonArray = executeAndGet(SQL_INTERESTS, id);
+			return jsonArray;
 		default:
 			return jsonArray;
 		}
+	}
+	
+	public int insert_interest(Interest interest) {
+		String SQL= "insert into interests (user,name,date) values (?,?,?)";
+		
+		try {
+			return executeAndUpdate(SQL, interest.getUser(), interest.getName(), interest.getDate());
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
 	}
 	
 	public int insert_reading(Reading reading) {
@@ -92,7 +111,7 @@ public class EtcDAO extends Database {
 	}
 	
 	public int delete_etc(String user,String name,int position) {
-		// 1. 봉사 2. 독서 
+		// 1. 봉사 2. 독서  3. 관심분야
 		switch (position) {
 			
 			case 1:{
@@ -105,9 +124,15 @@ public class EtcDAO extends Database {
 				return executeAndUpdate(SQL_DELETE_reading, user,name);
 			}
 			
+			case 3:{
+				String SQL_DELETE_reading = "delete from interests where user=? and name=?";
+				return executeAndUpdate(SQL_DELETE_reading, user,name);
+			}
 			default:
 				return -2;
 		}
 	}
+	
+	
 
 }

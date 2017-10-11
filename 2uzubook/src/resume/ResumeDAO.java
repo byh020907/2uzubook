@@ -271,6 +271,7 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 	
+	
 	public JSONArray search_keyword(String name) {
 		String SQL="select * from keyword where name like %?%";
 		
@@ -324,8 +325,6 @@ public class ResumeDAO extends Database{
 				+ "LEFT JOIN major ON user.major=major.id "
 				+ "WHERE ");
 
-
-		
 		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
 		String and=" and ";
 		
