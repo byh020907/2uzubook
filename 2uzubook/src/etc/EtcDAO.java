@@ -35,6 +35,11 @@ public class EtcDAO extends Database {
 			String SQL_READING = "select * from reading where user=?";
 			jsonArray = executeAndGet(SQL_READING, id);
 			return jsonArray;
+		case 3:
+			//관심분야
+			String SQL_INTERESTS = "select * from interests where user=?";
+			jsonArray = executeAndGet(SQL_INTERESTS, id);
+			return jsonArray;
 		default:
 			return jsonArray;
 		}
