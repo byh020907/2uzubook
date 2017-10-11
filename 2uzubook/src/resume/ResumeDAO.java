@@ -357,6 +357,24 @@ public class ResumeDAO extends Database{
 				
 	}
 	
+	public JSONArray stringSerach(String content) {
+		String SQL_USER="select * from user where adm_year like ? or stu_id like ? or intro like ? or name like ? or gender like ?;";
+		String SQL_AWARD="select * from award where name like ? or ins like ?";
+		String SQL_CERT="select * from cert where name like ? or ins like ?";
+		String SQL_CLUB="select * from club where name like ? or `desc` like ?";
+		String SQL_CONFERENCE="select * from conference where name like ?";
+		String SQL_PROJECT="select * from project where name like ? or `desc` like ?";
+		String SQL_TEST="select * from test where name like ? or score like ?";
+		String SQL_VOLUNTEER="select * from volunteer where name like ? or ins like ?";
+		String SQL_READING="select * from reading where name like ?";
+		
+		
+		JSONArray jsonArray=new JSONArray();
+		
+		
+		return jsonArray;	
+	}
+	
 	@SuppressWarnings("unchecked")
 	public JSONArray totalSerach(JSONArray...jsonArraysjson) {
 		JSONArray totalJsonArray = new JSONArray();
