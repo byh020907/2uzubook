@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/search.css" />
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 </head>
 
@@ -69,7 +70,7 @@
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
 												method="post" style="margin-top: 20px;">
-												<div>
+												<div class="search_div">
 												<input id="search_box" list="data_list" class="form-control mb-2" type="text"
 													placeholder="ex) 남자, 게임, c++" name="q">
 												</div>
@@ -131,14 +132,10 @@
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
 	<script>
-	var temp=new Object();
-	var tag;
-	var str;
 	$(function(){
 		$.ajax({
 			url : '/2uzubook/search_test',
 				type : 'post',
-				data: str,
 				success : function(data) {
 					for (var i = 0; i < data.length; i++) {
 						console.log(data[i].name);
