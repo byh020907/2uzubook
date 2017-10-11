@@ -2,6 +2,8 @@ package etc;
 
 import org.json.simple.JSONArray;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import dao.Database;
 import resume.Project;
 import resume.ResumeDAO;
@@ -36,6 +38,18 @@ public class EtcDAO extends Database {
 		default:
 			return jsonArray;
 		}
+	}
+	
+	public int insert_interest(Interest interest) {
+		String SQL= "insert into interest (user,name,date) values (?,?,?)";
+		
+		try {
+			return executeAndUpdate(SQL, interest.getUser(), interest.getName(), interest.getDate());
+			// 성공이면 0 이상
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
 	}
 	
 	public int insert_reading(Reading reading) {
@@ -109,5 +123,7 @@ public class EtcDAO extends Database {
 				return -2;
 		}
 	}
+	
+	
 
 }
