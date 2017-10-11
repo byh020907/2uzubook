@@ -119,9 +119,10 @@ public class ResumeAdd extends HttpServlet {
 			case 8:{
 				String name=request.getParameter("name");
 				int score=Integer.parseInt(request.getParameter("score"));
+				String date=request.getParameter("date");
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+score+keyword);
-				Test test=new Test(userID,name,score,keyword);
+				Test test=new Test(userID,name,score,date,keyword);
 				database.insert_test(test);
 				jsonArray=database.select_resume(userID,5);
 			}

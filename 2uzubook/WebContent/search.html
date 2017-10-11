@@ -69,8 +69,10 @@
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
 												method="post" style="margin-top: 20px;">
+												<div>
 												<input id="search_box" list="data_list" class="form-control mb-2" type="text"
 													placeholder="ex) 남자, 게임, c++" name="q">
+												</div>
 												<datalist id="data_list">
 													
 												</datalist>
@@ -132,10 +134,7 @@
 	var temp=new Object();
 	var tag;
 	var str;
-	$("#search_box").change(function(){
-		$('#data_list').empty();
-		temp.data=$('#search_box').val().toLowerCase();
-		str=JSON.stringify(temp);
+	$(function(){
 		$.ajax({
 			url : '/2uzubook/search_test',
 				type : 'post',
@@ -150,6 +149,7 @@
 				dataType : 'json'
 		});
 	});
+	
 	</script>
 </body>
 

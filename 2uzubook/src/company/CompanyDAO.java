@@ -44,7 +44,7 @@ public class CompanyDAO extends Database{
 	}
 	
 	public int delete_company(String name) {
-		String SQL="delete from company where=?";
+		String SQL="delete from company where name=?";
 		return executeAndUpdate(SQL, name);
 	}
 
