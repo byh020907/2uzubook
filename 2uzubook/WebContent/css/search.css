@@ -1,0 +1,12 @@
+#search_box{
+	height:50px;
+	width:100px;
+	position: absolute;
+	margin-top:5px;
+	margin-left:5px;
+}
+.search_div{
+	background-color:aliceblue;
+	height:60px;
+	position:relative;
+}
