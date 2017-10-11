@@ -71,8 +71,11 @@
 											<form id="search_form" action="/2uzubook/searchAction"
 												method="post" style="margin-top: 20px;">
 												<div class="search_div">
-												<input id="search_box" list="data_list" class="form-control mb-2" type="text"
-													placeholder="ex) 남자, 게임, c++" name="q">
+												<ul id="input_list">
+													<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text"
+													placeholder="ex) 남자, 게임, c++" name="q"></li>
+											
+												</ul>
 												</div>
 												<datalist id="data_list">
 													
@@ -131,7 +134,10 @@
 	<script src="js/util.js"></script>
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
+	<script src="js/search.js"></script>
 	<script>
+	var tag_input='<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text" placeholder="ex) 남자, 게임, c++" name="q"></li>';
+	
 	$(function(){
 		$.ajax({
 			url : '/2uzubook/search_test',
@@ -146,7 +152,17 @@
 				dataType : 'json'
 		});
 	});
-	
+	$(document).on("keyup","#search_box",function(event){
+		if(event.keyCode==32)
+		{
+			console.log("hell");
+			var val_search=$('#search_box').val();
+			var tag_span='<li><div class="span_style">'+val_search+'</div></li>';
+			$('li').remove('#this_li');
+			$('#input_list').append(tag_span);
+			$('#input_list').append(tag_input);
+		}
+	});
 	</script>
 </body>
 

@@ -82,8 +82,8 @@
 									+ data[i].stu_id + '</p>');
 							$('#part1').append($article);
 							$('#art' + i).append($a);
-							$('#art' + i).append($p);
 							$('#art' + i).append($h);
+							$('#art' + i).append($p);
 						}
 					}
 				</script>
