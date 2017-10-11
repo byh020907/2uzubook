@@ -71,7 +71,7 @@
 									<div class="row">
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
-												method="post" style="margin-top: 20px;">
+												method="post" style="margin-top: 20px;"></form>
 												<div class="search_div">
 												<ul id="input_list">
 													<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text"
@@ -82,11 +82,11 @@
 												<datalist id="data_list">
 													
 												</datalist>
-											</form>
+										
 										</div>
 										<div class="4u">
 											<button class="btn btn-outline-success mb-2"
-												onclick="$('#search_form').submit();"
+												onclick="go_servlet();"
 												style="height: 59px; margin-top: 23px;">search</button>
 										</div>
 									</div>
@@ -159,12 +159,26 @@
 		{
 			console.log("hell");
 			var val_search=$('#search_box').val();
-			var tag_span='<li><div class="span_style">'+val_search+'</div></li>';
+			var tag_div='<li><div class="span_style">'+val_search+'<button class="delete_btn" onclick="delete_keyword(this)">x</button></div></li>';
 			$('li').remove('#this_li');
-			$('#input_list').append(tag_span);
+			$('#input_list').append(tag_div);
 			$('#input_list').append(tag_input);
 		}
 	});
+	function delete_keyword(obj)
+	{
+		$(obj).parent().parent().remove();
+	}
+	function go_servlet()
+	{
+		var li_num=$("#input_list").find("li").length;
+		for(var i=0;i<li_num;i++)
+		{
+			var tag='<input type="hidden" value="'+$("#input_list").find("li").eq(i);+'" name="keyword"/>';	
+			$("#search_form").append(tag);
+		}
+		$("#search_form").submit();
+	}
 	</script>
 </body>
 
