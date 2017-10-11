@@ -85,21 +85,9 @@
 					%>
 					</td>
 				</tr>
+			
 				<tr>
-					<th scope="row">대회 공모전</th>
-					<td>
-					<%for(int i=0;i<conferences.size();i++)
-                      {
-                           JSONObject contest=(JSONObject)conferences.get(i);
-                    %>
-                    	<%=contest.get("name") %> (<%=(Date)contest.get("date") %>) <br>
-                    	<%
-                    	}
-                    	%>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">어학</th>
+					<th scope="row">시험</th>
 					<td>
 					<%for(int i=0;i<tests.size();i++)
                       {
@@ -128,7 +116,7 @@
                     {
                         JSONObject project=(JSONObject)projects.get(i);
                     %>
-						<h4>프로젝트<%=i%> : <%=(String)project.get("name")%></h4> - <%=(String)project.get("desc")%>
+						<h4>프로젝트<%=i%> : <%=(String)project.get("name")%></h4> - <%=(String)project.get("desc")%><br>
 					<%
                     }
 					%>
@@ -143,7 +131,7 @@
                         JSONObject club=(JSONObject)clubs.get(i);
                 %>
 					<h4><%=(String)club.get("name") %> (<%=(Date)club.get("startdate") %>~<%=(Date)club.get("enddate")%>)</h4>
-					-<%=(String)club.get("desc") %>
+					-<%=(String)club.get("desc") %><br>
 					<%
                     }
 					%>
