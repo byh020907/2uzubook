@@ -41,7 +41,7 @@ public class EtcDAO extends Database {
 	}
 	
 	public int insert_interest(Interest interest) {
-		String SQL= "insert into interest (user,name,date) values (?,?,?)";
+		String SQL= "insert into interests (user,name,date) values (?,?,?)";
 		
 		try {
 			return executeAndUpdate(SQL, interest.getUser(), interest.getName(), interest.getDate());
@@ -106,7 +106,7 @@ public class EtcDAO extends Database {
 	}
 	
 	public int delete_etc(String user,String name,int position) {
-		// 1. 봉사 2. 독서 
+		// 1. 봉사 2. 독서  3. 관심분야
 		switch (position) {
 			
 			case 1:{
@@ -119,6 +119,10 @@ public class EtcDAO extends Database {
 				return executeAndUpdate(SQL_DELETE_reading, user,name);
 			}
 			
+			case 3:{
+				String SQL_DELETE_reading = "delete from interests where user=? and name=?";
+				return executeAndUpdate(SQL_DELETE_reading, user,name);
+			}
 			default:
 				return -2;
 		}
