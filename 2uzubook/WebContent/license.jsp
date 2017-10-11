@@ -84,8 +84,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             				</div>
                             			</div>
                             		</div>
-                                
-								<% 
+								<%
 								}
 								%>
                             </div>
@@ -191,7 +190,6 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
         	temp.ins=ins;
         	temp.date=date;
         	temp.keyword=keyword;
-        	
             
           	$.ajax({
 				url : '/2uzubook/ResumeAdd',

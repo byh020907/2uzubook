@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import dao.Database;
 
 public class ResumeDAO extends Database{
@@ -357,6 +359,36 @@ public class ResumeDAO extends Database{
 				
 	}
 	
+	public JSONArray stringSerach(String content) {
+		String SQL_USER="select * from user where adm_year like ? or stu_id like ? or intro like ? or name like ? or gender like ?;";
+		String SQL_AWARD="select * from award where name like ? or ins like ?";
+		String SQL_CERT="select * from cert where name like ? or ins like ?";
+		String SQL_CLUB="select * from club where name like ? or `desc` like ?";
+		String SQL_CONFERENCE="select * from conference where name like ?";
+		String SQL_PROJECT="select * from project where name like ? or `desc` like ?";
+		String SQL_TEST="select * from test where name like ? or score like ?";
+		String SQL_VOLUNTEER="select * from volunteer where name like ? or ins like ?";
+		String SQL_READING="select * from reading where name like ?";
+		
+		String[] SQL_ARRAYS = { SQL_USER, SQL_AWARD, SQL_CERT, SQL_CLUB, SQL_CONFERENCE, SQL_PROJECT, SQL_TEST,
+				SQL_VOLUNTEER, SQL_READING };
+
+		JSONArray totalJsonArray = new JSONArray();
+
+		for (int i = 0; i < SQL_ARRAYS.length; i++) {
+			JSONArray ONE_SQL_JSONARRAY = new JSONArray();
+			int parameter = getCharNumber(SQL_ARRAYS[i], '?');
+			String contents[] = new String[parameter];
+			for (int j = 0; j < parameter; j++) {
+				contents[j] = content;
+			}
+			ONE_SQL_JSONARRAY = executeAndGet(SQL_ARRAYS[i], contents);
+			totalJsonArray.addAll(ONE_SQL_JSONARRAY);
+		}
+
+		return totalJsonArray;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public JSONArray totalSerach(JSONArray...jsonArraysjson) {
 		JSONArray totalJsonArray = new JSONArray();
@@ -487,5 +519,17 @@ public class ResumeDAO extends Database{
 		}
 		
 		return jsonArray;
+	}
+	
+	
+	// ?로 가 몇개인지 알려주는 함수
+	public int getCharNumber(String str,char c) {
+		int count=0;
+		for(int i=0;i<str.length();i++) {
+			if(str.charAt(i)==c) {
+				count++;
+			}
+		}
+		return count;
 	}
 }

@@ -73,12 +73,12 @@
 					function a(data) {
 						for (var i = 0; i < 10; i++) {
 							var $article = $('<article id="art'+i+'"></article>');
-							var $a = $('<a href="#" class="image featured"><img src="/2uzubook/images/student/stu'
+							var $a = $('<a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"" class="image featured"><img src="/2uzubook/images/student/stu'
 									+ (i + 1)
 									+ '.jpg" alt="" height="235" /></a>');
-							var $h = $('<header><h3><a href="#">'
+							var $h = $('<header><h3><a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"">'
 									+ data[i].name + '</a></h3></header>');
-							var $p = $('<p>' + data[i].major + '<br/>'
+							var $p = $('<p>' + data[i].majorName + '<br/>'
 									+ data[i].stu_id + '</p>');
 							$('#part1').append($article);
 							$('#art' + i).append($a);

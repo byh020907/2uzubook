@@ -53,13 +53,6 @@ public class SelectResume extends HttpServlet {
 				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/award.jsp").forward(request, response);
 			}break;
-			case 4:{
-				jsonArray=database.select_resume(userID, part);//project
-				request.setAttribute("JSONArray", jsonArray);
-				keywordArray=database.select_keyword();
-				request.setAttribute("KeywordArray", keywordArray);
-				request.getRequestDispatcher("/project.jsp").forward(request, response);
-			}break;
 			case 3:{
 				jsonArray=database.select_resume(userID, part); //club
 				request.setAttribute("JSONArray", jsonArray);
@@ -67,6 +60,20 @@ public class SelectResume extends HttpServlet {
 				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/club.jsp").forward(request, response);
 			}break;
+			case 4:{
+				jsonArray=database.select_resume(userID, part);//project
+				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
+				request.getRequestDispatcher("/project.jsp").forward(request, response);
+			}break;
+			case 5:{
+				jsonArray=database.select_resume(userID,part);//test
+				request.setAttribute("JSONArray", jsonArray);
+				keywordArray=database.select_keyword();
+				request.setAttribute("KeywordArray", keywordArray);
+				request.getRequestDispatcher("/test.jsp").forward(request, response);
+			}
 			case 6:{
 				jsonArray=database.select_resume(userID, part);//conference
 				request.setAttribute("JSONArray", jsonArray);
@@ -88,13 +95,14 @@ public class SelectResume extends HttpServlet {
 				request.setAttribute("KeywordArray", keywordArray);
 				request.getRequestDispatcher("/volunteer.jsp").forward(request, response);
 			}break;
-			case 5:{
-				jsonArray=database.select_resume(userID,part);//test
+			case 9:{
+				jsonArray=database2.select_resume(userID,3);//interest
 				request.setAttribute("JSONArray", jsonArray);
 				keywordArray=database.select_keyword();
 				request.setAttribute("KeywordArray", keywordArray);
-				request.getRequestDispatcher("/test.jsp").forward(request, response);
+				request.getRequestDispatcher("/interest.jsp").forward(request, response);
 			}
+			
 		}
 
 		
