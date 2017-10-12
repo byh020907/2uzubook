@@ -34,7 +34,7 @@ public class SearchAction extends HttpServlet {
 			throws ServletException, IOException {
 		Util.setCharset(request, response, "utf-8");
 
-		String[] keywordStrings =request.getParameterValues("keyword");
+		String[] keywordStrings = request.getParameterValues("keyword");
 		System.out.println(keywordStrings);
 		int[] keywords=new int[keywordStrings.length];
 		JSONArray keyword=new JSONArray();
@@ -42,9 +42,10 @@ public class SearchAction extends HttpServlet {
 		for(int i=0;i<keywords.length;i++){
 			keywords[i]=Integer.parseInt(keywordStrings[i]);
 			keyword.add(keywords[i]);
+			JSONArray ja=resumeDAO.executeAndGet("SELECT name FROM keyword where id=?", keywords[i]);
+			String name=(String) ja.get(0);
+			keyword.add(name);
 		}
-		
-		
 		
 		JSONArray result = resumeDAO.search(keywords);
 
