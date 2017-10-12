@@ -23,23 +23,32 @@ import resume.ResumeDAO;
 public class SearchAction extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	ResumeDAO resumeDAO;
+	
+	public SearchAction(){
+		resumeDAO=ResumeDAO.getInstance();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		//ResumeDAO resumeDAO = ResumeDAO.getInstance();
 		Util.setCharset(request, response, "utf-8");
 
 		String[] keywordStrings =request.getParameterValues("keyword");
 		int[] keywords=new int[keywordStrings.length];
+		JSONArray keyword=new JSONArray();
 		
 		for(int i=0;i<keywords.length;i++){
 			keywords[i]=Integer.parseInt(keywordStrings[i]);
+			keyword.add(keywords[i]);
 		}
+		
+		
 		
 		JSONArray result = resumeDAO.search(keywords);
 
 		request.setAttribute("JSONArray", result);
+		request.setAttribute("keyword", keyword);
 		request.getRequestDispatcher("/search_result.jsp").forward(request, response);
 	}
 
