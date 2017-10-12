@@ -71,7 +71,7 @@
 									<div class="row">
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
-												method="post" style="margin-top: 20px;"></form>
+												method="post" style="margin-top: 20px;"><div id="loc"></div></form>
 												<div class="search_div">
 												<ul id="input_list">
 													<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text"
@@ -79,8 +79,6 @@
 												</ul>
 												</div>
 												<datalist id="data_list">
-													<option value="c언어" id="1"></option>
-													<option value="java" id="3"></option>	
 												</datalist>
 												
 										</div>
@@ -180,10 +178,8 @@
 	{
 		for(var i=0;i<count;i++)
 		{
-			var tag='<input type="hidden" value="'+$("#input_list").find("li").eq(i).children('.key').val();+'" name="keyword"/>';	
-			console.log($("#input_list").find("li").eq(i).find(".key").val());
-			$("#search_form").append(tag);
-			$("#search_form").submit();
+			var tag='<input type="hidden" value="'+$("#input_list").find("li").eq(i).children('.key').val();+'" name="keyword"/>';
+			$("#loc").append(tag);
 		}
 	}
 	</script>

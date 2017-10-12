@@ -35,6 +35,7 @@ public class SearchAction extends HttpServlet {
 		Util.setCharset(request, response, "utf-8");
 
 		String[] keywordStrings =request.getParameterValues("keyword");
+		System.out.println(keywordStrings);
 		int[] keywords=new int[keywordStrings.length];
 		JSONArray keyword=new JSONArray();
 		
