@@ -27,12 +27,15 @@ public class SearchAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ResumeDAO resumeDAO = ResumeDAO.getInstance();
+		//ResumeDAO resumeDAO = ResumeDAO.getInstance();
 		Util.setCharset(request, response, "utf-8");
 
-		String query =request.getParameter("keyword");
+		String[] query =request.getParameterValues("keyword");
 		//int result = resumeDAO.search(query);
-		
+		for(int i=0;i<query.length;i++)
+		{
+			System.out.println(query[i]+"\n");
+		}
 		JSONObject data1 = new JSONObject();
 		data1.put("name", "김소연");
 		data1.put("major", "sw개발과");
