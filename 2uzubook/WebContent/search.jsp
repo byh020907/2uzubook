@@ -159,7 +159,7 @@
 		{
 			console.log("hell");
 			var val_search=$('#search_box').val();
-			var tag_div='<li><div class="span_style">'+val_search+'<button class="delete_btn" onclick="delete_keyword(this)">x</button></div></li>';
+			var tag_div='<li><div class="span_style">'+val_search+'<div class="part"><button class="delete_btn" onclick="delete_keyword(this)">x</button></div></div></li>';
 			$('li').remove('#this_li');
 			$('#input_list').append(tag_div);
 			$('#input_list').append(tag_input);

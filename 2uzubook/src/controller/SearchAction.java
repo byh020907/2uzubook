@@ -30,7 +30,7 @@ public class SearchAction extends HttpServlet {
 		ResumeDAO resumeDAO = ResumeDAO.getInstance();
 		Util.setCharset(request, response, "utf-8");
 
-		//String query = request.getParameter("q");
+		String query =request.getParameter("keyword");
 		//int result = resumeDAO.search(query);
 		
 		JSONObject data1 = new JSONObject();
