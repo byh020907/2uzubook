@@ -86,6 +86,8 @@ public class UserDAO extends Database{
 			return 0;// 실패
 	}
 	
+	
+	//생성자 잘보셈 없는거는 null로 넣어주샘
 	public int update_image(User user,String id,int position) {
 		switch (position) {
 		case 1:
@@ -109,7 +111,7 @@ public class UserDAO extends Database{
 		}
 	}
 	
-
+	//생성자 잘보셈 없는거는 null로 넣어주샘
 	public int update_address(User user,String id,int position) {
 		switch (position) {
 		case 1:
