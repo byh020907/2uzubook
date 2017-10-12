@@ -83,7 +83,70 @@ public class UserDAO extends Database{
 		if(ja.size()==1)
 			return 1;//성공
 		else
-			return 0;//실패
+			return 0;// 실패
+	}
+	
+	public int update_image(User user,String id,int position) {
+		switch (position) {
+		case 1:
+			String SQL_FACEBOOK = "update user set profile_image_path=? where id=?";
+			try {
+				return executeAndUpdate(SQL_FACEBOOK,user.getProfile_image_path(), id);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
+		case 2:
+			String SQL_GITHUB = "update user set main_image_path=? where id=?";
+			try {
+				return executeAndUpdate(SQL_GITHUB,user.getMain_image_path() ,id);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
+		default:
+			return -2; //해당 포지션이 없음
+		}
+	}
+	
+
+	public int update_address(User user,String id,int position) {
+		switch (position) {
+		case 1:
+			String SQL_FACEBOOK = "update user set facebook_address=? where id=?";
+			try {
+				return executeAndUpdate(SQL_FACEBOOK,user.getFacebook_address(), id);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
+		case 2:
+			String SQL_GITHUB = "update user set github_address=? where id=?";
+			try {
+				return executeAndUpdate(SQL_GITHUB,user.getGithub_address() ,id);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			return -1;
+		default:
+			return -2; //해당 포지션이 없음
+		}
+	}
+	
+	public JSONArray getFaceBook(String user) {
+		String SQL="select facebook_address from user where id=?";
+		
+		JSONArray jsonArray=executeAndGet(SQL, user);
+		
+		return jsonArray;
+	}
+	
+	public JSONArray getGithubBook(String user) {
+		String SQL="select github_address from user where id=?";
+		
+		JSONArray jsonArray=executeAndGet(SQL, user);
+		
+		return jsonArray;
 	}
 	
 	public String majorToString(int majorNum) {

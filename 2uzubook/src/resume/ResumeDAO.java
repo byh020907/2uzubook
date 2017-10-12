@@ -377,8 +377,8 @@ public class ResumeDAO extends Database{
 
 		for (int i = 0; i < SQL_ARRAYS.length; i++) {
 			JSONArray ONE_SQL_JSONARRAY = new JSONArray();
-			int parameter = getCharNumber(SQL_ARRAYS[i], '?');
-			String contents[] = new String[parameter];
+			int parameter = getCharNumber(SQL_ARRAYS[i], '?'); //?의 갯수를 얻어옴
+			String contents[] = new String[parameter]; // ?의 갯수 만큼 넣어준 배열크기 선언
 			for (int j = 0; j < parameter; j++) {
 				contents[j] = content;
 			}
