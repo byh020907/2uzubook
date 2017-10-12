@@ -71,24 +71,23 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                             <h3 class="text-center mb-3">추가된 수상경력</h3>
                                             <br>
                                             <div id="award_loc" class="row">
-                                                <% for(int i=0;i<jsonArray.size();i++)
-								{	
-									JSONObject award=(JSONObject)jsonArray.get(i);
-								%>
-                                                    <div class="4u 12u(mobile)">
-                                                        <div class="row" id="modal_pop" style="cursor:pointer;">
-                                                            <div class="5u">
-                                                                <a class="image fit" onclick="award_delete(this);"> <img src="images/student/bulb.png" alt="" /></a>
-                                                            </div>
-                                                            <div class="7u">
-                                                                <h3 class="text-center" id="delete_name"><%=award.get("name")%></h3>
-                                                                <%=(Date)award.get("date")%>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <% 
-								}
-								%>
+                                                <% for(int i=0;i<jsonArray.size();i++){	
+														JSONObject award=(JSONObject)jsonArray.get(i);
+												%>
+                                                  <div class="4u 12u(mobile)">
+                                                      <div class="row" id="modal_pop" style="cursor:pointer;">
+                                                          <div class="5u">
+                                                              <a class="image fit" onclick="award_delete(this);"> <img src="images/student/bulb.png" alt="" /></a>
+                                                          </div>
+                                                          <div class="7u">
+                                                              <h3 class="text-center" id="delete_name"><%=award.get("name")%></h3>
+                                                              <%=(Date)award.get("date")%>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                <% 
+												}
+												%>
                                             </div>
                                             <br>
                                             <div class="row">
@@ -117,7 +116,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     {
                     									JSONObject keyword=(JSONObject)keywordArray.get(i);
                     								%>
-                                                                        <option value="<%=keyword.get(" id ")%>">
+                                                                        <option value="<%=keyword.get("id")%>">
                                                                             <%=keyword.get("name")%>
                                                                         </option>
                                                                         <% 
@@ -129,7 +128,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label" for="Submit"></label>
                                                             <div class="col-md-4">
-                                                                <button id="Submit" onclick="award_add();" name="Submit" class="btn btn-primary">추가하기</button>
+                                                                <button onclick="award_add(); return false;" class="btn btn-primary">추가하기</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -210,6 +209,10 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                     }
                                 }
                                 , dataType: 'json'
+                                ,error:function(xhr,option,error){
+                                	alert(xhr.status);
+                                	alert(error);
+                                }
                             });
                         }
 
