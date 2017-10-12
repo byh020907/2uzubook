@@ -133,6 +133,22 @@ public class UserDAO extends Database{
 		}
 	}
 	
+	public JSONArray getProfileImagePath(String user) {
+		String SQL="select profile_image_path from user where id=?";
+		
+		JSONArray jsonArray=executeAndGet(SQL, user);
+		
+		return jsonArray;
+	}
+	
+	public JSONArray getMainImagePath(String user) {
+		String SQL="select main_image_path from user where id=?";
+		
+		JSONArray jsonArray=executeAndGet(SQL, user);
+		
+		return jsonArray;
+	}
+	
 	public JSONArray getFaceBook(String user) {
 		String SQL="select facebook_address from user where id=?";
 		
