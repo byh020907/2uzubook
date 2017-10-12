@@ -73,17 +73,17 @@
 					function a(data) {
 						for (var i = 0; i < 10; i++) {
 							var $article = $('<article id="art'+i+'"></article>');
-							var $a = $('<a href="#" class="image featured"><img src="/2uzubook/images/student/stu'
+							var $a = $('<a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"" class="image featured"><img src="/2uzubook/images/student/stu'
 									+ (i + 1)
 									+ '.jpg" alt="" height="235" /></a>');
-							var $h = $('<header><h3><a href="#">'
+							var $h = $('<header><h3><a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"">'
 									+ data[i].name + '</a></h3></header>');
-							var $p = $('<p>' + data[i].major + '<br/>'
+							var $p = $('<p>' + data[i].majorName + '<br/>'
 									+ data[i].stu_id + '</p>');
 							$('#part1').append($article);
 							$('#art' + i).append($a);
-							$('#art' + i).append($p);
 							$('#art' + i).append($h);
+							$('#art' + i).append($p);
 						}
 					}
 				</script>
@@ -102,7 +102,7 @@
 							src="images/debate.jpg" alt="" height="235" /></a>
 						<header>
 							<h3>
-								<a href="#">소프트웨어과</a>
+								소프트웨어과
 							</h3>
 						</header>
 						<p>SW분야 경쟁력 제고를 통한 하드웨어와 소프트웨어, 그리고 서비스 융합력이 있는 SW인재 육성을 목표로
@@ -114,7 +114,7 @@
 							src="images/debate2.JPG" alt="" height="235" /></a>
 						<header>
 							<h3>
-								<a href="#">임베디드SW과</a>
+								임베디드SW과
 							</h3>
 						</header>
 						<p>SW에 대한 기본적인 이해를 바탕으로 SW 개발 도구 및 기법을 활용하여 SW분석, 설계, 구현, 시험,
@@ -125,7 +125,7 @@
 							src="images/debate3.jpg" alt="" height="235" /></a>
 						<header>
 							<h3>
-								<a href="#">정보보안과</a>
+								정보보안과
 							</h3>
 						</header>
 						<p>SW 및 HW에 대한 기본적인 이해를 바탕으로 임베디드SW 구현을 위한 펌웨어/OS시스템/플랫폼/응용
@@ -137,7 +137,7 @@
 		<!-- Main -->
 		<div class="wrapper style2">
 			<article id="main" class="container special">
-				<a href="#" class="image featured"><img src="images/header5.jpg"
+				<a class="image featured"><img src="images/header5.jpg"
 					alt="" /></a>
 				<header>
 					<h2>
@@ -189,7 +189,7 @@
 								<article class="post stub">
 									<header>
 										<h3>
-											<a href="search.html">검색페이지에서 원하는 인재를 검색한다.</a>
+											검색페이지에서 원하는 인재를 검색한다.
 										</h3>
 									</header>
 								</article>
@@ -235,7 +235,7 @@
 								<article class="post stub">
 									<header>
 										<h3>
-											<a href="myresume_manage.html">레주메 내용관리에서 자신의 레주메를 작성한다.</a>
+											레주메 내용관리에서 자신의 레주메를 작성한다.
 										</h3>
 									</header>
 								</article>

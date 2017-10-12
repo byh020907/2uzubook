@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 
@@ -69,19 +71,22 @@
 									<div class="row">
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
-												method="post" style="margin-top: 20px;">
+												method="post" style="margin-top: 20px;"></form>
 												<div class="search_div">
-												<input id="search_box" list="data_list" class="form-control mb-2" type="text"
-													placeholder="ex) 남자, 게임, c++" name="q">
+												<ul id="input_list">
+													<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text"
+													placeholder="ex) 남자, 게임, c++" name="q"></li>
+											
+												</ul>
 												</div>
 												<datalist id="data_list">
 													
 												</datalist>
-											</form>
+										
 										</div>
 										<div class="4u">
 											<button class="btn btn-outline-success mb-2"
-												onclick="$('#search_form').submit();"
+												onclick="go_servlet();"
 												style="height: 59px; margin-top: 23px;">search</button>
 										</div>
 									</div>
@@ -131,7 +136,10 @@
 	<script src="js/util.js"></script>
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
+	<script src="js/search.js"></script>
 	<script>
+	var tag_input='<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text" placeholder="ex) 남자, 게임, c++" name="q"></li>';
+	
 	$(function(){
 		$.ajax({
 			url : '/2uzubook/search_test',
@@ -146,7 +154,31 @@
 				dataType : 'json'
 		});
 	});
-	
+	$(document).on("keyup","#search_box",function(event){
+		if(event.keyCode==32)
+		{
+			console.log("hell");
+			var val_search=$('#search_box').val();
+			var tag_div='<li><div class="span_style">'+val_search+'<button class="delete_btn" onclick="delete_keyword(this)">x</button></div></li>';
+			$('li').remove('#this_li');
+			$('#input_list').append(tag_div);
+			$('#input_list').append(tag_input);
+		}
+	});
+	function delete_keyword(obj)
+	{
+		$(obj).parent().parent().remove();
+	}
+	function go_servlet()
+	{
+		var li_num=$("#input_list").find("li").length;
+		for(var i=0;i<li_num;i++)
+		{
+			var tag='<input type="hidden" value="'+$("#input_list").find("li").eq(i);+'" name="keyword"/>';	
+			$("#search_form").append(tag);
+		}
+		$("#search_form").submit();
+	}
 	</script>
 </body>
 
