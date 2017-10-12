@@ -15,7 +15,6 @@
 %>
 
 <%
-	try{
 		request.setCharacterEncoding("UTF-8");
 		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
 		System.out.println(jsonArray);
@@ -25,7 +24,7 @@
 		for (int i = 0; i < jsonArray.size(); i++) {
 			JSONObject jobj = (JSONObject) jsonArray.get(i);
 			students.add(new Student((String) jobj.get("name"), (String) jobj.get("major")));
-		}	
+		}
 %>
 <!DOCTYPE HTML>
 <html>
