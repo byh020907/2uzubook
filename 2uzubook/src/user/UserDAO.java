@@ -86,6 +86,8 @@ public class UserDAO extends Database{
 			return 0;// 실패
 	}
 	
+	
+	//생성자 잘보셈 없는거는 null로 넣어주샘
 	public int update_image(User user,String id,int position) {
 		switch (position) {
 		case 1:
@@ -109,7 +111,7 @@ public class UserDAO extends Database{
 		}
 	}
 	
-
+	//생성자 잘보셈 없는거는 null로 넣어주샘
 	public int update_address(User user,String id,int position) {
 		switch (position) {
 		case 1:
@@ -131,6 +133,22 @@ public class UserDAO extends Database{
 		default:
 			return -2; //해당 포지션이 없음
 		}
+	}
+	
+	public JSONArray getProfileImagePath(String user) {
+		String SQL="select profile_image_path from user where id=?";
+		
+		JSONArray jsonArray=executeAndGet(SQL, user);
+		
+		return jsonArray;
+	}
+	
+	public JSONArray getMainImagePath(String user) {
+		String SQL="select main_image_path from user where id=?";
+		
+		JSONArray jsonArray=executeAndGet(SQL, user);
+		
+		return jsonArray;
 	}
 	
 	public JSONArray getFaceBook(String user) {
