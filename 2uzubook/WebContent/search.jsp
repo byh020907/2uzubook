@@ -178,8 +178,9 @@
 	{
 		for(var i=0;i<count;i++)
 		{
-			var temp=$("#input_list").find("li").eq(i).children('.key').val();
+			var temp=$("#input_list").find("li").eq(i).find('.key').val();
 			var tag='<input type="hidden" value="'+temp+'" name="keyword"/>';
+			console.log(temp);
 			$("#loc").append(tag);
 		}
 		$("#search_form").submit();
