@@ -33,11 +33,13 @@
 	height:60px;
 	position:relative;
 }
-
+.part{
+	float:right;
+	padding-right:7%;
+	margin-top:-6%;
+}
 .delete_btn{
 	width:15px;
 	height:15px;
-	padding:0;
-	margin-left:48%;
-	position:absolute;	
+	padding:0;	
 }
