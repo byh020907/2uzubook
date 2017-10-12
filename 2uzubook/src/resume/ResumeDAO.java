@@ -312,7 +312,7 @@ public class ResumeDAO extends Database{
 		return jsonArray;
 	}
 	
-	public JSONArray search(int ...keyword) {
+public JSONArray search(int ...keyword) {
 		
 		int TURNSIZE=4;
 		JSONArray jsonArray = new JSONArray();
