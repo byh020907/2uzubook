@@ -178,9 +178,11 @@
 	{
 		for(var i=0;i<count;i++)
 		{
-			var tag='<input type="hidden" value="'+$("#input_list").find("li").eq(i).children('.key').val();+'" name="keyword"/>';
+			var temp=$("#input_list").find("li").eq(i).children('.key').val();
+			var tag='<input type="hidden" value="'+temp+'" name="keyword"/>';
 			$("#loc").append(tag);
 		}
+		$("#search_form").submit();
 	}
 	</script>
 </body>
