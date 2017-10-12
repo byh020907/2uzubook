@@ -312,7 +312,7 @@ public class ResumeDAO extends Database{
 		return jsonArray;
 	}
 	
-	public JSONArray serach(int ...keyword) {
+	public JSONArray search(int ...keyword) {
 		
 		int TURNSIZE=4;
 		JSONArray jsonArray = new JSONArray();
@@ -363,7 +363,7 @@ public class ResumeDAO extends Database{
 				
 	}
 	
-	public JSONArray stringSerach(String content) {
+	public JSONArray stringSearch(String content) {
 		String SQL_USER="select * from user where adm_year like ? or stu_id like ? or intro like ? or name like ? or gender like ?;";
 		String SQL_AWARD="select * from award where name like ? or ins like ?";
 		String SQL_CERT="select * from cert where name like ? or ins like ?";
@@ -394,7 +394,7 @@ public class ResumeDAO extends Database{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public JSONArray totalSerach(JSONArray...jsonArraysjson) {
+	public JSONArray totalSearch(JSONArray...jsonArraysjson) {
 		JSONArray totalJsonArray = new JSONArray();
 		
 		for(JSONArray i:jsonArraysjson) {

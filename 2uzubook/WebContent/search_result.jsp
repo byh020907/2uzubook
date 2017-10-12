@@ -91,84 +91,28 @@
 								</p>
 							</header>
 							<div class="row">
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu2.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20105 나호겸</h3>
-											남자, 소프트웨어개발과
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href='#'" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu1.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20108 김소연</h3>
-											게임, 소프트웨어개발과
+							<%
+								for(int i=0;i<students.size();i++)
+								{
+								%>
+									<div class="6u 12u(mobile)">
+										<div class="row"
+											OnClick="location.href=''" style="cursor: pointer;">
+											<div class="4u">
+												<a class="image fit"><img src="images/student/stu2.jpg"
+													alt="" /></a>
+											</div>
+											<div class="8u">
+												<h3 class="text-center">20105 <%=students.get(i).name%></h3>
+												남자, <%=students.get(i).major%>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu3.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20118 윤정현</h3>
-											남자, 소프트웨어개발과
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu4.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20116 배용호</h3>
-											남자, 소프트웨어개발과, 게임, c++
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row" 
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu5.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20107 심소욱</h3>
-											소프트웨어개발과
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu6.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20105 박소현</h3>
-											소프트웨어개발과
-										</div>
-									</div>
-								</div>
+								<% 	
+								}
+							%>
+								
+								
 							</div>
 						</article>
 					</div>

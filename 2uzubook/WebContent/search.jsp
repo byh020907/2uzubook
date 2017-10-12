@@ -71,18 +71,16 @@
 									<div class="row">
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
-												method="post" style="margin-top: 20px;"></form>
+												method="post" style="margin-top: 20px;"><div id="loc"></div></form>
 												<div class="search_div">
 												<ul id="input_list">
 													<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text"
 													placeholder="ex) 남자, 게임, c++" name="q"></li>
-											
 												</ul>
 												</div>
 												<datalist id="data_list">
-													
 												</datalist>
-										
+												
 										</div>
 										<div class="4u">
 											<button class="btn btn-outline-success mb-2"
@@ -139,7 +137,7 @@
 	<script src="js/search.js"></script>
 	<script>
 	var tag_input='<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text" placeholder="ex) 남자, 게임, c++" name="q"></li>';
-	
+	var count=0;
 	$(function(){
 		$.ajax({
 			url : '/2uzubook/search_test',
@@ -147,7 +145,7 @@
 				success : function(data) {
 					for (var i = 0; i < data.length; i++) {
 						console.log(data[i].name);
-						tag='<option value="'+data[i].name+'"></option>';
+						tag='<option value="'+data[i].name+'" id="'+data[i].id+'"></option>';
 						$('#data_list').append(tag);
 					}
 				},
@@ -157,9 +155,15 @@
 	$(document).on("keyup","#search_box",function(event){
 		if(event.keyCode==32)
 		{
+			count++;
 			console.log("hell");
-			var val_search=$('#search_box').val();
-			var tag_div='<li><div class="span_style">'+val_search+'<div class="part"><button class="delete_btn" onclick="delete_keyword(this)">x</button></div></div></li>';
+			var val_search=$('#search_box').val().trim();
+			
+			var find_val='option[value="'+val_search+'"]';
+			console.log(find_val);
+			var val_data=$(find_val).attr('id');
+			console.log(val_data+'datalist');
+			var tag_div='<li><div class="span_style">'+val_search+'<div class="part"><input class="key" type="hidden" value="'+val_data+'"/><button class="delete_btn" onclick="delete_keyword(this)">x</button></div></div></li>';
 			$('li').remove('#this_li');
 			$('#input_list').append(tag_div);
 			$('#input_list').append(tag_input);
@@ -167,15 +171,16 @@
 	});
 	function delete_keyword(obj)
 	{
+		count--;
 		$(obj).parent().parent().remove();
 	}
 	function go_servlet()
 	{
-		var li_num=$("#input_list").find("li").length;
-		for(var i=0;i<li_num;i++)
+		for(var i=0;i<count;i++)
 		{
-			var tag='<input type="hidden" value="'+$("#input_list").find("li").eq(i);+'" name="keyword"/>';	
-			$("#search_form").append(tag);
+			var temp=$("#input_list").find("li").eq(i).children('.key').val();
+			var tag='<input type="hidden" value="'+temp+'" name="keyword"/>';
+			$("#loc").append(tag);
 		}
 		$("#search_form").submit();
 	}
