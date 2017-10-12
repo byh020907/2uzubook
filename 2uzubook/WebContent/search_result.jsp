@@ -6,10 +6,11 @@
 	class Student {
 		String name;
 		String major;
-	
-		Student(String name, String major) {
+		String stu_id;
+		Student(String name, String major,String stu_id) {
 			this.name = name;
 			this.major = major;
+			this.stu_id=stu_id;
 		}
 	}
 %>
@@ -17,13 +18,14 @@
 <%
 		request.setCharacterEncoding("UTF-8");
 		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
+		JSONArray keywordArray = (JSONArray) request.getAttribute("keyword");
 		System.out.println(jsonArray);
 		
 		ArrayList<Student> students = new ArrayList<Student>();
 
 		for (int i = 0; i < jsonArray.size(); i++) {
 			JSONObject jobj = (JSONObject) jsonArray.get(i);
-			students.add(new Student((String) jobj.get("name"), (String) jobj.get("major")));
+			students.add(new Student((String) jobj.get("name"), (String) jobj.get("major"),(String)jobj.get("stu_id")));
 		}
 %>
 <!DOCTYPE HTML>
@@ -80,14 +82,23 @@
 						</section>
                         
 						<hr />
-                        <footer> <a href="" class="button"> 전체 레주메 인쇄</a> </footer>
+						<form id="print_form" method="post" action="/2uzubook/printAction"></form>
+                        <footer> <a href="" class="button" onclick="go_print()"> 전체 레주메 인쇄</a> </footer>
 					</div>
 					<div class="9u 12u(mobile) important(mobile)" id="content">
 						<article id="main">
 							<header>
 								<h2>Search Result</h2>
 								<p>
-									<strong>검색어 : </strong>남자, c++, 게임, 소프트웨어개발과
+									<strong>검색어 : </strong>
+										<%
+										for(int j=0;j<keywordArray.size();j++)
+										{
+										%>
+											<%=(String)keywordArray.get(j)%> , 
+										<% 
+										}
+										%>
 								</p>
 							</header>
 							<div class="row">
@@ -103,8 +114,15 @@
 													alt="" /></a>
 											</div>
 											<div class="8u">
-												<h3 class="text-center">20105 <%=students.get(i).name%></h3>
-												남자, <%=students.get(i).major%>
+												<h3 class="text-center"><%=students.get(i).stu_id%> <%=students.get(i).name%></h3>
+													<%
+													for(int j=0;j<keywordArray.size();j++)
+													{
+													%>
+														<%=(String)keywordArray.get(j)%> , 
+													<% 
+													}
+													%>
 											</div>
 										</div>
 									</div>
@@ -162,6 +180,12 @@
 	<script src="js/util.js"></script>
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
+	<script>
+	function go_print()
+	{
+		$("print_form").submit();
+	}
+	</script>
 </body>
 
 </html>

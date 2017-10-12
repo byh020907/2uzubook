@@ -127,24 +127,14 @@ CREATE TABLE interests (
     FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
 
-SELECT * FROM user 
-LEFT JOIN award ON user.id=award.user 
-LEFT JOIN cert ON user.id=cert.user 
-LEFT JOIN project ON user.id=project.user
-LEFT JOIN club ON user.id=club.user
-LEFT JOIN major ON user.major=major.id
-LEFT JOIN reading ON user.id=reading.user
-LEFT JOIN volunteer ON user.id=volunteer.user
-LEFT JOIN test ON user.id=test.user
-LEFT JOIN conference On user.id=conference.user;
-
-"SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user "
-				+ "LEFT JOIN award ON user.id=award.user " 
-				+ "LEFT JOIN cert ON user.id=cert.user "
-				+ "LEFT JOIN project ON user.id=project.user " 
-				+ "LEFT JOIN club ON user.id=club.user "
-				+ "LEFT JOIN major ON user.major=major.id "
-                + "LEFT JOIN reading ON user.id=reading.user "
-                + "LEFT JOIN volunteer ON user.id=volunteer.user "
-                + "LEFT JOIN test ON user.id=test.user "
-                + "LEFT JOIN conference On user.id=conference.user ";
+insert into keyword (name) values ('c언어')
+insert into keyword (name) values ('자바')
+insert into keyword (name) values ('알고리즘')
+insert into keyword (name) values ('게임')
+insert into keyword (name) values ('웹')
+insert into keyword (name) values ('안드로이드')
+insert into keyword (name) values ('서버')
+insert into keyword (name) values ('영어')
+insert into keyword (name) values ('수학')
+insert into keyword (name) values ('머신러닝')
+insert into keyword (name) values ('IOT')
