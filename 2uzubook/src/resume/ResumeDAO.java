@@ -331,20 +331,20 @@ public JSONArray search(int ...keyword) {
                 + "LEFT JOIN conference On user.id=conference.user "
 				+ "WHERE ");
 
-		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=?"
-				+ " OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=? )";
+		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=? OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=?)";
 		String and=" and ";
 		
-		for(int i:keyword) {
-			if(i==keyword.length) {
+		for(int i=0;i<keyword.length;i++) {
+			if(i == keyword.length-1) {
 				sb.append(sub);
 			}else {
-				sb.append(sub).append(and);
-			}			
+				sb.append(sub).append(and);							
+			}
+			
 		}
 		
-	
 		String totalSQL=sb.toString();
+		System.out.println(totalSQL);
 
 		if(keyword.length==1) {
 			return jsonArray=executeAndGet(totalSQL, keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]);
