@@ -126,3 +126,25 @@ CREATE TABLE interests (
     `name` VARCHAR(64) NOT NULL,
     FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
+
+SELECT * FROM user 
+LEFT JOIN award ON user.id=award.user 
+LEFT JOIN cert ON user.id=cert.user 
+LEFT JOIN project ON user.id=project.user
+LEFT JOIN club ON user.id=club.user
+LEFT JOIN major ON user.major=major.id
+LEFT JOIN reading ON user.id=reading.user
+LEFT JOIN volunteer ON user.id=volunteer.user
+LEFT JOIN test ON user.id=test.user
+LEFT JOIN conference On user.id=conference.user;
+
+"SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user "
+				+ "LEFT JOIN award ON user.id=award.user " 
+				+ "LEFT JOIN cert ON user.id=cert.user "
+				+ "LEFT JOIN project ON user.id=project.user " 
+				+ "LEFT JOIN club ON user.id=club.user "
+				+ "LEFT JOIN major ON user.major=major.id "
+                + "LEFT JOIN reading ON user.id=reading.user "
+                + "LEFT JOIN volunteer ON user.id=volunteer.user "
+                + "LEFT JOIN test ON user.id=test.user "
+                + "LEFT JOIN conference On user.id=conference.user ";

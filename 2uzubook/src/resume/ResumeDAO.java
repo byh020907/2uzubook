@@ -325,6 +325,10 @@ public class ResumeDAO extends Database{
 				+ "LEFT JOIN project ON user.id=project.user " 
 				+ "LEFT JOIN club ON user.id=club.user "
 				+ "LEFT JOIN major ON user.major=major.id "
+                + "LEFT JOIN reading ON user.id=reading.user "
+                + "LEFT JOIN volunteer ON user.id=volunteer.user "
+                + "LEFT JOIN test ON user.id=test.user "
+                + "LEFT JOIN conference On user.id=conference.user "
 				+ "WHERE ");
 
 		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
