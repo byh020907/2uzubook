@@ -331,7 +331,7 @@ public JSONArray search(int ...keyword) {
                 + "LEFT JOIN conference On user.id=conference.user "
 				+ "WHERE ");
 
-		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=? OR reading.keyword=?"
+		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=?"
 				+ " OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=? )";
 		String and=" and ";
 		
