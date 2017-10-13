@@ -196,7 +196,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                 , type: 'post'
                                 , data: temp
                                 , success: function (data) {
-                                    if (data.ret > 0 && data.ret != null) {
+                                    if (data.ret >= 0 && data.ret != null) {
                                         alert("add_success");
                                         //성공처리
                                         var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="project_delete(this);"><img src="images/student/bulb.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + startdate + '~' + enddate + '</div></div></div>';
