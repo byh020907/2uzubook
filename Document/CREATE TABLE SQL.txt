@@ -1,4 +1,4 @@
-CREATE TABLE `major` (
+﻿CREATE TABLE `major` (
     `id` INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(10) NOT NULL UNIQUE
 );

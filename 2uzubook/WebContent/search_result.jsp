@@ -92,9 +92,8 @@
 										<div class="row"
 											OnClick="location.href=''" style="cursor: pointer;">
 											<div class="4u">
-												<a href="/2uzubook/SeeStudentResume?id="+data[i].id+ class="image fit"><img src="images/student/stu2.jpg"
-													alt="" /></a>'<header><h3><a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"">'
-									+ data[i].name + '</a></h3></header>'
+												<a href="/2uzubook/SeeStudentResume?id=<%=object.get("id")%>" class="image fit"><img src="images/student/stu2.jpg"
+													alt="" /></a>
 											</div>
 											<div class="8u">
 												<h3 class="text-center"><%=object.get("stu_id")%> <%=object.get("name")%></h3>
@@ -109,7 +108,7 @@
 											</div>
 										</div>
 									</div>
-								<% 	
+								<%
 								}
 							%>
 								
