@@ -63,8 +63,9 @@
 						</section>
                         
 						<hr />
-						<form id="print_form" method="post" action="/2uzubook/printAction"></form>
-                        <footer> <a href="" class="button" onclick="go_print()"> 전체 레주메 인쇄</a> </footer>
+						<form id="print_form" method="post" action="/2uzubook/printAction">
+						</form>
+                        <footer> <a class="button" onclick="go_print();"> 전체 레주메 인쇄</a> </footer>
 					</div>
 					<div class="9u 12u(mobile) important(mobile)" id="content">
 						<article id="main">
@@ -165,7 +166,10 @@
 	<script>
 	function go_print()
 	{
-		$("print_form").submit();
+		var jsonstr='<%=jsonArray%>';
+		var tag='<input type="hidden" value="'+jsonstr+'" name="jsonArray"/>';
+		$('#print_form').append(tag);
+		$('#print_form').submit();		
 	}
 	</script>
 </body>
