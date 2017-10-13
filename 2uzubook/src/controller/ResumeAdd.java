@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import etc.EtcDAO;
 import etc.Reading;
@@ -39,6 +40,7 @@ public class ResumeAdd extends HttpServlet {
 		
 		int part=Integer.parseInt(request.getParameter("part"));
 		JSONArray jsonArray = null;
+		int ret=-1;
 		
 		switch(part)
 		{
@@ -49,8 +51,7 @@ public class ResumeAdd extends HttpServlet {
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+ins+date+keyword);
 				Cert cert=new Cert(userID,name,ins,date,keyword);
-				database.insert_cert(cert);
-				jsonArray=database.select_resume(userID, part);
+				ret=database.insert_cert(cert);
 			}break;
 			case 2:{
 				String name=request.getParameter("name");
@@ -58,11 +59,9 @@ public class ResumeAdd extends HttpServlet {
 				String date=request.getParameter("date");
 				String grade=request.getParameter("grade");
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
-				
 				System.out.println(part+name+ins+date+grade+keyword);
 				Award awd=new Award(userID,name,ins,grade,date,keyword);
-				database.insert_award(awd);
-				jsonArray=database.select_resume(userID, part);
+				ret=database.insert_award(awd);
 			}break;
 			case 4:{
 				String name=request.getParameter("name");
@@ -72,8 +71,7 @@ public class ResumeAdd extends HttpServlet {
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+startdate+enddate+keyword);
 				Project pro=new Project(userID,name,desc,startdate,enddate,keyword);
-				database.insert_project(pro);
-				jsonArray=database.select_resume(userID, part);
+				ret=database.insert_project(pro);
 			}break;
 			case 3:{
 				String name=request.getParameter("name");
@@ -83,8 +81,7 @@ public class ResumeAdd extends HttpServlet {
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+startdate+enddate+keyword);
 				Club club=new Club(userID,name,desc,startdate,enddate,keyword);
-				database.insert_club(club);
-				jsonArray=database.select_resume(userID, part);
+				ret=database.insert_club(club);
 			}break;
 			case 5:{
 				String name=request.getParameter("name");
@@ -92,8 +89,7 @@ public class ResumeAdd extends HttpServlet {
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+date+keyword);
 				Conference con=new Conference(userID,name,date,keyword);
-				database.insert_conference(con);
-				jsonArray=database.select_resume(userID, part);
+				ret=database.insert_conference(con);
 			}break;
 			case 6:{
 				String name=request.getParameter("name");
@@ -101,8 +97,7 @@ public class ResumeAdd extends HttpServlet {
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+date+keyword);
 				Reading reading=new Reading(userID,name,date,keyword);
-				database2.insert_reading(reading);
-				jsonArray=database2.select_resume(userID,2);
+				ret=database2.insert_reading(reading);
 			}break;
 			case 7:{
 				String name=request.getParameter("name");
@@ -113,8 +108,7 @@ public class ResumeAdd extends HttpServlet {
 				
 				System.out.println(part+name+ins+startdate+enddate+keyword);
 				Volunteer volunteer=new Volunteer(userID,name,ins,startdate,enddate,keyword);
-				database2.insert_volunteer(volunteer);
-				jsonArray=database2.select_resume(userID,1);
+				ret=database2.insert_volunteer(volunteer);
 			}break;
 			case 8:{
 				String name=request.getParameter("name");
@@ -123,13 +117,14 @@ public class ResumeAdd extends HttpServlet {
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+score+keyword);
 				Test test=new Test(userID,name,score,date,keyword);
-				database.insert_test(test);
-				jsonArray=database.select_resume(userID,5);
+				ret=database.insert_test(test);
 			}
 		}
-		
+		JSONObject data1=new JSONObject();
+		data1.put("ret", ret);
+		System.out.println(data1.toString());
 		PrintWriter out=response.getWriter();
-		out.write(jsonArray.toString());
+		out.write(data1.toString());
 		out.flush();
 	}
 

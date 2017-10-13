@@ -111,7 +111,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     {
                     									JSONObject keyword=(JSONObject)keywordArray.get(i);
                     								%>
-                                                                        <option value="<%=keyword.get(" id ")%>">
+                                                                        <option value="<%=keyword.get("id")%>">
                                                                             <%=keyword.get("name")%>
                                                                         </option>
                                                                         <% 
@@ -123,7 +123,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label" for="Submit"></label>
                                                             <div class="col-md-4">
-                                                                <button id="Submit" name="Submit" onclick="conference_add();" class="btn btn-primary">추가하기</button>
+                                                                <button onclick="conference_add(); return false;" class="btn btn-primary">추가하기</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -179,17 +179,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             temp.name = name;
                             temp.date = date;
                             temp.keyword = keyword;
-                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="conference_delete(this);"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + date + '</div></div></div></div>';
-                            $("#conference_loc").prepend(tag_div);
-                            $("#name").val('');
-                            $("#date").val('');
-                            $("#keyword").val('');
+                            
                             $.ajax({
                                 url: '/2uzubook/ResumeAdd'
                                 , type: 'post'
                                 , data: temp
                                 , success: function (data) {
-                                    if (data > 0 && data != null && data.length != 0) {
+                                    if (data.ret > 0 && data.ret != null) {
                                         alert("add_success");
                                         //성공처리
                                         var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="conference_delete(this);"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + date + '</div></div></div></div>';

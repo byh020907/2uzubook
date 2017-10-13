@@ -132,7 +132,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button onclick="licen_add();" class="btn btn-primary">추가하기</button>
+                                                <button onclick="licen_add(); return false;" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -196,7 +196,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 				type : 'post',
 				data : temp,
 				success : function(data) {
-					if(data>0&&data!=null&&data.length!=0){						
+					if(data.ret > 0 && data.ret != null){						
 						alert("add_success");
 						//성공처리
 						var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + name+ '</h3>' + date + '</div></div></div>';
