@@ -319,7 +319,7 @@ public JSONArray search(int ...keyword) {
 		int[] keywordList=new int[keyword.length*4];
 
 		
-		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user "
+		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.id, user.name, user.stu_id, major.name AS major FROM user "
 				+ "LEFT JOIN award ON user.id=award.user " 
 				+ "LEFT JOIN cert ON user.id=cert.user "
 				+ "LEFT JOIN project ON user.id=project.user " 

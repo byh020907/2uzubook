@@ -2,31 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
 <%@ page import="java.util.*"%>
-<%!
-	class Student {
-		String name;
-		String major;
-		String stu_id;
-		Student(String name, String major,String stu_id) {
-			this.name = name;
-			this.major = major;
-			this.stu_id=stu_id;
-		}
-	}
-%>
 
 <%
 		request.setCharacterEncoding("UTF-8");
 		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
 		JSONArray keywordArray = (JSONArray) request.getAttribute("keyword");
-		System.out.println(jsonArray);
-		
-		ArrayList<Student> students = new ArrayList<Student>();
-
-		for (int i = 0; i < jsonArray.size(); i++) {
-			JSONObject jobj = (JSONObject) jsonArray.get(i);
-			students.add(new Student((String) jobj.get("name"), (String) jobj.get("major"),(String)jobj.get("stu_id")));
-		}
+		System.out.println(jsonArray+"//"+keywordArray);
 %>
 <!DOCTYPE HTML>
 <html>
@@ -103,18 +84,19 @@
 							</header>
 							<div class="row">
 							<%
-								for(int i=0;i<students.size();i++)
+								for(int i=0;i<jsonArray.size();i++)
 								{
+									JSONObject object=(JSONObject)jsonArray.get(i);
 								%>
 									<div class="6u 12u(mobile)">
 										<div class="row"
 											OnClick="location.href=''" style="cursor: pointer;">
 											<div class="4u">
-												<a class="image fit"><img src="images/student/stu2.jpg"
+												<a href="/2uzubook/SeeStudentResume?id=<%=object.get("id")%>" class="image fit"><img src="images/student/stu2.jpg"
 													alt="" /></a>
 											</div>
 											<div class="8u">
-												<h3 class="text-center"><%=students.get(i).stu_id%> <%=students.get(i).name%></h3>
+												<h3 class="text-center"><%=object.get("stu_id")%> <%=object.get("name")%></h3>
 													<%
 													for(int j=0;j<keywordArray.size();j++)
 													{
@@ -126,7 +108,7 @@
 											</div>
 										</div>
 									</div>
-								<% 	
+								<%
 								}
 							%>
 								

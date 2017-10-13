@@ -41,10 +41,9 @@ public class SearchAction extends HttpServlet {
 		
 		for(int i=0;i<keywords.length;i++){
 			keywords[i]=Integer.parseInt(keywordStrings[i]);
-			keyword.add(keywords[i]);
 			JSONArray ja=resumeDAO.executeAndGet("SELECT name FROM keyword where id=?", keywords[i]);
-			String name=(String) ja.get(0);
-			keyword.add(name);
+			JSONObject j=(JSONObject) ja.get(0);
+			keyword.add(j.get("name"));
 		}
 		
 		JSONArray result = resumeDAO.search(keywords);
