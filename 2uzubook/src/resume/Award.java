@@ -5,7 +5,7 @@ public class Award {
 	private String user; // user id
 	private String name; // title
 	private String ins; // 주최측 정보
-	private String grade;
+	private String grade; 
 	private String date;
 	private int keyword;
 
