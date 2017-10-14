@@ -168,8 +168,9 @@
 	{
 		var jsonstr='<%=jsonArray%>';
 		var tag='<input type="hidden" value="'+<%=jsonArray%>+'" name="jsonArray"/>';
+
 		$('#print_form').append(tag);
-		$('#print_form').submit();		
+		$('#print_form').submit();
 	}
 	</script>
 </body>
