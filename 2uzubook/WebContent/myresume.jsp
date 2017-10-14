@@ -93,6 +93,22 @@
 						<% 
 						}
 						%>
+						<% for(int i=0;i<tests.size();i++)
+						{	
+								JSONObject test=(JSONObject)tests.get(i);
+						%>
+                            <div class="row 50%">
+                                <div class="4u">
+                                    <a class="image fit"><img src="images/student/license.png" alt="" /></a>
+                                </div>
+                                <div class="8u">
+                                    <h4><%=(String)test.get("name")%></h4>
+                                    <p> <%=(Date)test.get("score")%></p>
+                                </div>
+                            </div>
+						<% 
+						}
+						%>
                             <br>
                             <p> <strong><h3>Awards</h3></strong></p>
                        	<%for(int i=0;i<awards.size();i++){
