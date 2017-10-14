@@ -21,6 +21,7 @@ public class printAction extends HttpServlet {
 		Util.setCharset(request, response, "utf-8");
 		String jsonstring=request.getParameter("jsonArray");
 		System.out.println(jsonstring.toString());
+		System.out.println(jsonstring.toString());
 	}
 
 }
