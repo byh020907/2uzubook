@@ -3,8 +3,13 @@
 <%@ page import="org.json.simple.*"%>
 <%@ page import="java.util.*"%>
 <%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
+<%
 request.setCharacterEncoding("UTF-8");
-
 JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
 JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 
@@ -32,22 +37,42 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
             </div>
             <!-- Nav -->
             <nav id="nav">
-                <ul>
-                    <li><a href="index.jsp">Home</a></li>
-                    <li><a href="logoutAction">로그아웃</a></li>
-                    <li> <a href="#">For Student</a>
-                        <ul>
-                            <li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>
-                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="#">For Company</a>
-                        <ul>
-                            <li><a href="search.html">학생 찾기</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.html">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.html">내 레주메 보기</a></li>	
+						<li><a href="login.html">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.html">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
         </div>
         <!-- Main -->
         <div class="wrapper style1">
