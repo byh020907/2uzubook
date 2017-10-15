@@ -272,10 +272,6 @@
                         <header>
                             <h3>저와 함께 개발을 하고 싶거나 궁금한 사항이 있으면 연락주세요</h3> </header>
                         <p><%=email%></p>
-                        <ul class="icons">
-                            <li><a href="https://www.facebook.com" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                            <li><a href="https://github.com/yjh5424" class="icon fa-github"><span class="label">Github</span></a></li>
-                        </ul>
                     </section>
                     <!-- Copyright -->
                     <div class="copyright">

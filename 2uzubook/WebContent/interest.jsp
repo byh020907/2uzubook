@@ -151,10 +151,10 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         </div>
                                             <div class="form-group">
                                             <label class="control-label" for="interest_add">사진 추가(증명 사진)</label>
-                                            <div class="filebox bs3-primary preview-image">
+                                            <div class="filebox bs3-primary preview-image" id="part2">
                                                 <input class="upload-name" value="파일선택" disabled="disabled" style="width: 500px;">
                                                 <label for="input_file">업로드</label>
-                                                <input type="file" id="input_file" class="upload-hidden"> </div>
+                                                <input type="file" id="input_file" class="upload-hidden" id="part2-2"> </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
@@ -223,7 +223,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
             var imgTarget = $('.preview-image .upload-hidden');
             imgTarget.on('change', function () {
                 var parent = $(this).parent();
-                parent.children('.upload-display').remove();
+                //parent.children('.upload-display').remove();
                 if (window.FileReader) {
                     //image 파일만
                     if (!$(this)[0].files[0].type.match(/image\//)) return;
@@ -244,11 +244,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                 }
             });
         });
+       
         function go(){
 			var frm=document.getElementById('frm1');
 			console.log('hel');
 			frm.submit();
-		}   
+		}
+        
 		 function interest_delete(obj) {
             $(obj).parent().parent().parent().css('background-color', 'red');
             var flag = 0;
