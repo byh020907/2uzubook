@@ -359,7 +359,7 @@ public JSONArray search(int ...keyword) {
                 + "LEFT JOIN volunteer ON user.id=volunteer.user "
                 + "LEFT JOIN test ON user.id=test.user "
                 + "LEFT JOIN conference ON user.id=conference.user "
-                + "LEFT JOIN interests ON user.id"
+                + "LEFT JOIN interests ON user.id "
 				+ "WHERE ");
 
 
