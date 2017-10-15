@@ -40,7 +40,7 @@ public class SeeStudentResume extends HttpServlet {
 		
 		String companySerial=(String) session.getAttribute("serialKey");
 		if(session.getAttribute("serialKey")==null){
-			response.sendRedirect("/2uzubook/login.html");
+			response.sendRedirect("/2uzubook/login.jsp");
 			return;
 		}
 		
@@ -54,6 +54,7 @@ public class SeeStudentResume extends HttpServlet {
 		JSONArray conferences=database.select_resume(userID, 6);
 		JSONArray volunteers=database2.select_resume(userID, 1);
 		JSONArray readings=database2.select_resume(userID, 2);
+		JSONArray interests=database2.select_resume(userID, 3);
 		
 		//유저 정보 받아오기
 		JSONArray ja=database3.executeAndGet("SELECT * FROM USER WHERE id=?", userID);
@@ -72,6 +73,7 @@ public class SeeStudentResume extends HttpServlet {
 		userData.put("conferences",conferences);
 		userData.put("volunteers",volunteers);
 		userData.put("readings",readings);
+		userData.put("interests",interests);
 		request.setAttribute("JSONObject", userData);
 		request.getRequestDispatcher("/myresume.jsp").forward(request, response);
 	}
