@@ -144,7 +144,7 @@
                      {
                             JSONObject conference=(JSONObject)conferences.get(i);
                     %>
-						<%=conference.get("name") %> (<%=(Date)conference.get("date") %>)
+						<%=conference.get("name") %> (<%=(Date)conference.get("date") %>) <br>
 					<%
                      }
 					%> 
