@@ -216,7 +216,7 @@
             console.log(password);
             console.log(passwordCheck);
             if (password == passwordCheck) {
-                document.getElementById("result").innerHTML = "Okey";
+                document.getElementById("result").innerHTML = "Okay";
             }
             else {
                 document.getElementById("result").innerHTML = "No";
