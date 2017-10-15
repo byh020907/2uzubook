@@ -19,15 +19,18 @@ import resume.Club;
 import resume.Conference;
 import resume.Project;
 import resume.ResumeDAO;
+import user.UserDAO;
 
 @WebServlet("/SelectResume")
 public class SelectResume extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ResumeDAO database;
 	EtcDAO database2;
+	UserDAO database3;
     public SelectResume() {
     	database=ResumeDAO.getInstance();
 		database2=EtcDAO.getInstance();
+		database3=UserDAO.getInstance();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

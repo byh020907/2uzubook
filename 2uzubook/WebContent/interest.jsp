@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-    <%@ page import="org.json.simple.*"%>
-        <%@ page import="java.util.*"%>
-            <%
+<%@ page import="org.json.simple.*"%>        
+<%@ page import="java.util.*"%>
+<%
 	request.setCharacterEncoding("UTF-8");
 	String id = (String) session.getAttribute("id");
 	String serialKey = (String) session.getAttribute("serialKey");
 	System.out.println(id);
 %>
-                <%
-request.setCharacterEncoding("UTF-8");
+<%   
 JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
 JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 
