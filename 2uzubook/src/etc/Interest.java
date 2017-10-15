@@ -4,12 +4,13 @@ public class Interest {
 	private int id;
 	private String user;
 	private String name;
-	private String date;
-	
-	public Interest(String user, String name) {
+	private int keyword;
+
+	public Interest(String user, String name,int keyword) {
 		super();
 		this.user = user;
 		this.name = name;
+		this.keyword = keyword;
 	}
 	
 	public int getId() {
@@ -30,11 +31,11 @@ public class Interest {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDate() {
-		return date;
+	public int getKeyword() {
+		return keyword;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setKeyword(int keyword) {
+		this.keyword = keyword;
 	}
 	
 }

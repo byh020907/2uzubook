@@ -123,7 +123,6 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                             <div class="10u form1">
                                                 <h3 class="text-center mb-3">관심분야 추가</h3>
                                                 <form action="" method="post">
-                                                    <input name="mode" type="hidden" value="1">
                                                     <div class="form-group">
                                                         <label class="control-label" for="license_name">관심분야</label>
                                                         <div class="col-md-4">
@@ -133,7 +132,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     {
                     									JSONObject keyword=(JSONObject)keywordArray.get(i);
                     								%>
-                                                                    <option value="<%=keyword.get(" name ")%>">
+                                                                    <option value="<%=keyword.get("id")%>">
                                                                         <%=keyword.get("name")%>
                                                                     </option>
                                                                     <% 
