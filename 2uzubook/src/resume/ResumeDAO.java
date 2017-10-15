@@ -289,6 +289,16 @@ public class ResumeDAO extends Database{
 		return jsonArray;
 
 	}
+	
+	public JSONArray getKeywordName(int keyword) {
+		JSONArray jsonArray=new JSONArray();
+		
+		String sql="select name from keyword where id=?";
+		
+		jsonArray=executeAndGet(sql, keyword);
+		
+		return jsonArray;
+	}
 
 
 	//단일 값 일때
@@ -329,6 +339,7 @@ public JSONArray search(int ...keyword) {
                 + "LEFT JOIN volunteer ON user.id=volunteer.user "
                 + "LEFT JOIN test ON user.id=test.user "
                 + "LEFT JOIN conference ON user.id=conference.user "
+                + "LEFT JOIN interests ON user.id"
 				+ "WHERE ");
 
 
