@@ -103,7 +103,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             		<div class="4u 12u(mobile)">
                                     <div class="row" id="modal_pop" style="cursor:pointer;">
                                         <div class="5u">
-                                            <a class="image fit" onclick="interest_delete(this);><img src="images/student/interest.png" alt="" /></a>
+                                            <a class="image fit" onclick="interest_delete(this);"><img src="images/student/interest.png" alt="" /></a>
                                         </div>
                                         <div class="7u">
                                             <h3 class="text-center" id="delete_name"><%=(String)interest.get("name")%> </h3><%=(Date)interest.get("date")%></div>
