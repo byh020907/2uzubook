@@ -116,7 +116,7 @@
 								{
 									JSONObject object=(JSONObject)jsonArray.get(i);
 								%>
-									<div class="6u 12u(mobile) OnClick="/2uzubook/SeeStudentResume?id=<%=object.get("id")%>">
+									<div class="6u 12u(mobile)" onclick="/2uzubook/SeeStudentResume?id=<%=object.get("id")%>">
 										<div class="row"
 											OnClick="location.href=''" style="cursor: pointer;">
 											<div class="4u">
