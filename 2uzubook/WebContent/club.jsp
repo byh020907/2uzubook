@@ -155,7 +155,7 @@
 															for (int i = 0; i < keywordArray.size(); i++) {
 																JSONObject keyword = (JSONObject) keywordArray.get(i);
 														%>
-                                                                            <option value="<%=keyword.get(" id ")%>">
+                                                                            <option value="<%=keyword.get("id")%>">
                                                                                 <%=keyword.get("name")%>
                                                                             </option>
                                                                             <%
