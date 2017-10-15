@@ -18,7 +18,7 @@ public class Database {
 
 	protected Database() {
 		try {
-			String dbURL = "jdbc:mysql://10.156.145.110:3306/2uzubook";
+			String dbURL = "jdbc:mysql://localhost:3306/2uzubook";
 			String dbID = "root";
 			String dbPW = "root0209";
 			Class.forName("com.mysql.jdbc.Driver");
