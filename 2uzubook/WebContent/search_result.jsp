@@ -9,7 +9,6 @@
 	System.out.println(id);
 %>
 <%
-		request.setCharacterEncoding("UTF-8");
 		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
 		JSONArray keywordArray = (JSONArray) request.getAttribute("keyword");
 		System.out.println(jsonArray+"//"+keywordArray);
@@ -91,6 +90,7 @@
                         
 						<hr />
 						<form id="print_form" method="post" action="/2uzubook/printAction">
+								<input type="hidden" value="" name="jsonArray"/>
 						</form>
                         <footer> <a class="button" onclick="go_print();"> 전체 레주메 인쇄</a> </footer>
 					</div>
@@ -191,12 +191,12 @@
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
 	<script>
+	$(document).ready(function() {
+		var json = <%=jsonArray%>;
+		$('#print_form input').val(JSON.stringify(json));
+	});
 	function go_print()
 	{
-		var jsonstr='<%=jsonArray%>';
-		var tag='<input type="hidden" value="'+<%=jsonArray.toString()%>+'" name="jsonArray"/>';
-
-		$('#print_form').append(tag);
 		$('#print_form').submit();
 	}
 	function go() {

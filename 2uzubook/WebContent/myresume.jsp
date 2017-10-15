@@ -28,7 +28,6 @@
 	
 	String majorName=(String)jsonObject.get("majorName");
 	
-	
 	int student_id=(Integer)jsonObject.get("stu_id");
 	String gender=(String)jsonObject.get("gender");
 	String email=(String)jsonObject.get("email");

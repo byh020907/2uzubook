@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 
 @WebServlet("/printAction")
 public class printAction extends HttpServlet {
@@ -20,8 +24,13 @@ public class printAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Util.setCharset(request, response, "utf-8");
 		String jsonstring=request.getParameter("jsonArray");
-		System.out.println(jsonstring.toString());
-		System.out.println(jsonstring.toString());
+		JSONParser parser=new JSONParser();
+		try {
+			JSONArray ja=(JSONArray) parser.parse(jsonstring);
+			System.out.println(ja);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
