@@ -24,17 +24,17 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.jsp">Home</a></li>
                     <li><a href="login.html">로그인 / 회원가입</a></li>
                     <li><a href="#">For Student</a>
                         <ul>
-                            <li><a href="myresume.jspl">내 레주메 보기</a></li>
-                            <li><a href="#">레주메 내용 관리</a></li>
+                            <li><a href="login.html">내 레주메 보기</a></li>
+                            <li><a href="login.html">레주메 내용 관리</a></li>
                         </ul>
                     </li>
                     <li><a href="#">For Company</a>
                         <ul>
-                            <li><a href="search.html">학생 찾기</a></li>
+                            <li><a href="login.html">학생 찾기</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -79,7 +79,7 @@
                                                     <label class="control-label" for="email">E-Mail Address</label>
                                                     <input id="email" name="email" type="text" class="form-control" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
-                                                        <input type="button" onclick="email_confirm();" value="이메일 인증" class="btn btn-primary">
+                                                        <input type="button" id="email_confirm" onclick="email_confirm();" value="이메일 인증" class="btn btn-primary">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -255,7 +255,7 @@
 					if(data.status==1)
 					{
 						alert('인증되었습니다.');
-						$("#email").attr('type','hidden');
+						$("#email_confirm").attr('type','hidden');
 					}
 					else
 					{

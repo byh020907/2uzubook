@@ -2,30 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
 <%@ page import="java.util.*"%>
-<%!
-	class Student {
-		String name;
-		String major;
-	
-		Student(String name, String major) {
-			this.name = name;
-			this.major = major;
-		}
-	}
-%>
-
 <%
-	try{
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
+<%
 		request.setCharacterEncoding("UTF-8");
 		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
-		System.out.println(jsonArray);
-		
-		ArrayList<Student> students = new ArrayList<Student>();
-
-		for (int i = 0; i < jsonArray.size(); i++) {
-			JSONObject jobj = (JSONObject) jsonArray.get(i);
-			students.add(new Student((String) jobj.get("name"), (String) jobj.get("major")));
-		}	
+		JSONArray keywordArray = (JSONArray) request.getAttribute("keyword");
+		System.out.println(jsonArray+"//"+keywordArray);
 %>
 <!DOCTYPE HTML>
 <html>
@@ -53,17 +40,39 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="login.html">로그인 / 회원가입</a></li>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.html">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
 					<li><a href="#">For Student</a>
 						<ul>
-							<li><a href="myresume.jsp">내 레주메 보기</a></li>
-							<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.html">내 레주메 보기</a></li>	
+						<li><a href="login.html">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%} %>
 						</ul></li>
 					<li><a href="#">For Company</a>
 						<ul>
-							<li><a href="search.html">학생 찾기</a></li>
-						</ul></li>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.html">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -81,95 +90,57 @@
 						</section>
                         
 						<hr />
-                        <footer> <a href="" class="button"> 전체 레주메 인쇄</a> </footer>
+						<form id="print_form" method="post" action="/2uzubook/printAction">
+						</form>
+                        <footer> <a class="button" onclick="go_print();"> 전체 레주메 인쇄</a> </footer>
 					</div>
 					<div class="9u 12u(mobile) important(mobile)" id="content">
 						<article id="main">
 							<header>
 								<h2>Search Result</h2>
 								<p>
-									<strong>검색어 : </strong>남자, c++, 게임, 소프트웨어개발과
+									<strong>검색어 : </strong>
+										<%
+										for(int j=0;j<keywordArray.size();j++)
+										{
+										%>
+											<%=(String)keywordArray.get(j)%> , 
+										<% 
+										}
+										%>
 								</p>
 							</header>
 							<div class="row">
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu2.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20105 나호겸</h3>
-											남자, 소프트웨어개발과
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href='#'" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu1.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20108 김소연</h3>
-											게임, 소프트웨어개발과
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu3.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20118 윤정현</h3>
-											남자, 소프트웨어개발과
+							<%
+								for(int i=0;i<jsonArray.size();i++)
+								{
+									JSONObject object=(JSONObject)jsonArray.get(i);
+								%>
+									<div class="6u 12u(mobile)">
+										<div class="row"
+											OnClick="location.href=''" style="cursor: pointer;">
+											<div class="4u">
+												<a href="/2uzubook/SeeStudentResume?id=<%=object.get("id")%>" class="image fit"><img src="images/student/stu2.jpg"
+													alt="" /></a>
+											</div>
+											<div class="8u">
+												<h3 class="text-center"><%=object.get("stu_id")%> <%=object.get("name")%></h3>
+													<%
+													for(int j=0;j<keywordArray.size();j++)
+													{
+													%>
+														<%=(String)keywordArray.get(j)%> , 
+													<% 
+													}
+													%>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu4.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20116 배용호</h3>
-											남자, 소프트웨어개발과, 게임, c++
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row" 
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu5.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20107 심소욱</h3>
-											소프트웨어개발과
-										</div>
-									</div>
-								</div>
-								<div class="6u 12u(mobile)">
-									<div class="row"
-										OnClick="location.href=''" style="cursor: pointer;">
-										<div class="4u">
-											<a class="image fit"><img src="images/student/stu6.jpg"
-												alt="" /></a>
-										</div>
-										<div class="8u">
-											<h3 class="text-center">20105 박소현</h3>
-											소프트웨어개발과
-										</div>
-									</div>
-								</div>
+								<%
+								}
+							%>
+								
+								
 							</div>
 						</article>
 					</div>
@@ -219,6 +190,16 @@
 	<script src="js/util.js"></script>
 	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 	<script src="js/main.js"></script>
+	<script>
+	function go_print()
+	{
+		var jsonstr='<%=jsonArray%>';
+		var tag='<input type="hidden" value="'+<%=jsonArray%>+'" name="jsonArray"/>';
+
+		$('#print_form').append(tag);
+		$('#print_form').submit();
+	}
+	</script>
 </body>
 
 </html>

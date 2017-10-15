@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-    <%@ page import="org.json.simple.*"%>
-        <%@ page import="java.util.*"%>
-            <%
+pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
+<%
 request.setCharacterEncoding("UTF-8");
 
 JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
@@ -28,28 +34,46 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             <!-- Inner -->
                             <div class="inner">
                                 <header>
-                                    <h1><a href="index.html" id="logo">DSM 2UZUBOOK</a></h1> </header>
+                                    <h1><a href="index.jsp" id="logo">DSM 2UZUBOOK</a></h1> </header>
                             </div>
                             <!-- Nav -->
                             <nav id="nav">
-                                <ul>
-                                    <li><a href="index.jsp">Home</a></li>
-                                    <li><a href="logoutAction">로그아웃</a></li>
-                                    <li> <a href="#">For Student</a>
-                                        <ul>
-                                            <li>
-                                                <form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form>
-                                            </li>
-                                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a href="#">For Company</a>
-                                        <ul>
-                                            <li><a href="search.html">학생 찾기</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </nav>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.html">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.html">내 레주메 보기</a></li>	
+						<li><a href="login.html">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.html">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
                         </div>
                         <!-- Main -->
                         <div class="wrapper style1">
@@ -118,7 +142,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     {
                     									JSONObject keyword=(JSONObject)keywordArray.get(i);
                     								%>
-                                                                        <option value="<%=keyword.get(" id ")%>">
+                                                                        <option value="<%=keyword.get("id")%>">
                                                                             <%=keyword.get("name")%>
                                                                         </option>
                                                                         <% 
@@ -130,7 +154,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                         <div class="form-group">
                                                             <label class="col-md-4 control-label" for="Submit"></label>
                                                             <div class="col-md-4">
-                                                                <button id="Submit" name="Submit" OnClick="project_add()" class="btn btn-primary">추가하기</button>
+                                                                <button OnClick="project_add(); return false;" class="btn btn-primary">추가하기</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -190,19 +214,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             temp.startdate = startdate;
                             temp.enddate = enddate;
                             temp.keyword = keyword;
-                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="project_delete(this);"><img src="images/student/bulb.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + startdate + '~' + enddate + '</div></div></div>';
-                            $("#project_loc").prepend(tag_div);
-                            $("#name").val('');
-                            $("#startdate").val('');
-                            $("#desc").val('');
-                            $("#enddate").val('');
-                            $("#keyword").val('');
+                            
                             $.ajax({
                                 url: '/2uzubook/ResumeAdd'
                                 , type: 'post'
                                 , data: temp
                                 , success: function (data) {
-                                    if (data > 0 && data != null && data.length != 0) {
+                                    if (data.ret >= 0 && data.ret != null) {
                                         alert("add_success");
                                         //성공처리
                                         var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="project_delete(this);"><img src="images/student/bulb.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + startdate + '~' + enddate + '</div></div></div>';

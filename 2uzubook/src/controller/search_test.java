@@ -24,6 +24,7 @@ public class search_test extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Util.setCharset(request, response, "UTF-8");
 		JSONArray jsonArray=database.select_keyword(); //실제 db에서 긁어오는 것.
 		PrintWriter out=response.getWriter();
 		out.write(jsonArray.toString());

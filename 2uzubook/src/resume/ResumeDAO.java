@@ -179,10 +179,10 @@ public class ResumeDAO extends Database{
 
 	//토익같은 시험 
 	public int insert_test(Test test) {
-		String SQL = "insert into test (user,name,score,date,keyword) values (?,?,?,?)";
+		String SQL = "insert into test (user,name,score,date,keyword) values (?,?,?,?,?)";
 
 		try {
-			return executeAndUpdate(SQL,test.getUser(),test.getName(),test.getScore(),test.getKeyword());
+			return executeAndUpdate(SQL,test.getUser(),test.getName(),test.getScore(),test.getDate(),test.getKeyword());
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -312,54 +312,84 @@ public class ResumeDAO extends Database{
 		return jsonArray;
 	}
 	
-	public JSONArray serach(int ...keyword) {
+public JSONArray search(int ...keyword) {
 		
 		int TURNSIZE=4;
 		JSONArray jsonArray = new JSONArray();
 		int[] keywordList=new int[keyword.length*4];
 
 		
-		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.name, user.stu_id, major.name AS major FROM user "
+		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.id, user.name, user.stu_id, major.name AS major FROM user "
 				+ "LEFT JOIN award ON user.id=award.user " 
 				+ "LEFT JOIN cert ON user.id=cert.user "
 				+ "LEFT JOIN project ON user.id=project.user " 
 				+ "LEFT JOIN club ON user.id=club.user "
 				+ "LEFT JOIN major ON user.major=major.id "
+                + "LEFT JOIN reading ON user.id=reading.user "
+                + "LEFT JOIN volunteer ON user.id=volunteer.user "
+                + "LEFT JOIN test ON user.id=test.user "
+                + "LEFT JOIN conference ON user.id=conference.user "
 				+ "WHERE ");
 
-		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=?)";
+
+		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=? OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=?)";
 		String and=" and ";
 		
-		for(int i:keyword) {
-			if(i==keyword.length) {
+		for(int i=0;i<keyword.length;i++) {
+			if(i == keyword.length-1) {
 				sb.append(sub);
 			}else {
-				sb.append(sub).append(and);
-			}			
+				sb.append(sub).append(and);							
+			}
+			
 		}
 		
-	
+		
 		String totalSQL=sb.toString();
+		System.out.println(totalSQL);
 
 		if(keyword.length==1) {
-			return jsonArray=executeAndGet(totalSQL, keyword[0],keyword[0],keyword[0],keyword[0]);
+			return jsonArray=executeAndGet(totalSQL, keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]);
 		}else if(keyword.length == 2) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]);
 		}else if(keyword.length==3) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]);
 		}else if(keyword.length ==4 ) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]
-					,keyword[3],keyword[3],keyword[3],keyword[3]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]);
 		}else if(keyword.length==5) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0], keyword[1], keyword[1], keyword[1], keyword[1],keyword[2],keyword[2],keyword[2],keyword[2]
-					,keyword[3],keyword[3],keyword[3],keyword[3],keyword[4],keyword[4],keyword[4],keyword[4]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
+											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]);
+		}else if(keyword.length==6) {
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
+											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]
+													,keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5]);
+		}else if(keyword.length==7) {
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
+											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]
+													,keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5]
+															,keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6]);
 		}
 		
 		return jsonArray;
 				
 	}
 	
-	public JSONArray stringSerach(String content) {
+	public JSONArray stringSearch(String content) {
 		String SQL_USER="select * from user where adm_year like ? or stu_id like ? or intro like ? or name like ? or gender like ?;";
 		String SQL_AWARD="select * from award where name like ? or ins like ?";
 		String SQL_CERT="select * from cert where name like ? or ins like ?";
@@ -377,8 +407,8 @@ public class ResumeDAO extends Database{
 
 		for (int i = 0; i < SQL_ARRAYS.length; i++) {
 			JSONArray ONE_SQL_JSONARRAY = new JSONArray();
-			int parameter = getCharNumber(SQL_ARRAYS[i], '?');
-			String contents[] = new String[parameter];
+			int parameter = getCharNumber(SQL_ARRAYS[i], '?'); //?의 갯수를 얻어옴
+			String contents[] = new String[parameter]; // ?의 갯수 만큼 넣어준 배열크기 선언
 			for (int j = 0; j < parameter; j++) {
 				contents[j] = content;
 			}
@@ -390,7 +420,7 @@ public class ResumeDAO extends Database{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public JSONArray totalSerach(JSONArray...jsonArraysjson) {
+	public JSONArray totalSearch(JSONArray...jsonArraysjson) {
 		JSONArray totalJsonArray = new JSONArray();
 		
 		for(JSONArray i:jsonArraysjson) {

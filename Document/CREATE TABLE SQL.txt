@@ -1,4 +1,4 @@
-CREATE TABLE `major` (
+﻿CREATE TABLE `major` (
     `id` INT(1) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(10) NOT NULL UNIQUE
 );
@@ -126,3 +126,15 @@ CREATE TABLE interests (
     `name` VARCHAR(64) NOT NULL,
     FOREIGN KEY (`user`) REFERENCES `user`(`id`)
 );
+
+insert into keyword (name) values ('c언어')
+insert into keyword (name) values ('자바')
+insert into keyword (name) values ('알고리즘')
+insert into keyword (name) values ('게임')
+insert into keyword (name) values ('웹')
+insert into keyword (name) values ('안드로이드')
+insert into keyword (name) values ('서버')
+insert into keyword (name) values ('영어')
+insert into keyword (name) values ('수학')
+insert into keyword (name) values ('머신러닝')
+insert into keyword (name) values ('IOT')

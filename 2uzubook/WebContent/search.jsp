@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -27,22 +33,42 @@
 			</div>
 			<!-- Nav -->
 			<nav id="nav">
-                <ul>
-                    <li><a href="index.jsp">Home</a></li>
-                    <li><a href="logoutAction">로그아웃</a></li>
-                    <li> <a href="#">For Student</a>
-                        <ul>
-                            <li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>
-                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="#">For Company</a>
-                        <ul>
-                            <li><a href="search.html">학생 찾기</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.html">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.html">내 레주메 보기</a></li>	
+						<li><a href="login.html">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.html">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
 		</div>
 		<!-- Main -->
 		<div class="wrapper style1">
@@ -71,22 +97,20 @@
 									<div class="row">
 										<div class="8u form1">
 											<form id="search_form" action="/2uzubook/searchAction"
-												method="post" style="margin-top: 20px;">
+												method="post" style="margin-top: 20px;"><div id="loc"></div></form>
 												<div class="search_div">
 												<ul id="input_list">
 													<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text"
 													placeholder="ex) 남자, 게임, c++" name="q"></li>
-											
 												</ul>
 												</div>
 												<datalist id="data_list">
-													
 												</datalist>
-											</form>
+												
 										</div>
 										<div class="4u">
 											<button class="btn btn-outline-success mb-2"
-												onclick="$('#search_form').submit();"
+												onclick="go_servlet();"
 												style="height: 59px; margin-top: 23px;">search</button>
 										</div>
 									</div>
@@ -139,7 +163,7 @@
 	<script src="js/search.js"></script>
 	<script>
 	var tag_input='<li id="this_li"><input id="search_box" list="data_list" class="form-control mb-2" type="text" placeholder="ex) 남자, 게임, c++" name="q"></li>';
-	
+	var count=0;
 	$(function(){
 		$.ajax({
 			url : '/2uzubook/search_test',
@@ -147,7 +171,7 @@
 				success : function(data) {
 					for (var i = 0; i < data.length; i++) {
 						console.log(data[i].name);
-						tag='<option value="'+data[i].name+'"></option>';
+						tag='<option value="'+data[i].name+'" id="'+data[i].id+'"></option>';
 						$('#data_list').append(tag);
 					}
 				},
@@ -157,14 +181,42 @@
 	$(document).on("keyup","#search_box",function(event){
 		if(event.keyCode==32)
 		{
+			count++;
 			console.log("hell");
-			var val_search=$('#search_box').val();
-			var tag_span='<li><div class="span_style">'+val_search+'</div></li>';
+			var val_search=$('#search_box').val().trim();
+			
+			var find_val='option[value="'+val_search+'"]';
+			console.log(find_val);
+			var val_data=$(find_val).attr('id');
+			console.log(val_data+'datalist');
+			var tag_div='<li><div class="span_style">'+val_search+'<div class="part"><input class="key" type="hidden" value="'+val_data+'"/><button class="delete_btn" onclick="delete_keyword(this)">x</button></div></div></li>';
 			$('li').remove('#this_li');
-			$('#input_list').append(tag_span);
+			$('#input_list').append(tag_div);
 			$('#input_list').append(tag_input);
 		}
 	});
+	function delete_keyword(obj)
+	{
+		count--;
+		$(obj).parent().parent().parent().remove();
+	}
+	function go_servlet()
+	{
+		var i=0
+		for(;i<count;i++)
+		{
+			var temp=$("#input_list").find("li").eq(i).find('.key').val();
+			var tag='<input type="hidden" value="'+temp+'" name="keyword"/>';
+			console.log(temp);
+			$("#loc").append(tag);
+		}
+		if(i==0)
+		{
+			alert('data를 하나 이상 입력하세요');	
+		}else{
+			$("#search_form").submit();		
+		}
+	}
 	</script>
 </body>
 

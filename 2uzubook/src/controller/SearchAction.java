@@ -23,39 +23,33 @@ import resume.ResumeDAO;
 public class SearchAction extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	ResumeDAO resumeDAO;
+	
+	public SearchAction(){
+		resumeDAO=ResumeDAO.getInstance();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		ResumeDAO resumeDAO = ResumeDAO.getInstance();
 		Util.setCharset(request, response, "utf-8");
 
-		//String query = request.getParameter("q");
-		//int result = resumeDAO.search(query);
+		String[] keywordStrings = request.getParameterValues("keyword");
+		System.out.println(keywordStrings);
+		int[] keywords=new int[keywordStrings.length];
+		JSONArray keyword=new JSONArray();
 		
-		JSONObject data1 = new JSONObject();
-		data1.put("name", "김소연");
-		data1.put("major", "sw개발과");
+		for(int i=0;i<keywords.length;i++){
+			keywords[i]=Integer.parseInt(keywordStrings[i]);
+			JSONArray ja=resumeDAO.executeAndGet("SELECT name FROM keyword where id=?", keywords[i]);
+			JSONObject j=(JSONObject) ja.get(0);
+			keyword.add(j.get("name"));
+		}
+		
+		JSONArray result = resumeDAO.search(keywords);
 
-		JSONObject data2 = new JSONObject();
-		data2.put("name", "배용호");
-		data2.put("major", "sw개발과");
-
-		JSONObject data3 = new JSONObject();
-		data3.put("name", "박규리");
-		data3.put("major", "sw개발과");
-
-		JSONObject data4 = new JSONObject();
-		data4.put("name", "윤정현");
-		data4.put("major", "sw개발과");
-
-		JSONArray arr = new JSONArray();
-		arr.add(data1);
-		arr.add(data2);
-		arr.add(data3);
-		arr.add(data4);
-
-		request.setAttribute("JSONArray", arr);
+		request.setAttribute("JSONArray", result);
+		request.setAttribute("keyword", keyword);
 		request.getRequestDispatcher("/search_result.jsp").forward(request, response);
 	}
 

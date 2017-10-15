@@ -4,6 +4,12 @@
 <%@ page import="java.util.*"%>
 <%
 	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
+<%
+	request.setCharacterEncoding("UTF-8");
 	
 	JSONObject jsonObject= (JSONObject) request.getAttribute("JSONObject");
 	
@@ -46,26 +52,46 @@
             <!-- Inner -->
             <div class="inner">
                 <header>
-                    <h1><a href="index.html" id="logo">DSM 2UZUBOOK</a></h1> </header>
+                    <h1><a href="index.jsp" id="logo">DSM 2UZUBOOK</a></h1> </header>
             </div>
             <!-- Nav -->
             <nav id="nav">
-                <ul>
-                    <li><a href="index.jsp">Home</a></li>
-                    <li><a href="logoutAction">로그아웃</a></li>
-                    <li> <a href="#">For Student</a>
-                        <ul>
-                            <li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go2();">내 레주메 보기</a></form></li>
-                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="#">For Company</a>
-                        <ul>
-                            <li><a href="search.html">학생 찾기</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.html">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.html">내 레주메 보기</a></li>	
+						<li><a href="login.html">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.html">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
         </div>
         <!-- Main -->
         <div class="wrapper style1">
@@ -88,6 +114,23 @@
                                 <div class="8u">
                                     <h4><%=(String)licen.get("name")%></h4>
                                     <p> <%=(Date)licen.get("date")%></p>
+                                </div>
+                            </div>
+						<% 
+						}
+						%>
+						<% for(int i=0;i<tests.size();i++)
+						{	
+								JSONObject test=(JSONObject)tests.get(i);
+						%>
+                            <div class="row 50%">
+                                <div class="4u">
+                                    <a class="image fit"><img src="images/student/license.png" alt="" /></a>
+                                </div>
+                                <div class="8u">
+                                    <h4><%=(String)test.get("name")%></h4>
+                                    <p> <%=(Integer)test.get("score")%></p>
+                                    <p> <%=(Date)test.get("date")%></p>
                                 </div>
                             </div>
 						<% 
