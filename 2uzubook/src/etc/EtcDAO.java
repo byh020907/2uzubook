@@ -125,8 +125,8 @@ public class EtcDAO extends Database {
 			}
 			
 			case 3:{
-				String SQL_DELETE_reading = "delete from interests where user=? and name=?";
-				return executeAndUpdate(SQL_DELETE_reading, user,name);
+				String SQL_DELETE_interest = "delete from interests where user=? and name=?";
+				return executeAndUpdate(SQL_DELETE_interest, user,name);
 			}
 			default:
 				return -2;
