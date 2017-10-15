@@ -93,7 +93,6 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                 <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                             </header>
                             <h3 class="text-center mb-3">추가된 독서활동</h3>
-
                             <br>
                             <div id="reading_loc" class="row">
                                 <% for(int i=0;i<jsonArray.size();i++)
@@ -115,6 +114,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 								}
 								%>  
                             </div>
+                            <br>
                            	<div class="row">
                                 <div class="10u form1">
                                     <h3 class="text-center mb-3">독서활동 추가</h3>
