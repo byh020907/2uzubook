@@ -37,6 +37,26 @@ public class ResumeDAO extends Database{
 		return results;
 	}
 	
+	public int getKeywordNum(String name) {
+		String SQL = "select id from keyword where name=?";
+		int keyword = 0;
+		try {
+
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				keyword = rs.getInt("id");
+			}
+
+			return keyword;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return keyword;
+	}
+	
 	public JSONArray select_major() {
 		
 		String SQL="select * from major";
@@ -290,14 +310,14 @@ public class ResumeDAO extends Database{
 
 	}
 	
-	public JSONArray getKeywordName(int keyword) {
+	public String getKeywordName(int keyword) {
 		JSONArray jsonArray=new JSONArray();
 		
 		String sql="select name from keyword where id=?";
 		
 		jsonArray=executeAndGet(sql, keyword);
 		
-		return jsonArray;
+		return (String) ((JSONObject)jsonArray.get(0)).get("name");
 	}
 
 
@@ -339,11 +359,11 @@ public JSONArray search(int ...keyword) {
                 + "LEFT JOIN volunteer ON user.id=volunteer.user "
                 + "LEFT JOIN test ON user.id=test.user "
                 + "LEFT JOIN conference ON user.id=conference.user "
-                + "LEFT JOIN interests ON user.id"
+                + "LEFT JOIN interests ON user.id=interests.user "
 				+ "WHERE ");
 
 
-		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=? OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=?)";
+		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=? OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=? OR interests.keyword=?)";
 		String and=" and ";
 		
 		for(int i=0;i<keyword.length;i++) {
@@ -360,40 +380,40 @@ public JSONArray search(int ...keyword) {
 		System.out.println(totalSQL);
 
 		if(keyword.length==1) {
-			return jsonArray=executeAndGet(totalSQL, keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]);
+			return jsonArray=executeAndGet(totalSQL, keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]);
 		}else if(keyword.length == 2) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
-					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]);
 		}else if(keyword.length==3) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
-					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
-							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]);
 		}else if(keyword.length ==4 ) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
-					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
-							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
-									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]);
 		}else if(keyword.length==5) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
-					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
-							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
-									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
-											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
+											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]);
 		}else if(keyword.length==6) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
-					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
-							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
-									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
-											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]
-													,keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
+											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]
+													,keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5]);
 		}else if(keyword.length==7) {
-			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
-					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
-							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
-									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
-											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]
-													,keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5]
-															,keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6]);
+			return jsonArray = executeAndGet(totalSQL, keyword[0], keyword[0], keyword[0], keyword[0],keyword[0],keyword[0],keyword[0],keyword[0],keyword[0]
+					,keyword[1], keyword[1], keyword[1], keyword[1],keyword[1],keyword[1],keyword[1],keyword[1],keyword[1]
+							,keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2],keyword[2]
+									,keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3],keyword[3]
+											,keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4],keyword[4]
+													,keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5],keyword[5]
+															,keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6],keyword[6]);
 		}
 		
 		return jsonArray;
