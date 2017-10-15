@@ -9,7 +9,6 @@
 	System.out.println(id);
 %>
 <%
-request.setCharacterEncoding("UTF-8");
 JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
 JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 
