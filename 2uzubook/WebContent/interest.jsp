@@ -155,10 +155,10 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label" for="interest_add">사진 추가(증명 사진)</label>
-                                                        <div class="filebox bs3-primary preview-image" id="part2">
+                                                        <div class="filebox bs3-primary preview-image">
                                                             <input class="upload-name" value="파일선택" disabled="disabled" style="width: 500px;">
                                                             <label for="input_file">업로드</label>
-                                                            <input type="file" id="input_file" class="upload-hidden" id="part2-2"> </div>
+                                                            <input type="file" id="input_file" class="upload-hidden"> </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label" for="Submit"></label>
@@ -224,30 +224,32 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                     $(this).siblings('.upload-name').val(filename);
                                 });
                                 //preview image 
-                                var imgTarget = $('.preview-image .upload-hidden');
-                                imgTarget.on('change', function () {
-                                    var parent = $(this).parent();
-                                    //parent.children('.upload-display').remove();
-                                    if (window.FileReader) {
-                                        //image 파일만
-                                        if (!$(this)[0].files[0].type.match(/image\//)) return;
-                                        var reader = new FileReader();
-                                        reader.onload = function (e) {
-                                            var src = e.target.result;
-                                            parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="' + src + '" class="upload-thumb"></div></div>');
-                                        }
-                                        reader.readAsDataURL($(this)[0].files[0]);
-                                    }
-                                    else {
-                                        $(this)[0].select();
-                                        $(this)[0].blur();
-                                        var imgSrc = document.selection.createRange().text;
-                                        parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
-                                        var img = $(this).siblings('.upload-display').find('img');
-                                        img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
-                                    }
-                                });
                             });
+                            
+                            $('.preview-image .upload-hidden').on('change', function () {
+                                var parent = $(this).parent();
+                                console.log(parent);
+                                //parent.children('.upload-display').remove();
+                                if (window.FileReader) {
+                                    //image 파일만
+                                    if (!$(this)[0].files[0].type.match(/image\//)) return;
+                                    var reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        var src = e.target.result;
+                                        parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="' + src + '" class="upload-thumb"></div></div>');
+                                    }
+                                    reader.readAsDataURL($(this)[0].files[0]);
+                                }
+                                else {
+                                    $(this)[0].select();
+                                    $(this)[0].blur();
+                                    var imgSrc = document.selection.createRange().text;
+                                    parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+                                    var img = $(this).siblings('.upload-display').find('img');
+                                    img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
+                                }
+                            });
+                           
 
                             function go() {
                                 var frm = document.getElementById('frm1');
