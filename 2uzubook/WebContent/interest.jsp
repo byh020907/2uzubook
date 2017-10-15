@@ -89,9 +89,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                 <header>
                                                     <h3>관심분야 & 사진을 추가해주세요</h3> </header>
                                             </section>
-                                            <hr />
-                                            <footer> </footer>
-                                        </div>
+                                            <hr /> </div>
                                         <div class="9u 12u(mobile) important(mobile)" id="content">
                                             <article id="main">
                                                 <header>
@@ -100,7 +98,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                 </header>
                                                 <h3 class="text-center mb-3">추가된 관심분야</h3>
                                                 <br>
-                                                <div class="row" id="interest_loc">
+                                                <div id="interest_loc" class="row">
                                                     <% for(int i=0;i<jsonArray.size();i++)
 								{	
 									JSONObject interest=(JSONObject)jsonArray.get(i);
@@ -116,12 +114,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                </div>
-                                                <%
+                                                                 <%
 								}
 								%>
-                                        </div>
-                                        <br>
+                                                </div>
+                                                                <br>
                                         <div class="row">
                                             <div class="10u form1">
                                                 <h3 class="text-center mb-3">관심분야 추가</h3>
