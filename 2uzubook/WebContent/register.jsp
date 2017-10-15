@@ -109,7 +109,7 @@
                                                     <label class="control-label" for="email">E-Mail Address</label>
                                                     <input id="email" name="email" type="text" class="form-control" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
-                                                        <input type="button" id="email_confirm" onclick="email_confirm();" value="이메일 인증" class="btn btn-primary">
+                                                        <input type="button" id="email_confi" onclick="email_confirm(); return false;" value="이메일 인증" class="btn btn-primary"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -285,7 +285,8 @@
 					if(data.status==1)
 					{
 						alert('인증되었습니다.');
-						$("#email_confirm").attr('type','hidden');
+						$("#email_confi").attr('type','hidden');
+						$("#email_confi").attr('disabled');
 					}
 					else
 					{
