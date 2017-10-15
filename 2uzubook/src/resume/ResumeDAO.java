@@ -37,6 +37,26 @@ public class ResumeDAO extends Database{
 		return results;
 	}
 	
+	public int getKeywordNum(String name) {
+		String SQL = "select id from keyword where name=?";
+		int keyword = 0;
+		try {
+
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				keyword = rs.getInt("id");
+			}
+
+			return keyword;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return keyword;
+	}
+	
 	public JSONArray select_major() {
 		
 		String SQL="select * from major";
@@ -290,14 +310,14 @@ public class ResumeDAO extends Database{
 
 	}
 	
-	public JSONArray getKeywordName(int keyword) {
+	public String getKeywordName(int keyword) {
 		JSONArray jsonArray=new JSONArray();
 		
 		String sql="select name from keyword where id=?";
 		
 		jsonArray=executeAndGet(sql, keyword);
 		
-		return jsonArray;
+		return (String) ((JSONObject)jsonArray.get(0)).get("name");
 	}
 
 
