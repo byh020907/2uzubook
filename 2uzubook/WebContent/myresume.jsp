@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="8u">
                                     <h4><%=(String)test.get("name")%></h4>
-                                    <p> <%=(Integer)test.get("score")%>
+                                    <p> <%=(Integer)test.get("score")%>점 <br>
                                     <%=(Date)test.get("date")%></p>
                                 </div>
                             </div>
