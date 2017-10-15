@@ -117,13 +117,13 @@ public class ResumeAdd extends HttpServlet {
 				System.out.println(part+name+score+keyword);
 				Test test=new Test(userID,name,score,date,keyword);
 				ret=database.insert_test(test);
-			}
+			}break;
 			case 9:{
 				String keyword=request.getParameter("keyword");
 				System.out.println(part+keyword);
 				Interest interest=new Interest(userID,keyword);
 				ret=database2.insert_interest(interest);
-			}
+			}break;
 		}
 		JSONObject data1=new JSONObject();
 		data1.put("ret", ret);

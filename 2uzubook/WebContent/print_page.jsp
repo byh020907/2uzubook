@@ -6,8 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="css/table.css">
 </head>
 <body>
 <%
@@ -25,7 +27,7 @@
 		JSONArray reads=(JSONArray)jsonObject.get("readings");
 		JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
 		JSONArray tests=(JSONArray)jsonObject.get("tests");
-		
+		JSONArray interests=(JSONArray)jsonObject.get("interests");
 		System.out.println(jsonObject);//log
 		String name=(String)jsonObject.get("name");
 		int major=(Integer)jsonObject.get("major");
@@ -51,8 +53,12 @@
 					<td>
 						<h2>
 							<%=student_id %> <%=majorName %> <br> <%=name %>
-						</h2> <strong><%=email %></strong> <br> 웹해킹 <br> 컴퓨터 보안
-						<br> sw 개발
+						</h2> <strong><%=email %></strong>
+						<%for(int aa=0;aa<interests.size();aa++){ 
+						JSONObject interest=(JSONObject)interests.get(aa);
+						%>
+						<br><%=interest.get("name")%>
+						<%}%>
 					</td>
 				</tr>
 			</tbody>
@@ -162,10 +168,19 @@
 	<%
 	}
 	%>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.dropotron.min.js"></script>
+	<script src="js/jquery.scrolly.min.js"></script>
+	<script src="js/jquery.onvisible.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/util.js"></script>
+	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+	<script src="js/main.js"></script>
 	<script>
 	$(document).ready(function() {
 		 window.print();
-	}); 
+		 console.log("asdsasd");
+	});
 	function go() {
         var frm = document.getElementById('frm1');
         console.log('hel');

@@ -4,12 +4,21 @@ public class Interest {
 	private int id;
 	private String user;
 	private String name;
-	private String date;
+	private int keyword;
 	
-	public Interest(String user, String name) {
+	public int getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(int keyword) {
+		this.keyword = keyword;
+	}
+
+	public Interest(String user, String name,int keyword) {
 		super();
 		this.user = user;
 		this.name = name;
+		this.keyword=keyword;
 	}
 	
 	public int getId() {

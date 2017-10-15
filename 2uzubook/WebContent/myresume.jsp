@@ -21,13 +21,14 @@
 	JSONArray reads=(JSONArray)jsonObject.get("readings");
 	JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
 	JSONArray tests=(JSONArray)jsonObject.get("tests");
+
+	JSONArray interests=(JSONArray)jsonObject.get("interests");
 	
 	System.out.println(jsonObject);//log
 	String name=(String)jsonObject.get("name");
 	int major=(Integer)jsonObject.get("major");
 	
 	String majorName=(String)jsonObject.get("majorName");
-	
 	
 	int student_id=(Integer)jsonObject.get("stu_id");
 	String gender=(String)jsonObject.get("gender");
@@ -102,7 +103,13 @@
                             <header>
                                 <h3><a href="#">"세상과 소통하는 게임 개발자"</a></h3> </header>
                             <p> <strong>관심 분야</strong>
-                                <br> 게임 개발, C++, 언리얼엔진 </p>
+                        <br>
+                        <%for(int i=0;i<interests.size();i++){ 
+						JSONObject interest=(JSONObject)interests.get(i);
+						%>
+						<%=interest.get("name")%>
+						<%}%>
+                        </p>
 						<% for(int i=0;i<licenses.size();i++)
 						{	
 								JSONObject licen=(JSONObject)licenses.get(i);
