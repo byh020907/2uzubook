@@ -185,7 +185,7 @@
                             <ul class="icons">
                                 <li><a href="#" class="icon fa-facebook"><span
 										class="label">Facebook</span></a></li>
-                                <li><a href="#" class="icon fa-github"><span
+                                <li><a href="https://github.com/DSM-HS/StudentCouncil" class="icon fa-github"><span
 										class="label">Twitter</span></a></li>
                             </ul>
                         </section>

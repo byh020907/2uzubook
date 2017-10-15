@@ -142,11 +142,11 @@
 										<div class="form-group">
 											<label class="control-label" for="volunteer_startdate">시작
 												날짜</label> <input id="startdate" name="volunteer_startdate"
-												type="datetime" class="form-control" required>
+												type="date" class="form-control" required>
 										</div>
 										<div class="form-group">
 											<label class="control-label" for="volunteer_enddate">종료
-												날짜</label> <input id="enddate" name="volunteer_enddate" type="datetime"
+												날짜</label> <input id="enddate" name="volunteer_enddate" type="date"
 												class="form-control" required>
 										</div>
 										<div class="form-group">
@@ -197,7 +197,7 @@
 							<ul class="icons">
 								<li><a href="#" class="icon fa-facebook"><span
 										class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon fa-github"><span
+								<li><a href="https://github.com/DSM-HS/StudentCouncil" class="icon fa-github"><span
 										class="label">Twitter</span></a></li>
 							</ul>
 						</section>

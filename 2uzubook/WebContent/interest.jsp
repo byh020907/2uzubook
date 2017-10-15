@@ -190,7 +190,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             <p>대덕소프트웨마이스터고등학교 34111)대전광역시 유성구 가정북로 76(장동 23-9) 교무실 ☎ : 042-866-8822</p>
                             <ul class="icons">
                                 <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                                <li><a href="#" class="icon fa-github"><span class="label">Twitter</span></a></li>
+                                <li><a href="https://github.com/DSM-HS/StudentCouncil" class="icon fa-github"><span class="label">Twitter</span></a></li>
                             </ul>
                         </section>
                         <!-- Copyright -->
