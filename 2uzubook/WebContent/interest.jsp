@@ -99,9 +99,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                 <br>
                                                 <div id="interest_loc" class="row">
                                                     <% for(int i=0;i<jsonArray.size();i++)
-								{	
-									JSONObject interest=(JSONObject)jsonArray.get(i);
-								%>
+													{	
+														JSONObject interest=(JSONObject)jsonArray.get(i);
+													%>
                                                         <div class="4u 12u(mobile)">
                                                             <div class="row" id="modal_pop" style="cursor:pointer;">
                                                                 <div class="5u">
@@ -109,13 +109,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                                 </div>
                                                                 <div class="7u">
                                                                     <h3 class="text-center" id="delete_name"><%=(String)interest.get("name")%> </h3>
-                                                                    <%=(Date)interest.get("date")%>
+                       
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                                 <%
-								}
-								%>
+                                                    <%
+													}
+													%>
                                                 </div>
                                                                 <br>
                                         <div class="row">
@@ -126,7 +126,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                         <label class="control-label" for="license_name">관심분야</label>
                                                         <div class="col-md-4">
                                                             <select id="keyword" name="license_keyword" class="form-control">
-                                                                <%
+                                                    <%
                                                     for(int i=0;i<keywordArray.size();i++)
                                                     {
                     									JSONObject keyword=(JSONObject)keywordArray.get(i);
@@ -134,7 +134,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                                     <option value="<%=keyword.get("id")%>">
                                                                         <%=keyword.get("name")%>
                                                                     </option>
-                                                                    <% 
+                                                    <% 
                                                     }
                                                     %>
                                                             </select>
@@ -143,7 +143,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label" for="Submit"></label>
                                                         <div class="col-md-4">
-                                                            <button onclick="interest_add();" class="btn btn-primary">추가하기</button>
+                                                            <button onclick="interest_add(); return false;" class="btn btn-primary">추가하기</button>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -313,10 +313,10 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         if (data.ret >= 0 && data.ret != null) {
                                             alert("add_success");
                                             //성공처리
-                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + name + '</h3>' + date + '</div></div></div>';
+                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/interest.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + keyword + '</h3></div></div></div>';
                                             $("#interest_loc").prepend(tag_div);
-                                            $("#name").val('');
-                                            $("#date").val('');
+                                            $("#keyword").val('');
+                        
                                         }
                                         else {
                                             alert("add_fail");
