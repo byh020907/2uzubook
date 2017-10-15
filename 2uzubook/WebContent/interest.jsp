@@ -125,13 +125,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     <div class="form-group">
                                                         <label class="control-label" for="license_name">관심분야</label>
                                                         <div class="col-md-4">
-                                                            <select id="keyword" name="license_keyword" class="form-control">
+                                                            <select id="name" name="license_keyword" class="form-control">
                                                     <%
                                                     for(int i=0;i<keywordArray.size();i++)
                                                     {
                     									JSONObject keyword=(JSONObject)keywordArray.get(i);
                     								%>
-                                                                    <option value="<%=keyword.get("id")%>">
+                                                                    <option value="<%=keyword.get("name")%>">
                                                                         <%=keyword.get("name")%>
                                                                     </option>
                                                     <% 
@@ -302,9 +302,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 
                             function interest_add() {
                                 var temp = new Object();
-                                var keyword = $("#keyword").val();
+                                var name = $("#name").val();
                                 temp.part = "9";
-                                temp.keyword = keyword;
+                                temp.name = name;
                                 $.ajax({
                                     url: '/2uzubook/ResumeAdd'
                                     , type: 'post'
@@ -313,10 +313,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         if (data.ret >= 0 && data.ret != null) {
                                             alert("add_success");
                                             //성공처리
-                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/interest.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + keyword + '</h3></div></div></div>';
+                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/interest.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + name + '</h3></div></div></div>';
                                             $("#interest_loc").prepend(tag_div);
                                             $("#keyword").val('');
-                        
                                         }
                                         else {
                                             alert("add_fail");
