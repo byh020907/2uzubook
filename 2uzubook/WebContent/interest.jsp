@@ -191,7 +191,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                         <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
                         <script src="js/main.js"></script>
                         <script>
-                      
+
                             function go() {
                                 var frm = document.getElementById('frm1');
                                 console.log('hel');
