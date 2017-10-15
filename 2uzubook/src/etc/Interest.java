@@ -6,12 +6,12 @@ public class Interest {
 	private String name;
 	private String date;
 	
-	public Interest(String user, String name, String date) {
+	public Interest(String user, String name) {
 		super();
 		this.user = user;
 		this.name = name;
-		this.date = date;
 	}
+	
 	public int getId() {
 		return id;
 	}
