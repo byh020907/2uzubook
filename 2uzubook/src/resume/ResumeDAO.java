@@ -359,11 +359,11 @@ public JSONArray search(int ...keyword) {
                 + "LEFT JOIN volunteer ON user.id=volunteer.user "
                 + "LEFT JOIN test ON user.id=test.user "
                 + "LEFT JOIN conference ON user.id=conference.user "
-                + "LEFT JOIN interests ON user.id"
+                + "LEFT JOIN interests ON user.id=interests.user "
 				+ "WHERE ");
 
 
-		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=? OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=?)";
+		String sub="(award.keyword=? OR cert.keyword=? OR project.keyword=? OR club.keyword=? OR reading.keyword=? OR volunteer.keyword=? OR test.keyword=? OR conference.keyword=? OR interests.keyword=?)";
 		String and=" and ";
 		
 		for(int i=0;i<keyword.length;i++) {
