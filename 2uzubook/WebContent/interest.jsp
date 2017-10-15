@@ -128,7 +128,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     {
                     									JSONObject keyword=(JSONObject)keywordArray.get(i);
                     								%>
-                                                        <option value="<%=keyword.get(" id ")%>">
+                                                        <option value="<%=keyword.get("name")%>">
                                                             <%=keyword.get("name")%>
                                                         </option>
                                                         <% 
