@@ -37,7 +37,7 @@
 					<li id="login_status">
 						<%
 							if (id == null && serialKey==null) {
-						%><a href="login.html">로그인 / 회원가입</a> <%
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
 							} else {
 						%><a href="logoutAction">로그아웃</a> <%
 							}
@@ -48,19 +48,19 @@
 						<%
 							if(id==null){
 						%>
-						<li><a href="login.html">내 레주메 보기</a></li>	
-						<li><a href="login.html">레주메 내용 관리</a></li>	
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
 						<%
 						}else{
 						%>
 						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
-						<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
 						<%} %>
 						</ul></li>
 					<li><a href="#">For Company</a>
 						<ul>
 						<%if(serialKey==null){ %>
-							<li><a onclick="com_alert();" href="login.html">학생찾기</a></li>	
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
 						<%} else{%>
 							<li><a href="search.jsp">학생 찾기</a></li>
 						<%} %>
@@ -105,7 +105,7 @@
 													placeholder="Password" name="password" id="password"
 													style="height: 52px;">
 													</form>
-											<a href="register.html" style="margin-top: 10px;">
+											<a href="register.jsp" style="margin-top: 10px;">
 												<p style="margin-top: 10px;">Don't have an account?</p>
 											</a>
 										</div>
@@ -126,7 +126,7 @@
 													placeholder="Serial" name="serialKey" id="serial">
 												
 											</form>	
-											<a href="register_serial.html">
+											<a href="register_serial.jsp">
 												<p style="margin-top: 10px;">Don't have a Serial?</p>
 											</a>
 										</div>
