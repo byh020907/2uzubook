@@ -119,7 +119,7 @@ public class ResumeAdd extends HttpServlet {
 				ret=database.insert_test(test);
 			}break;
 			case 9:{
-				String name=
+				String name=request.getParameter("name");
 				int keyword=Integer.parseInt(request.getParameter("keyword"));
 				System.out.println(part+name+keyword);
 				Interest interest=new Interest(userID,name,keyword);

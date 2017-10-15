@@ -310,14 +310,14 @@ public class ResumeDAO extends Database{
 
 	}
 	
-	public JSONArray getKeywordName(int keyword) {
+	public String getKeywordName(int keyword) {
 		JSONArray jsonArray=new JSONArray();
 		
 		String sql="select name from keyword where id=?";
 		
 		jsonArray=executeAndGet(sql, keyword);
 		
-		return jsonArray;
+		return (String) ((JSONObject)jsonArray.get(0)).get("name");
 	}
 
 
