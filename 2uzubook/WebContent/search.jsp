@@ -198,18 +198,24 @@
 	function delete_keyword(obj)
 	{
 		count--;
-		$(obj).parent().parent().remove();
+		$(obj).parent().parent().parent().remove();
 	}
 	function go_servlet()
 	{
-		for(var i=0;i<count;i++)
+		var i=0
+		for(;i<count;i++)
 		{
 			var temp=$("#input_list").find("li").eq(i).find('.key').val();
 			var tag='<input type="hidden" value="'+temp+'" name="keyword"/>';
 			console.log(temp);
 			$("#loc").append(tag);
 		}
-		$("#search_form").submit();
+		if(i==0)
+		{
+			alert('data를 하나 이상 입력하세요');	
+		}else{
+			$("#search_form").submit();		
+		}
 	}
 	</script>
 </body>
