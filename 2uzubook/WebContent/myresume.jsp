@@ -101,7 +101,7 @@
                     <div class="3u 12u(mobile)" id="sidebar">
                         <section>
                             <header>
-                                <h3><a href="#">"세상과 소통하는 게임 개발자"</a></h3> </header>
+                                <h3><a href="#"><%=jsonObject.get("intro") %></a></h3> </header>
                             <p> <strong>관심 분야</strong>
                         <br>
                         <%for(int i=0;i<interests.size();i++){ 
