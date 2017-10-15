@@ -1,3 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -23,22 +33,42 @@
             </div>
             <!-- Nav -->
             <nav id="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">로그인 / 회원가입</a></li>
-                    <li><a href="#">For Student</a>
-                        <ul>
-                            <li><a href="myresume.jspl">내 레주메 보기</a></li>
-                            <li><a href="#">레주메 내용 관리</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">For Company</a>
-                        <ul>
-                            <li><a href="search.html">학생 찾기</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
         </div>
         <!-- Main -->
         <div class="wrapper style1">
@@ -79,7 +109,7 @@
                                                     <label class="control-label" for="email">E-Mail Address</label>
                                                     <input id="email" name="email" type="text" class="form-control" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
-                                                        <input type="button" onclick="email_confirm();" value="이메일 인증" class="btn btn-primary">
+                                                        <input type="button" id="email_confirm" onclick="email_confirm();" value="이메일 인증" class="btn btn-primary">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -186,7 +216,7 @@
             console.log(password);
             console.log(passwordCheck);
             if (password == passwordCheck) {
-                document.getElementById("result").innerHTML = "Okey";
+                document.getElementById("result").innerHTML = "Okay";
             }
             else {
                 document.getElementById("result").innerHTML = "No";
@@ -255,7 +285,7 @@
 					if(data.status==1)
 					{
 						alert('인증되었습니다.');
-						$("#email").attr('type','hidden');
+						$("#email_confirm").attr('type','hidden');
 					}
 					else
 					{
@@ -264,6 +294,11 @@
 				},
 				dataType : 'json'
 			});
+        }
+        function go() {
+            var frm = document.getElementById('frm1');
+            console.log('hel');
+            frm.submit();
         }
     </script>
     

@@ -1,3 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
+<%
+request.setCharacterEncoding("UTF-8");
+JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
+JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
+
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -21,23 +37,42 @@
             </div>
             <!-- Nav -->
             <nav id="nav">
-                <ul>
-                    <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login.html">로그인 / 회원가입</a></li>
-                    <li> <a href="#">For Student</a>
-                        <ul>
-                            <li><a href="myresume.jsp">내 레주메 보기</a></li>
-                            <li><a href="#">레주메 내용 관리</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="#">For Company</a>
-                        <ul>
-                            <li><a href="search.html">학생 찾기</a></li>
-                            <li><a href="right-sidebar.html">시리얼 관리</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
         </div>
         <!-- Main -->
         <div class="wrapper style1">
@@ -61,6 +96,24 @@
                             <h3 class="text-center mb-3">추가된 관심분야</h3>
                             <br>
                             <div class="row">
+                            <% for(int i=0;i<jsonArray.size();i++)
+								{	
+									JSONObject licen=(JSONObject)jsonArray.get(i);
+								%>
+                            		<div class="4u 12u(mobile)">
+                            			<div class="row" id="modal_pop" style="cursor:pointer;">
+                            				<div class="5u">
+                            					<a class="image fit" id="color_con" onclick="licen_delete(this);">
+                            					<img src="images/student/license2.png" alt="" /></a>
+                            				</div>
+                            				<div class="7u">
+                            					<h3 class="text-center" id="delete_name"><%=(String)licen.get("name")%></h3><%=(Date)licen.get("date")%>
+                            				</div>
+                            			</div>
+                            		</div>
+								<%
+								}
+								%>
                                 <div class="4u 12u(mobile)">
                                     <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
                                         <div class="5u">
@@ -68,24 +121,6 @@
                                         </div>
                                         <div class="7u">
                                             <h3 class="text-center">c언어 </h3> 2017.03.06 </div>
-                                    </div>
-                                </div>
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/interest.png" alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">시스템개발자 </h3> 2017.03.06 </div>
-                                    </div>
-                                </div>
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/interest.png" alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">게임개발 </h3> 2017.03.06 </div>
                                     </div>
                                 </div>
                                 <div class="10u form1">
@@ -217,7 +252,13 @@
                 }
             });
         });
+        function go(){
+			var frm=document.getElementById('frm1');
+			console.log('hel');
+			frm.submit();
+		}   
     </script>
+    
 </body>
 
 </html>

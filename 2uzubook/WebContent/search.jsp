@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -27,22 +33,42 @@
 			</div>
 			<!-- Nav -->
 			<nav id="nav">
-                <ul>
-                    <li><a href="index.jsp">Home</a></li>
-                    <li><a href="logoutAction">로그아웃</a></li>
-                    <li> <a href="#">For Student</a>
-                        <ul>
-                            <li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>
-                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
-                        </ul>
-                    </li>
-                    <li> <a href="#">For Company</a>
-                        <ul>
-                            <li><a href="search.html">학생 찾기</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
 		</div>
 		<!-- Main -->
 		<div class="wrapper style1">
@@ -172,19 +198,30 @@
 	function delete_keyword(obj)
 	{
 		count--;
-		$(obj).parent().parent().remove();
+		$(obj).parent().parent().parent().remove();
 	}
 	function go_servlet()
 	{
-		for(var i=0;i<count;i++)
+		var i=0
+		for(;i<count;i++)
 		{
 			var temp=$("#input_list").find("li").eq(i).find('.key').val();
 			var tag='<input type="hidden" value="'+temp+'" name="keyword"/>';
 			console.log(temp);
 			$("#loc").append(tag);
 		}
-		$("#search_form").submit();
+		if(i==0)
+		{
+			alert('data를 하나 이상 입력하세요');	
+		}else{
+			$("#search_form").submit();		
+		}
 	}
+	function go() {
+        var frm = document.getElementById('frm1');
+        console.log('hel');
+        frm.submit();
+    }
 	</script>
 </body>
 

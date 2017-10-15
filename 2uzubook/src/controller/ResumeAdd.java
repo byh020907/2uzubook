@@ -39,7 +39,6 @@ public class ResumeAdd extends HttpServlet {
 		String userID=(String) session.getAttribute("id");
 		
 		int part=Integer.parseInt(request.getParameter("part"));
-		JSONArray jsonArray = null;
 		int ret=-1;
 		
 		switch(part)

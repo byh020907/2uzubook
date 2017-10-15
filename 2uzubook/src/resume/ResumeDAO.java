@@ -179,10 +179,10 @@ public class ResumeDAO extends Database{
 
 	//토익같은 시험 
 	public int insert_test(Test test) {
-		String SQL = "insert into test (user,name,score,date,keyword) values (?,?,?,?)";
+		String SQL = "insert into test (user,name,score,date,keyword) values (?,?,?,?,?)";
 
 		try {
-			return executeAndUpdate(SQL,test.getUser(),test.getName(),test.getScore(),test.getKeyword());
+			return executeAndUpdate(SQL,test.getUser(),test.getName(),test.getScore(),test.getDate(),test.getKeyword());
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-    <%@ page import="org.json.simple.*"%>
-        <%@ page import="java.util.*"%>
-            <%
+pageEncoding="UTF-8"%>
+<%@ page import="org.json.simple.*"%>
+<%@ page import="java.util.*"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
+<%
 request.setCharacterEncoding("UTF-8");
 
 JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
@@ -28,29 +34,46 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             <!-- Inner -->
                             <div class="inner">
                                 <header>
-                                    <h1><a href="index.html" id="logo">DSM 2UZUBOOK</a></h1> </header>
+                                    <h1><a href="index.jsp" id="logo">DSM 2UZUBOOK</a></h1> </header>
                             </div>
                             <!-- Nav -->
                             <nav id="nav">
-                                <ul>
-                                    <li><a href="index.jsp">Home</a></li>
-                                    <li><a href="logoutAction">로그아웃</a></li>
-                                    <li> <a href="#">For Student</a>
-                                        <ul>
-                                            <li>
-                                                <form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form>
-                                            </li>
-                                            <li><a href="myresume_manage.html">레주메 내용 관리</a></li>
-                                        </ul>
-                                    </li>
-                                    <li> <a href="#">For Company</a>
-                                        <ul>
-                                            <li><a href="search.html">학생 찾기</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+				<ul>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
+					<li><a href="#">For Student</a>
+						<ul>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+						<%} %>
+						</ul></li>
+					<li><a href="#">For Company</a>
+						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
+				</ul>
+			</nav>
                         <!-- Main -->
                         <div class="wrapper style1">
                             <div class="container">
@@ -196,7 +219,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                 , type: 'post'
                                 , data: temp
                                 , success: function (data) {
-                                    if (data.ret > 0 && data.ret != null) {
+                                    if (data.ret >= 0 && data.ret != null) {
                                         alert("add_success");
                                         //성공처리
                                         var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="club_delete(this);"><img src="images/student/circle.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + startdate + '~' + enddate + '</div></div></div>';
@@ -247,9 +270,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                     }
                                     , dataType: 'json'
                                 });
-                            }
-                            ㄴ
-                            else {
+                            } else {
                                 $(obj).parent().parent().parent().css('background-color', '');
                             }
 

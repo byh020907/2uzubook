@@ -24,7 +24,7 @@
 			<div class="inner">
 				<header>
 					<h1>
-						<a href="/" id="logo">DSM 2UZUBOOK</a>
+						<a href="index.jsp" id="logo">DSM 2UZUBOOK</a>
 					</h1>
 					<hr />
 					<p>대덕 소프트웨어 마이스터고 학생들의 레주메 사이트</p>
@@ -37,7 +37,7 @@
 					<li id="login_status">
 						<%
 							if (id == null && serialKey==null) {
-						%><a href="login.html">로그인 / 회원가입</a> <%
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
 							} else {
 						%><a href="logoutAction">로그아웃</a> <%
 							}
@@ -45,12 +45,25 @@
 					</li>
 					<li><a href="#">For Student</a>
 						<ul>
-							<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>
-							<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+						<%} %>
 						</ul></li>
 					<li><a href="#">For Company</a>
 						<ul>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
+						<%} else{%>
 							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
 						</ul>
 					</li>
 				</ul>
@@ -98,7 +111,7 @@
 				</header>
 				<div class="row">
 					<article class="4u 12u(mobile) special">
-						<a href="first-common.jsp" class="image featured"><img
+						<a class="image featured"><img
 							src="images/debate.jpg" alt="" height="235" /></a>
 						<header>
 							<h3>
@@ -110,7 +123,7 @@
 							전공학과를 선택 후 심화 과정 이수</p>
 					</article>
 					<article class="4u 12u(mobile) special">
-						<a href="second-software.jsp" class="image featured"><img
+						<a class="image featured"><img
 							src="images/debate2.JPG" alt="" height="235" /></a>
 						<header>
 							<h3>
@@ -121,7 +134,7 @@
 							유지/보수 등의 업무를 수행할 수 있는 응용 SW 개발자 양성을 목표로 한다.</p>
 					</article>
 					<article class="4u 12u(mobile) special">
-						<a href="third-software.jsp" class="image featured"><img
+						<a class="image featured"><img
 							src="images/debate3.jpg" alt="" height="235" /></a>
 						<header>
 							<h3>
@@ -141,7 +154,7 @@
 					alt="" /></a>
 				<header>
 					<h2>
-						<a href="#">대덕소프트웨어마이스터고등학교는...</a>
+						<a>대덕소프트웨어마이스터고등학교는...</a>
 					</h2>
 					<p>"꿈과 열정이 가득한 행복한 학교"</p>
 				</header>
@@ -308,6 +321,10 @@
 			var frm=document.getElementById('frm1');
 			console.log('hel');
 			frm.submit();
+		}
+		function com_alert()
+		{
+			alert('회사 로그인이 되어있지 않습니다.');
 		}
 	</script>
 </body>

@@ -2,7 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.*"%>
 <%@ page import="java.util.*"%>
-
+<%
+	request.setCharacterEncoding("UTF-8");
+	String id = (String) session.getAttribute("id");
+	String serialKey = (String) session.getAttribute("serialKey");
+	System.out.println(id);
+%>
 <%
 		request.setCharacterEncoding("UTF-8");
 		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
@@ -35,17 +40,39 @@
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="login.html">로그인 / 회원가입</a></li>
+					<li><a href="index.jsp">Home</a></li>
+					<li id="login_status">
+						<%
+							if (id == null && serialKey==null) {
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
+							} else {
+						%><a href="logoutAction">로그아웃</a> <%
+							}
+						%>
+					</li>
 					<li><a href="#">For Student</a>
 						<ul>
-							<li><a href="myresume.jsp">내 레주메 보기</a></li>
-							<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%
+							if(id==null){
+						%>
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
+						<%
+						}else{
+						%>
+						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
+						<li><a href="myresume_manage.html">레주메 내용 관리</a></li>
+						<%} %>
 						</ul></li>
 					<li><a href="#">For Company</a>
 						<ul>
-							<li><a href="search.html">학생 찾기</a></li>
-						</ul></li>
+						<%if(serialKey==null){ %>
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
+						<%} else{%>
+							<li><a href="search.jsp">학생 찾기</a></li>
+						<%} %>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -63,8 +90,9 @@
 						</section>
                         
 						<hr />
-						<form id="print_form" method="post" action="/2uzubook/printAction"></form>
-                        <footer> <a href="" class="button" onclick="go_print()"> 전체 레주메 인쇄</a> </footer>
+						<form id="print_form" method="post" action="/2uzubook/printAction">
+						</form>
+                        <footer> <a class="button" onclick="go_print();"> 전체 레주메 인쇄</a> </footer>
 					</div>
 					<div class="9u 12u(mobile) important(mobile)" id="content">
 						<article id="main">
@@ -165,8 +193,17 @@
 	<script>
 	function go_print()
 	{
-		$("print_form").submit();
+		var jsonstr='<%=jsonArray%>';
+		var tag='<input type="hidden" value="'+<%=jsonArray%>+'" name="jsonArray"/>';
+
+		$('#print_form').append(tag);
+		$('#print_form').submit();
 	}
+	function go() {
+        var frm = document.getElementById('frm1');
+        console.log('hel');
+        frm.submit();
+    }
 	</script>
 </body>
 
