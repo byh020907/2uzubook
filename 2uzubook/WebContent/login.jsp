@@ -112,7 +112,7 @@
 										<div class="4u">
 											<button class="btn btn-outline-primary mb-2"
 												onclick="$('#frm1').submit();"
-												style="height: 118px; margin-top: 20px;">Sign in</button>
+												style="height: 118px; margin-top: 10px;">Sign in</button>
 										</div>
 									</div>
 								</div>
@@ -132,7 +132,7 @@
 										</div>
 										<div class="4u">
 											<button class="btn btn-outline-success mb-2" onclick="$('#frm2').submit();"
-												style="height: 54px; margin-top: 20px;">Sign in</button>
+												style="height: 54px; margin-top: 10px;">Sign in</button>
 										</div>
 									</div>
 								</div>
