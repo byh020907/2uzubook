@@ -6,8 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="css/table.css">
 </head>
 <body>
 <%
@@ -166,10 +168,19 @@
 	<%
 	}
 	%>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.dropotron.min.js"></script>
+	<script src="js/jquery.scrolly.min.js"></script>
+	<script src="js/jquery.onvisible.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/util.js"></script>
+	<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+	<script src="js/main.js"></script>
 	<script>
 	$(document).ready(function() {
 		 window.print();
-	}); 
+		 console.log("asdsasd");
+	});
 	function go() {
         var frm = document.getElementById('frm1');
         console.log('hel');

@@ -27,6 +27,7 @@ public class printAction extends HttpServlet {
 	public printAction() {
         database=ResumeDAO.getInstance();
         database2=EtcDAO.getInstance();
+        database3=UserDAO.getInstance();
     }
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,18 +41,19 @@ public class printAction extends HttpServlet {
 			for(int i=0;i<ja.size();i++)
 			{
 				JSONObject obj=(JSONObject)ja.get(i); 
-				JSONArray licenses=database.select_resume((String)obj.get("id"), 1);
-				JSONArray awds=database.select_resume((String)obj.get("id"), 2);
-				JSONArray clubs=database.select_resume((String)obj.get("id"), 3);
-				JSONArray projects=database.select_resume((String)obj.get("id"), 4);
-				JSONArray tests=database.select_resume((String)obj.get("id"), 5);
-				JSONArray conferences=database.select_resume((String)obj.get("id"), 6);
-				JSONArray volunteers=database2.select_resume((String)obj.get("id"), 1);
-				JSONArray readings=database2.select_resume((String)obj.get("id"), 2);
-				JSONArray interests=database2.select_resume((String)obj.get("id"), 3);
-				System.out.println((String)obj.get("id"));
+				String userID=(String)obj.get("id");
+				JSONArray licenses=database.select_resume(userID, 1);
+				JSONArray awds=database.select_resume(userID, 2);
+				JSONArray clubs=database.select_resume(userID, 3);
+				JSONArray projects=database.select_resume(userID, 4);
+				JSONArray tests=database.select_resume(userID, 5);
+				JSONArray conferences=database.select_resume(userID, 6);
+				JSONArray volunteers=database2.select_resume(userID, 1);
+				JSONArray readings=database2.select_resume(userID, 2);
+				JSONArray interests=database2.select_resume(userID, 3);
+				System.out.println(userID);
 				//유저 정보 받아오기
-				JSONArray json=database3.executeAndGet("SELECT * FROM USER WHERE id=?", (String)obj.get("id"));
+				JSONArray json=database3.executeAndGet("SELECT * FROM USER WHERE id=?", userID);
 
 				JSONObject userData=(JSONObject)json.get(0);
 				
@@ -71,7 +73,7 @@ public class printAction extends HttpServlet {
 				go_ja.add(userData);
 			}
 			request.setAttribute("JSONArray",go_ja);
-			request.getRequestDispatcher("/myresume.jsp").forward(request, response);
+			request.getRequestDispatcher("/print_page.jsp").forward(request, response);
 			
 		} catch (ParseException e) {
 			e.printStackTrace();

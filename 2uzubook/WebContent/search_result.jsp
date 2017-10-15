@@ -116,11 +116,10 @@
 								{
 									JSONObject object=(JSONObject)jsonArray.get(i);
 								%>
-									<div class="6u 12u(mobile)">
-										<div class="row"
-											OnClick="location.href=''" style="cursor: pointer;">
+									<div class="6u 12u(mobile)" OnClick="location.href='/2uzubook/SeeStudentResume?id=<%=object.get("id")%>'">
+										<div class="row" style="cursor: pointer;">
 											<div class="4u">
-												<a href="/2uzubook/SeeStudentResume?id=<%=object.get("id")%>" class="image fit"><img src="images/student/stu2.jpg"
+												<a class="image fit"><img src="images/student/stu2.jpg"
 													alt="" /></a>
 											</div>
 											<div class="8u">
