@@ -15,6 +15,7 @@
 		JSONArray reads=(JSONArray)jsonObject.get("readings");
 		JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
 		JSONArray tests=(JSONArray)jsonObject.get("tests");
+		JSONArray interests=(JSONArray)jsonObject.get("interests");
 		
 		System.out.println(jsonObject);//log
 		String name=(String)jsonObject.get("name");
@@ -49,8 +50,12 @@
 					<td>
 						<h2>
 							<%=student_id %> <%=majorName %> <br> <%=name %>
-						</h2> <strong><%=email %></strong> <br> 웹해킹 <br> 컴퓨터 보안
-						<br> sw 개발
+						</h2> <strong><%=email %></strong> 
+						<%for(int i=0;i<interests.size();i++){ 
+						JSONObject interest=(JSONObject)interests.get(i);
+						%>
+						<br><%=interest.get("name")%>
+						<%}%>
 					</td>
 				</tr>
 			</tbody>

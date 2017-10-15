@@ -49,7 +49,7 @@ public class printAction extends HttpServlet {
 				JSONArray volunteers=database2.select_resume((String)obj.get("id"), 1);
 				JSONArray readings=database2.select_resume((String)obj.get("id"), 2);
 				JSONArray interests=database2.select_resume((String)obj.get("id"), 3);
-				
+				System.out.println((String)obj.get("id"));
 				//유저 정보 받아오기
 				JSONArray json=database3.executeAndGet("SELECT * FROM USER WHERE id=?", (String)obj.get("id"));
 
