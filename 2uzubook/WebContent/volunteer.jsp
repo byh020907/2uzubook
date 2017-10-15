@@ -142,11 +142,11 @@
 										<div class="form-group">
 											<label class="control-label" for="volunteer_startdate">시작
 												날짜</label> <input id="startdate" name="volunteer_startdate"
-												type="date" class="form-control" required>
+												type="datetime" class="form-control" required>
 										</div>
 										<div class="form-group">
 											<label class="control-label" for="volunteer_enddate">종료
-												날짜</label> <input id="enddate" name="volunteer_enddate" type="date"
+												날짜</label> <input id="enddate" name="volunteer_enddate" type="datetime"
 												class="form-control" required>
 										</div>
 										<div class="form-group">
