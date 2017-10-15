@@ -176,7 +176,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                 <h3>2UZUBOOK 학생과 기업을 이어주는 책</h3> </header>
                                             <p>대덕소프트웨마이스터고등학교 34111)대전광역시 유성구 가정북로 76(장동 23-9) 교무실 ☎ : 042-866-8822</p>
                                             <ul class="icons">
-                                                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                                <li><a href="https://www.facebook.com/%EB%8C%80%EB%8D%95%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EB%A7%88%EC%9D%B4%EC%8A%A4%ED%84%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90-463920667081098/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
                                                 <li><a href="https://github.com/DSM-HS/StudentCouncil" class="icon fa-github"><span class="label">Twitter</span></a></li>
                                             </ul>
                                         </section>
