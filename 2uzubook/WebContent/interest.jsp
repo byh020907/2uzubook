@@ -154,6 +154,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                             <label for="input_file">업로드</label>
                                                             <input type="file" id="input_file" class="upload-hidden"> </div>
                                                     </div>
+                                                    
                                                     <div class="form-group">
                                                         <label class="control-label" for="interest_add">사진 추가(증명 사진)</label>
                                                         <div class="filebox bs3-primary preview-image" id="part2">
@@ -161,6 +162,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                             <label for="input_file">업로드</label>
                                                             <input type="file" id="input_file" class="upload-hidden" id="part2-2"> </div>
                                                     </div>
+                                                    
                                                     <div class="form-group">
                                                         <label class="col-md-4 control-label" for="Submit"></label>
                                                         <div class="col-md-4">
@@ -224,6 +226,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                     };
                                     $(this).siblings('.upload-name').val(filename);
                                 });
+                                
                                 //preview image 
                                 var imgTarget = $('.preview-image .upload-hidden');
                                 imgTarget.on('change', function () {
@@ -314,7 +317,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         if (data.ret >= 0 && data.ret != null) {
                                             alert("add_success");
                                             //성공처리
-                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/interest.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + keyword + '</h3></div></div></div>';
+                                            var tag_div ='<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="interest_delete(this);"><img src="images/student/interest.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+keyword+'</h3></div></div></div>'; 	
                                             $("#interest_loc").prepend(tag_div);
                                             $("#keyword").val('');
                         
