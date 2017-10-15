@@ -46,6 +46,9 @@ public class ResumeRemove extends HttpServlet {
 			case 8:{
 				returnValue=database2.delete_etc(userID, request.getParameter("name"), 2);
 			}break;
+			case 9:{
+				returnValue=database2.delete_etc(userID, request.getParameter("name"), 3);
+			}break;
 		}
 		JSONObject returnJson=new JSONObject();
 		returnJson.put("status", returnValue);

@@ -95,34 +95,26 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             </header>
                             <h3 class="text-center mb-3">추가된 관심분야</h3>
                             <br>
-                            <div class="row">
+                            <div class="row" id="interest_loc">
                             <% for(int i=0;i<jsonArray.size();i++)
 								{	
-									JSONObject licen=(JSONObject)jsonArray.get(i);
+									JSONObject interest=(JSONObject)jsonArray.get(i);
 								%>
                             		<div class="4u 12u(mobile)">
-                            			<div class="row" id="modal_pop" style="cursor:pointer;">
-                            				<div class="5u">
-                            					<a class="image fit" id="color_con" onclick="licen_delete(this);">
-                            					<img src="images/student/license2.png" alt="" /></a>
-                            				</div>
-                            				<div class="7u">
-                            					<h3 class="text-center" id="delete_name"><%=(String)licen.get("name")%></h3><%=(Date)licen.get("date")%>
-                            				</div>
-                            			</div>
+                                    <div class="row" id="modal_pop" style="cursor:pointer;">
+                                        <div class="5u">
+                                            <a class="image fit" onclick="interest_delete(this);><img src="images/student/interest.png" alt="" /></a>
+                                        </div>
+                                        <div class="7u">
+                                            <h3 class="text-center" id="delete_name"><%=(String)interest.get("name")%> </h3><%=(Date)interest.get("date")%></div>
+                                    </div>
+                                </div>
                             		</div>
 								<%
 								}
 								%>
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/interest.png" alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">c언어 </h3> 2017.03.06 </div>
-                                    </div>
-                                </div>
+							</div>
+                                
                                 <div class="10u form1">
                                     <h3 class="text-center mb-3">관심분야 추가</h3>
                                     <form action="" method="post">
@@ -147,7 +139,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         </div> <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button onclick="reading_add();" class="btn btn-primary">추가하기</button>
+                                                <button onclick="interest_add();" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -189,8 +181,8 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                 <h3>2UZUBOOK 학생과 기업을 이어주는 책</h3> </header>
                             <p>대덕소프트웨마이스터고등학교 34111)대전광역시 유성구 가정북로 76(장동 23-9) 교무실 ☎ : 042-866-8822</p>
                             <ul class="icons">
-                                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                                <li><a href="#" class="icon fa-github"><span class="label">Twitter</span></a></li>
+                                <li><a href="https://www.facebook.com/%EB%8C%80%EB%8D%95%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4%EB%A7%88%EC%9D%B4%EC%8A%A4%ED%84%B0%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90-463920667081098/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                                <li><a href="https://github.com/DSM-HS/StudentCouncil" class="icon fa-github"><span class="label">Twitter</span></a></li>
                             </ul>
                         </section>
                         <!-- Copyright -->
@@ -257,6 +249,76 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 			console.log('hel');
 			frm.submit();
 		}   
+		 function interest_delete(obj) {
+            $(obj).parent().parent().parent().css('background-color', 'red');
+            var flag = 0;
+            var delete_name=$(obj).parent().next(".7u").children("#delete_name");
+            console.log($(delete_name).text());
+            var name=$(delete_name).text();
+            if (confirm('삭제 하시겠습니까?')) {
+                flag = 1;
+                inter_del(obj, flag,name);
+                return;
+            }
+            else {
+                inter_del(obj, flag,name);
+                return;
+            }
+        }
+
+        function inter_del(obj, flag,name) {
+            if (flag == 1) {
+                $(obj).parent().parent().parent().remove();
+            	var temp=new Object();
+            	temp.name=name;
+            	temp.part="9";
+                $.ajax({
+    				url : '/2uzubook/ResumeRemove',
+    				type : 'post',
+    				data : temp,
+    				success : function(data) {
+    					if(data.status>=0){
+    						alert("delete_success");
+    						//성공처리
+    					}else{
+    						alert("delete_fail");
+    						//실패처리
+    					}
+    				},
+    				dataType : 'json'
+    			});
+            }
+            else {
+                $(obj).parent().parent().parent().css('background-color', '');
+            }
+        }
+        function interest_add() {
+        	var temp=new Object();
+            var	keyword=$("#keyword").val();
+        	temp.part="9";
+        	temp.keyword=keyword;
+            
+          	$.ajax({
+				url : '/2uzubook/ResumeAdd',
+				type : 'post',
+				data : temp,
+				success : function(data) {
+					if(data.ret >= 0 && data.ret != null){						
+						alert("add_success");
+						//성공처리
+						var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + name+ '</h3>' + date + '</div></div></div>';
+			            
+			        	$("#interest_loc").prepend(tag_div);
+			            $("#name").val('');
+			            $("#date").val('');
+					}
+					else{
+						alert("add_fail");
+					}
+				},
+				dataType : 'json'
+			});
+        }
     </script>
     
 </body>

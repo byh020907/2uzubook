@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import etc.EtcDAO;
+import etc.Interest;
 import etc.Reading;
 import etc.Volunteer;
 import resume.Award;
@@ -117,6 +117,9 @@ public class ResumeAdd extends HttpServlet {
 				System.out.println(part+name+score+keyword);
 				Test test=new Test(userID,name,score,date,keyword);
 				ret=database.insert_test(test);
+			}
+			case 9:{
+				
 			}
 		}
 		JSONObject data1=new JSONObject();
