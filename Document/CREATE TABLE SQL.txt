@@ -18,8 +18,8 @@ CREATE TABLE `user` (
     `gender` CHAR(1) NOT NULL,
     `major` INT(1) NOT NULL,
     `email` VARCHAR(64) NOT NULL UNIQUE,
-    `profile_image_path` varchar(200) null,
-    `main_image_path` varchar(200) null,
+    `profile_image_path` text null,
+    `main_image_path` text null,
     FOREIGN KEY (`major`) REFERENCES `major`(`id`)
 );
 
