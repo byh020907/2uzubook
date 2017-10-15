@@ -46,10 +46,10 @@ public class EtcDAO extends Database {
 	}
 	
 	public int insert_interest(Interest interest) {
-		String SQL= "insert into interests (user,name) values (?,?)";
+		String SQL= "insert into interests (user,name,keyword) values (?,?,?)";
 		
 		try {
-			return executeAndUpdate(SQL, interest.getUser(), interest.getName());
+			return executeAndUpdate(SQL, interest.getUser(), interest.getName(),interest.getKeyword());
 			// 성공이면 0 이상
 		} catch (Exception e) {
 			// TODO: handle exception
