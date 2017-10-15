@@ -44,7 +44,7 @@
 					<li id="login_status">
 						<%
 							if (id == null && serialKey==null) {
-						%><a href="login.html">로그인 / 회원가입</a> <%
+						%><a href="login.jsp">로그인 / 회원가입</a> <%
 							} else {
 						%><a href="logoutAction">로그아웃</a> <%
 							}
@@ -55,8 +55,8 @@
 						<%
 							if(id==null){
 						%>
-						<li><a href="login.html">내 레주메 보기</a></li>	
-						<li><a href="login.html">레주메 내용 관리</a></li>	
+						<li><a href="login.jsp">내 레주메 보기</a></li>	
+						<li><a href="login.jsp">레주메 내용 관리</a></li>	
 						<%
 						}else{
 						%>
@@ -67,7 +67,7 @@
 					<li><a href="#">For Company</a>
 						<ul>
 						<%if(serialKey==null){ %>
-							<li><a onclick="com_alert();" href="login.html">학생찾기</a></li>	
+							<li><a onclick="com_alert();" href="login.jsp">학생찾기</a></li>	
 						<%} else{%>
 							<li><a href="search.jsp">학생 찾기</a></li>
 						<%} %>
@@ -199,6 +199,11 @@
 		$('#print_form').append(tag);
 		$('#print_form').submit();
 	}
+	function go() {
+        var frm = document.getElementById('frm1');
+        console.log('hel');
+        frm.submit();
+    }
 	</script>
 </body>
 

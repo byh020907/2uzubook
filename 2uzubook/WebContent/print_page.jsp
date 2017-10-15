@@ -166,6 +166,11 @@
 	$(document).ready(function() {
 		 window.print();
 	}); 
+	function go() {
+        var frm = document.getElementById('frm1');
+        console.log('hel');
+        frm.submit();
+    }
 	</script>
 </body>
 </html>
