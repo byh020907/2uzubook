@@ -8,6 +8,12 @@
 	String serialKey = (String) session.getAttribute("serialKey");
 	System.out.println(id);
 %>
+<%
+request.setCharacterEncoding("UTF-8");
+JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
+JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
+
+%>
 <!DOCTYPE HTML>
 <html>
 
@@ -90,6 +96,24 @@
                             <h3 class="text-center mb-3">추가된 관심분야</h3>
                             <br>
                             <div class="row">
+                            <% for(int i=0;i<jsonArray.size();i++)
+								{	
+									JSONObject licen=(JSONObject)jsonArray.get(i);
+								%>
+                            		<div class="4u 12u(mobile)">
+                            			<div class="row" id="modal_pop" style="cursor:pointer;">
+                            				<div class="5u">
+                            					<a class="image fit" id="color_con" onclick="licen_delete(this);">
+                            					<img src="images/student/license2.png" alt="" /></a>
+                            				</div>
+                            				<div class="7u">
+                            					<h3 class="text-center" id="delete_name"><%=(String)licen.get("name")%></h3><%=(Date)licen.get("date")%>
+                            				</div>
+                            			</div>
+                            		</div>
+								<%
+								}
+								%>
                                 <div class="4u 12u(mobile)">
                                     <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
                                         <div class="5u">
@@ -97,24 +121,6 @@
                                         </div>
                                         <div class="7u">
                                             <h3 class="text-center">c언어 </h3> 2017.03.06 </div>
-                                    </div>
-                                </div>
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/interest.png" alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">시스템개발자 </h3> 2017.03.06 </div>
-                                    </div>
-                                </div>
-                                <div class="4u 12u(mobile)">
-                                    <div class="row" id="modal_pop" OnClick="location.href='licenseadd'" style="cursor:pointer;">
-                                        <div class="5u">
-                                            <a class="image fit"><img src="images/student/interest.png" alt="" /></a>
-                                        </div>
-                                        <div class="7u">
-                                            <h3 class="text-center">게임개발 </h3> 2017.03.06 </div>
                                     </div>
                                 </div>
                                 <div class="10u form1">
