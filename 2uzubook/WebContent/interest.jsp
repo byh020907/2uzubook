@@ -86,13 +86,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                             <hr class="first" />
                                             <section>
                                                 <header>
-                                                    <h3>관심분야 & 사진을 추가해주세요</h3> </header>
+                                                    <h3>관심분야를 추가해주세요</h3> </header>
                                             </section>
                                             <hr /> </div>
                                         <div class="9u 12u(mobile) important(mobile)" id="content">
                                             <article id="main">
                                                 <header>
-                                                    <h2>관심분야 & 사진을 추가해주세요 </h2>
+                                                    <h2>관심분야를 추가해주세요 </h2>
                                                     <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                                                 </header>
                                                 <h3 class="text-center mb-3">추가된 관심분야</h3>
@@ -146,26 +146,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                             <button onclick="interest_add(); return false;" class="btn btn-primary">추가하기</button>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label" for="interest_add">사진 추가(컨셉 사진)</label>
-                                                        <div class="filebox bs3-primary preview-image">
-                                                            <input class="upload-name" value="파일선택" disabled="disabled" style="width: 500px;">
-                                                            <label for="input_file">업로드</label>
-                                                            <input type="file" id="input_file" class="upload-hidden"> </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label" for="interest_add">사진 추가(증명 사진)</label>
-                                                        <div class="filebox bs3-primary preview-image">
-                                                            <input class="upload-name" value="파일선택" disabled="disabled" style="width: 500px;">
-                                                            <label for="input_file">업로드</label>
-                                                            <input type="file" id="input_file" class="upload-hidden"> </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label" for="Submit"></label>
-                                                        <div class="col-md-4">
-                                                            <button id="Submit" name="Submit" class="btn btn-primary">저장하기</button>
-                                                        </div>
-                                                    </div>
+
                                                 </form>
                                             </div>
                                         </div>
@@ -210,46 +191,6 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                         <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
                         <script src="js/main.js"></script>
                         <script>
-                            $(document).ready(function () {
-                                var fileTarget = $('.filebox .upload-hidden');
-                                fileTarget.on('change', function () {
-                                    if (window.FileReader) {
-                                        // 파일명 추출
-                                        var filename = $(this)[0].files[0].name;
-                                    }
-                                    else {
-                                        // Old IE 파일명 추출
-                                        var filename = $(this).val().split('/').pop().split('\\').pop();
-                                    };
-                                    $(this).siblings('.upload-name').val(filename);
-                                });
-                                //preview image 
-                            });
-                            
-                            $('.preview-image .upload-hidden').on('change', function () {
-                                var parent = $(this).parent();
-                                console.log(parent);
-                                //parent.children('.upload-display').remove();
-                                if (window.FileReader) {
-                                    //image 파일만
-                                    if (!$(this)[0].files[0].type.match(/image\//)) return;
-                                    var reader = new FileReader();
-                                    reader.onload = function (e) {
-                                        var src = e.target.result;
-                                        parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="' + src + '" class="upload-thumb"></div></div>');
-                                    }
-                                    reader.readAsDataURL($(this)[0].files[0]);
-                                }
-                                else {
-                                    $(this)[0].select();
-                                    $(this)[0].blur();
-                                    var imgSrc = document.selection.createRange().text;
-                                    parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
-                                    var img = $(this).siblings('.upload-display').find('img');
-                                    img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
-                                }
-                            });
-                           
 
                             function go() {
                                 var frm = document.getElementById('frm1');
@@ -315,7 +256,8 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         if (data.ret >= 0 && data.ret != null) {
                                             alert("add_success");
                                             //성공처리
-                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/interest.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + name + '</h3></div></div></div>';
+                                            var tag_div ='<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="interest_delete(this);"><img src="images/student/interest.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+name+'</h3></div></div></div>'; 	
+
                                             $("#interest_loc").prepend(tag_div);
                                             $("#keyword").val('');
                                         }
