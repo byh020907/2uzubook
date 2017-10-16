@@ -48,7 +48,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row"><img src="/images/student/stu6.jpg"
+					<th scope="row"><img src="images/student/stu6.jpg"
 						class="studentimg"></th>
 					<td>
 						<h2>
