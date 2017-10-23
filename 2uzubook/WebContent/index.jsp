@@ -26,7 +26,7 @@
 					<h1>
 						<a href="index.jsp" id="logo">DSM 2UZUBOOK</a>
 					</h1>
-					<hr />
+					<hr/>
 					<p>대덕 소프트웨어 마이스터고 학생들의 레주메 사이트</p>
 				</header>
 			</div>
