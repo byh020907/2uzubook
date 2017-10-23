@@ -32,7 +32,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                 <!-- Inner -->
                                 <div class="inner">
                                     <header>
-                                        <h1><a href="index.html" id="logo">DSM 2UZUBOOK</a></h1> </header>
+                                        <h1><a href="index.jsp" id="logo">DSM 2UZUBOOK</a></h1> </header>
                                 </div>
                                 <!-- Nav -->
                                 <nav id="nav">

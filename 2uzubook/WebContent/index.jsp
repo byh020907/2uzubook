@@ -192,7 +192,7 @@
 								<article class="post stub">
 									<header>
 										<h3>
-											<a href="login.html">로그인&회원가입 페이지에 들어가 시리얼 코드를 입력한다.</a>
+											<a href="login.jsp">로그인&회원가입 페이지에 들어가 시리얼 코드를 입력한다.</a>
 										</h3>
 									</header>
 									↓
@@ -211,7 +211,7 @@
 								<article class="post stub">
 									<header>
 										<h3>
-											<a href="register_serial.html">* 시리얼 코드를 부여받을려면 여기를
+											<a href="register_serial.jsp">* 시리얼 코드를 부여받을려면 여기를
 												클릭하세요! *</a>
 										</h3>
 									</header>
@@ -238,7 +238,7 @@
 								<article class="post stub">
 									<header>
 										<h3>
-											<a href="login.html">로그인&회원가입 페이지에 들어가 로그인한다.</a>
+											<a href="login.jsp">로그인&회원가입 페이지에 들어가 로그인한다.</a>
 										</h3>
 									</header>
 									↓
@@ -257,7 +257,7 @@
 								<article class="post stub">
 									<header>
 										<h3>
-											<a href="register.html">* 회원가입을 하려면 여기를 클릭하세요! *</a>
+											<a href="register.jsp">* 회원가입을 하려면 여기를 클릭하세요! *</a>
 										</h3>
 									</header>
 								</article>
