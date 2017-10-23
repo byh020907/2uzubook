@@ -113,6 +113,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label class="control-label" for="email_con">E-Mail 인증번호</label>
+                                                    <input id="email_con" name="email_con" type="text" class="form-control" required>
+                                                    <div class="col-md-4" style="margin-top: 5px;">
+                                                        <input type="button" id="email_con_btn" onclick="code_confirm(); return false;" value="이메일 인증  검사" class="btn btn-primary"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label class="control-label" for="id">ID</label>
                                                     <input id="id" name="id" class="form-control" type="text" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
@@ -258,7 +265,6 @@
 					if(data.status>=0){
 						alert("success")
 						//성공처리
-						code_confirm();
 					}else{
 						alert("fail")
 						//실패처리
@@ -274,7 +280,7 @@
         	console.log("코드 컨펌 실행");
         	var temp=new Object();
         	var email=$('#email').val();
-        	var inputString=prompt('인증 코드를 입력하세요','');
+        	var inputString=$('#email_con').val().trim();
         	temp.code=inputString;
         	temp.email=email;
         	$.ajax({
@@ -286,7 +292,10 @@
 					{
 						alert('인증되었습니다.');
 						$("#email_confi").attr('type','hidden');
-						$("#email_confi").attr('disabled');
+						$("#email").attr('disabled',true);
+
+						$("#email_con_btn").attr('type','hidden');
+						$("#email_con").attr('disabled',true);
 					}
 					else
 					{
