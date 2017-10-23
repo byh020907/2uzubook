@@ -105,18 +105,11 @@
                                                         <option value="여">여자</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group">
+                                                <div id="loc" class="form-group">
                                                     <label class="control-label" for="email">E-Mail Address</label>
                                                     <input id="email" name="email" type="text" class="form-control" required>
                                                     <div class="col-md-4" style="margin-top: 5px;">
                                                         <input type="button" id="email_confi" onclick="email_confirm(); return false;" value="이메일 인증" class="btn btn-primary"/>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label" for="email_con">E-Mail 인증번호</label>
-                                                    <input id="email_con" name="email_con" type="text" class="form-control" required>
-                                                    <div class="col-md-4" style="margin-top: 5px;">
-                                                        <input type="button" id="email_con_btn" onclick="code_confirm(); return false;" value="이메일 인증  검사" class="btn btn-primary"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -255,6 +248,7 @@
         	console.log("이메일 컨펌 실행");
         	var temp=new Object();
         	var email=$('#email').val();
+        	var tag='<div class="form-group"><label class="control-label" for="email_con">E-Mail 인증번호</label><input id="email_con" name="email_con" type="text" class="form-control" required><div class="col-md-4" style="margin-top: 5px;"><input type="button" id="email_con_btn" onclick="code_confirm(); return false;" value="이메일 인증  검사" class="btn btn-primary"/></div></div>';
         	temp.email=email;
         	console.log(temp);
         	$.ajax({
@@ -264,6 +258,7 @@
 				success : function(data) {
 					if(data.status>=0){
 						alert("success")
+						$('#loc').after(tag);
 						//성공처리
 					}else{
 						alert("fail")
