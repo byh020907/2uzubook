@@ -1,20 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="org.json.simple.*"%>
-<%@ page import="java.util.*"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-	String id = (String) session.getAttribute("id");
-	String serialKey = (String) session.getAttribute("serialKey");
-	System.out.println(id);
-%>
-<%
-request.setCharacterEncoding("UTF-8");
-
-JSONArray jsonArray= (JSONArray) request.getAttribute("JSONArray");
-JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
-
-%>
 <!DOCTYPE HTML>
 <html>
 
@@ -83,57 +66,73 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                         <hr class="first" />
                         <section>
                             <header>
-                                <h3>독서활동 추가</h3> </header>
+                                <h3>자격증 추가</h3> </header>
                         </section>
-                        <hr />  <div class="row 20%">
-                                <div class="4u">
-                                    <a class="image fit"><img src="images/previous.png" alt="" onclick="" style="cursor:pointer;" /></a>
-                                </div>
-                            </div></div>
+                        <hr /> 
+                        <div class="row 20%">
+                                
+                             
+                            </div>
+                        
+                    </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
-                                <h2>독서활동을 추가해주세요 </h2>
+                                <h2>자격증을 추가해주세요 </h2>
                                 <p>자신의 개발 활동을 기록해서 기업에게 보여주세요! 확실하고 솔직하게 자신을 나타낼 수 있도록 정성스럽게 적어주세요.</p>
                             </header>
-                            <h3 class="text-center mb-3">추가된 독서활동</h3>
+                            <h3 class="text-center mb-3">추가된 자격증</h3>
                             <br>
-                            <div id="reading_loc" class="row">
-                                <% for(int i=0;i<jsonArray.size();i++)
+                            <div class="row" id="license_loc">
+                            	<% for(int i=0;i<jsonArray.size();i++)
 								{	
-									JSONObject award=(JSONObject)jsonArray.get(i);
+									JSONObject licen=(JSONObject)jsonArray.get(i);
 								%>
                             		<div class="4u 12u(mobile)">
                             			<div class="row" id="modal_pop" style="cursor:pointer;">
-                            				<div class="5u"><a class="image fit" onclick="reading_delete(this);">
-                            					<img src="images/student/etc.png" alt="" /></a>
+                            				<div class="5u">
+                            					<a class="image fit" id="color_con" onclick="licen_delete(this);">
+                            					<img src="images/student/license2.png" alt="" /></a>
                             				</div>
                             				<div class="7u">
-                            					<h3 class="text-center" id="delete_name"><%=award.get("name")%></h3><%=(Date)award.get("date")%>
+                            					<h3 class="text-center" id="delete_name"><%=(String)licen.get("name")%></h3><%=(Date)licen.get("date")%>
                             				</div>
                             			</div>
                             		</div>
-    	
-								<% 
+								<%
 								}
-								%>  
+								%>
                             </div>
                             <br>
-                           	<div class="row">
                                 <div class="10u form1">
-                                    <h3 class="text-center mb-3">독서활동 추가</h3>
+                                    <h3 class="text-center mb-3">자격증 추가</h3>
                                     <form action="" method="post">
                                         <input name="mode" type="hidden" value="1">
                                         <div class="form-group">
-                                            <label class="control-label" for="reading_name">책 이름</label>
-                                            <input id="name" name="reading_name" placeholder="ex) 이상한 나라의 앨리스" type="text" class="form-control" required> </div>
+                                            <label class="control-label" for="License_name">자격증 이름</label>
+                                            <input id="name" name="License_name" placeholder="ex) 정보처리기능사" type="text" class="form-control" required> </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="reading_startdate">완독 날짜</label>
-                                            <input id="date" name="reading_startdate" type="date" class="form-control" required> </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="reading_keyword">키워드</label>
+                                            <label class="control-label" for="license_ins">인증기관</label>
                                             <div class="col-md-4">
-                                                <select id="keyword" name="reading_keyword" class="form-control">
+                                                <select name="license_ins" id="ins" class="form-control">
+                                                    <option value="대한상공회의소">대한상공회의소</option>
+                                                    <option value="영화진흥위원회">영화진흥위원회</option>
+                                                    <option value="한국광해관리공단">한국광해관리공단</option>
+                                                    <option value="한국기술자격검정원">한국기술자격검정원</option>
+                                                    <option value="한국방송통신전파진흥원">한국방송통신전파진흥원</option>
+                                                    <option value="한국원자력안전기술원">한국원자력안전기술원</option>
+                                                    <option value="한국인터넷진흥원">한국인터넷진흥원</option>
+                                                    <option value="한국콘텐츠진흥원">한국콘텐츠진흥원</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="date">자격증 취득 날짜</label>
+                                            <input id="date" name="license_date" type="date" class="form-control" required> </div>
+                                        <div class="form-group">
+                                            <label class="control-label" for="License_keyword">키워드</label>
+                                            	<div class="col-md-4">
+													<select id="keyword" name="license_keyword" class="form-control">
                                                     <%
                                                     for(int i=0;i<keywordArray.size();i++)
                                                     {
@@ -144,12 +143,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                     }
                                                     %>
                                                 </select>
-                                            </div>
-                                        </div>
+													</div> </div>                    
                                         <div class="form-group">
                                             <label class="col-md-4 control-label" for="Submit"></label>
                                             <div class="col-md-4">
-                                                <button onclick="reading_add(); return false;" class="btn btn-primary">추가하기</button>
+                                                <button onclick="licen_add(); return false;" class="btn btn-primary">추가하기</button>
                                             </div>
                                         </div>
                                     </form>
@@ -196,16 +194,18 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-        function reading_add() {
+        function licen_add() {
         	var temp=new Object();
         	var name = $("#name").val();
+            var ins = $("#ins").val();
             var date = $("#date").val();
             var	keyword=$("#keyword").val();
-        	temp.part="6";
+        	temp.part="1";
         	temp.name=name;
+        	temp.ins=ins;
         	temp.date=date;
         	temp.keyword=keyword;
-        	
+            
           	$.ajax({
 				url : '/2uzubook/ResumeAdd',
 				type : 'post',
@@ -214,11 +214,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 					if(data.ret >= 0 && data.ret != null){						
 						alert("add_success");
 						//성공처리
-						var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="reading_delete(this);"><img src="images/student/etc.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">'+name+'</h3>'+date+'</div></div></div></div>';
-			        	$("#reading_loc").prepend(tag_div);
+						var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u">' + '<a class="image fit" id="color_con" onclick="licen_delete(this);"><img src="images/student/license2.png" alt="" /></a></div><div class="7u">' + '<h3 class="text-center" id="delete_name">' + name+ '</h3>' + date + '</div></div></div>';
+			            
+			        	$("#license_loc").prepend(tag_div);
 			            $("#name").val('');
 			            $("#date").val('');
-			            $("#keyword").val('');
 					}
 					else{
 						alert("add_fail");
@@ -227,7 +227,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 				dataType : 'json'
 			});
         }
-        function reading_delete(obj) {
+       
+		
+        function licen_delete(obj) {
             $(obj).parent().parent().parent().css('background-color', 'red');
             var flag = 0;
             var delete_name=$(obj).parent().next(".7u").children("#delete_name");
@@ -235,27 +237,33 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
             var name=$(delete_name).text();
             if (confirm('삭제 하시겠습니까?')) {
                 flag = 1;
-                reading_del(obj, flag,name);
+                li_del(obj, flag,name);
                 return;
             }
             else {
-                reading_del(obj, flag,name);
+                li_del(obj, flag,name);
                 return;
             }
         }
 
-        function reading_del(obj, flag,name) {
+        function li_del(obj, flag,name) {
             if (flag == 1) {
                 $(obj).parent().parent().parent().remove();
             	var temp=new Object();
             	temp.name=name;
-            	temp.part="8";
+            	temp.part="2";
                 $.ajax({
     				url : '/2uzubook/ResumeRemove',
     				type : 'post',
     				data : temp,
     				success : function(data) {
-    					console.log("delete_success");
+    					if(data.status>=0){
+    						alert("delete_success");
+    						//성공처리
+    					}else{
+    						alert("delete_fail");
+    						//실패처리
+    					}
     				},
     				dataType : 'json'
     			});
