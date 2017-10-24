@@ -84,7 +84,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                             <header>
                                                 <h3>수상 경력 추가</h3> </header>
                                         </section>
-                                        <hr/> </div>
+                                        <hr/>
+                                         <div class="row 20%">
+                                <div class="4u">
+                                    <a class="image fit"><img src="images/previous.png" alt="" onclick="" style="cursor:pointer;" /></a>
+                                </div>
+                            </div>
+                                    </div>
                                     <div class="9u 12u(mobile) important(mobile)" id="content">
                                         <article id="main">
                                             <header>
