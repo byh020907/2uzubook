@@ -10,6 +10,7 @@
 	padding:1em;
 	transition:background-color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 }
+
 #search_box2{
 	height:50px;
 	width:100px;
@@ -22,6 +23,7 @@
 	padding:1em;
 	transition:background-color 0.35s ease-in-out, border-color 0.35s ease-in-out;
 }
+
 #input_list{
 	list-style-type:none;
 }
