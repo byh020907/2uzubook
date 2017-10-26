@@ -39,7 +39,7 @@ public class myresume extends HttpServlet {
 		
 		String userID=(String) session.getAttribute("id");
 		if(session.getAttribute("id")==null){
-			response.sendRedirect("/2uzubook/login.html");
+			response.sendRedirect("/2uzubook/login.jsp");
 			return;
 		}
 		

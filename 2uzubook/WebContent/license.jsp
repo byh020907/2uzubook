@@ -84,7 +84,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             <header>
                                 <h3>자격증 추가</h3> </header>
                         </section>
-                        <hr /> </div>
+                        <hr /> <div class="row 20%">
+                                <div class="4u">
+                                    <a class="image fit" href="myresume_manage.jsp"><img src="images/previous.png" alt="" style="cursor:pointer;" /></a>
+                                </div>
+                            </div> </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
@@ -204,6 +208,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
+    	function back(){
+    		
+    	}
         function licen_add() {
         	var temp=new Object();
         	var name = $("#name").val();

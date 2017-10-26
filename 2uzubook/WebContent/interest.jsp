@@ -32,7 +32,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                 <!-- Inner -->
                                 <div class="inner">
                                     <header>
-                                        <h1><a href="index.html" id="logo">DSM 2UZUBOOK</a></h1> </header>
+                                        <h1><a href="index.jsp" id="logo">DSM 2UZUBOOK</a></h1> </header>
                                 </div>
                                 <!-- Nav -->
                                 <nav id="nav">
@@ -88,7 +88,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                 <header>
                                                     <h3>관심분야를 추가해주세요</h3> </header>
                                             </section>
-                                            <hr /> </div>
+                                            <hr />  <div class="row 20%">
+                                <div class="4u">
+                                    <a class="image fit" href="myresume_manage.jsp"><img src="images/previous.png" alt="" onclick="" style="cursor:pointer;" /></a>
+                                </div>
+                            </div></div>
                                         <div class="9u 12u(mobile) important(mobile)" id="content">
                                             <article id="main">
                                                 <header>
