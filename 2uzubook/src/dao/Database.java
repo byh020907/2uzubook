@@ -83,6 +83,44 @@ public class Database {
 
 		return results;
 	}
+	
+	//select 할때
+		public JSONObject executeAndGet_single(String sql, Object... objects) {
+			try {
+				PreparedStatement statement = conn.prepareStatement(sql);
+				if (objects.length > 0) {
+					int index = 1;
+					for (Object object : objects) {
+						statement.setObject(index++, object);
+					}
+					return fillterDataJsonObject(statement.executeQuery());
+				} else {
+					return fillterDataJsonObject(statement.executeQuery());
+				}
+			} catch (SQLException sqlE) {
+				sqlE.printStackTrace();
+				return null;
+			}
+		}
+
+	
+	
+	
+	private static JSONObject fillterDataJsonObject(ResultSet resultSet) throws SQLException {
+		
+		JSONObject jsonObject=new JSONObject();
+		while (resultSet.next()) {
+			ResultSetMetaData metaData = resultSet.getMetaData();
+			for (int i = 1; i <= metaData.getColumnCount(); i++) {
+				String label = metaData.getColumnLabel(i);
+				Object value = resultSet.getObject(i);
+				jsonObject.put(label, value);
+			}
+		}
+
+		return jsonObject;
+	}
+	
 
 	public int createSerialKey() {
 		String sql = "INSULT INTO serial VALUES(?,?,?)";

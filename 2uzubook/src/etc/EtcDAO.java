@@ -1,6 +1,7 @@
 package etc;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import com.sun.org.apache.regexp.internal.recompile;
 
@@ -19,7 +20,31 @@ public class EtcDAO extends Database {
 			instance=new EtcDAO();
 		return instance;
 	}
+	
+	public JSONObject select_resume_single(String id,String name,int position) {
+		JSONObject jsonObject=new JSONObject();
+		
 
+		switch (position) {
+		case 1:
+			// 봉사
+			String SQL_VOLUNTEER = "select * from volunteer where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_VOLUNTEER, id,name);
+			return jsonObject;
+		case 2:
+			// 독서
+			String SQL_READING = "select * from reading where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_READING, id, name);
+			return jsonObject;
+		case 3:
+			//관심분야
+			String SQL_INTERESTS = "select * from interests where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_INTERESTS, id,name);
+			return jsonObject;
+		default:
+			return jsonObject;
+		}
+	}
 	public JSONArray select_resume(String id, int position) {
 
 		JSONArray jsonArray = new JSONArray();
