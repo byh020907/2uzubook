@@ -24,6 +24,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     <!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="css/main.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+    <link rel="stylesheet" href="css/modalStyle.css" />
 </head>
 
 <body class="left-sidebar">
@@ -105,8 +106,25 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             		<div class="4u 12u(mobile)">
                             			<div class="row" id="modal_pop" style="cursor:pointer;">
                             				<div class="5u">
-                            					<a class="image fit" id="color_con" onclick="licen_delete(this);">
+                            					<a class="image fit modalLink" href="#modalLayer" id="color_con">
                             					<img src="images/student/license2.png" alt="" /></a>
+													<div id="modalLayer">
+													  <div class="modalContent">
+													  
+													    <h4 style="margin-left:3%">License 수정 or 삭제</h4>
+													    <hr>
+													    <center>
+													    <div style="margin-top:8%;">
+													    <button style="margin-right:10%">수정</button>
+													    <button>삭제</button>
+													    </div>
+													    </center>
+													    <br>
+													    <hr>
+													    <button type="button" id="delete_modal">닫기</button>
+													    
+													  </div>
+													</div>
                             				</div>
                             				<div class="7u">
                             					<h3 class="text-center" id="delete_name"><%=(String)licen.get("name")%></h3><%=(Date)licen.get("date")%>
@@ -200,6 +218,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     </div>
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/jquery.dropotron.min.js"></script>
     <script src="js/jquery.scrolly.min.js"></script>
     <script src="js/jquery.onvisible.min.js"></script>
@@ -208,9 +227,6 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
     <script src="js/main.js"></script>
     <script>
-    	function back(){
-    		
-    	}
         function licen_add() {
         	var temp=new Object();
         	var name = $("#name").val();
