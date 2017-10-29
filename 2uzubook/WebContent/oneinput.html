@@ -58,10 +58,10 @@
                     <th scope="row">수상</th>
                     <td>
                         <div>
-                            <input id="award" name="award" type="text" placeholder="수상한 상">
+                            <input class="text" id="award" name="award" type="text" placeholder="수상한 상">
                             <input id="award" name="award" type="text" placeholder="수상 기관">
                             <input id="date" name="award_date" type="date">
-                            <select id="keyword" name="award_keyword">
+                            <select id="keyword" name="award_keyword" >
                                 <option value="">키워드</option>
                             </select>
                             <input type="button" value="추가"> </div>
@@ -93,10 +93,10 @@
                 <th scope="row">프로젝트</th>
                 <td>
                     <div>
-                        <input id="project" name="project" type="project" placeholder="프로젝트 이름">
-                        <input id="date" name="project_date" type="date">
-                        <input id="date" name="project_date" type="date">
-                        <input id="project" name="project" type="project" placeholder="프로젝트 설명">
+                        <input id="project" name="project" type="text" placeholder="프로젝트 이름">
+                        시작<input id="date" name="project_date" type="date">
+                        종료<input id="date" name="project_date" type="date">
+                        <input id="explain" name="project" placeholder="프로젝트 설명" size="50">
                         <select id="keyword" name="test_keyword">
                             <option value="">키워드 </option>
                         </select>
@@ -107,10 +107,10 @@
                 <th scope="row">전공 동아리</th>
                 <td>
                     <div>
-                        <input id="club" name="club" type="project" placeholder="동아리 이름">
-                        <input id="date" name="club_date" type="date">
-                        <input id="date" name="club_date" type="date">
-                        <input id="club" name="project" type="project" placeholder="동아리 설명">
+                        <input id="club" name="club" type="text" placeholder="동아리 이름">
+                        시작<input id="date" name="club_date" type="date">
+                        종료<input id="date" name="club_date" type="date">
+                        <input id="explain" name="project" placeholder="동아리 설명" size="50">
                         <select id="keyword" name="test_keyword">
                             <option value="">키워드 </option>
                         </select>
@@ -135,7 +135,7 @@
    
 </body>
 <footer>
-    <button type="submit">저장하기</button>
+    <button type="submit">저장</button>
 </footer>
 
 </html>
