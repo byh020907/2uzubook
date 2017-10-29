@@ -3,7 +3,9 @@
     vertical-align: top;
     margin-right: 200px;
 }
-
+#gdate {
+   margin-left: 3px;
+}
 #explain {
     width: 400px;
     height: 22px;
@@ -38,7 +40,6 @@ input[type=date] {
     border: 1px solid grey;
     border-radius: 1.5px;
     font-size: 13px;
-    margin-left: 3px;
 }
 
 input[type=button] {
