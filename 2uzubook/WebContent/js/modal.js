@@ -9,7 +9,6 @@ $(document).ready(function(){
     modalLayer.fadeIn("slow");
     modalCont.css({"margin-top" : -marginTop, "margin-left" : -marginLeft});
     $(this).blur();
-    $(".modalContent > a").focus(); 
     return false;
   });
  
