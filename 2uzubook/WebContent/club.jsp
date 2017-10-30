@@ -24,6 +24,7 @@
                         <!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
                         <link rel="stylesheet" href="css/main.css" />
                         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+                        <link rel="stylesheet" href="css/modalStyle.css" />
                     </head>
 
                     <body class="left-sidebar">
@@ -46,11 +47,11 @@
 							if (id == null && serialKey == null) {
 						%><a href="login.jsp">로그인 / 회원가입</a>
                                                 <%
- 	} else {
- %><a href="logoutAction">로그아웃</a>
+											 	} else {
+											 %><a href="logoutAction">로그아웃</a>
                                                     <%
- 	}
- %>
+													 	}
+													 %>
                                         </li>
                                         <li><a href="#">For Student</a>
                                             <ul>
@@ -120,7 +121,7 @@
                                                         <div class="4u 12u(mobile)">
                                                             <div class="row" id="modal_pop" style="cursor: pointer;">
                                                                 <div class="5u">
-                                                                    <a class="image fit" onclick="club_delete(this);"> <img src="images/student/circle.png" alt="" /></a>
+                                                                    <a class="image fit modalLink" onclick="into_modal(this); return false;"> <img src="images/student/circle.png" alt="" /></a>
                                                                 </div>
                                                                 <div class="7u">
                                                                     <h3 class="text-center" id="delete_name"><%=award.get("name")%></h3>
@@ -182,6 +183,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- modal -->
+					        <div id="modalLayer">
+							  <div class="modalContent">
+							    <h4 style="margin-left:3%">License 수정 or 삭제</h4>
+							    <hr>
+							    <center>
+							    <div style="margin-top:8%;">
+							    <button style="margin-right:10%">수정</button>
+							    <button onclick="club_delete(); return false;">삭제</button>
+							    </div>
+							    </center>
+							    <br>
+							    <hr>
+							    <button type="button" id="delete_modal" style="float:right;">닫기</button>
+							  </div>
+							</div>
                             <!-- Footer -->
                             <div id="footer">
                                 <div class="container">
@@ -212,6 +229,7 @@
                         </div>
                         <!-- Scripts -->
                         <script src="js/jquery.min.js"></script>
+                        <script src="js/modal.js"></script>
                         <script src="js/jquery.dropotron.min.js"></script>
                         <script src="js/jquery.scrolly.min.js"></script>
                         <script src="js/jquery.onvisible.min.js"></script>
@@ -220,6 +238,11 @@
                         <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
                         <script src="js/main.js"></script>
                         <script>
+                        var delete_obj;
+	                    	function into_modal(obj){
+	                    		console.log(obj);
+	                    		delete_obj=$(obj).parent();
+	                    	}
                             function club_add() {
                                 var temp = new Object();
                                 var name = $("#name").val();
@@ -239,15 +262,25 @@
                                     , data: temp
                                     , success: function (data) {
                                         if (data.ret >= 0 && data.ret != null) {
-                                            alert("add_success");
                                             //성공처리
-                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit" onclick="club_delete(this);"><img src="images/student/circle.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + startdate + '~' + enddate + '</div></div></div>';
+                                            var tag_div = '<div class="4u 12u(mobile)"><div class="row" id="modal_pop" style="cursor:pointer;"><div class="5u"><a class="image fit modalLink" onclick="into_modal(this); return false;"><img src="images/student/circle.png" alt="" /></a></div><div class="7u"><h3 class="text-center" id="delete_name">' + name + '</h3>' + startdate + '~' + enddate + '</div></div></div>';
                                             $("#club_loc").prepend(tag_div);
                                             $("#name").val('');
                                             $("#startdate").val('');
                                             $("#desc").val('');
                                             $("#enddate").val('');
                                             $("#keyword").val('');
+                                            var modalLayer = $("#modalLayer");
+                    			            var modalLink = $(".modalLink");
+                    			            var modalCont = $(".modalContent");
+                    			            var marginLeft = modalCont.outerWidth()/2;
+                    			            var marginTop = modalCont.outerHeight()/2;
+                    			            modalLink.click(function(){
+                    			                modalLayer.fadeIn("slow");
+                    			                modalCont.css({"margin-top" : -marginTop, "margin-left" : -marginLeft});
+                    			                $(this).blur();
+                    			                return false;
+                    			              });
                                         }
                                         else {
                                             alert("add_fail");
@@ -257,26 +290,16 @@
                                 });
                             }
 
-                            function club_delete(obj) {
-                                $(obj).parent().parent().parent().css('background-color', 'red');
-                                var flag = 0;
-                                var delete_name = $(obj).parent().next(".7u").children("#delete_name");
-                                console.log($(delete_name).text());
-                                var name = $(delete_name).text();
-                                if (confirm('삭제 하시겠습니까?')) {
-                                    flag = 1;
-                                    club_del(obj, flag, name);
-                                    return;
-                                }
-                                else {
-                                    club_del(obj, flag, name);
-                                    return;
-                                }
+                            function club_delete() {
+                                console.log(delete_obj);
+                                var delete_name=$(delete_obj).next(".7u").children("#delete_name");
+                                var name=$(delete_name).text();
+                                console.log(name);
+                                club_del(delete_obj,name);
                             }
 
-                            function club_del(obj, flag, name) {
-                                if (flag == 1) {
-                                    $(obj).parent().parent().parent().remove();
+                            function club_del(obj, name) {
+                                    $(obj).parent().parent().remove();
                                     var temp = new Object();
                                     temp.name = name;
                                     temp.part = "3";
@@ -285,13 +308,15 @@
                                         , type: 'post'
                                         , data: temp
                                         , success: function (data) {
-                                            console.log("delete_success");
+                                        	if(data.status>=0){
+                                        		$("#modalLayer").fadeOut("slow");
+                            					$(".modalLink").focus();
+                            				}else{
+                            					alert("delete_fail");
+                            				}
                                         }
                                         , dataType: 'json'
                                     });
-                                }
-                                else {
-                                    $(obj).parent().parent().parent().css('background-color', '');
                                 }
 
                                 function go() {
@@ -299,7 +324,7 @@
                                     console.log('hel');
                                     frm.submit();
                                 }
-                            }
+                            
                         </script>
                     </body>
 
