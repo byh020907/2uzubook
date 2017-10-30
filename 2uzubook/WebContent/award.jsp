@@ -87,7 +87,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                         </section>
                                         <hr/>
                                          <div class="row 20%">
-                                <div class="4u">
+                                <div class="4u floating">
                                     <a class="image fit" href="myresume_manage.jsp"><img src="images/previous.png" alt="" onclick="" style="cursor:pointer;" /></a>
                                 </div>
                             </div>
