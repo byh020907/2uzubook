@@ -6,6 +6,9 @@
 #gdate {
    margin-left: 3px;
 }
+textarea{
+    display: block;
+}
 #explain {
     width: 400px;
     height: 22px;

@@ -98,6 +98,7 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
+
 .floating { position: fixed; right: 50%; top: 180px; margin-right: -720px; text-align:center; width: 120px; }
 
 
