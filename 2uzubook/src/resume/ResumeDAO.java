@@ -69,6 +69,45 @@ public class ResumeDAO extends Database{
 		}
 		return results;
 	}
+	
+	public JSONObject select_resume_single(String id,String name,int position) {
+		JSONObject jsonObject=new JSONObject();
+		
+		switch (position) {
+		case 1:
+			// 자격증
+			String SQL_CERT = "select * from cert where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_CERT, id,name);
+			return jsonObject;
+		case 2:
+			// 수상경력
+			String SQL_AWARD = "select * from award where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_AWARD, id,name);
+			return jsonObject;
+		case 3:
+			// 동아리
+			String SQL_CLUB = "select * from club where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_CLUB, id,name);
+			return jsonObject;
+		case 4:
+			// 프로젝트
+			String SQL_PROJECT = "select * from project where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_PROJECT, id,name);
+			return jsonObject;
+		case 5:
+			//test
+			String SQL_TEST="select * from test where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_TEST, id,name);
+			return jsonObject;
+		case 6:
+			//컴퍼런ㅅ그
+			String SQL_CONFERENCE="select * from conference where user=? and name=?";
+			jsonObject = executeAndGet_single(SQL_CONFERENCE, id,name);
+			return jsonObject;
+		default:
+			return jsonObject;
+		}
+	}
 
 	public JSONArray select_resume(String id, int position) {
 
