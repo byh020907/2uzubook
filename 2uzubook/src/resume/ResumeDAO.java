@@ -37,6 +37,26 @@ public class ResumeDAO extends Database{
 		return results;
 	}
 	
+/*	public String majorToString(int majorNum) {
+		String SQL = "select name from major where id=?";
+		String major = null;
+		try {
+
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, majorNum);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				major = rs.getString("name");
+			}
+
+			return major;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return major;
+	}*/
+	
 	public int getKeywordNum(String name) {
 		String SQL = "select id from keyword where name=?";
 		int keyword = 0;
