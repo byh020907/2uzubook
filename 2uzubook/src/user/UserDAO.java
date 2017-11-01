@@ -86,7 +86,7 @@ public class UserDAO extends Database {
 			return 0;// 실패
 	}
 
-	// 생성자 잘보셈 없는거는 null로 넣어주셈 1번 페이스북 2번 깃허브
+	// 생성자 잘보셈 없는거는 null로 넣어주셈 1번 사용자 프로파일 2번 메인페이지 이미지
 	public int update_image(User user, String id, int position) {
 		switch (position) {
 		case 1:
