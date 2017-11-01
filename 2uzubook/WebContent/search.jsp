@@ -191,7 +191,7 @@
 			var tag_div='<li><div class="span_style">'+val_search+'<div class="part"><input class="key" type="hidden" value="'+val_data+'"/><button class="delete_btn" onclick="delete_keyword(this)">x</button></div></div></li>';
 			var tag_div2='<li><input class="form-control mb-2" id="search_box2" type="search" value="'+val_search+'" name="q" disabled></li>'
 			$('li').remove('#this_li');
-			$('#input_list').append(tag_div2);
+			$('#input_list').append(tag_div);
 			$('#input_list').append(tag_input);
 		}
 	});
