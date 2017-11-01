@@ -85,16 +85,16 @@
 				<script>
 					function a(data) {
 						for (var i = 0; i < data.length; i++) {
-							var $article = $('<article id="art'+i+'"></article>');
-							var $a = $('<a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"" class="image featured"><img src="/2uzubook/ImageServlet?studentID='+data[i].stu_id+'&gender='+data[i].gender+'" alt="" height="235" /></a>');
-							var $h = $('<header><h3><a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"">'
+							var article = $('<article id="art'+i+'"></article>');
+							var a = $('<a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"" class="image featured"><img src="/2uzubook/ImageServlet?studentID='+data[i].stu_id+'&gender='+data[i].gender+'" alt="" height="235" /></a>');
+							var h = $('<header><h3><a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"">'
 									+ data[i].name + '</a></h3></header>');
-							var $p = $('<p>' + data[i].majorName + '<br/>'
+							var p = $('<p>' + data[i].majorName + '<br/>'
 									+ data[i].stu_id + '</p>');
-							$('#part1').append($article);
-							$('#art' + i).append($a);
-							$('#art' + i).append($h);
-							$('#art' + i).append($p);
+							$('#part1').append(article);
+							$('#art' + i).append(a);
+							$('#art' + i).append(h);
+							$('#art' + i).append(p);
 						}
 					}
 				</script>
