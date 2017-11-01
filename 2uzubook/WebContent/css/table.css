@@ -1,5 +1,5 @@
 #leftside {
-    display: inline-block;
+    display: center;
     vertical-align: top;
     margin-right: 200px;
 }
@@ -96,8 +96,6 @@ table.major {
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;
-    display: inline-block;
-    vertical-align: top;
 }
 
 table.major thead th {
