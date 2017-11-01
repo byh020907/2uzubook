@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div id="leftside" style="margin-right:0">
+    <div style=" width: 900px; margin: 0 auto;" >
         <table class="info">
             <thead>
                 <tr>
@@ -97,7 +97,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+
     <table class="major">
         <thead>
             <tr>
@@ -197,6 +197,7 @@
         </tbody>
        
     </table>
+            </div>
    <footer>
     <button type="submit">저장</button>
 </footer>
