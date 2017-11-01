@@ -36,7 +36,7 @@ public class SelectResume extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		String userID=(String) session.getAttribute("id");
-		
+		Util.setCharset(request, response, "utf-8");
 		int part=Integer.parseInt(request.getParameter("part"));
 		JSONArray jsonArray = null;
 		JSONArray keywordArray = null;
