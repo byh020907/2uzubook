@@ -45,7 +45,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row"><img src="images/student/stu6.jpg" class="studentimg"> </th>
+					<th scope="row"><img src="/2uzubook/ImageServlet?studentID=<%=student_id %>&gender=<%=gender%>" class="studentimg"> </th>
 					<td>
 						<h2>
 							<%=student_id %> <%=majorName %> <br> <%=name %>

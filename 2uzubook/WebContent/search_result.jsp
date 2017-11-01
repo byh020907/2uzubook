@@ -119,7 +119,7 @@
 									<div class="6u 12u(mobile)" OnClick="location.href='/2uzubook/SeeStudentResume?id=<%=object.get("id")%>'">
 										<div class="row" style="cursor: pointer;">
 											<div class="4u">
-												<a class="image fit"><img src="images/student/stu2.jpg"
+												<a class="image fit"><img src="/2uzubook/ImageServlet?studentID=<%=object.get("stu_id")%>&gender=<%=object.get("gender")%>"
 													alt="" /></a>
 											</div>
 											<div class="8u">
