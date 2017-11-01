@@ -56,7 +56,7 @@
 						}else{
 						%>
 						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go2();">내 레주메 보기</a></form></li>	
-						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li><li><a href="oneinput.jsp">한번에 입력하기</a></li>
 						<%} %>
 						</ul></li>
 					<li><a href="#">For Company</a>
@@ -108,7 +108,7 @@
 									<div class="row" id="modal_pop" Onclick="go(5);" style="cursor: pointer;">
 										<div class="4u">
 											<a class="image fit"><img
-												src="images/student/license2.png" alt="" /></a>
+												src="images/student/document.png" alt="" /></a>
 										</div>
 										<div class="8u">
 											<h3 class="text-center">시험</h3>
@@ -180,7 +180,7 @@
                                 <div class="6u 12u(mobile)">
 									<div class="row" onClick="go(7);" style="cursor: pointer;">
 										<div class="4u">
-											<a class="image fit"><img src="images/student/etc.png"
+											<a class="image fit"><img src="images/student/library.png"
 												alt="" /></a>
 										</div>
 										<div class="8u">

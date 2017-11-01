@@ -45,7 +45,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row"><img src="images/student/stu6.jpg" class="studentimg"> </th>
+					<th scope="row"><img src="/2uzubook/ImageServlet?studentID=<%=student_id %>&gender=<%=gender%>" class="studentimg"> </th>
 					<td>
 						<h2>
 							<%=student_id %> <%=majorName %> <br> <%=name %>
@@ -156,5 +156,27 @@
 			</tr>
 		</tbody>
 	</table>
+     <table class="major">
+        <thead>
+            <tr>
+                <th scope="cols">기타</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">봉사</th>
+                <td> 중랑천 청소 (2016. 5. 20)
+                    <br> 사이버안전훈련 청소 (2016 . 7. 21 ~ 7.22)
+                    <br> 녹색 발명대회 (2016. 6.15)</td>
+            </tr>
+            <tr>
+                <th scope="row">독서</th>
+                <td>
+                    신데렐라 (2016. 5. 20)
+                    <br> 콩쥐팥쥐 (2016 . 7. 21 ~ 7.22)
+                    <br> 앙기모띠 (2016. 6.15) </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

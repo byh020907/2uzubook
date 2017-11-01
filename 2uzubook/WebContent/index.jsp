@@ -55,6 +55,7 @@
 						%>
 						<li><form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form></li>	
 						<li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+                        <li><a href="oneinput.jsp">한번에 입력하기</a></li>
 						<%} %>
 						</ul></li>
 					<li><a href="#">For Company</a>
@@ -84,11 +85,9 @@
 			<div class="reel" id="part1">
 				<script>
 					function a(data) {
-						for (var i = 0; i < 10; i++) {
+						for (var i = 0; i < data.length; i++) {
 							var $article = $('<article id="art'+i+'"></article>');
-							var $a = $('<a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"" class="image featured"><img src="/2uzubook/images/student/stu'
-									+ (i + 1)
-									+ '.jpg" alt="" height="235" /></a>');
+							var $a = $('<a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"" class="image featured"><img src="/2uzubook/ImageServlet?studentID='+data[i].stu_id+'&gender='+data[i].gender+'" alt="" height="235" /></a>');
 							var $h = $('<header><h3><a href="/2uzubook/SeeStudentResume?id='+data[i].id+'"">'
 									+ data[i].name + '</a></h3></header>');
 							var $p = $('<p>' + data[i].majorName + '<br/>'
@@ -309,10 +308,11 @@
 				url : '/2uzubook/indexAction',
 				type : 'post',
 				success : function(data) {
+					console.log(data);
 					for (var i = 0; i < data.length; i++) {
 						console.log(data[i].name);
-						a(data);
 					}
+					a(data);
 				},
 				dataType : 'json'
 			});

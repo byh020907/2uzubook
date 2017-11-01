@@ -63,7 +63,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                         <li>
                                                             <form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form>
                                                         </li>
-                                                        <li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+                                                        <li><a href="myresume_manage.jsp">레주메 내용 관리</a></li><li><a href="oneinput.jsp">한번에 입력하기</a></li>
                                                         <%} %>
                                             </ul>
                                         </li>
@@ -167,7 +167,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 						    <hr>
 						    <center>
 						    <div style="margin-top:8%;">
-						    <button style="margin-right:10%">수정</button>
+						    <button style="margin-right:10%" onclick="obj_come(); return false;">수정</button>
 						    <button onclick="interest_delete(); return false;">삭제</button>
 						    </div>
 						    </center>
@@ -223,7 +223,33 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                 console.log('hel');
                                 frm.submit();
                             }
-
+                            function obj_come(){
+    	                		var come_name=$(delete_obj).next(".7u").children("#delete_name").text();
+    	                		var temp=new Object();
+    	                		temp.name=come_name;
+    	                		temp.position="9";
+    	                		console.log(temp);
+    	                		$.ajax({
+    	                			url : '/2uzubook/ResumeUpdate',
+    	                			type : 'post',
+    	                			dataType : 'json',
+    	                			data : temp,
+    	                			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    	                			success : function(data){
+    	                			
+                                        $("#name").val(data.name);
+                                        
+                                        
+    	                				interest_delete();
+    	                				
+    	                			},
+    	                			error : function(xhr,option,error){
+    	                				console.log(xhr.status);
+    	                				console.log(error);
+    	                				console.log('fail');
+    	                			}
+    	                		});
+    	                	}
                             function interest_delete() {
                                 console.log(delete_obj);
                                 var delete_name=$(delete_obj).next(".7u").children("#delete_name");
