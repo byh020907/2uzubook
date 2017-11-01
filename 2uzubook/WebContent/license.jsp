@@ -85,11 +85,13 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                             <header>
                                 <h3>자격증 추가</h3> </header>
                         </section>
-                        <hr /> <div class="row 20%">
+                        <hr /> 
+                        <div class="row 20%">
                                 <div class="4u">
                                     <a class="image fit" href="myresume_manage.jsp"><img src="images/previous.png" alt="" style="cursor:pointer;" /></a>
                                 </div>
-                            </div> </div>
+                            </div> 
+                            </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
                         <article id="main">
                             <header>
@@ -180,7 +182,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 		    <hr>
 		    <center>
 		    <div style="margin-top:8%;">
-		    <button style="margin-right:10%">수정</button>
+		    <button style="margin-right:10%" onclick="obj_come(); return false;">수정</button>
 		    <button onclick="licen_delete(); return false;">삭제</button>
 		    </div>
 		    </center>
@@ -231,6 +233,34 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     		console.log(obj);
     		delete_obj=$(obj).parent();
     	}
+    	function obj_come(){
+    		var come_name=$(delete_obj).next(".7u").children("#delete_name").text();
+    		var temp=new Object();
+    		temp.name=come_name;
+    		temp.position="1";
+    		console.log(temp);
+    		$.ajax({
+    			url : '/2uzubook/ResumeUpdate',
+    			type : 'post',
+    			dataType : 'json',
+    			data : temp,
+    			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    			success : function(data){
+    				console.log(data.ins);
+    				$("#name").val(data.name);
+                    $("#ins").val(data.ins);
+                    $("#date").val(data.date);
+                    $("#keyword").val(data.keyword);
+    				licen_delete();
+    				
+    			},
+    			error : function(xhr,option,error){
+    				console.log(xhr.status);
+    				console.log(error);
+    				console.log('fail');
+    			}
+    		});
+    	}
     	
         function licen_add() {
         	var temp=new Object();
@@ -254,6 +284,8 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 			        	$("#license_loc").prepend(tag_div);
 			            $("#name").val('');
 			            $("#date").val('');
+                        $("#ins").val('');
+                        $("#keyword").val('');
 			            var modalLayer = $("#modalLayer");
 			            var modalLink = $(".modalLink");
 			            var modalCont = $(".modalContent");

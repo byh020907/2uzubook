@@ -162,21 +162,21 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
             </div>
         </div>
         <!-- modal -->
-				        <div id="modalLayer">
-						  <div class="modalContent">
-						    <h4 style="margin-left:3%">License 수정 or 삭제</h4>
-						    <hr>
-						    <center>
-						    <div style="margin-top:8%;">
-						    <button style="margin-right:10%">수정</button>
-						    <button onclick="reading_delete(); return false;">삭제</button>
-						    </div>
-						    </center>
-						    <br>
-						    <hr>
-						    <button type="button" id="delete_modal" style="float:right;">닫기</button>
-						  </div>
-						</div>
+        <div id="modalLayer">
+		  <div class="modalContent">
+		    <h4 style="margin-left:3%">License 수정 or 삭제</h4>
+		    <hr>
+		    <center>
+		    <div style="margin-top:8%;">
+		    <button style="margin-right:10%" onclick="obj_come(); return false;">수정</button>
+		    <button onclick="reading_delete(); return false;">삭제</button>
+		    </div>
+		    </center>
+		    <br>
+		    <hr>
+		    <button type="button" id="delete_modal" style="float:right;">닫기</button>
+		  </div>
+		</div>
         <!-- Footer -->
         <div id="footer">
             <div class="container">
@@ -219,6 +219,32 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 			console.log(obj);
 			delete_obj=$(obj).parent();
 		}
+		function obj_come(){
+    		var come_name=$(delete_obj).next(".7u").children("#delete_name").text();
+    		var temp=new Object();
+    		temp.name=come_name;
+    		temp.position="8";
+    		console.log(temp);
+    		$.ajax({
+    			url : '/2uzubook/ResumeUpdate',
+    			type : 'post',
+    			dataType : 'json',
+    			data : temp,
+    			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    			success : function(data){
+    				$("#name").val(data.name);
+                    $("#keyword").val(data.keyword);
+		            $("#date").val(data.date);
+    				reading_delete();
+    				
+    			},
+    			error : function(xhr,option,error){
+    				console.log(xhr.status);
+    				console.log(error);
+    				console.log('fail');
+    			}
+    		});
+    	}
         function reading_add() {
         	var temp=new Object();
         	var name = $("#name").val();

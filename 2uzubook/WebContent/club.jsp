@@ -190,7 +190,7 @@
 							    <hr>
 							    <center>
 							    <div style="margin-top:8%;">
-							    <button style="margin-right:10%">수정</button>
+							    <button style="margin-right:10%" onclick="obj_come(); return false;">수정</button>
 							    <button onclick="club_delete(); return false;">삭제</button>
 							    </div>
 							    </center>
@@ -243,6 +243,35 @@
 	                    		console.log(obj);
 	                    		delete_obj=$(obj).parent();
 	                    	}
+	                    	function obj_come(){
+		                		var come_name=$(delete_obj).next(".7u").children("#delete_name").text();
+		                		var temp=new Object();
+		                		temp.name=come_name;
+		                		temp.position="3";
+		                		console.log(temp);
+		                		$.ajax({
+		                			url : '/2uzubook/ResumeUpdate',
+		                			type : 'post',
+		                			dataType : 'json',
+		                			data : temp,
+		                			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		                			success : function(data){
+		                				$("#name").val(data.name);
+	                                    $("#keyword").val(data.keyword);
+                                        $("#startdate").val(data.startdate);
+                                        $("#desc").val(data.desc);
+                                        $("#enddate").val(data.enddate);
+                                        
+		                				club_delete();
+		                				
+		                			},
+		                			error : function(xhr,option,error){
+		                				console.log(xhr.status);
+		                				console.log(error);
+		                				console.log('fail');
+		                			}
+		                		});
+		                	}
                             function club_add() {
                                 var temp = new Object();
                                 var name = $("#name").val();

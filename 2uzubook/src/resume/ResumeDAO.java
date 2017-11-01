@@ -120,7 +120,7 @@ public class ResumeDAO extends Database{
 			jsonObject = executeAndGet_single(SQL_TEST, id,name);
 			return jsonObject;
 		case 6:
-			//컴퍼런ㅅ그
+			//컴퍼런스
 			String SQL_CONFERENCE="select * from conference where user=? and name=?";
 			jsonObject = executeAndGet_single(SQL_CONFERENCE, id,name);
 			return jsonObject;
