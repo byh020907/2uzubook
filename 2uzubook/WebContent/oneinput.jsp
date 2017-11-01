@@ -156,7 +156,7 @@
             </tr>
             
         </tbody>
-       
+       <br>
     </table>
        <table class="major">
         <thead>
@@ -168,25 +168,30 @@
             <tr>
                 <th scope="row">봉사</th>
                 <td style="width:auto;">
+                   <div id="volunteer_tag">
                    <div>
                             <input id="volunteer" name="volunteer" type="text" placeholder="봉사 이름">
                             <input id="date" name="volunteer_date" type="date">
                             <select id="keyword" name="volunteer_keyword">
                                 <option value="">키워드 </option>
                             </select>
-                            <input type="button" value="추가"> </div>
+                            <input type="button" value="추가" onclick="obj_add(7,this);return false;"> </div>
+                	</div>
                 </td>
             </tr>
             <tr>
                 <th scope="row">독서</th>
                 <td style="width:auto;">
+                   <div id="reading_tag">
                    <div>
                             <input id="reading" name="reading" type="text" placeholder="책 이름">
                             <input id="date" name="reading_date" type="date">
                             <select id="keyword" name="reading_keyword">
                                 <option value="">키워드 </option>
                             </select>
-                            <input type="button" value="추가"> </div>
+                            <input type="button" value="추가" onclick="obj_add(8,this);return false;"> 
+                   		</div>         
+                  </div>
                 </td>
             </tr>            
         </tbody>
@@ -206,6 +211,7 @@
     var test_tag;
     var project_tag;
     var delete_tag='<input type="button" value="삭제" onclick="obj_delete(this);return false;"><br>'; 
+    
     $("document").ready(function() {
     	 licen_tag=$("#licence_tag").html();
     	 award_tag=$("#award_tag").html();
@@ -247,6 +253,13 @@
     	case 6:
     		loc.append(conference_tag);
     		break;
+    	case 7:
+    		loc.append(volunteer_tag);
+    		break;
+    	case 8:
+    		loc.append(reading_tag);
+    		break;
+    	
     		
     		
     	}
