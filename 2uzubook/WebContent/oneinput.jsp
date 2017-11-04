@@ -438,19 +438,24 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     	case 1:
 
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(1,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-    	    loc.append(licen_tag);
-    	    if($(find_loc).find('#date').val==null)
+    		if($(find_loc).find('#date').val()==null)
     	    {
     	    	modal_come();
     	    }
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#licens').val();
-    		jobj.date=$(find_loc).find('#date').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		
-    		license_array.push(jobj);
+    	    else
+    	    {
+    	    	$(obj).parent().append(delete_tag);
+            	$(obj).remove();
+        	    loc.append(licen_tag);
+        	   
+    	    	var jobj=new Object();
+        		jobj.name=$(find_loc).find('#licens').val();
+        		jobj.date=$(find_loc).find('#date').val();
+        		jobj.keyword=$(find_loc).find('#keyword').val();
+        		
+        		license_array.push(jobj);
+        			
+    	    }
     		console.log(jobj);
     		break;
     	case 2:
