@@ -10,7 +10,15 @@ import etc.Volunteer;
 
 public class Parser extends Database implements SQL_Command {
 	
-
+	public ArrayList<Cert> certs;
+	public ArrayList<Award> awards;
+	public ArrayList<Club> clubs;
+	public ArrayList<Reading> readings;
+	public ArrayList<Conference> conferences;
+	public ArrayList<Volunteer> volunteers;
+	public ArrayList<Test> tests;
+	public ArrayList<Project> projects;
+	
 	public void inputCareer_license(ArrayList<Cert> arrayList, int student_id) {
 		String sql =INSERT_CERT_SQL;
 
