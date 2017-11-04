@@ -15,7 +15,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 </head>
 
 <body>
-    <div id="leftside" style="margin-right:0">
+    <div style=" width: 900px; margin: 0 auto;" >
         <table class="info">
             <thead>
                 <tr>
@@ -143,7 +143,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                 </tr>
             </tbody>
         </table>
-    </div>
+
     <table class="major">
         <thead>
             <tr>

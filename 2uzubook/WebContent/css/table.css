@@ -1,8 +1,3 @@
-#leftside {
-    display: center;
-    vertical-align: top;
-    margin-right: 200px;
-}
 #gdate {
    margin-left: 3px;
 }
@@ -60,7 +55,8 @@ button{
     width: 100px;
     height: 30px;
     font-size: 13px;
-    float: right;
+    margin-left: 65%;
+    
 }
 table.career {
     border-collapse: collapse;
