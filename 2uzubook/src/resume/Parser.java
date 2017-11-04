@@ -1,6 +1,7 @@
 package resume;
 
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -55,7 +56,7 @@ public class Parser extends Database implements SQL_Command {
 		String name = (String) jsonObject.get("name");
 		String date = (String) jsonObject.get("date");
 		int keyword = (int) jsonObject.get("keyword");
-		return new Conference(user, name, date, keyword);
+		return new Conference(user, name, date, keyword);	
 	}
 	
 
@@ -176,12 +177,14 @@ public class Parser extends Database implements SQL_Command {
 		return certs;
 	}
 	
-	public void inputCareer_cert(ArrayList<Cert> arrayList) {
+	public void inputCareer_cert(ArrayList<Cert> arrayList) throws SQLException {
 		String sql =INSERT_CERT_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);
 
+			
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
 				pstmt.setString(2, arrayList.get(i).getName());
@@ -192,16 +195,24 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
+				conn.commit();
 		} catch (Exception e) {
+			if (conn != null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
+		conn.setAutoCommit(true);                        
+
     }
 	
-	public void inputCareer_award(ArrayList<Award> arrayList) {
+	public void inputCareer_award(ArrayList<Award> arrayList) throws SQLException {
 		String sql = INSERT_AWARD_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);
+
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -214,16 +225,23 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
+				conn.commit();
+
 		} catch (Exception e) {
+			if (conn != null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
+		conn.setAutoCommit(true);                        
     }
 	
-	public void inputCareer_club(ArrayList<Club> arrayList) {
+	public void inputCareer_club(ArrayList<Club> arrayList) throws SQLException {
 		String sql = INSERT_CLUB_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -236,16 +254,24 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
+				conn.commit();
+
 		} catch (Exception e) {
+			if (conn != null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
+		conn.setAutoCommit(true);                        
+
     }
 	
-	public void inputCareer_reading(ArrayList<Reading> arrayList) {
+	public void inputCareer_reading(ArrayList<Reading> arrayList) throws SQLException {
 		String sql = INSERT_READINF_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -255,35 +281,51 @@ public class Parser extends Database implements SQL_Command {
 				pstmt.addBatch();
 			}	
 			 pstmt.executeBatch();
+				conn.commit();
+
 		} catch (Exception e) {
+			if (conn != null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
+		conn.setAutoCommit(true);                        
+
     }
 	
-	public void inputCareer_conference(ArrayList<Conference> arrayList) {
+	public void inputCareer_conference(ArrayList<Conference> arrayList) throws SQLException {
 		String sql =INSERT_CONFERENCE_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
 				pstmt.setString(2, arrayList.get(i).getName());
 				pstmt.setString(3, arrayList.get(i).getDate());
-				pstmt.setInt(4, arrayList.get(i).getKeyword());		
+				pstmt.setInt(4, arrayList.get(i).getKeyword());
 				pstmt.addBatch();
-			}	
-			 pstmt.executeBatch();
+			}
+			pstmt.executeBatch();
+			conn.commit();
+
 		} catch (Exception e) {
+			if (conn != null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
-    }
+		conn.setAutoCommit(true);                        
+
+	}
 	
-	public void inputCareer_volunteer(ArrayList<Volunteer> arrayList) {
+	public void inputCareer_volunteer(ArrayList<Volunteer> arrayList) throws SQLException {
 		String sql =INSERT_VOLUNTEER_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);                       
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -295,16 +337,23 @@ public class Parser extends Database implements SQL_Command {
 				pstmt.addBatch();
 			}	
 			 pstmt.executeBatch();
+			 conn.commit();                                      
+
 		} catch (Exception e) {
+			if(conn!=null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
+		conn.setAutoCommit(true);                        
     }
 	
-	public void inputCareer_test(ArrayList<Test> arrayList) {
+	public void inputCareer_test(ArrayList<Test> arrayList) throws SQLException {
 		String sql =INSERT_TEST_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);                       
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -315,16 +364,24 @@ public class Parser extends Database implements SQL_Command {
 				pstmt.addBatch();
 			}	
 			 pstmt.executeBatch();
+			 conn.commit();                                      
+
 		} catch (Exception e) {
+			if(conn!=null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
+		conn.setAutoCommit(true);                        
+
     }
 	
-	public void inputCareer_project(ArrayList<Project> arrayList) {
+	public void inputCareer_project(ArrayList<Project> arrayList) throws SQLException {
 		String sql = INSERT_PROJECT_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+			conn.setAutoCommit(false);                       
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -337,8 +394,14 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
+			 conn.commit();                                      
+
 		} catch (Exception e) {
+			if(conn!=null) {
+				conn.rollback();
+			}
 			e.printStackTrace();
 		}
+		conn.setAutoCommit(true);                        
     }
 }

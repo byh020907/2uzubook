@@ -643,7 +643,7 @@ public JSONArray search(int ...keyword) {
 		return jsonArray;
 	}
 
-	public void All_insert(JSONObject jsonObject) {
+	public void All_insert(JSONObject jsonObject) throws SQLException {
 		JSONArray jsonArrCerts;
 		JSONArray jsonArrAward;
 		JSONArray jsonArrClubs;
