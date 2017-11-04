@@ -31,23 +31,12 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 						</h2> <strong>jafj4a2@naver.com</strong>
                         <div>
                             <label for="interest">관심분야</label>
-                            <input type="button" value="추가">
-                            <div>
-                                <input id="interest" name="interest" type="text">
-                                <select id="keyword" name="club_keyword">
-                                    <option value="">키워드 </option>
-                                    <%
-                                for(int i=0;i<keywordArray.size();i++)
-                                {
-									JSONObject keyword=(JSONObject)keywordArray.get(i);
-								%>
-	                                 <option value="<%=keyword.get("id")%>">
-	                                     <%=keyword.get("name")%>
-	                                 </option>
-                                <% 
-                                }
-                                %>
-                                </select>
+                             <div>
+                            <input name="interest" type="text" placeholder="관심 분야" style="width: 150px;">
+                            <select id="keyword" name="interest_keyword">
+                                <option value="">키워드 </option>
+                            </select>
+                            <input type="button" value="추가"> 
                             </div>
                         </div>
                     </td>
