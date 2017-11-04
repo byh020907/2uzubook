@@ -1,8 +1,3 @@
-#leftside {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 200px;
-}
 #gdate {
    margin-left: 3px;
 }
@@ -60,7 +55,8 @@ button{
     width: 100px;
     height: 30px;
     font-size: 13px;
-    float: right;
+    margin-left: 65%;
+    
 }
 table.career {
     border-collapse: collapse;
@@ -96,8 +92,6 @@ table.major {
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;
-    display: inline-block;
-    vertical-align: top;
 }
 
 table.major thead th {

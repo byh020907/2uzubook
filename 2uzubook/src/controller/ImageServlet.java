@@ -1,8 +1,8 @@
 package controller;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -55,14 +55,19 @@ public class ImageServlet extends HttpServlet {
 		ServletOutputStream out = response.getOutputStream();
 
 		try {
-			printImage(out,getServletContext().getRealPath("")+"\\images\\"+imageUrl);
+			File file=new File(getServletContext().getRealPath("")+"\\images\\"+imageUrl);
+			if(file.exists()){				
+				printImage(out,getServletContext().getRealPath("")+"\\images\\"+imageUrl);
+			}else{
+				printImage(out,getServletContext().getRealPath("")+"\\images\\"+failImageUrl);
+			}
+			
 			//String imagePath = "C://sou/006_jspServlet/001_servlet/WebContent/images/aa.jpg";
-		} catch (FileNotFoundException e) {
-			//만약 이미지가 없다!
-			printImage(out,getServletContext().getRealPath("")+"\\images\\"+failImageUrl);
-		} catch(Exception e){
+		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		return;
 
 	}
 	
@@ -72,12 +77,12 @@ public class ImageServlet extends HttpServlet {
 		BufferedInputStream in = new BufferedInputStream(new FileInputStream(imagePath));
 
 		//버퍼(in)에 있는 데이터를 1024바이트(by) 만큼 읽어오고 데이터가 없을경우 반복문 종료
-		while(in.read(by) != 0) {
+		int i=0;
+		while(in.read(by) != -1) {
 			out.write(by); //1024바이트씩 출력
 		}
 
 		in.close();
 		out.close();
 	}
-
 }
