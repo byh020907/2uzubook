@@ -1,6 +1,6 @@
 package resume;
 
-public class SQL_Command {
+public interface SQL_Command {
 	
 	//resume
 	public static String INSERT_CERT_SQL="insert into cert (user,name,ins,date,keyword) values (?,?,?,?,?)";
@@ -12,7 +12,7 @@ public class SQL_Command {
 	
 	
 	//etc
-	public static String INSERT_INTERESTS_SQL= "insert into interests (user,name,keyword) values (?,?,?)";
+	public static String INSERT_VOLUNTEER_SQL="insert into volunteer (user,name,ins,starttime,endtime,keyword) values (?,?,?,?,?,?)";
 	public static String INSERT_READINF_SQL="insert into reading (user,name,date,keyword) values (?,?,?,?)";
 
 

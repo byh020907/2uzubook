@@ -280,7 +280,6 @@ public class ResumeDAO extends Database{
 		return -1;
 	}
 	
-	
 	public int update_cert(String name, String ins, String date, int keyword) {
 		String SQL = "update cert set name=?,ins=?,date=?,keyword=?";
 
