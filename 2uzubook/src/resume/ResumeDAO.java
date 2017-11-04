@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -13,8 +14,10 @@ import org.json.simple.JSONObject;
 import com.sun.org.apache.regexp.internal.recompile;
 
 import dao.Database;
+import etc.Reading;
+import etc.Volunteer;
 
-public class ResumeDAO extends Database{
+public class ResumeDAO extends Parser{
 	
 	private static ResumeDAO instance;
 	
@@ -633,13 +636,80 @@ public JSONArray search(int ...keyword) {
 		try {
 			jsonArray=executeAndGet(SQL);
 			return jsonArray;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return jsonArray;
 	}
-	
+
+	public void All_insert(JSONObject jsonObject) {
+		JSONArray jsonArrCerts;
+		JSONArray jsonArrAward;
+		JSONArray jsonArrClubs;
+		JSONArray jsonArrReadings;
+		JSONArray jsonArrConferences;
+		JSONArray jsonArrVolunteers;
+		JSONArray jsonArrTests;
+		JSONArray jsonArrProjects;
+		
+		ArrayList<Cert> certs;
+		ArrayList<Award> awards;
+		ArrayList<Club> clubs;
+		ArrayList<Reading> readings;
+		ArrayList<Conference> conferences;
+		ArrayList<Volunteer> volunteers;
+		ArrayList<Test> tests;
+		ArrayList<Project> projects;
+		
+		for (int i = 0; i < jsonObject.size(); i++) {
+			switch (i) {
+			case 0:
+				jsonArrCerts=(JSONArray)jsonObject.get("licenseArr");
+				certs=certsJsonArrayParser(jsonArrCerts);
+				inputCareer_cert(certs);
+				break;
+			case 1:
+				jsonArrAward=(JSONArray)jsonObject.get("awardArr");
+				awards=awardsJsonArrayParser(jsonArrAward);
+				inputCareer_award(awards);
+				break;
+			case 2:
+				jsonArrClubs=(JSONArray)jsonObject.get("clubArr");
+				clubs=clubsJsonArrayParser(jsonArrClubs);
+				inputCareer_club(clubs);
+				break;
+			case 3:
+				jsonArrReadings=(JSONArray)jsonObject.get("readingArr");
+				readings=readingsJsonArrayParser(jsonArrReadings);
+				inputCareer_reading(readings);
+				break;
+			case 4:
+				jsonArrConferences=(JSONArray)jsonObject.get("conferenceArr");
+				conferences=conferencesJsonArrayParser(jsonArrConferences);
+				inputCareer_conference(conferences);
+				break;
+			case 5:
+				jsonArrVolunteers=(JSONArray)jsonObject.get("volunteerArr");
+				volunteers=volunteersJsonArrayParser(jsonArrVolunteers);
+				inputCareer_volunteer(volunteers);
+				break;
+			case 6:
+				jsonArrTests=(JSONArray)jsonObject.get("testArr");
+				tests=testsJsonArrayParser(jsonArrTests);
+				inputCareer_test(tests);
+				break;
+			case 7:
+				jsonArrProjects=(JSONArray)jsonObject.get("projectArr");
+				projects=projectsJsonArrayParser(jsonArrProjects);
+				inputCareer_project(projects);
+				break;
+			default:
+				break;
+			}
+		}
+
+	}
 	
 	// ?로 가 몇개인지 알려주는 함수
 	public int getCharNumber(String str,char c) {
