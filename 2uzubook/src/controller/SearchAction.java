@@ -47,6 +47,8 @@ public class SearchAction extends HttpServlet {
 		}
 		
 		JSONArray result = resumeDAO.search(keywords);
+		
+		System.out.println(result);
 
 		request.setAttribute("JSONArray", result);
 		request.setAttribute("keyword", keyword);
