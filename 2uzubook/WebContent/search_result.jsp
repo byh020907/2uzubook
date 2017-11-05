@@ -9,9 +9,9 @@
 	System.out.println(id);
 %>
 <%
-		JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
-		JSONArray keywordArray = (JSONArray) request.getAttribute("keyword");
-		System.out.println(jsonArray+"//"+keywordArray);
+	JSONArray jsonArray = (JSONArray) request.getAttribute("JSONArray");
+	JSONArray keywordArray = (JSONArray) request.getAttribute("keyword");
+	System.out.println(jsonArray+"//"+keywordArray);
 %>
 <!DOCTYPE HTML>
 <html>
