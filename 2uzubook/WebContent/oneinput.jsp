@@ -84,7 +84,7 @@ String email=(String)jsonObject.get("email");
 	                            <input id="licens" name="license" type="text" value=<%=licen.get("name")%> placeholder="자격증 이름">
 	                            <input id="date" name="license_date" type="date" value=<%=licen.get("date")%>>
 	                            <select id="keyword" name="license_keyword">
-	                                <option value=<%=licen.get("id")%> selected><%=licen.get("keyword")%></option>
+	                                <option value=<%=licen.get("keyword")%> selected><%=licen.get("id")%></option>
 	                                
 	                            </select>
 	                            <input type="button" value="추가" onclick="obj_add(1,this);return false;"> 
