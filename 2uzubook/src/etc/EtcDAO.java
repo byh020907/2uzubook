@@ -48,17 +48,35 @@ public class EtcDAO extends Database {
 	public JSONArray select_resume(String id, int position) {
 
 		JSONArray jsonArray = new JSONArray();
+		JSONArray test=new JSONArray();
+		String SQL="select * from keyword where name=?";
 
 		switch (position) {
 		case 1:
 			// 봉사
 			String SQL_VOLUNTEER = "select * from volunteer where user=?";
 			jsonArray = executeAndGet(SQL_VOLUNTEER, id);
+			
+			JSONObject jsonObject=(JSONObject) jsonArray.get(0);
+			String name_1=(String) jsonObject.get("keyword");
+			
+			test=executeAndGet(SQL, name_1);
+			JSONObject object_1=(JSONObject) test.get(0);
+			int keyword_id_1=(Integer) object_1.get("id");
+			jsonObject.put("keyword_id", keyword_id_1);
 			return jsonArray;
 		case 2:
 			// 독서
 			String SQL_READING = "select * from reading where user=?";
 			jsonArray = executeAndGet(SQL_READING, id);
+			
+			JSONObject jsonObject_2=(JSONObject) jsonArray.get(0);
+			String name_2=(String) jsonObject_2.get("keyword");
+			
+			test=executeAndGet(SQL, name_2);
+			JSONObject object_2=(JSONObject) test.get(0);
+			int keyword_id_2=(Integer) object_2.get("id");
+			jsonObject_2.put("keyword_id", keyword_id_2);
 			return jsonArray;
 		case 3:
 			//관심분야

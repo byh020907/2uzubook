@@ -135,37 +135,89 @@ public class ResumeDAO extends Parser{
 	public JSONArray select_resume(String id, int position) {
 
 		JSONArray jsonArray = new JSONArray();
+		
+		JSONArray test=new JSONArray();
+
+		String SQL="select * from keyword where name=?";
 
 		switch (position) {
 		case 1:
-			// 자격증
-			String SQL_CERT = "select * from cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";
+			// 자격증 SELECT DISTINCT user.id, user.name, user.stu_id, user.gender, major.name AS major FROM user
+			String SQL_CERT = "SELECT cert.name, cert.ins, cert.keyword, keyword.name as keyword FROM cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";	
 			jsonArray = executeAndGet(SQL_CERT, id);
+			
+			JSONObject jsonObject=(JSONObject) jsonArray.get(0);
+			String name_1=(String) jsonObject.get("keyword");
+			
+			test=executeAndGet(SQL, name_1);
+			JSONObject object_1=(JSONObject) test.get(0);
+			int keyword_id_1=(Integer) object_1.get("id");
+			jsonObject.put("keyword_id", keyword_id_1);
 			return jsonArray;
 		case 2:
 			// 수상경력
 			String SQL_AWARD = "select * from award where user=?";
 			jsonArray = executeAndGet(SQL_AWARD, id);
+			
+			JSONObject jsonObject_2=(JSONObject) jsonArray.get(0);
+			String name_2=(String) jsonObject_2.get("keyword");
+			
+			test=executeAndGet(SQL, name_2);
+			JSONObject object_2=(JSONObject) test.get(0);
+			int keyword_id_2=(Integer) object_2.get("id");
+			jsonObject_2.put("keyword_id", keyword_id_2);
 			return jsonArray;
 		case 3:
 			// 동아리
 			String SQL_CLUB = "select * from club where user=?";
 			jsonArray = executeAndGet(SQL_CLUB, id);
+			
+			JSONObject jsonObject_3=(JSONObject) jsonArray.get(0);
+			String name_3=(String) jsonObject_3.get("keyword");
+			
+			test=executeAndGet(SQL, name_3);
+			JSONObject object_3=(JSONObject) test.get(0);
+			int keyword_id_3=(Integer) object_3.get("id");
+			jsonObject_3.put("keyword_id", keyword_id_3);
 			return jsonArray;
 		case 4:
 			// 프로젝트
 			String SQL_PROJECT = "select * from project where user=?";
 			jsonArray = executeAndGet(SQL_PROJECT, id);
+			
+			JSONObject jsonObject_4=(JSONObject) jsonArray.get(0);
+			String name_4=(String) jsonObject_4.get("keyword");
+			
+			test=executeAndGet(SQL, name_4);
+			JSONObject object_4=(JSONObject) test.get(0);
+			int keyword_id_4=(Integer) object_4.get("id");
+			jsonObject_4.put("keyword_id", keyword_id_4);
 			return jsonArray;
 		case 5:
 			//test
 			String SQL_TEST="select * from test where user=?";
 			jsonArray = executeAndGet(SQL_TEST, id);
+			
+			JSONObject jsonObject_5=(JSONObject) jsonArray.get(0);
+			String name_5=(String) jsonObject_5.get("keyword");
+			
+			test=executeAndGet(SQL, name_5);
+			JSONObject object_5=(JSONObject) test.get(0);
+			int keyword_id_5=(Integer) object_5.get("id");
+			jsonObject_5.put("keyword_id", keyword_id_5);
 			return jsonArray;
 		case 6:
-			//컴퍼런ㅅ그
-			String SQL_CONFERENCE="select * from conference where user=?";
+			// 컴퍼런ㅅ그
+			String SQL_CONFERENCE = "select * from conference where user=?";
 			jsonArray = executeAndGet(SQL_CONFERENCE, id);
+
+			JSONObject jsonObject_6 = (JSONObject) jsonArray.get(0);
+			String name_6 = (String) jsonObject_6.get("keyword");
+
+			test = executeAndGet(SQL, name_6);
+			JSONObject object_6 = (JSONObject) test.get(0);
+			int keyword_id_6 = (Integer) object_6.get("id");
+			jsonObject_6.put("keyword_id", keyword_id_6);
 			return jsonArray;
 		default:
 			return jsonArray;
