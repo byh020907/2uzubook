@@ -57,27 +57,36 @@ public class EtcDAO extends Database {
 			String SQL_VOLUNTEER = "select * from volunteer where user=?";
 			jsonArray = executeAndGet(SQL_VOLUNTEER, id);
 			
-			JSONObject jsonObject=(JSONObject) jsonArray.get(0);
-			String name_1=(String) jsonObject.get("keyword");
-			
-			test=executeAndGet(SQL, name_1);
-			JSONObject object_1=(JSONObject) test.get(0);
-			int keyword_id_1=(Integer) object_1.get("id");
-			jsonObject.put("keyword_id", keyword_id_1);
-			return jsonArray;
+			if(jsonArray.size()==0) {
+				return jsonArray;
+			}else {
+				JSONObject jsonObject=(JSONObject) jsonArray.get(0);
+				String name_1=(String) jsonObject.get("keyword");
+				
+				test=executeAndGet(SQL, name_1);
+				JSONObject object_1=(JSONObject) test.get(0);
+				int keyword_id_1=(Integer) object_1.get("id");
+				jsonObject.put("keyword_id", keyword_id_1);
+				return jsonArray;
+			}
+
 		case 2:
 			// 독서
 			String SQL_READING = "select * from reading where user=?";
 			jsonArray = executeAndGet(SQL_READING, id);
-			
-			JSONObject jsonObject_2=(JSONObject) jsonArray.get(0);
-			String name_2=(String) jsonObject_2.get("keyword");
-			
-			test=executeAndGet(SQL, name_2);
-			JSONObject object_2=(JSONObject) test.get(0);
-			int keyword_id_2=(Integer) object_2.get("id");
-			jsonObject_2.put("keyword_id", keyword_id_2);
-			return jsonArray;
+
+			if (jsonArray.size() == 0) {
+				return jsonArray;
+			} else {
+				JSONObject jsonObject_2 = (JSONObject) jsonArray.get(0);
+				String name_2 = (String) jsonObject_2.get("keyword");
+
+				test = executeAndGet(SQL, name_2);
+				JSONObject object_2 = (JSONObject) test.get(0);
+				int keyword_id_2 = (Integer) object_2.get("id");
+				jsonObject_2.put("keyword_id", keyword_id_2);
+				return jsonArray;
+			}
 		case 3:
 			//관심분야
 			String SQL_INTERESTS = "select * from interests where user=?";
