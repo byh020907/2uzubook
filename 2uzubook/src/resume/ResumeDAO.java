@@ -135,6 +135,10 @@ public class ResumeDAO extends Parser{
 	public JSONArray select_resume(String id, int position) {
 
 		JSONArray jsonArray = new JSONArray();
+		
+		JSONArray test=new JSONArray();
+
+		String SQL="select * from keyword where name=?";
 
 		switch (position) {
 		case 1:
@@ -143,25 +147,38 @@ public class ResumeDAO extends Parser{
 			jsonArray = executeAndGet(SQL_CERT, id);
 			
 			JSONObject jsonObject=(JSONObject) jsonArray.get(0);
-			String name=(String) jsonObject.get("keyword");
+			String name_1=(String) jsonObject.get("keyword");
 			
-			JSONArray jsonArray2=new JSONArray();
-			String SQL="select * from keyword where name=?";
-			jsonArray2=executeAndGet(SQL, name);
-			JSONObject object=(JSONObject) jsonArray2.get(0);
-			int id_id=(Integer) object.get("id");
-			
-			jsonObject.put("keyword_id", id_id);
+			test=executeAndGet(SQL, name_1);
+			JSONObject object_1=(JSONObject) test.get(0);
+			int keyword_id_1=(Integer) object_1.get("id");
+			jsonObject.put("keyword_id", keyword_id_1);
 			return jsonArray;
 		case 2:
 			// 수상경력
 			String SQL_AWARD = "select * from award where user=?";
 			jsonArray = executeAndGet(SQL_AWARD, id);
+			
+			JSONObject jsonObject_2=(JSONObject) jsonArray.get(0);
+			String name_2=(String) jsonObject_2.get("keyword");
+			
+			test=executeAndGet(SQL, name_2);
+			JSONObject object_2=(JSONObject) test.get(0);
+			int keyword_id_2=(Integer) object_2.get("id");
+			jsonObject_2.put("keyword_id", keyword_id_2);
 			return jsonArray;
 		case 3:
 			// 동아리
 			String SQL_CLUB = "select * from club where user=?";
 			jsonArray = executeAndGet(SQL_CLUB, id);
+			
+			JSONObject jsonObject_3=(JSONObject) jsonArray.get(0);
+			String name_3=(String) jsonObject_3.get("keyword");
+			
+			test=executeAndGet(SQL, name_3);
+			JSONObject object_3=(JSONObject) test.get(0);
+			int keyword_id_3=(Integer) object_3.get("id");
+			jsonObject_3.put("keyword_id", keyword_id_3);
 			return jsonArray;
 		case 4:
 			// 프로젝트
