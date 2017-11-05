@@ -139,7 +139,7 @@ public class ResumeDAO extends Parser{
 		switch (position) {
 		case 1:
 			// 자격증
-			String SQL_CERT = "select * from cert where user=?";
+			String SQL_CERT = "select * from cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";
 			jsonArray = executeAndGet(SQL_CERT, id);
 			return jsonArray;
 		case 2:
