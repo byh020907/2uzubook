@@ -342,7 +342,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     var marginLeft = modalCont.outerWidth()/2;
     var marginTop = modalCont.outerHeight()/2; 
     
-    function total_store();
+    function total_store()
     {
     	var temp=new Object();
     	temp.licenseArr=license_array;
