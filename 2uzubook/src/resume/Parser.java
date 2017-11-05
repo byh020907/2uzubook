@@ -29,7 +29,8 @@ public class Parser extends Database implements SQL_Command {
 		String ins = (String) jsonObject.get("ins");
 		String grade = (String) jsonObject.get("grade");
 		String date = (String) jsonObject.get("date");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Award(user, name, ins, grade, date, keyword);
 	}
 	
@@ -39,7 +40,8 @@ public class Parser extends Database implements SQL_Command {
 		String desc = (String) jsonObject.get("desc");
 		String startDate = (String) jsonObject.get("startDate");
 		String endDate = (String) jsonObject.get("endDate");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Club(user, name, desc, startDate, endDate, keyword);
 	}
 	
@@ -47,7 +49,7 @@ public class Parser extends Database implements SQL_Command {
 		String user = (String) jsonObject.get("user");
 		String name = (String) jsonObject.get("name");
 		String date = (String) jsonObject.get("date");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
 		return new Reading(user, name, date, keyword);
 	}
 	
@@ -55,7 +57,7 @@ public class Parser extends Database implements SQL_Command {
 		String user = (String) jsonObject.get("user");
 		String name = (String) jsonObject.get("name");
 		String date = (String) jsonObject.get("date");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
 		return new Conference(user, name, date, keyword);	
 	}
 	
@@ -66,16 +68,18 @@ public class Parser extends Database implements SQL_Command {
 		String ins = (String) jsonObject.get("ins");
 		String startTime = (String) jsonObject.get("startTime");
 		String endTime = (String) jsonObject.get("endTime");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Volunteer(user, name, ins, startTime, endTime, keyword);
 	}
 	
 	public Test testJsonObjectParser(JSONObject jsonObject) {
 		String user = (String) jsonObject.get("user");
 		String name = (String) jsonObject.get("name");
-		int score = (int) jsonObject.get("score");
+		int score = Integer.parseInt((String)jsonObject.get("score"));
 		String date = (String) jsonObject.get("date");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Test(user, name, score, date, keyword);
 	}
 	
@@ -85,7 +89,8 @@ public class Parser extends Database implements SQL_Command {
 		String desc = (String) jsonObject.get("desc");
 		String startDate = (String) jsonObject.get("startDate");
 		String endDate = (String) jsonObject.get("endDate");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Project(user, name, desc, startDate, endDate, keyword);
 	}
 	
