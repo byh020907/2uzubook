@@ -179,15 +179,33 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">봉사</th>
-                                    <td> 중랑천 청소 (2016. 5. 20)
-                                        <br> 사이버안전훈련 청소 (2016 . 7. 21 ~ 7.22)
-                                        <br> 녹색 발명대회 (2016. 6.15)</td>
+                                    <td> 
+                                        <%for(int i=0;i<volunteers.size();i++)
+					                     {
+					                            JSONObject volunteer=(JSONObject)volunteers.get(i);
+					                    %>
+                                            <%=volunteer.get("name") %> (
+                                                <%=(Date)volunteer.get("date") %>)
+                                                    <br>
+                                        <%
+					                     }
+										%>
+										</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">독서</th>
-                                    <td> 신데렐라 (2016. 5. 20)
-                                        <br> 콩쥐팥쥐 (2016 . 7. 21 ~ 7.22)
-                                        <br> 앙기모띠 (2016. 6.15) </td>
+                                    <td>
+                                        <%for(int i=0;i<reads.size();i++)
+					                     {
+					                            JSONObject read=(JSONObject)reads.get(i);
+					                    %>
+                                            <%=read.get("name") %> (
+                                                <%=(Date)read.get("date") %>)
+                                                    <br>
+                                        <%
+					                     }
+										%>
+										</td>
                                 </tr>
                             </tbody>
                         </table>

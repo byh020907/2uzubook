@@ -20,14 +20,14 @@ import user.UserDAO;
 /**
  * Servlet implementation class myresume
  */
-@WebServlet("/SeeStudentResume")
-public class SeeStudentResume extends HttpServlet {
+@WebServlet("/SeeStudentOneseeResume")
+public class SeeStudentOneseeResume extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ResumeDAO database;
 	EtcDAO database2;
 	UserDAO database3;
 	
-    public SeeStudentResume() {
+    public SeeStudentOneseeResume() {
     	database=ResumeDAO.getInstance();
     	database2=EtcDAO.getInstance();
     	database3=UserDAO.getInstance();
