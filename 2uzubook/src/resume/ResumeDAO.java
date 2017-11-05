@@ -139,7 +139,7 @@ public class ResumeDAO extends Parser{
 		switch (position) {
 		case 1:
 			// 자격증
-			String SQL_CERT = "select * from cert where user=?";
+			String SQL_CERT = "select * from cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";
 			jsonArray = executeAndGet(SQL_CERT, id);
 			return jsonArray;
 		case 2:
@@ -410,7 +410,7 @@ public JSONArray search(int ...keyword) {
 		int[] keywordList=new int[keyword.length*4];
 
 		
-		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.id, user.name, user.stu_id, major.name AS major FROM user "
+		StringBuilder sb = new StringBuilder( "SELECT DISTINCT user.id, user.name, user.stu_id, user.gender, major.name AS major FROM user "
 				+ "LEFT JOIN award ON user.id=award.user " 
 				+ "LEFT JOIN cert ON user.id=cert.user "
 				+ "LEFT JOIN project ON user.id=project.user " 
@@ -652,7 +652,7 @@ public JSONArray search(int ...keyword) {
 		JSONArray jsonArrVolunteers;
 		JSONArray jsonArrTests;
 		JSONArray jsonArrProjects;
-		
+
 		ArrayList<Cert> certs;
 		ArrayList<Award> awards;
 		ArrayList<Club> clubs;
@@ -661,40 +661,78 @@ public JSONArray search(int ...keyword) {
 		ArrayList<Volunteer> volunteers;
 		ArrayList<Test> tests;
 		ArrayList<Project> projects;
+
+		jsonArrCerts = (JSONArray) jsonObject.get("licenseArr");
+		if(jsonArrCerts != null) {
+			certs = certsJsonArrayParser(jsonArrCerts);
+			inputCareer_cert(certs);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
 		
-
-				jsonArrCerts=(JSONArray)jsonObject.get("licenseArr");
-				certs=certsJsonArrayParser(jsonArrCerts);
-				inputCareer_cert(certs);
-	
-				jsonArrAward=(JSONArray)jsonObject.get("awardArr");
-				awards=awardsJsonArrayParser(jsonArrAward);
-				inputCareer_award(awards);
-
-				jsonArrClubs=(JSONArray)jsonObject.get("clubArr");
-				clubs=clubsJsonArrayParser(jsonArrClubs);
-				inputCareer_club(clubs);
+		jsonArrAward = (JSONArray) jsonObject.get("awardArr");
+		if(jsonArrAward != null) {
+			awards = awardsJsonArrayParser(jsonArrAward);
+			inputCareer_award(awards);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
 		
-				jsonArrReadings=(JSONArray)jsonObject.get("readingArr");
-				readings=readingsJsonArrayParser(jsonArrReadings);
-				inputCareer_reading(readings);
+		jsonArrClubs = (JSONArray) jsonObject.get("clubArr");
+		if(jsonArrClubs!=null) {
+			clubs = clubsJsonArrayParser(jsonArrClubs);
+			inputCareer_club(clubs);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
 	
-				jsonArrConferences=(JSONArray)jsonObject.get("conferenceArr");
-				conferences=conferencesJsonArrayParser(jsonArrConferences);
-				inputCareer_conference(conferences);
-
+		jsonArrReadings = (JSONArray) jsonObject.get("readingArr");
+		if(jsonArrReadings !=null) {
+			readings = readingsJsonArrayParser(jsonArrReadings);
+			inputCareer_reading(readings);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		
+		jsonArrConferences = (JSONArray) jsonObject.get("conferenceArr");
+		if(jsonArrConferences != null) {
+			conferences = conferencesJsonArrayParser(jsonArrConferences);
+			inputCareer_conference(conferences);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		
 		jsonArrVolunteers = (JSONArray) jsonObject.get("volunteerArr");
-		volunteers = volunteersJsonArrayParser(jsonArrVolunteers);
-		inputCareer_volunteer(volunteers);
-
+		if(jsonArrVolunteers!=null) {
+			volunteers = volunteersJsonArrayParser(jsonArrVolunteers);
+			inputCareer_volunteer(volunteers);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		
 		jsonArrTests = (JSONArray) jsonObject.get("testArr");
-		tests = testsJsonArrayParser(jsonArrTests);
-		inputCareer_test(tests);
+		if(jsonArrTests !=null) {
+			tests = testsJsonArrayParser(jsonArrTests);
+			inputCareer_test(tests);
+
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
 
 		jsonArrProjects = (JSONArray) jsonObject.get("projectArr");
-		projects = projectsJsonArrayParser(jsonArrProjects);
-		inputCareer_project(projects);
-
+		if(jsonArrProjects != null) {
+			projects = projectsJsonArrayParser(jsonArrProjects);
+			inputCareer_project(projects);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+	
 	}
 
 

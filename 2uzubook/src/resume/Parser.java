@@ -19,7 +19,7 @@ public class Parser extends Database implements SQL_Command {
 		String name = (String) jsonObject.get("name");
 		String ins = (String) jsonObject.get("ins"); // 주최측 정보
 		String date = (String) jsonObject.get("date");
-		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+		int keyword = (int) jsonObject.get("keyword");
 		return new Cert(user, name, ins, date, keyword);
 	}
 
@@ -29,7 +29,8 @@ public class Parser extends Database implements SQL_Command {
 		String ins = (String) jsonObject.get("ins");
 		String grade = (String) jsonObject.get("grade");
 		String date = (String) jsonObject.get("date");
-		int keyword = (Integer) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Award(user, name, ins, grade, date, keyword);
 	}
 	
@@ -39,7 +40,8 @@ public class Parser extends Database implements SQL_Command {
 		String desc = (String) jsonObject.get("desc");
 		String startDate = (String) jsonObject.get("startDate");
 		String endDate = (String) jsonObject.get("endDate");
-		int keyword = (Integer) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Club(user, name, desc, startDate, endDate, keyword);
 	}
 	
@@ -47,7 +49,7 @@ public class Parser extends Database implements SQL_Command {
 		String user = (String) jsonObject.get("user");
 		String name = (String) jsonObject.get("name");
 		String date = (String) jsonObject.get("date");
-		int keyword = (Integer) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
 		return new Reading(user, name, date, keyword);
 	}
 	
@@ -55,7 +57,7 @@ public class Parser extends Database implements SQL_Command {
 		String user = (String) jsonObject.get("user");
 		String name = (String) jsonObject.get("name");
 		String date = (String) jsonObject.get("date");
-		int keyword = (Integer) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
 		return new Conference(user, name, date, keyword);	
 	}
 	
@@ -66,16 +68,18 @@ public class Parser extends Database implements SQL_Command {
 		String ins = (String) jsonObject.get("ins");
 		String startTime = (String) jsonObject.get("startTime");
 		String endTime = (String) jsonObject.get("endTime");
-		int keyword = (Integer) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Volunteer(user, name, ins, startTime, endTime, keyword);
 	}
 	
 	public Test testJsonObjectParser(JSONObject jsonObject) {
 		String user = (String) jsonObject.get("user");
 		String name = (String) jsonObject.get("name");
-		int score = (Integer) jsonObject.get("score");
+		int score = Integer.parseInt((String)jsonObject.get("score"));
 		String date = (String) jsonObject.get("date");
-		int keyword = (Integer) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Test(user, name, score, date, keyword);
 	}
 	
@@ -85,7 +89,8 @@ public class Parser extends Database implements SQL_Command {
 		String desc = (String) jsonObject.get("desc");
 		String startDate = (String) jsonObject.get("startDate");
 		String endDate = (String) jsonObject.get("endDate");
-		int keyword = (Integer) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
+
 		return new Project(user, name, desc, startDate, endDate, keyword);
 	}
 	
@@ -183,7 +188,6 @@ public class Parser extends Database implements SQL_Command {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 
-			
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
 				pstmt.setString(2, arrayList.get(i).getName());
@@ -229,7 +233,6 @@ public class Parser extends Database implements SQL_Command {
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			conn.setAutoCommit(false);
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -242,24 +245,17 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
-				conn.commit();
-
 		} catch (Exception e) {
-			if (conn != null) {
-				conn.rollback();
-			}
 			e.printStackTrace();
 		}
-		conn.setAutoCommit(true);                        
 
-    }
-	
+	}
+
 	public void inputCareer_reading(ArrayList<Reading> arrayList) throws SQLException {
 		String sql = INSERT_READINF_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			conn.setAutoCommit(false);
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -267,22 +263,18 @@ public class Parser extends Database implements SQL_Command {
 				pstmt.setString(3, arrayList.get(i).getDate());
 				pstmt.setInt(4, arrayList.get(i).getKeyword());
 				pstmt.addBatch();
-			}	
-			 pstmt.executeBatch();
-				conn.commit();
+			}
+			pstmt.executeBatch();
 
 		} catch (Exception e) {
-			if (conn != null) {
-				conn.rollback();
-			}
+
 			e.printStackTrace();
 		}
-		conn.setAutoCommit(true);                        
 
-    }
-	
+	}
+
 	public void inputCareer_conference(ArrayList<Conference> arrayList) throws SQLException {
-		String sql =INSERT_CONFERENCE_SQL;
+		String sql = INSERT_CONFERENCE_SQL;
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -347,7 +339,6 @@ public class Parser extends Database implements SQL_Command {
 			 pstmt.executeBatch();
 
 		} catch (Exception e) {
-
 			e.printStackTrace();
 		}
 		
@@ -368,12 +359,23 @@ public class Parser extends Database implements SQL_Command {
 				pstmt.setInt(6, arrayList.get(i).getKeyword());
 				pstmt.addBatch();
 				System.out.println("성공");
-			}	
-			 pstmt.executeBatch();
+			}
+			pstmt.executeBatch();
 
 		} catch (Exception e) {
-		
 			e.printStackTrace();
 		}
     }
+	
+	public int inputWithTransaction(ArrayList<Cert> certs,ArrayList<Award> awards
+			,ArrayList<Club> clubs,ArrayList<Reading> readings,ArrayList<Conference> conferences
+			,ArrayList<Volunteer> volunteers,ArrayList<Test> tests,ArrayList<Project> projects) throws SQLException {
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return 0;
+	}
 }

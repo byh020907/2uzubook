@@ -5,6 +5,29 @@
 <%
 request.setCharacterEncoding("UTF-8");
 JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
+
+JSONObject jsonObject= (JSONObject) request.getAttribute("JSONObject");
+
+JSONArray licenses=(JSONArray)jsonObject.get("licenses");
+JSONArray awards=(JSONArray)jsonObject.get("awards");
+JSONArray projects=(JSONArray)jsonObject.get("projects");
+JSONArray conferences=(JSONArray)jsonObject.get("conferences");
+JSONArray clubs=(JSONArray)jsonObject.get("clubs");
+JSONArray reads=(JSONArray)jsonObject.get("readings");
+JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
+JSONArray tests=(JSONArray)jsonObject.get("tests");
+
+JSONArray interests=(JSONArray)jsonObject.get("interests");
+
+System.out.println(jsonObject);//log
+String name=(String)jsonObject.get("name");
+int major=(Integer)jsonObject.get("major");
+
+String majorName=(String)jsonObject.get("majorName");
+
+int student_id=(Integer)jsonObject.get("stu_id");
+String gender=(String)jsonObject.get("gender");
+String email=(String)jsonObject.get("email");
 %>
 <!DOCTYPE HTML>
 <html>
@@ -55,25 +78,39 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                     <th scope="row">자격증</th>
                     <td>
                         <div id="licence_tag">
-                        <div>
-                            <input id="licens" name="license" type="text" placeholder="자격증 이름">
-                            <input id="date" name="license_date" type="date">
-                            <select id="keyword" name="license_keyword">
-                                <option value="">키워드 </option>
-                                <%
-                                for(int i=0;i<keywordArray.size();i++)
-                                {
-									JSONObject keyword=(JSONObject)keywordArray.get(i);
-								%>
-	                                 <option value="<%=keyword.get("id")%>">
-	                                     <%=keyword.get("name")%>
-	                                 </option>
-                                <% 
-                                }
-                                %>
-                            </select>
-                            <input type="button" value="추가" onclick="obj_add(1,this);return false;"> 
-                            </div>
+	                        <%for(int j=0;j<licenses.size();j++){ 
+								JSONObject licen=(JSONObject)licenses.get(j);%>
+	                        <div>
+	                            <input id="licens" name="license" type="text" value=<%=licen.get("name")%> placeholder="자격증 이름">
+	                            <input id="date" name="license_date" type="date" value=<%=licen.get("date")%>>
+	                            <select id="keyword" name="license_keyword">
+	                                <option value=<%=licen.get("id")%> selected><%=licen.get("keyword")%></option>
+	                                
+	                            </select>
+	                            <input type="button" value="추가" onclick="obj_add(1,this);return false;"> 
+	                            </div>
+	                            <%
+	                        		}
+	                            %>
+	                        	<div>
+	                            <input id="licens" name="license" type="text" placeholder="자격증 이름">
+	                            <input id="date" name="license_date" type="date">
+	                            <select id="keyword" name="license_keyword">
+	                                <option value="">키워드 </option>
+	                                <%
+	                                for(int i=0;i<keywordArray.size();i++)
+	                                {
+										JSONObject keyword=(JSONObject)keywordArray.get(i);
+									%>
+		                                 <option value="<%=keyword.get("id")%>">
+		                                     <%=keyword.get("name")%>
+		                                 </option>
+	                                <% 
+	                                }
+	                                %>
+	                            </select>
+	                            <input type="button" value="추가" onclick="obj_add(1,this);return false;"> 
+	                            </div>
                         </div>
                     </td>
                 </tr>
@@ -338,8 +375,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
         temp.readingArr=reading_array;
         temp.testArr=test_array;
         temp.volunteerArr=volunteer_array;
+        
         var temp=JSON.stringify(temp);
-    	$.ajax({
+        console.log(temp);
+    	
+        $.ajax({
             url: '/2uzubook/OneInputStore'
             , type: 'post'
             , data: temp
@@ -348,6 +388,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                 location.href='/index.jsp';
             }
             ,error:function(xhr,option,error){
+            	console.log(temp);
             	alert(xhr.status);
             	alert(error);
             }
@@ -450,100 +491,150 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     		break;
     	case 2:
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(2,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-        	
-    		loc.append(award_tag);
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#award').val();
-    		jobj.ins=$(find_loc).find('#ins').val();
-    		jobj.date=$(find_loc).find('#date').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		award_array.push(jobj);
+    	    if($(find_loc).find('#date').val()=='')
+    	    {
+    	    	modal_come();
+    	    }
+    	    else
+    	    {
+	    		$(obj).parent().append(delete_tag);
+	        	$(obj).remove();
+	        	
+	    		loc.append(award_tag);
+	    		var jobj=new Object();
+	    		jobj.name=$(find_loc).find('#award').val();
+	    		jobj.ins=$(find_loc).find('#ins').val();
+	    		jobj.date=$(find_loc).find('#date').val();
+	    		jobj.keyword=$(find_loc).find('#keyword').val();
+	    		
+	    		award_array.push(jobj);
+    	    }
     		console.log(jobj);
     		break;
     	case 3:
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(3,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-        	
-    		loc.append(test_tag);
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#test').val();
-    		jobj.score=$(find_loc).find('#score').val();
-    		jobj.date=$(find_loc).find('#date').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		test_array.push(jobj);
+    	    if($(find_loc).find('#date').val()=='')
+    	    {
+    	    	modal_come();
+    	    }
+    	    else
+    	    {
+	    		$(obj).parent().append(delete_tag);
+	        	$(obj).remove();
+	        	
+	    		loc.append(test_tag);
+	    		var jobj=new Object();
+	    		jobj.name=$(find_loc).find('#test').val();
+	    		jobj.score=$(find_loc).find('#score').val();
+	    		jobj.date=$(find_loc).find('#date').val();
+	    		jobj.keyword=$(find_loc).find('#keyword').val();
+	    		test_array.push(jobj);
+    	    }
     		console.log(jobj);
     		break;
     	case 4:
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(4,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-        	
-    		loc.append(project_tag);
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#project').val();
-    		jobj.startdate=$(find_loc).find('#startdate').val();
-    		jobj.enddate=$(find_loc).find('#enddate').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		jobj.desc=$(find_loc).find('#desc').val();
-    		project_array.push(jobj);
-    		console.log(jobj);
+    	    if($(find_loc).find('#startdate').val()=='' || $(find_loc).find('#enddate').val()=='')
+    	    {
+    	    	modal_come();
+    	    }
+    	    else
+    	    {
+	    		$(obj).parent().append(delete_tag);
+	        	$(obj).remove();
+	        	
+	    		loc.append(project_tag);
+	    		var jobj=new Object();
+	    		jobj.name=$(find_loc).find('#project').val();
+	    		jobj.startdate=$(find_loc).find('#startdate').val();
+	    		jobj.enddate=$(find_loc).find('#enddate').val();
+	    		jobj.keyword=$(find_loc).find('#keyword').val();
+	    		jobj.desc=$(find_loc).find('#desc').val();
+	    		project_array.push(jobj);
+	    		console.log(jobj);
+    	    }
     		break;
     	case 5:
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(5,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-        	
-    		loc.append(club_tag);
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#club').val();
-    		jobj.startdate=$(find_loc).find('#startdate').val();
-    		jobj.enddate=$(find_loc).find('#enddate').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		jobj.desc=$(find_loc).find('#desc').val();
-    		license_array.push(jobj);
-    		console.log(jobj);
+    	    if($(find_loc).find('#startdate').val()=='' || $(find_loc).find('#enddate').val()=='')
+    	    {
+    	    	modal_come();
+    	    }
+    	    else
+    	    {
+	    		$(obj).parent().append(delete_tag);
+	        	$(obj).remove();
+	        	
+	    		loc.append(club_tag);
+	    		var jobj=new Object();
+	    		jobj.name=$(find_loc).find('#club').val();
+	    		jobj.startdate=$(find_loc).find('#startdate').val();
+	    		jobj.enddate=$(find_loc).find('#enddate').val();
+	    		jobj.keyword=$(find_loc).find('#keyword').val();
+	    		jobj.desc=$(find_loc).find('#desc').val();
+	    		license_array.push(jobj);
+	    		console.log(jobj);
+    	    }
     		break;
     	case 6:
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(6,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-        	
-    		loc.append(conference_tag);
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#conference').val();
-    		jobj.date=$(find_loc).find('#date').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		license_array.push(jobj);
-    		console.log(jobj);
+    	    if($(find_loc).find('#date').val()=='')
+    	    {
+    	    	modal_come();
+    	    }
+    	    else
+    	    {
+	    		$(obj).parent().append(delete_tag);
+	        	$(obj).remove();
+	        	
+	    		loc.append(conference_tag);
+	    		var jobj=new Object();
+	    		jobj.name=$(find_loc).find('#conference').val();
+	    		jobj.date=$(find_loc).find('#date').val();
+	    		jobj.keyword=$(find_loc).find('#keyword').val();
+	    		license_array.push(jobj);
+	    		console.log(jobj);
+    	    }
     		break;
     	case 7:
-    	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(7,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-        	
-    		loc.append(volunteer_tag);
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#volunteer').val();
-    		jobj.date=$(find_loc).find('#date').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		license_array.push(jobj);
-    		console.log(jobj);
+    	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(7,this);return false;"><br>';
+    	    if($(find_loc).find('#date').val()=='')
+    	    {
+    	    	modal_come();
+    	    }
+    	    else
+    	    {
+	    		$(obj).parent().append(delete_tag);
+	        	$(obj).remove();
+	        	
+	    		loc.append(volunteer_tag);
+	    		var jobj=new Object();
+	    		jobj.name=$(find_loc).find('#volunteer').val();
+	    		jobj.date=$(find_loc).find('#date').val();
+	    		jobj.keyword=$(find_loc).find('#keyword').val();
+	    		license_array.push(jobj);
+	    		console.log(jobj);
+    	    }
     		break;
     	case 8:
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(8,this);return false;"><br>'; 
-    		$(obj).parent().append(delete_tag);
-        	$(obj).remove();
-        	
-    		loc.append(reading_tag);
-    		var jobj=new Object();
-    		jobj.name=$(find_loc).find('#reading').val();
-    		jobj.date=$(find_loc).find('#date').val();
-    		jobj.keyword=$(find_loc).find('#keyword').val();
-    		license_array.push(jobj);
-    		console.log(jobj);
+    	    if($(find_loc).find('#date').val()=='')
+    	    {
+    	    	modal_come();
+    	    }
+    	    else
+    	    {
+	    	    $(obj).parent().append(delete_tag);
+	        	$(obj).remove();
+	        	
+	    		loc.append(reading_tag);
+	    		var jobj=new Object();
+	    		jobj.name=$(find_loc).find('#reading').val();
+	    		jobj.date=$(find_loc).find('#date').val();
+	    		jobj.keyword=$(find_loc).find('#keyword').val();
+	    		license_array.push(jobj);
+	    		console.log(jobj);
+    	    }
     		break;
     	}
     }
