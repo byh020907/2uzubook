@@ -662,55 +662,43 @@ public JSONArray search(int ...keyword) {
 		ArrayList<Test> tests;
 		ArrayList<Project> projects;
 		
-		for (int i = 0; i < jsonObject.size(); i++) {
-			switch (i) {
-			case 0:
+
 				jsonArrCerts=(JSONArray)jsonObject.get("licenseArr");
 				certs=certsJsonArrayParser(jsonArrCerts);
 				inputCareer_cert(certs);
-				break;
-			case 1:
+	
 				jsonArrAward=(JSONArray)jsonObject.get("awardArr");
 				awards=awardsJsonArrayParser(jsonArrAward);
 				inputCareer_award(awards);
-				break;
-			case 2:
+
 				jsonArrClubs=(JSONArray)jsonObject.get("clubArr");
 				clubs=clubsJsonArrayParser(jsonArrClubs);
 				inputCareer_club(clubs);
-				break;
-			case 3:
+		
 				jsonArrReadings=(JSONArray)jsonObject.get("readingArr");
 				readings=readingsJsonArrayParser(jsonArrReadings);
 				inputCareer_reading(readings);
-				break;
-			case 4:
+	
 				jsonArrConferences=(JSONArray)jsonObject.get("conferenceArr");
 				conferences=conferencesJsonArrayParser(jsonArrConferences);
 				inputCareer_conference(conferences);
-				break;
-			case 5:
-				jsonArrVolunteers=(JSONArray)jsonObject.get("volunteerArr");
-				volunteers=volunteersJsonArrayParser(jsonArrVolunteers);
-				inputCareer_volunteer(volunteers);
-				break;
-			case 6:
-				jsonArrTests=(JSONArray)jsonObject.get("testArr");
-				tests=testsJsonArrayParser(jsonArrTests);
-				inputCareer_test(tests);
-				break;
-			case 7:
-				jsonArrProjects=(JSONArray)jsonObject.get("projectArr");
-				projects=projectsJsonArrayParser(jsonArrProjects);
-				inputCareer_project(projects);
-				break;
-			default:
-				break;
-			}
-		}
+
+		jsonArrVolunteers = (JSONArray) jsonObject.get("volunteerArr");
+		volunteers = volunteersJsonArrayParser(jsonArrVolunteers);
+		inputCareer_volunteer(volunteers);
+
+		jsonArrTests = (JSONArray) jsonObject.get("testArr");
+		tests = testsJsonArrayParser(jsonArrTests);
+		inputCareer_test(tests);
+
+		jsonArrProjects = (JSONArray) jsonObject.get("projectArr");
+		projects = projectsJsonArrayParser(jsonArrProjects);
+		inputCareer_project(projects);
 
 	}
-	
+
+
+
 	// ?로 가 몇개인지 알려주는 함수
 	public int getCharNumber(String str,char c) {
 		int count=0;

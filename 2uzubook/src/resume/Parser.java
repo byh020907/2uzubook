@@ -182,7 +182,6 @@ public class Parser extends Database implements SQL_Command {
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			conn.setAutoCommit(false);
 
 			
 			for (int i = 0; i < arrayList.size(); i++) {
@@ -195,14 +194,10 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
-				conn.commit();
 		} catch (Exception e) {
-			if (conn != null) {
-				conn.rollback();
-			}
+			
 			e.printStackTrace();
 		}
-		conn.setAutoCommit(true);                        
 
     }
 	
@@ -211,8 +206,6 @@ public class Parser extends Database implements SQL_Command {
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			conn.setAutoCommit(false);
-
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -225,15 +218,10 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
-				conn.commit();
 
 		} catch (Exception e) {
-			if (conn != null) {
-				conn.rollback();
-			}
 			e.printStackTrace();
 		}
-		conn.setAutoCommit(true);                        
     }
 	
 	public void inputCareer_club(ArrayList<Club> arrayList) throws SQLException {
@@ -337,15 +325,9 @@ public class Parser extends Database implements SQL_Command {
 				pstmt.addBatch();
 			}	
 			 pstmt.executeBatch();
-			 conn.commit();                                      
-
 		} catch (Exception e) {
-			if(conn!=null) {
-				conn.rollback();
-			}
 			e.printStackTrace();
 		}
-		conn.setAutoCommit(true);                        
     }
 	
 	public void inputCareer_test(ArrayList<Test> arrayList) throws SQLException {
@@ -353,27 +335,22 @@ public class Parser extends Database implements SQL_Command {
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			conn.setAutoCommit(false);                       
 
 			for (int i = 0; i < arrayList.size(); i++) {
-				pstmt.setString(1, arrayList.get(i).getUser());
+				pstmt.setString(1, arrayList.get(i).getUser());   
 				pstmt.setString(2, arrayList.get(i).getName());
 				pstmt.setInt(3, arrayList.get(i).getScore());
 				pstmt.setString(4, arrayList.get(i).getDate());
 				pstmt.setInt(5, arrayList.get(i).getKeyword());
 				pstmt.addBatch();
-			}	
+			}
 			 pstmt.executeBatch();
-			 conn.commit();                                      
 
 		} catch (Exception e) {
-			if(conn!=null) {
-				conn.rollback();
-			}
+
 			e.printStackTrace();
 		}
-		conn.setAutoCommit(true);                        
-
+		
     }
 	
 	public void inputCareer_project(ArrayList<Project> arrayList) throws SQLException {
@@ -381,7 +358,6 @@ public class Parser extends Database implements SQL_Command {
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			conn.setAutoCommit(false);                       
 
 			for (int i = 0; i < arrayList.size(); i++) {
 				pstmt.setString(1, arrayList.get(i).getUser());
@@ -394,14 +370,10 @@ public class Parser extends Database implements SQL_Command {
 				System.out.println("성공");
 			}	
 			 pstmt.executeBatch();
-			 conn.commit();                                      
 
 		} catch (Exception e) {
-			if(conn!=null) {
-				conn.rollback();
-			}
+		
 			e.printStackTrace();
 		}
-		conn.setAutoCommit(true);                        
     }
 }
