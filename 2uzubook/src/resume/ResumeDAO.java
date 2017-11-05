@@ -139,7 +139,7 @@ public class ResumeDAO extends Parser{
 		switch (position) {
 		case 1:
 			// 자격증
-			String SQL_CERT = "select * from cert where user=?";
+			String SQL_CERT = "select * from cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";
 			jsonArray = executeAndGet(SQL_CERT, id);
 			return jsonArray;
 		case 2:
@@ -652,7 +652,7 @@ public JSONArray search(int ...keyword) {
 		JSONArray jsonArrVolunteers;
 		JSONArray jsonArrTests;
 		JSONArray jsonArrProjects;
-		
+
 		ArrayList<Cert> certs;
 		ArrayList<Award> awards;
 		ArrayList<Club> clubs;
@@ -661,56 +661,82 @@ public JSONArray search(int ...keyword) {
 		ArrayList<Volunteer> volunteers;
 		ArrayList<Test> tests;
 		ArrayList<Project> projects;
-		
-		for (int i = 0; i < jsonObject.size(); i++) {
-			switch (i) {
-			case 0:
-				jsonArrCerts=(JSONArray)jsonObject.get("licenseArr");
-				certs=certsJsonArrayParser(jsonArrCerts);
-				inputCareer_cert(certs);
-				break;
-			case 1:
-				jsonArrAward=(JSONArray)jsonObject.get("awardArr");
-				awards=awardsJsonArrayParser(jsonArrAward);
-				inputCareer_award(awards);
-				break;
-			case 2:
-				jsonArrClubs=(JSONArray)jsonObject.get("clubArr");
-				clubs=clubsJsonArrayParser(jsonArrClubs);
-				inputCareer_club(clubs);
-				break;
-			case 3:
-				jsonArrReadings=(JSONArray)jsonObject.get("readingArr");
-				readings=readingsJsonArrayParser(jsonArrReadings);
-				inputCareer_reading(readings);
-				break;
-			case 4:
-				jsonArrConferences=(JSONArray)jsonObject.get("conferenceArr");
-				conferences=conferencesJsonArrayParser(jsonArrConferences);
-				inputCareer_conference(conferences);
-				break;
-			case 5:
-				jsonArrVolunteers=(JSONArray)jsonObject.get("volunteerArr");
-				volunteers=volunteersJsonArrayParser(jsonArrVolunteers);
-				inputCareer_volunteer(volunteers);
-				break;
-			case 6:
-				jsonArrTests=(JSONArray)jsonObject.get("testArr");
-				tests=testsJsonArrayParser(jsonArrTests);
-				inputCareer_test(tests);
-				break;
-			case 7:
-				jsonArrProjects=(JSONArray)jsonObject.get("projectArr");
-				projects=projectsJsonArrayParser(jsonArrProjects);
-				inputCareer_project(projects);
-				break;
-			default:
-				break;
-			}
-		}
 
-	}
+		jsonArrCerts = (JSONArray) jsonObject.get("licenseArr");
+		if(jsonArrCerts != null) {
+			certs = certsJsonArrayParser(jsonArrCerts);
+			inputCareer_cert(certs);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		jsonArrAward = (JSONArray) jsonObject.get("awardArr");
+		if(jsonArrAward != null) {
+			awards = awardsJsonArrayParser(jsonArrAward);
+			inputCareer_award(awards);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		jsonArrClubs = (JSONArray) jsonObject.get("clubArr");
+		if(jsonArrClubs!=null) {
+			clubs = clubsJsonArrayParser(jsonArrClubs);
+			inputCareer_club(clubs);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
 	
+		jsonArrReadings = (JSONArray) jsonObject.get("readingArr");
+		if(jsonArrReadings !=null) {
+			readings = readingsJsonArrayParser(jsonArrReadings);
+			inputCareer_reading(readings);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		
+		jsonArrConferences = (JSONArray) jsonObject.get("conferenceArr");
+		if(jsonArrConferences != null) {
+			conferences = conferencesJsonArrayParser(jsonArrConferences);
+			inputCareer_conference(conferences);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		
+		jsonArrVolunteers = (JSONArray) jsonObject.get("volunteerArr");
+		if(jsonArrVolunteers!=null) {
+			volunteers = volunteersJsonArrayParser(jsonArrVolunteers);
+			inputCareer_volunteer(volunteers);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+		
+		jsonArrTests = (JSONArray) jsonObject.get("testArr");
+		if(jsonArrTests !=null) {
+			tests = testsJsonArrayParser(jsonArrTests);
+			inputCareer_test(tests);
+
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+
+		jsonArrProjects = (JSONArray) jsonObject.get("projectArr");
+		if(jsonArrProjects != null) {
+			projects = projectsJsonArrayParser(jsonArrProjects);
+			inputCareer_project(projects);
+		}else {
+			System.out.println("JsonArray 없음");
+		}
+		
+	
+	}
+
+
+
 	// ?로 가 몇개인지 알려주는 함수
 	public int getCharNumber(String str,char c) {
 		int count=0;

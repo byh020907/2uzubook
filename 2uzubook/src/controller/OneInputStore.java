@@ -32,11 +32,12 @@ public class OneInputStore extends HttpServlet {
 		Object obj=JSONValue.parse(br);
 		if(obj==null)
 		{
-			System.out.println("jsonobject null");
+			System.out.println("jsonobject null2");
 		}
 		else
 		{
 			JSONObject real_obj=(JSONObject)obj;
+			System.out.println(real_obj);
 			try {
 				database.All_insert(real_obj);
 			} catch (SQLException e) {
