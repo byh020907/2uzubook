@@ -184,16 +184,40 @@ public class ResumeDAO extends Parser{
 			// 프로젝트
 			String SQL_PROJECT = "select * from project where user=?";
 			jsonArray = executeAndGet(SQL_PROJECT, id);
+			
+			JSONObject jsonObject_4=(JSONObject) jsonArray.get(0);
+			String name_4=(String) jsonObject_4.get("keyword");
+			
+			test=executeAndGet(SQL, name_4);
+			JSONObject object_4=(JSONObject) test.get(0);
+			int keyword_id_4=(Integer) object_4.get("id");
+			jsonObject_4.put("keyword_id", keyword_id_4);
 			return jsonArray;
 		case 5:
 			//test
 			String SQL_TEST="select * from test where user=?";
 			jsonArray = executeAndGet(SQL_TEST, id);
+			
+			JSONObject jsonObject_5=(JSONObject) jsonArray.get(0);
+			String name_5=(String) jsonObject_5.get("keyword");
+			
+			test=executeAndGet(SQL, name_5);
+			JSONObject object_5=(JSONObject) test.get(0);
+			int keyword_id_5=(Integer) object_5.get("id");
+			jsonObject_5.put("keyword_id", keyword_id_5);
 			return jsonArray;
 		case 6:
-			//컴퍼런ㅅ그
-			String SQL_CONFERENCE="select * from conference where user=?";
+			// 컴퍼런ㅅ그
+			String SQL_CONFERENCE = "select * from conference where user=?";
 			jsonArray = executeAndGet(SQL_CONFERENCE, id);
+
+			JSONObject jsonObject_6 = (JSONObject) jsonArray.get(0);
+			String name_6 = (String) jsonObject_6.get("keyword");
+
+			test = executeAndGet(SQL, name_6);
+			JSONObject object_6 = (JSONObject) test.get(0);
+			int keyword_id_6 = (Integer) object_6.get("id");
+			jsonObject_6.put("keyword_id", keyword_id_6);
 			return jsonArray;
 		default:
 			return jsonArray;
