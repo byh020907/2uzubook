@@ -138,9 +138,20 @@ public class ResumeDAO extends Parser{
 
 		switch (position) {
 		case 1:
-			// 자격증
-			String SQL_CERT = "select * from cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";
+			// 자격증 SELECT DISTINCT user.id, user.name, user.stu_id, user.gender, major.name AS major FROM user
+			String SQL_CERT = "SELECT cert.name, cert.ins, cert.keyword, keyword.name as keyword FROM cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";	
 			jsonArray = executeAndGet(SQL_CERT, id);
+			
+			JSONObject jsonObject=(JSONObject) jsonArray.get(0);
+			String name=(String) jsonObject.get("keyword");
+			
+			JSONArray jsonArray2=new JSONArray();
+			String SQL="select * from keyword where name=?";
+			jsonArray2=executeAndGet(SQL, name);
+			JSONObject object=(JSONObject) jsonArray2.get(0);
+			int id_id=(Integer) object.get("id");
+			
+			jsonObject.put("keyword_id", id_id);
 			return jsonArray;
 		case 2:
 			// 수상경력
