@@ -12,6 +12,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/table.css"> 
+    <link rel="stylesheet" href="css/modalStyle.css" />
 </head>
 
 <body>
@@ -288,7 +289,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
        
     </table>
     <!-- modal -->
-        <div id="modalLayer">
+		<div id="modalLayer">
 		  <div class="modalContent">
 		    <h4 style="margin-left:3%">입력 오류</h4>
 		    <hr>
@@ -297,9 +298,9 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
 		    </center>
 		    <br>
 		    <hr>
-		    <button type="button" id="delete_modal" style="float:right;">닫기</button>
+		    <button id="delete_modal" style="float:right;">닫기</button>
+		    </div>
 		  </div>
-		</div>
    <footer>
     <button onclick="total_store(); return false;">저장</button>
 </footer>
@@ -325,12 +326,6 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     var test_array=new Array();
     var volunteer_array=new Array();
     
-    var modalLayer = $("#modalLayer");
-    var modalLink = $(".modalLink");
-    var modalCont = $(".modalContent");
-    var marginLeft = modalCont.outerWidth()/2;
-    var marginTop = modalCont.outerHeight()/2; 
-    
     function total_store()
     {
     	var temp=new Object();
@@ -343,6 +338,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
         temp.readingArr=reading_array;
         temp.testArr=test_array;
         temp.volunteerArr=volunteer_array;
+        var temp=JSON.stringify(temp);
     	$.ajax({
             url: '/2uzubook/OneInputStore'
             , type: 'post'
@@ -410,6 +406,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     }
     function modal_come()
     {
+        var modalLayer = $("#modalLayer");
+        var modalCont = $(".modalContent");
+        var marginLeft = modalCont.outerWidth()/2;
+        var marginTop = modalCont.outerHeight()/2; 
+    	console.log("modal");
     	modalLayer.fadeIn("slow");
         modalCont.css({"margin-top" : -marginTop, "margin-left" : -marginLeft});
         $(this).blur();
@@ -427,7 +428,7 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
     	case 1:
 
     	    var delete_tag='<input type="button" value="삭제" onclick="obj_delete(1,this);return false;"><br>'; 
-    		if($(find_loc).find('#date').val()==null)
+    		if($(find_loc).find('#date').val()=='')
     	    {
     	    	modal_come();
     	    }
