@@ -167,7 +167,7 @@
                             %>
                             <form id="frm" action="/2uzubook/OneSeeAction" method="post"></form><a onclick="go()" class="button">한눈에 보기</a> 
                             <%}else{ %>
-                            <a href="/2uzubook/SeeStudentOneseeResume?<%=id %>" class="button">한눈에 보기</a>
+                            <a href="/2uzubook/SeeStudentOneseeResume?id=<%=jsonObject.get("id")%>" class="button">한눈에 보기</a>
                             <%} %>
                             </footer>
                         </section>
