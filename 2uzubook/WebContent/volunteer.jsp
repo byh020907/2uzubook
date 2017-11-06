@@ -117,8 +117,8 @@
 										</div>
 										<div class="7u">
 											<h3 class="text-center" id="delete_name"><%=award.get("name")%></h3>
-											<%=(Date) award.get("startTime")%>~
-											<%=(Date) award.get("endTime")%>
+											<%=(Date)award.get("startTime")%>~
+											<%=(Date)award.get("endTime")%>
 										</div>
 									</div>
 								</div>

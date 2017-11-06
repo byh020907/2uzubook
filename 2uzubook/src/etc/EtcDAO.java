@@ -136,8 +136,26 @@ public class EtcDAO extends Database {
 			return jsonArray;
 		case 3:
 			//관심분야
-			String SQL_INTERESTS = "select * from interests where user=?";
+			String SQL_INTERESTS = "select interests.name, interests.keyword, keyword.name as interests FROM volunteer LEFT JOIN keyword ON interests.keyword=keyword.id where user=?";
 			jsonArray = executeAndGet(SQL_INTERESTS, id);
+			if(jsonArray!=null) {
+				if(jsonArray.toString()=="")
+				{
+					return jsonArray;
+				}else {
+					for(int i=0;i<jsonArray.size();i++)                                                                                                                                 
+					{
+						JSONObject jsonObject_2 = (JSONObject) jsonArray.get(i);
+						String name_2 = (String) jsonObject_2.get("keyword");
+
+						test = executeAndGet(SQL, name_2);
+						JSONObject object_2 = (JSONObject) test.get(0);
+						int keyword_id_2 = (Integer) object_2.get("id");
+						jsonObject_2.put("keyword_id", keyword_id_2);
+						
+					}
+				}
+			}
 			return jsonArray;
 		default:
 			return jsonArray;

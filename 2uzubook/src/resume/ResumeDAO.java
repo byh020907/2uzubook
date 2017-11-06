@@ -931,4 +931,38 @@ public JSONArray search(int ...keyword) {
 		}
 		return count;
 	}
+	
+public int delete_all_resume(String user) {
+		
+	
+		String SQL_DELETE_AWARD = "delete from award where user=?";
+		String SQL_DELETE_CERT = "delete from cert where user=?";
+		String SQL_DELETE_CLUB = "delete from club where user=?";
+		String SQL_DELETE_PROJECT = "delete from project where user=?";
+		String SQL_DELETE_TEST = "delete from test where user=?";
+		String SQL_DELETE_CONFERENCE="delete from conference where user=?";
+		
+		String SQL_DELETE_READING="delete from reading where user=?";
+		String SQL_DELETE_VOLUNTEER="delete from volunteer where user=?";
+		
+		try {
+			executeAndGet(SQL_DELETE_AWARD, user);
+			executeAndGet(SQL_DELETE_CERT, user);
+			executeAndGet(SQL_DELETE_CLUB, user);
+			executeAndGet(SQL_DELETE_PROJECT, user);
+			executeAndGet(SQL_DELETE_TEST, user);
+			executeAndGet(SQL_DELETE_CONFERENCE, user);
+			executeAndGet(SQL_DELETE_READING, user);
+			executeAndGet(SQL_DELETE_VOLUNTEER, user);
+			
+			return 1;
+	
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return -1;
+	
+	}
+
 }

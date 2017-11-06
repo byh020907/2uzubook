@@ -73,7 +73,6 @@ public class OneInput extends HttpServlet {
 		userData.put("conferences",conferences);
 		userData.put("volunteers",volunteers);
 		userData.put("readings",readings);
-		userData.put("interests",interests);
 		System.out.println(userData);
 		request.setAttribute("JSONObject", userData);
 		request.getRequestDispatcher("/oneinput.jsp").forward(request, response);
