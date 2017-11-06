@@ -46,6 +46,9 @@ public class OneInput extends HttpServlet {
 		JSONArray licenses=database.select_resume(userID, 1);
 		JSONArray awds=database.select_resume(userID, 2);
 		JSONArray clubs=database.select_resume(userID, 3);
+		System.out.println(licenses);
+		System.out.println(licenses);
+		System.out.println(licenses);
 		JSONArray projects=database.select_resume(userID, 4);
 		JSONArray tests=database.select_resume(userID, 5);
 		JSONArray conferences=database.select_resume(userID, 6);
