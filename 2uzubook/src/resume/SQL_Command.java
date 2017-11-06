@@ -10,7 +10,6 @@ public interface SQL_Command {
 	public static String INSERT_TEST_SQL="insert into test (user,name,score,date,keyword) values (?,?,?,?,?)";
 	public static String INSERT_CONFERENCE_SQL="insert into conference (user,name,date,keyword) values (?,?,?,?)";
 	
-	
 	//etc
 	public static String INSERT_VOLUNTEER_SQL="insert into volunteer (user,name,ins,starttime,endtime,keyword) values (?,?,?,?,?,?)";
 	public static String INSERT_READINF_SQL="insert into reading (user,name,date,keyword) values (?,?,?,?)";
