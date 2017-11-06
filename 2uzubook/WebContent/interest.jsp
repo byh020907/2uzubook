@@ -63,7 +63,8 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                                         <li>
                                                             <form action="/2uzubook/myresume" method="post" id="frm1"><a href="#" onClick="go();">내 레주메 보기</a></form>
                                                         </li>
-                                                        <li><a href="myresume_manage.jsp">레주메 내용 관리</a></li><li><a href="oneinput.jsp">한번에 입력하기</a></li>
+                                                        <li><a href="myresume_manage.jsp">레주메 내용 관리</a></li>
+                                                        <li><form action="/2uzubook/OneInput" method="post" id="oneInput"></form><a href="#" onClick="input_go()">한번에 입력하기</a></li>
                                                         <%} %>
                                             </ul>
                                         </li>
@@ -317,6 +318,11 @@ JSONArray keywordArray= (JSONArray) request.getAttribute("KeywordArray");
                                     , dataType: 'json'
                                 });
                             }
+                            function input_go(){
+                    			var frm=$('#oneInput');
+                    			console.log('hel');
+                    			frm.submit();
+                    		}
                         </script>
                     </body>
 

@@ -638,6 +638,11 @@ String email=(String)jsonObject.get("email");
     		break;
     	}
     }
+    function input_go(){
+		var frm=$('#oneInput');
+		console.log('hel');
+		frm.submit();
+	}
     </script>
 </body>
 
