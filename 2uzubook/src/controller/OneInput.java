@@ -43,18 +43,18 @@ public class OneInput extends HttpServlet {
 			return;
 		}
 		
-		JSONArray licenses=database.select_resume(userID, 1);
-		JSONArray awds=database.select_resume(userID, 2);
-		JSONArray clubs=database.select_resume(userID, 3);
+		JSONArray licenses=database.select_resume_add_keyword(userID, 1);
+		JSONArray awds=database.select_resume_add_keyword(userID, 2);
+		JSONArray clubs=database.select_resume_add_keyword(userID, 3);
 		System.out.println(licenses);
 		System.out.println(licenses);
 		System.out.println(licenses);
-		JSONArray projects=database.select_resume(userID, 4);
-		JSONArray tests=database.select_resume(userID, 5);
-		JSONArray conferences=database.select_resume(userID, 6);
-		JSONArray volunteers=database2.select_resume(userID, 1);
-		JSONArray readings=database2.select_resume(userID, 2);
-		JSONArray interests=database2.select_resume(userID, 3);
+		JSONArray projects=database.select_resume_add_keyword(userID, 4);
+		JSONArray tests=database.select_resume_add_keyword(userID, 5);
+		JSONArray conferences=database.select_resume_add_keyword(userID, 6);
+		JSONArray volunteers=database2.select_resume_add_keyword(userID, 1);
+		JSONArray readings=database2.select_resume_add_keyword(userID, 2);
+		JSONArray interests=database2.select_resume_add_keyword(userID, 3);
 		
 		//유저 정보 받아오기
 		JSONArray ja=database3.executeAndGet("SELECT * FROM USER WHERE id=?", userID);
