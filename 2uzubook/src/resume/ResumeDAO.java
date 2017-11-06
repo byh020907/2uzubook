@@ -191,7 +191,7 @@ public class ResumeDAO extends Parser{
 		switch (position) {
 		case 1:
 			// 자격증 SELECT DISTINCT user.id, user.name, user.stu_id, user.gender, major.name AS major FROM user
-			String SQL_CERT = "SELECT cert.name, cert.ins, cert.keyword, keyword.name as keyword FROM cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";	
+			String SQL_CERT = "SELECT cert.name, cert.ins, cert.date, cert.keyword, keyword.name as keyword FROM cert LEFT JOIN keyword ON cert.keyword=keyword.id where user=?";	
 			jsonArray = executeAndGet(SQL_CERT, id);
 			
 			if(jsonArray!=null) {
@@ -218,7 +218,7 @@ public class ResumeDAO extends Parser{
 			
 		case 2:
 			// 수상경력
-			String SQL_AWARD = "SELECT award.name, award.ins, award.keyword, keyword.name as keyword FROM award LEFT JOIN keyword ON award.keyword=keyword.id where user=?";
+			String SQL_AWARD = "SELECT award.name, award.ins, award.date, award.keyword, keyword.name as keyword FROM award LEFT JOIN keyword ON award.keyword=keyword.id where user=?";
 			jsonArray = executeAndGet(SQL_AWARD, id);
 			
 			if(jsonArray!=null) {

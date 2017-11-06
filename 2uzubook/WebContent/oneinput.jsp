@@ -376,6 +376,7 @@ String email=(String)jsonObject.get("email");
 		jobj.keyword=$(find_loc).find('#keyword').val();
 		
 		license_array.push(jobj);
+		console.log(license_array);
     }
     function total_store()
     {
