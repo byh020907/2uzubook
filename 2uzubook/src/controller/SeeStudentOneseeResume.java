@@ -75,9 +75,8 @@ public class SeeStudentOneseeResume extends HttpServlet {
 		userData.put("volunteers",volunteers);
 		userData.put("readings",readings);
 		userData.put("interests",interests);
-//		System.out.println(userData);
 		request.setAttribute("JSONObject", userData);
-		request.getRequestDispatcher("/myresume.jsp").forward(request, response);
+		request.getRequestDispatcher("/onesee.jsp").forward(request, response);
 	}
 
 }

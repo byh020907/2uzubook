@@ -159,7 +159,16 @@
 						<%
 						} 
 						%>
-                            <footer><form id="frm" action="/2uzubook/OneSeeAction" method="post"></form><a onclick="go()" class="button">한눈에 보기</a> </footer>
+                            <footer>
+                            <%
+                            if(serialKey==null)
+                            {
+                            %>
+                            <form id="frm" action="/2uzubook/OneSeeAction" method="post"></form><a onclick="go()" class="button">한눈에 보기</a> 
+                            <%}else{ %>
+                            <a href="/2uzubook/SeeStudentOneseeResume?<%=id %>" class="button">한눈에 보기</a>
+                            <%} %>
+                            </footer>
                         </section>
                     </div>
                     <div class="9u 12u(mobile) important(mobile)" id="content">
