@@ -188,7 +188,7 @@ function read_add(name,date,keyword)
 	                            <%
 	                        		}
 	                            %>
-	                        	<div>
+	                        	<div id="ta">
 	                            <input id="licens" name="license" type="text" placeholder="자격증 이름">
 	                            <input id="date" name="license_date" type="date">
 	                            <select id="keyword" name="license_keyword">
@@ -234,7 +234,7 @@ function read_add(name,date,keyword)
 	                            	
 	                            </script>
                             <%} %>
-                        <div>
+                        <div id="ta">
                             <input class="text" id="award" name="award" type="text" placeholder="수상한 상">
                             <input id="ins" name="award" type="text" placeholder="수상 기관">
                             <input id="date" name="award_date" type="date">
@@ -281,7 +281,7 @@ function read_add(name,date,keyword)
 	                            	
 	                            </script>
                             <%} %>
-                            <div>
+                            <div id="ta">
                             <input id="test" name="test" type="text" placeholder="어학 이름(ex.토익)">
                             <input id="score" name="test" type="text" placeholder="점수">
                             <input id="date" name="test_date" type="date">
@@ -340,7 +340,7 @@ function read_add(name,date,keyword)
 	                            	
 	                            </script>
                     	<%} %>
-                    	<div>
+                    	<div id="ta">
                         <input id="project" name="project" type="text" placeholder="프로젝트 이름">
                         시작<input id="startdate" name="project_date" type="date">
                         종료<input id="enddate" name="project_date" type="date">
@@ -390,7 +390,7 @@ function read_add(name,date,keyword)
 	                            	
 	                            </script>
                         <%} %>
-                    	<div>
+                    	<div id="ta">
                         <input id="club" name="club" type="text" placeholder="동아리 이름">
                         시작<input id="startdate" name="club_date" type="date">
                         종료<input id="enddate" name="club_date" type="date">
@@ -436,7 +436,7 @@ function read_add(name,date,keyword)
 	                            </script>
                     <%} %>
                    
-                    <div>
+                    <div id="ta">
                         <input id="conference" name="conference" type="text" placeholder="대회 공모전 이름">
                         <input id="date" name="conference_date" type="date">
                         <select id="keyword" name="conference_keyword">
@@ -477,8 +477,8 @@ function read_add(name,date,keyword)
 								JSONObject volunteer=(JSONObject)volunteers.get(j);%>
 								 <div>
                             <input id="volunteer" name="volunteer" type="text" placeholder="봉사 이름" value=<%=volunteer.get("name")%>>
-                            <input id="date" name="volunteer_date" type="date" value=<%=(Date)volunteer.get("startTime")%>>
-                            <input id="date" name="volunteer_date" type="date" value=<%=(Date)volunteer.get("endTime")%>>
+                            시작:<input id="date" name="volunteer_date" type="date" value=<%=(Date)volunteer.get("startTime")%>>
+                            종료:<input id="date" name="volunteer_date" type="date" value=<%=(Date)volunteer.get("endTime")%>>
                             <select id="keyword" name="volunteer_keyword">
                             <option value=<%=volunteer.get("keyword_id")%> selected><%=volunteer.get("keyword")%></option>
                             </select>
@@ -491,10 +491,10 @@ function read_add(name,date,keyword)
 	                            volunteer_add(name,date,keyword);
 	                            </script>
                             <%} %>
-                   <div>
+                   <div id="ta">
                             <input id="volunteer" name="volunteer" type="text" placeholder="봉사 이름">
-                            시작 날짜:<input id="startTime" name="volunteer_date" type="date">
-                            종료 날짜:<input id="endTime" name="volunteer_date" type="date">
+                            시작:<input id="startTime" name="volunteer_date" type="date">
+                            종료:<input id="endTime" name="volunteer_date" type="date">
                             <select id="keyword" name="volunteer_keyword">
                                 <option value="">키워드 </option>
                                 <%
@@ -518,7 +518,6 @@ function read_add(name,date,keyword)
                 <th scope="row">독서</th>
                 <td style="width:auto;">
                    <div id="reading_tag">
-                   
                    
                   <div>
                             <input id="reading" name="reading" type="text" placeholder="책 이름">
@@ -604,15 +603,26 @@ function read_add(name,date,keyword)
         });
     }
     $("document").ready(function() {
-    	 licen_tag=$("#licence_tag").html();
-    	 award_tag=$("#award_tag").html();
-    	 club_tag=$("#club_tag").html();
+    	 licen_tag=$("#licence_tag #ta").html();
+    	 licen_tag='<div>'+licen_tag+'</div>';
+    	 award_tag=$("#award_tag #ta").html();
+    	 award_tag='<div>'+award_tag+'</div>';
+    	 club_tag=$("#club_tag #ta").html();
+    	 club_tag='<div>'+club_tag+'</div>';
     	 reading_tag=$("#reading_tag").html();
-    	 conference_tag=$("#conference_tag").html();
-    	 volunteer_tag=$("#volunteer_tag").html();
-    	 test_tag=$("#test_tag").html();
-    	 project_tag=$("#project_tag").html();
-    	 interest_tag=$("#interest_tag").html();
+    	 
+    	 conference_tag=$("#conference_tag #ta").html();
+    	 conference_tag='<div>'+conference_tag+'</div>';
+    	 
+    	 volunteer_tag=$("#volunteer_tag #ta").html();
+    	 volunteer_tag='<div>'+volunteer_tag+'</div>';
+    	 
+    	 test_tag=$("#test_tag #ta").html();
+    	 test_tag='<div>'+test_tag+'</div>';
+    	 
+    	 project_tag=$("#project_tag #ta").html();
+    	 project_tag='<div>'+project_tag+'</div>';
+    	 
 	});
     function obj_delete(num,obj)
     {
