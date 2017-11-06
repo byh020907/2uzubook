@@ -56,9 +56,8 @@ String email=(String)jsonObject.get("email");
                         <div>
                             <label for="interest">관심분야</label>
                              <div>
-                            <input name="interest" type="text" placeholder="관심 분야" style="width: 150px;">
                             <select id="keyword" name="interest_keyword">
-                                <option value="">키워드 </option>
+                                <option value="">관심분야</option>
                             </select>
                             <input type="button" value="추가"> 
                             </div>
