@@ -45,7 +45,34 @@ public class EtcDAO extends Database {
 			return jsonObject;
 		}
 	}
+	
 	public JSONArray select_resume(String id, int position) {
+
+		JSONArray jsonArray = new JSONArray();
+
+		switch (position) {
+		case 1:
+			// 봉사
+			String SQL_VOLUNTEER = "SELECT * from volunteer where user=?";
+			jsonArray = executeAndGet(SQL_VOLUNTEER, id);
+			
+			return jsonArray;
+
+		case 2:
+			// 독서
+			String SQL_READING = "SELECT * from reading where user=?";
+			jsonArray = executeAndGet(SQL_READING, id);
+			return jsonArray;
+		case 3:
+			//관심분야
+			String SQL_INTERESTS = "select * from interests where user=?";
+			jsonArray = executeAndGet(SQL_INTERESTS, id);
+			return jsonArray;
+		default:
+			return jsonArray;
+		}
+	}
+	public JSONArray select_resume_add_keyword(String id, int position) {
 
 		JSONArray jsonArray = new JSONArray();
 		JSONArray test=new JSONArray();
