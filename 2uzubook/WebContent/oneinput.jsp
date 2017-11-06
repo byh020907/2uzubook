@@ -56,9 +56,8 @@ String email=(String)jsonObject.get("email");
                         <div>
                             <label for="interest">관심분야</label>
                              <div>
-                            <input name="interest" type="text" placeholder="관심 분야" style="width: 150px;">
                             <select id="keyword" name="interest_keyword">
-                                <option value="">키워드 </option>
+                                <option value="">관심분야</option>
                             </select>
                             <input type="button" value="추가"> 
                             </div>
@@ -89,6 +88,13 @@ String email=(String)jsonObject.get("email");
 	                            </select>
     	    					<input type="button" value="삭제" onclick="obj_delete(1,this);return false;"><br>
 	                            </div>
+	                            <script>
+	                            var name='<%=licen.get("name")%>';
+	                            var date='<%=licen.get("date")%>';
+	                            var keyword='<%=licen.get("keyword")%>';
+	                            	license_add(name,date,keyword,1);
+	                            </script>
+	                            
 	                            <%
 	                        		}
 	                            %>
@@ -362,7 +368,15 @@ String email=(String)jsonObject.get("email");
     var reading_array=new Array();
     var test_array=new Array();
     var volunteer_array=new Array();
-   
+    function license_add()
+    {
+    	var jobj=new Object();
+		jobj.name=$(find_loc).find('#licens').val();
+		jobj.date=$(find_loc).find('#date').val();
+		jobj.keyword=$(find_loc).find('#keyword').val();
+		
+		license_array.push(jobj);
+    }
     function total_store()
     {
     	var temp=new Object();
@@ -456,6 +470,10 @@ String email=(String)jsonObject.get("email");
         modalCont.css({"margin-top" : -marginTop, "margin-left" : -marginLeft});
         $(this).blur();
         return false;
+    }
+    function update_add()
+    {
+    	
     }
     function obj_add(num,obj)
     {

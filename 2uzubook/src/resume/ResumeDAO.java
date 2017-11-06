@@ -136,6 +136,54 @@ public class ResumeDAO extends Parser{
 
 		JSONArray jsonArray = new JSONArray();
 		
+
+
+		switch (position) {
+		case 1:
+			// 자격증 SELECT DISTINCT user.id, user.name, user.stu_id, user.gender, major.name AS major FROM user
+			String SQL_CERT = "SELECT * from cert where user=?";	
+			jsonArray = executeAndGet(SQL_CERT, id);
+			return jsonArray;
+			
+		case 2:
+			// 수상경력
+			String SQL_AWARD = "SELECT * from award where user=?";
+			jsonArray = executeAndGet(SQL_AWARD, id);	
+			return jsonArray;
+		case 3:
+			// 동아리
+			String SQL_CLUB = "select * from club where user=?";
+			jsonArray = executeAndGet(SQL_CLUB, id);
+			return jsonArray;
+
+		case 4:
+			// 프로젝트
+			String SQL_PROJECT = "select * from project where user=? ";
+			jsonArray = executeAndGet(SQL_PROJECT, id);
+			return jsonArray;
+		case 5:
+			//test
+			String SQL_TEST="select * from test where user=?"; 
+			jsonArray = executeAndGet(SQL_TEST, id);
+			
+
+			
+			
+			return jsonArray;
+		case 6:
+			// 컴퍼런ㅅ그
+			String SQL_CONFERENCE = "select * from conference where user=?";
+			jsonArray = executeAndGet(SQL_CONFERENCE, id);
+			return jsonArray;
+		default:
+			return jsonArray;
+		}
+	}
+	
+	public JSONArray select_resume_add_keyword(String id, int position) {
+
+		JSONArray jsonArray = new JSONArray();
+		
 		JSONArray test=new JSONArray();
 
 		String SQL="select * from keyword where name=?";
