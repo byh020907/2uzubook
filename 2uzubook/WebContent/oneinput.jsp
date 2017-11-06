@@ -17,7 +17,6 @@ JSONArray reads=(JSONArray)jsonObject.get("readings");
 JSONArray volunteers=(JSONArray)jsonObject.get("volunteers");
 JSONArray tests=(JSONArray)jsonObject.get("tests");
 
-JSONArray interests=(JSONArray)jsonObject.get("interests");
 
 System.out.println(jsonObject);//log
 String name=(String)jsonObject.get("name");
@@ -39,6 +38,103 @@ String email=(String)jsonObject.get("email");
 </head>
 
 <body>
+<script>
+var license_array=new Array();
+var award_array=new Array();
+var club_array=new Array();
+var conference_array=new Array();
+var interest_array=new Array();
+var project_array=new Array();
+var reading_array=new Array();
+var test_array=new Array();
+var volunteer_array=new Array();
+function license_add(name,date,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.date=date;
+	jobj.keyword=keyword;
+	
+	license_array.push(jobj);
+	console.log(license_array);
+}
+function award_add(name,date,ins,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.date=date;
+	jobj.ins=ins;
+	jobj.keyword=keyword;
+	
+	award_array.push(jobj);
+	console.log(award_array);
+}
+function test_add(name,date,ins,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.date=date;
+	jobj.ins=ins;
+	jobj.keyword=keyword;
+	
+	test_array.push(jobj);
+	console.log(test_array);
+}
+function project_add(name,startdate,enddate,desc,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.desc=desc;
+	jobj.startdate=startdate;
+	jobj.enddate=enddate;
+	jobj.keyword=keyword;
+	
+	project_array.push(jobj);
+	console.log(project_array);
+}
+function club_add(name,startdate,enddate,desc,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.startdate=startdate;
+	jobj.enddate=enddate;
+	jobj.desc=desc;
+	jobj.keyword=keyword;
+	
+	club_array.push(jobj);
+	console.log(club_array);
+}
+function conference_add(name,date,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.date=date;
+	jobj.keyword=keyword;
+	
+	conference_array.push(jobj);
+	console.log(conference_array);
+}
+function volunteer_add(name,date,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.date=date;
+	jobj.keyword=keyword;
+	
+	volunteer_array.push(jobj);
+	console.log(volunteer_array);
+}
+function read_add(name,date,keyword)
+{
+	var jobj=new Object();
+	jobj.name=name;
+	jobj.date=date;
+	jobj.keyword=keyword;
+	
+	reading_array.push(jobj);
+	console.log(reading_array);
+}
+</script>
     <div style=" width: 900px; margin: 0 auto;" >
         <table class="info">
             <thead>
@@ -51,17 +147,10 @@ String email=(String)jsonObject.get("email");
                     <th scope="row"><img src="/images/student/stu6.jpg" class="studentimg"></th>
                     <td>
                         <h2>
-							2학년 1반 소프트웨어개발과 <br> 윤정현
-						</h2> <strong>jafj4a2@naver.com</strong>
-                        <div>
-                            <label for="interest">관심분야</label>
-                             <div>
-                            <select id="keyword" name="interest_keyword">
-                                <option value="">관심분야</option>
-                            </select>
-                            <input type="button" value="추가"> 
-                            </div>
-                        </div>
+							<%=student_id %> <%=majorName %> <br> <%=name %>
+						</h2> <strong><%=email%></strong>
+                    
+                        
                     </td>
                 </tr>
             </tbody>
@@ -91,8 +180,9 @@ String email=(String)jsonObject.get("email");
 	                            <script>
 	                            var name='<%=licen.get("name")%>';
 	                            var date='<%=licen.get("date")%>';
-	                            var keyword='<%=licen.get("keyword")%>';
-	                            	license_add(name,date,keyword,1);
+	                            var keyword='<%=licen.get("keyword_id")%>';
+	                            	license_add(name,date,keyword);
+	                            	
 	                            </script>
 	                            
 	                            <%
@@ -124,6 +214,26 @@ String email=(String)jsonObject.get("email");
                     <th scope="row">수상</th>
                     <td style="width:auto;">
                         <div id="award_tag">
+                        <%for(int j=0;j<awards.size();j++){ 
+								JSONObject award=(JSONObject)awards.get(j);%>
+								<div>
+                            <input class="text" id="award" name="award" type="text" placeholder="수상한 상" value=<%=award.get("name")%>>
+                            <input id="ins" name="award" type="text" placeholder="수상 기관" value=<%=award.get("ins")%>>
+                            <input id="date" name="award_date" type="date" value=<%=award.get("date")%>>
+                            <select id="keyword" name="award_keyword">
+                                	<option value=<%=award.get("keyword_id")%> selected><%=award.get("keyword")%></option>
+                            </select>
+                            <input type="button" value="삭제" onclick="obj_delete(2,this);return false;"><br>
+                            </div>
+                            <script>
+	                            var name='<%=award.get("name")%>';
+	                            var date='<%=award.get("date")%>';
+	                            var ins='<%=award.get("ins")%>';
+	                            var keyword='<%=award.get("keyword_id")%>';
+	                            	award_add(name,date,ins,keyword);
+	                            	
+	                            </script>
+                            <%} %>
                         <div>
                             <input class="text" id="award" name="award" type="text" placeholder="수상한 상">
                             <input id="ins" name="award" type="text" placeholder="수상 기관">
@@ -151,7 +261,27 @@ String email=(String)jsonObject.get("email");
                     <th scope="row">어학</th>
                     <td>
                         <div id="test_tag">
+                        <%for(int j=0;j<tests.size();j++){ 
+								JSONObject test=(JSONObject)tests.get(j);%>
                         <div>
+                            <input id="test" name="test" type="text" placeholder="어학 이름(ex.토익)" value=<%=test.get("name")%>>
+                            <input id="score" name="test" type="text" placeholder="점수" value=<%=test.get("score")%>>
+                            <input id="date" name="test_date" type="date" value=<%=test.get("date")%>>
+                            <select id="keyword" name="test_keyword">
+                                <option value=<%=test.get("keyword_id")%> selected><%=test.get("keyword")%></option>
+                            </select>
+                            <input type="button" value="삭제" onclick="obj_delete(3,this);return false;"><br>
+                            </div>
+                            <script>
+	                            var name='<%=test.get("name")%>';
+	                            var date='<%=test.get("date")%>';
+	                            var score='<%=test.get("score")%>';
+	                            var keyword='<%=test.get("keyword_id")%>';
+	                            	test_add(name,date,score,keyword);
+	                            	
+	                            </script>
+                            <%} %>
+                            <div>
                             <input id="test" name="test" type="text" placeholder="어학 이름(ex.토익)">
                             <input id="score" name="test" type="text" placeholder="점수">
                             <input id="date" name="test_date" type="date">
@@ -188,6 +318,28 @@ String email=(String)jsonObject.get("email");
                 <th scope="row">프로젝트</th>
                 <td style="width:auto;">
                     <div id="project_tag">
+                    <%for(int j=0;j<projects.size();j++){ 
+								JSONObject project=(JSONObject)projects.get(j);%>
+								<div>
+                        <input id="project" name="project" type="text" placeholder="프로젝트 이름" value=<%=project.get("name")%>>
+                        시작<input id="startdate" name="project_date" type="date" value=<%=(Date)project.get("startDate")%>>
+                        종료<input id="enddate" name="project_date" type="date" value=<%=(Date)project.get("endDate")%>>
+                        <textarea rows="5" cols="50"  id="desc" name="project" placeholder="프로젝트 설명" size="50"><%=project.get("desc")%></textarea>
+                        <select id="keyword" name="test_keyword">
+                            <option value=<%=project.get("keyword_id")%> selected><%=project.get("keyword")%></option>
+                        </select>
+                        <input type="button" value="삭제" onclick="obj_delete(4,this);return false;"><br> 
+                    	</div>   
+                    	<script>
+	                            var name='<%=project.get("name")%>';
+	                            var startdate='<%=project.get("startdate")%>';
+	                            var enddate='<%=project.get("enddate")%>';
+	                            var score='<%=project.get("desc")%>';
+	                            var keyword='<%=project.get("keyword_id")%>';
+	                            	project_add(name,startdate,enddate,desc,keyword);
+	                            	
+	                            </script>
+                    	<%} %>
                     	<div>
                         <input id="project" name="project" type="text" placeholder="프로젝트 이름">
                         시작<input id="startdate" name="project_date" type="date">
@@ -216,6 +368,28 @@ String email=(String)jsonObject.get("email");
                 <th scope="row">전공 동아리</th>
                 <td style="width:auto;">
                     <div id="club_tag">
+                    <%for(int j=0;j<clubs.size();j++){ 
+								JSONObject club=(JSONObject)clubs.get(j);%>
+								<div>
+                        <input id="club" name="club" type="text" placeholder="동아리 이름" value=<%=club.get("name")%>>
+                        시작<input id="startdate" name="club_date" type="date" value=<%=(Date)club.get("startDate")%>>
+                        종료<input id="enddate" name="club_date" type="date" value=<%=(Date)club.get("endDate")%>>
+                        <textarea id="desc" name="project" placeholder="동아리 설명" size="50"><%=club.get("desc")%></textarea>
+                        <select id="keyword" name="test_keyword">
+                            <option value=<%=club.get("keyword_id")%> selected><%=club.get("keyword")%></option>
+                        </select>
+                        <input type="button" value="삭제" onclick="obj_delete(5,this);return false;"><br>  
+                        </div>
+                        <script>
+	                            var name='<%=club.get("name")%>';
+	                            var startdate='<%=club.get("startdate")%>';
+	                            var enddate='<%=club.get("enddate")%>';
+	                            var score='<%=club.get("desc")%>';
+	                            var keyword='<%=club.get("keyword_id")%>';
+	                            	club_add(name,startdate,enddate,desc,keyword);
+	                            	
+	                            </script>
+                        <%} %>
                     	<div>
                         <input id="club" name="club" type="text" placeholder="동아리 이름">
                         시작<input id="startdate" name="club_date" type="date">
@@ -244,6 +418,24 @@ String email=(String)jsonObject.get("email");
                 <th scope="row">대외 공모전 참여</th>
                 <td>
                 <div id="conference_tag">
+                <%for(int j=0;j<conferences.size();j++){ 
+								JSONObject conference=(JSONObject)conferences.get(j);%>
+								<div>
+                        <input id="conference" name="conference" type="text" placeholder="대회 공모전 이름" value=<%=conference.get("name")%>>
+                        <input id="date" name="conference_date" type="date" value=<%=conference.get("date")%>>
+                        <select id="keyword" name="conference_keyword">
+                            <option value=<%=conference.get("keyword_id")%> selected><%=conference.get("keyword")%></option>
+                        </select>
+                        <input type="button" value="삭제" onclick="obj_delete(6,this);return false;"><br> 
+                    </div>
+                    <script>
+	                            var name='<%=conference.get("name")%>';
+	                            var date='<%=conference.get("date")%>';
+	                            var keyword='<%=conference.get("keyword_id")%>';
+	                            conference_add(name,date,keyword);
+	                            </script>
+                    <%} %>
+                   
                     <div>
                         <input id="conference" name="conference" type="text" placeholder="대회 공모전 이름">
                         <input id="date" name="conference_date" type="date">
@@ -281,9 +473,28 @@ String email=(String)jsonObject.get("email");
                 <th scope="row">봉사</th>
                 <td style="width:auto;">
                    <div id="volunteer_tag">
+                   <%for(int j=0;j<volunteers.size();j++){ 
+								JSONObject volunteer=(JSONObject)volunteers.get(j);%>
+								 <div>
+                            <input id="volunteer" name="volunteer" type="text" placeholder="봉사 이름" value=<%=volunteer.get("name")%>>
+                            <input id="date" name="volunteer_date" type="date" value=<%=(Date)volunteer.get("startTime")%>>
+                            <input id="date" name="volunteer_date" type="date" value=<%=(Date)volunteer.get("endTime")%>>
+                            <select id="keyword" name="volunteer_keyword">
+                            <option value=<%=volunteer.get("keyword_id")%> selected><%=volunteer.get("keyword")%></option>
+                            </select>
+                        <input type="button" value="삭제" onclick="obj_delete(7,this);return false;"><br>
+                        </div>
+                         <script>
+	                            var name='<%=volunteer.get("name")%>';
+	                            var date='<%=volunteer.get("date")%>';
+	                            var keyword='<%=volunteer.get("keyword_id")%>';
+	                            volunteer_add(name,date,keyword);
+	                            </script>
+                            <%} %>
                    <div>
                             <input id="volunteer" name="volunteer" type="text" placeholder="봉사 이름">
-                            <input id="date" name="volunteer_date" type="date">
+                            시작 날짜:<input id="startTime" name="volunteer_date" type="date">
+                            종료 날짜:<input id="endTime" name="volunteer_date" type="date">
                             <select id="keyword" name="volunteer_keyword">
                                 <option value="">키워드 </option>
                                 <%
@@ -298,7 +509,8 @@ String email=(String)jsonObject.get("email");
                                 }
                                 %>
                             </select>
-                            <input type="button" value="추가" onclick="obj_add(7,this);return false;"> </div>
+                        <input type="button" value="추가" onclick="obj_add(7,this);return false;"> 
+                	</div>
                 	</div>
                 </td>
             </tr>
@@ -306,7 +518,9 @@ String email=(String)jsonObject.get("email");
                 <th scope="row">독서</th>
                 <td style="width:auto;">
                    <div id="reading_tag">
-                   <div>
+                   
+                   
+                  <div>
                             <input id="reading" name="reading" type="text" placeholder="책 이름">
                             <input id="date" name="reading_date" type="date">
                             <select id="keyword" name="reading_keyword">
@@ -323,9 +537,9 @@ String email=(String)jsonObject.get("email");
                                 }
                                 %>
                             </select>
-                            <input type="button" value="추가" onclick="obj_add(8,this);return false;"> 
-                   		</div>         
-                  </div>
+                        <input type="button" value="추가" onclick="obj_add(8,this);return false;"> 
+                   		</div>
+                   	</div> 
                 </td>
             </tr>            
         </tbody>
@@ -359,25 +573,6 @@ String email=(String)jsonObject.get("email");
     var test_tag;
     var project_tag;
     
-    var license_array=new Array();
-    var award_array=new Array();
-    var club_array=new Array();
-    var conference_array=new Array();
-    var interest_array=new Array();
-    var project_array=new Array();
-    var reading_array=new Array();
-    var test_array=new Array();
-    var volunteer_array=new Array();
-    function license_add()
-    {
-    	var jobj=new Object();
-		jobj.name=$(find_loc).find('#licens').val();
-		jobj.date=$(find_loc).find('#date').val();
-		jobj.keyword=$(find_loc).find('#keyword').val();
-		
-		license_array.push(jobj);
-		console.log(license_array);
-    }
     function total_store()
     {
     	var temp=new Object();
@@ -385,7 +580,6 @@ String email=(String)jsonObject.get("email");
     	temp.awardArr=award_array;
     	temp.clubArr=club_array;
     	temp.conferenceArr=conference_array;
-    	temp.interestArr=interest_array;
         temp.projectArr=project_array;
         temp.readingArr=reading_array;
         temp.testArr=test_array;
@@ -418,6 +612,7 @@ String email=(String)jsonObject.get("email");
     	 volunteer_tag=$("#volunteer_tag").html();
     	 test_tag=$("#test_tag").html();
     	 project_tag=$("#project_tag").html();
+    	 interest_tag=$("#interest_tag").html();
 	});
     function obj_delete(num,obj)
     {
@@ -456,7 +651,12 @@ String email=(String)jsonObject.get("email");
     		reading_array.splice(index,1);
         	console.log(reading_array);	
         	break;
+    	case 9:
+    		interest_array.splice(index,1);
+        	console.log(interest_array);	
+        	break;
     	}
+    	
     	
     	$(obj).parent().remove();
     }
@@ -471,10 +671,6 @@ String email=(String)jsonObject.get("email");
         modalCont.css({"margin-top" : -marginTop, "margin-left" : -marginLeft});
         $(this).blur();
         return false;
-    }
-    function update_add()
-    {
-    	
     }
     function obj_add(num,obj)
     {
@@ -649,7 +845,8 @@ String email=(String)jsonObject.get("email");
 	    		loc.append(reading_tag);
 	    		var jobj=new Object();
 	    		jobj.name=$(find_loc).find('#reading').val();
-	    		jobj.date=$(find_loc).find('#date').val();
+	    		jobj.starttime=$(find_loc).find('#startTime').val();
+	    		jobj.endtime=$(find_loc).find('#endTime').val();
 	    		jobj.keyword=$(find_loc).find('#keyword').val();
 	    		license_array.push(jobj);
 	    		console.log(jobj);

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -28,8 +29,16 @@ public class OneInputStore extends HttpServlet {
     }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Util.setCharset(request, response, "utf-8");
+HttpSession session=request.getSession();
+		
+		String userID=(String) session.getAttribute("id");
+		if(session.getAttribute("id")==null){
+			response.sendRedirect("/2uzubook/login.jsp");
+			return;
+		}
 		BufferedReader br=request.getReader();
 		Object obj=JSONValue.parse(br);
+		database.delete_all_resume(userID);
 		if(obj==null)
 		{
 			System.out.println("jsonobject null2");
