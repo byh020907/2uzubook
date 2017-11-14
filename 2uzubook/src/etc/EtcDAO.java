@@ -109,7 +109,7 @@ public class EtcDAO extends Database {
 
 		case 2:
 			// 독서
-			String SQL_READING = "select reading.name, reading.date, reading.keyword, keyword.name as keyword FROM volunteer LEFT JOIN keyword ON reading.keyword=keyword.id where user=?";
+			String SQL_READING = "select reading.name, reading.date, reading.keyword, keyword.name as keyword FROM reading LEFT JOIN keyword ON reading.keyword=keyword.id where user=?";
 			jsonArray = executeAndGet(SQL_READING, id);
 			
 			if(jsonArray!=null) {

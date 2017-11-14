@@ -19,6 +19,7 @@ JSONArray tests=(JSONArray)jsonObject.get("tests");
 
 
 System.out.println(jsonObject);//log
+System.out.println(reads);
 String name=(String)jsonObject.get("name");
 int major=(Integer)jsonObject.get("major");
 
@@ -529,8 +530,8 @@ function read_add(name,date,keyword)
                    		JSONObject read=(JSONObject)reads.get(j);
                    	%>
                    	<div>
-                            <input id="reading" name="reading" type="text" placeholder="책 이름">
-                            <input id="date" name="reading_date" type="date">
+                            <input id="reading" name="reading" type="text" placeholder="책 이름" value=<%=read.get("name")%>>
+                            <input id="date" name="reading_date" type="date" value=<%=read.get("date")%>>
                             <select id="keyword" name="reading_keyword">
                             <option value=<%=read.get("keyword_id")%> selected><%=read.get("keyword")%></option>
                             </select>
@@ -636,7 +637,8 @@ function read_add(name,date,keyword)
     	 award_tag='<div>'+award_tag+'</div>';
     	 club_tag=$("#club_tag #ta").html();
     	 club_tag='<div>'+club_tag+'</div>';
-    	 reading_tag=$("#reading_tag").html();
+    	 reading_tag=$("#reading_tag #ta").html();
+    	 reading_tag='<div>'+reading_tag+'</div>';
     	 
     	 conference_tag=$("#conference_tag #ta").html();
     	 conference_tag='<div>'+conference_tag+'</div>';

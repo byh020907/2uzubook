@@ -19,7 +19,7 @@ public class Parser extends Database implements SQL_Command {
 		String name = (String) jsonObject.get("name");
 		String ins = (String) jsonObject.get("ins"); // 주최측 정보
 		String date = (String) jsonObject.get("date");
-		int keyword = (int) jsonObject.get("keyword");
+		int keyword = Integer.parseInt((String)jsonObject.get("keyword"));
 		return new Cert(user, name, ins, date, keyword);
 	}
 
