@@ -135,7 +135,7 @@ function read_add(name,date,keyword)
 	console.log(reading_array);
 }
 </script>
-    <div style=" width: 900px; margin: 0 auto;" >
+    <div style=" width: 900px; margin: 0 auto;">
         <table class="info">
             <thead>
                 <tr>
@@ -176,7 +176,7 @@ function read_add(name,date,keyword)
 	                                
 	                            </select>
     	    					<input type="button" value="삭제" onclick="obj_delete(1,this);return false;"><br>
-	                            </div>
+	                            
 	                            <script>
 	                            var name='<%=licen.get("name")%>';
 	                            var date='<%=licen.get("date")%>';
@@ -184,7 +184,7 @@ function read_add(name,date,keyword)
 	                            	license_add(name,date,keyword);
 	                            	
 	                            </script>
-	                            
+	                            </div>
 	                            <%
 	                        		}
 	                            %>
@@ -224,7 +224,7 @@ function read_add(name,date,keyword)
                                 	<option value=<%=award.get("keyword_id")%> selected><%=award.get("keyword")%></option>
                             </select>
                             <input type="button" value="삭제" onclick="obj_delete(2,this);return false;"><br>
-                            </div>
+                            
                             <script>
 	                            var name='<%=award.get("name")%>';
 	                            var date='<%=award.get("date")%>';
@@ -233,6 +233,7 @@ function read_add(name,date,keyword)
 	                            	award_add(name,date,ins,keyword);
 	                            	
 	                            </script>
+	                            </div>
                             <%} %>
                         <div id="ta">
                             <input class="text" id="award" name="award" type="text" placeholder="수상한 상">
@@ -271,7 +272,7 @@ function read_add(name,date,keyword)
                                 <option value=<%=test.get("keyword_id")%> selected><%=test.get("keyword")%></option>
                             </select>
                             <input type="button" value="삭제" onclick="obj_delete(3,this);return false;"><br>
-                            </div>
+                            
                             <script>
 	                            var name='<%=test.get("name")%>';
 	                            var date='<%=test.get("date")%>';
@@ -280,6 +281,7 @@ function read_add(name,date,keyword)
 	                            	test_add(name,date,score,keyword);
 	                            	
 	                            </script>
+	                            </div>
                             <%} %>
                             <div id="ta">
                             <input id="test" name="test" type="text" placeholder="어학 이름(ex.토익)">
@@ -329,7 +331,7 @@ function read_add(name,date,keyword)
                             <option value=<%=project.get("keyword_id")%> selected><%=project.get("keyword")%></option>
                         </select>
                         <input type="button" value="삭제" onclick="obj_delete(4,this);return false;"><br> 
-                    	</div>   
+                    	 
                     	<script>
 	                            var name='<%=project.get("name")%>';
 	                            var startdate='<%=project.get("startdate")%>';
@@ -339,6 +341,7 @@ function read_add(name,date,keyword)
 	                            	project_add(name,startdate,enddate,desc,keyword);
 	                            	
 	                            </script>
+	                            </div>
                     	<%} %>
                     	<div id="ta">
                         <input id="project" name="project" type="text" placeholder="프로젝트 이름">
@@ -379,7 +382,7 @@ function read_add(name,date,keyword)
                             <option value=<%=club.get("keyword_id")%> selected><%=club.get("keyword")%></option>
                         </select>
                         <input type="button" value="삭제" onclick="obj_delete(5,this);return false;"><br>  
-                        </div>
+                        
                         <script>
 	                            var name='<%=club.get("name")%>';
 	                            var startdate='<%=club.get("startdate")%>';
@@ -389,6 +392,7 @@ function read_add(name,date,keyword)
 	                            	club_add(name,startdate,enddate,desc,keyword);
 	                            	
 	                            </script>
+	                            </div>
                         <%} %>
                     	<div id="ta">
                         <input id="club" name="club" type="text" placeholder="동아리 이름">
@@ -427,13 +431,14 @@ function read_add(name,date,keyword)
                             <option value=<%=conference.get("keyword_id")%> selected><%=conference.get("keyword")%></option>
                         </select>
                         <input type="button" value="삭제" onclick="obj_delete(6,this);return false;"><br> 
-                    </div>
+                    
                     <script>
 	                            var name='<%=conference.get("name")%>';
 	                            var date='<%=conference.get("date")%>';
 	                            var keyword='<%=conference.get("keyword_id")%>';
 	                            conference_add(name,date,keyword);
 	                            </script>
+	                            </div>
                     <%} %>
                    
                     <div id="ta">
@@ -483,13 +488,14 @@ function read_add(name,date,keyword)
                             <option value=<%=volunteer.get("keyword_id")%> selected><%=volunteer.get("keyword")%></option>
                             </select>
                         <input type="button" value="삭제" onclick="obj_delete(7,this);return false;"><br>
-                        </div>
+                        
                          <script>
 	                            var name='<%=volunteer.get("name")%>';
 	                            var date='<%=volunteer.get("date")%>';
 	                            var keyword='<%=volunteer.get("keyword_id")%>';
 	                            volunteer_add(name,date,keyword);
 	                            </script>
+                            </div>
                             <%} %>
                    <div id="ta">
                             <input id="volunteer" name="volunteer" type="text" placeholder="봉사 이름">
@@ -518,8 +524,26 @@ function read_add(name,date,keyword)
                 <th scope="row">독서</th>
                 <td style="width:auto;">
                    <div id="reading_tag">
-                   
-                  <div>
+                        
+                   	<%for(int j=0;j<reads.size();j++){ 
+                   		JSONObject read=(JSONObject)reads.get(j);
+                   	%>
+                   	<div>
+                            <input id="reading" name="reading" type="text" placeholder="책 이름">
+                            <input id="date" name="reading_date" type="date">
+                            <select id="keyword" name="reading_keyword">
+                            <option value=<%=read.get("keyword_id")%> selected><%=read.get("keyword")%></option>
+                            </select>
+                        <input type="button" value="삭제" onclick="obj_delete(8,this);return false;"><br>
+                        <script>
+	                            var name='<%=read.get("name")%>';
+	                            var date='<%=read.get("date")%>';
+	                            var keyword='<%=read.get("keyword_id")%>';
+	                            read_add(name,date,keyword);
+	                            </script>
+                   	</div>
+                   	<%} %>
+                   	<div id="ta">
                             <input id="reading" name="reading" type="text" placeholder="책 이름">
                             <input id="date" name="reading_date" type="date">
                             <select id="keyword" name="reading_keyword">
@@ -537,8 +561,9 @@ function read_add(name,date,keyword)
                                 %>
                             </select>
                         <input type="button" value="추가" onclick="obj_add(8,this);return false;"> 
-                   		</div>
-                   	</div> 
+                   	</div>
+                   	
+                   	 </div>
                 </td>
             </tr>            
         </tbody>
@@ -560,6 +585,8 @@ function read_add(name,date,keyword)
    <footer>
     <button onclick="total_store(); return false;">저장</button>
 </footer>
+
+</div>
 	<script src="js/jquery.min.js"></script>
     <script src="js/modal.js"></script>
     <script>
